@@ -1,0 +1,2 @@
+C:\EACustomWindow\src\examples\EACustomWindow\EACustomWindowInstaller\bin\Debug\EACustomWindowInstaller.msi
+C:\EACustomWindow\src\examples\EACustomWindow\EACustomWindowInstaller\bin\Debug\EACustomWindowInstaller.wixpdb
