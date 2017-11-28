@@ -136,9 +136,7 @@
             </Grid>
             <Grid Grid.Row="4">
                 <Button Margin="12 6 12 6" HorizontalAlignment="Right">
-                    <TextBlock Margin="6 2 6 2">
-                        Save Changes
-                    </TextBlock>
+                    <TextBlock Margin="6 2 6 2">Save Changes</TextBlock>
                 </Button>
             </Grid>
         </Grid>
