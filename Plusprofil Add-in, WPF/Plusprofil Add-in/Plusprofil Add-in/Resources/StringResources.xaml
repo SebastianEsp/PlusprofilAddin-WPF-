@@ -1,0 +1,36 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    
+    <!-- General labels -->
+    <system:String x:Key="UMLName">UML Name</system:String>
+    <system:String x:Key="Alias">Alias</system:String>
+    <system:String x:Key="URI">URI</system:String>
+    <system:String x:Key="Datatype">Datatype</system:String>
+    <system:String x:Key="Multiplicity">Multiplicity</system:String>
+    <system:String x:Key="DanishAnnotations">Danish Annotations</system:String>
+    <system:String x:Key="EnglishAnnotations">English Annotations</system:String>
+    <system:String x:Key="Provenance">Provenance</system:String>
+    <system:String x:Key="ElementStereotypeSpecific">Placeholder Stereotype Label</system:String>
+    <system:String x:Key="PackageStereotypeSpecific">Placeholder Stereotype Label</system:String>
+    <system:String x:Key="AttributeStereotypeSpecific">Placeholder Stereotype Label</system:String>
+    <system:String x:Key="ConnectorEndStereotypeSpecific">Placeholder Stereotype Label</system:String>
+    
+    <!-- "Danish / English Annotations" labels -->
+    <system:String x:Key="prefLabel">prefLabel</system:String>
+    <system:String x:Key="altLabel">altLabel</system:String>
+    <system:String x:Key="deprecatedLabel">deprecatedLabel</system:String>
+    <system:String x:Key="definition">definition</system:String>
+    <system:String x:Key="example">example</system:String>
+    <system:String x:Key="comment">comment</system:String>
+    
+    <!-- Package specific labels -->
+    
+    <!-- Element specific labels -->
+
+    <!-- Attribute specific labels -->
+
+    <!-- ConnectorEnd specific labels -->
+
+</ResourceDictionary>

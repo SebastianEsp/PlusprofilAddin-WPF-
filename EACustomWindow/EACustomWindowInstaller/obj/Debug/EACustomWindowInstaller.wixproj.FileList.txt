@@ -1,7 +1,0 @@
-obj\\Debug\Files.wixobj
-obj\\Debug\Setup.wixobj
-C:\EACustomWindow\src\examples\EACustomWindow\EACustomWindowInstaller\bin\Debug\EACustomWindowInstaller.msi
-C:\EACustomWindow\src\examples\EACustomWindow\EACustomWindowInstaller\bin\Debug\EACustomWindowInstaller.wixpdb
-obj\\Debug\EACustomWindowInstaller.wixproj.BindContentsFileListnull.txt
-obj\\Debug\EACustomWindowInstaller.wixproj.BindOutputsFileListnull.txt
-obj\\Debug\EACustomWindowInstaller.wixproj.BindBuiltOutputsFileListnull.txt
