@@ -6,12 +6,21 @@ using System.Windows;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using PDefinitions = PlusprofilAddin.PlusprofilTaggedValueDefinitions;
 
 namespace PlusprofilAddin
 {
     class ElementDialogViewModel : DialogViewModel
     {
-        public Element Element { get; set; }
+		protected List<PlusprofilTaggedValue> ToAddStereotypeTaggedValues = new List<PlusprofilTaggedValue>
+		{
+			PDefinitions.equivalentClass,
+			PDefinitions.subClassOf
+		};
+
+		//TODO Individual: sameAs and type
+
+		public Element Element { get; set; }
         public Collection TaggedValues { get; set; }
         public List<dynamic> TaggedValuesList;
 
@@ -20,17 +29,17 @@ namespace PlusprofilAddin
         public string UMLValue { get; set; }
         public string AliasValue { get; set; }
 
-        public ObservableCollection<PlusprofilTaggedValue> DanishTaggedValues { get; set; }
-        public ObservableCollection<PlusprofilTaggedValue> EnglishTaggedValues { get; set; }
-        public ObservableCollection<PlusprofilTaggedValue> ProvenanceTaggedValues { get; set; }
-        public ObservableCollection<PlusprofilTaggedValue> StereotypeTaggedValues { get; set; }
+        public ObservableCollection<DisplayedTaggedValue> DanishTaggedValues { get; set; }
+        public ObservableCollection<DisplayedTaggedValue> EnglishTaggedValues { get; set; }
+        public ObservableCollection<DisplayedTaggedValue> ProvenanceTaggedValues { get; set; }
+        public ObservableCollection<DisplayedTaggedValue> StereotypeTaggedValues { get; set; }
 
         public ElementDialogViewModel()
         {
-            DanishTaggedValues = new ObservableCollection<PlusprofilTaggedValue>();
-            EnglishTaggedValues = new ObservableCollection<PlusprofilTaggedValue>();
-            ProvenanceTaggedValues = new ObservableCollection<PlusprofilTaggedValue>();
-            StereotypeTaggedValues = new ObservableCollection<PlusprofilTaggedValue>();
+            DanishTaggedValues = new ObservableCollection<DisplayedTaggedValue>();
+            EnglishTaggedValues = new ObservableCollection<DisplayedTaggedValue>();
+            ProvenanceTaggedValues = new ObservableCollection<DisplayedTaggedValue>();
+            StereotypeTaggedValues = new ObservableCollection<DisplayedTaggedValue>();
             TaggedValuesList = new List<dynamic>();
 
             URIValue = "";
@@ -44,8 +53,18 @@ namespace PlusprofilAddin
             UMLValue = Element.Name;
             AliasValue = Element.Alias;
             TaggedValues = Element.TaggedValues;
+			//Finalize list of stereotype tags to add
+			if(Element.Stereotype == "Individual")
+			{
+				ToAddStereotypeTaggedValues.Add(PDefinitions.sameAs);
+				ToAddStereotypeTaggedValues.Add(PDefinitions.type);
+			}
+
+
             //Retrieve all tagged values and store them in a list
             //Tagged values are stored in a list to avoid iterating Collections multiple times, which is very costly
+			//In a future iteration of the addin, avoid iterating the collection even once, instead using Repository.SQLQuery to retrieve
+			//an XML-formatted list of every Tagged Value where the owner ID is Element.ElementID
             for (int i = 0; i < TaggedValues.Count; i++)
             {
                 dynamic tv = TaggedValues.GetAt((short)i);
@@ -57,32 +76,29 @@ namespace PlusprofilAddin
             URIValue = result[0].Value; //TODO: Create method to more elegantly retrieve object in single object list
 
             //Add all danish tagged values to list
-            foreach(string s in ToAddDanishTaggedValues)
-            {
-                result = RetrieveTaggedValues(TaggedValuesList, s);
-                foreach (dynamic tv in result) DanishTaggedValues.Add(new PlusprofilTaggedValue(tv.Name, tv.Value));
+            foreach(PlusprofilTaggedValue ptv in ToAddDanishTaggedValues)
+            {   
+                result = RetrieveTaggedValues(TaggedValuesList, ptv.Name);
+                foreach (dynamic tv in result) DanishTaggedValues.Add(new DisplayedTaggedValue(tv.Name, tv.Value));
             }
-
             //Add all english tagged values to list
-            foreach (string s in ToAddEnglishTaggedValues)
+            foreach (PlusprofilTaggedValue ptv in ToAddEnglishTaggedValues)
             {
-                result = RetrieveTaggedValues(TaggedValuesList, s);
-                foreach (dynamic tv in result) EnglishTaggedValues.Add(new PlusprofilTaggedValue(tv.Name, tv.Value));
+                result = RetrieveTaggedValues(TaggedValuesList, ptv.Name);
+                foreach (dynamic tv in result) EnglishTaggedValues.Add(new DisplayedTaggedValue(tv.Name, tv.Value));
             }
             //Add all provenance tagged values to list
-            foreach (string s in ToAddProvenanceTaggedValues)
+            foreach (PlusprofilTaggedValue ptv in ToAddProvenanceTaggedValues)
             {
-                result = RetrieveTaggedValues(TaggedValuesList, s);
-                foreach (dynamic tv in result) ProvenanceTaggedValues.Add(new PlusprofilTaggedValue(tv.Name, tv.Value));
+                result = RetrieveTaggedValues(TaggedValuesList, ptv.Name);
+                foreach (dynamic tv in result) ProvenanceTaggedValues.Add(new DisplayedTaggedValue(tv.Name, tv.Value));
             }
             //Add all stereotype-specific tagged values to list
-            /*
-            foreach (string s in ToAddDanishTaggedValues)
+            foreach (PlusprofilTaggedValue ptv in ToAddStereotypeTaggedValues)
             {
-                tv = TaggedValuesList[s];
-                DanishTaggedValues.Add(new PlusprofilTaggedValue(tv.Name, tv.Value));
-            }
-            */
+                result = RetrieveTaggedValues(TaggedValuesList, ptv.Name);
+				foreach (dynamic tv in result) ProvenanceTaggedValues.Add(new DisplayedTaggedValue(tv.Name, tv.Value));
+			}
         }
     }
 }

@@ -1,7 +1,8 @@
 ﻿using EA;
+using PlusprofilAddin.Model;
 using System;
 using System.Collections.Generic;
-using System.Windows;
+using PDefinitions = PlusprofilAddin.PlusprofilTaggedValueDefinitions;
 
 namespace PlusprofilAddin.ViewModels
 {
@@ -10,32 +11,32 @@ namespace PlusprofilAddin.ViewModels
         public Repository Repository { get; set; }
         abstract public void Initialize();
 
-        protected List<string> ToAddDanishTaggedValues = new List<string>
+        protected List<PlusprofilTaggedValue> ToAddDanishTaggedValues = new List<PlusprofilTaggedValue>
         {
-            "prefLabel (da)",
-            "altLabel (da)",
-            "deprecatedLabel (da)",
-            "definition (da)",
-            "example (da)",
-            "comment (da)",
-            "applicationNote (da)"
+            PDefinitions.prefLabelDa,
+            PDefinitions.altLabelDa,
+            PDefinitions.deprecatedLabelDa,
+            PDefinitions.definitionDa,
+            PDefinitions.exampleDa,
+            PDefinitions.commentDa,
+            PDefinitions.applicationNoteDa
         };
-        protected List<string> ToAddEnglishTaggedValues = new List<string>
+        protected List<PlusprofilTaggedValue> ToAddEnglishTaggedValues = new List<PlusprofilTaggedValue>
         {
-            "prefLabel (en)",
-            "altLabel (en)",
-            "deprecatedLabel (en)",
-            "definition (en)",
-            "example (en)",
-            "comment (en)",
-            "applicationNote (en)"
+            PDefinitions.prefLabelEn,
+            PDefinitions.altLabelEn,
+            PDefinitions.deprecatedLabelEn,
+            PDefinitions.definitionEn,
+            PDefinitions.exampleEn,
+            PDefinitions.commentEn,
+            PDefinitions.applicationNoteEn
         };
-        protected List<string> ToAddProvenanceTaggedValues = new List<string>
+        protected List<PlusprofilTaggedValue> ToAddProvenanceTaggedValues = new List<PlusprofilTaggedValue>
         {
-            "legalSource",
-            "source",
-            "isDefinedBy",
-            "wasDerivedFrom"
+            PDefinitions.legalSource,
+            PDefinitions.source,
+            PDefinitions.isDefinedBy,
+            PDefinitions.wasDerivedFrom
         };
 
         protected List<dynamic> RetrieveTaggedValues(List<dynamic> taggedValueList, string taggedValueName)

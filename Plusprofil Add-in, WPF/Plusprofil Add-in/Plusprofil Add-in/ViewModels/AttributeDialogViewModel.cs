@@ -2,12 +2,22 @@
 using System.Collections.ObjectModel;
 using EA;
 using PlusprofilAddin.ViewModels;
+using System.Collections.Generic;
+using PDefinitions = PlusprofilAddin.PlusprofilTaggedValueDefinitions;
 
 namespace PlusprofilAddin
 {
     class AttributeDialogViewModel : DialogViewModel
     {
-        public Attribute Attribute { get; set; }
+		protected List<PlusprofilTaggedValue> ToAddStereotypeTaggedValues = new List<PlusprofilTaggedValue>
+		{
+			PDefinitions.range,
+			PDefinitions.domain,
+			PDefinitions.subPropertyOf,
+			PDefinitions.equivalentProperty
+		};
+
+		public Attribute Attribute { get; set; }
 
         public string URIText { get; set; }
         public string UMLText { get; set; }
@@ -44,6 +54,13 @@ namespace PlusprofilAddin
         public override void Initialize()
         {
             Attribute = Repository.GetContextObject() as Attribute;
-        }
+
+			//Finalize list of stereotype tags to add
+			if (Attribute.Stereotype == "DatatypeProperty")
+			{
+				ToAddStereotypeTaggedValues.Add(PDefinitions.functionalProperty);
+				//TODO _defaultAttributeType?
+			}
+		}
     }
 }

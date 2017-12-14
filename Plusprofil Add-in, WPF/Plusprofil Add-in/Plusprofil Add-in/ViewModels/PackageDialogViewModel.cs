@@ -2,12 +2,28 @@
 using System.Collections.ObjectModel;
 using EA;
 using PlusprofilAddin.ViewModels;
+using System.Collections.Generic;
+using PDefinitions = PlusprofilAddin.PlusprofilTaggedValueDefinitions;
 
 namespace PlusprofilAddin
 {
     class PackageDialogViewModel : DialogViewModel
     {
-        public Package Package { get; set; }
+		protected List<PlusprofilTaggedValue> ToAddStereotypeTaggedValues = new List<PlusprofilTaggedValue>
+		{
+			PDefinitions.namespace_,
+			PDefinitions.namespacePrefix,
+			PDefinitions.publisher,
+			PDefinitions.theme,
+			PDefinitions.modified,
+			PDefinitions.versionInfo,
+			PDefinitions.modelStatus,
+			PDefinitions.approvalStatus,
+			PDefinitions.legalSource,
+			PDefinitions.source
+		};
+
+		public Package Package { get; set; }
 
         public string URIText { get; set; }
         public string UMLText { get; set; }
@@ -37,6 +53,18 @@ namespace PlusprofilAddin
         {
             Package = Repository.GetContextObject() as Package;
             UMLValue = Package.Element.Name;
-        }
+
+			//Finalize list of stereotype tags to add
+			if (Package.Element.Stereotype == "LogicalModel" 
+			|| Package.Element.Stereotype == "CoreModel"
+			|| Package.Element.Stereotype == "Vocabulary"
+			|| Package.Element.Stereotype == "ApplicationModel"
+			|| Package.Element.Stereotype == "ApplicationProfile")
+			{
+				ToAddStereotypeTaggedValues.Add(PDefinitions.wasDerivedFrom);
+			}
+
+			//Do remaining stuff
+		}
     }
 }

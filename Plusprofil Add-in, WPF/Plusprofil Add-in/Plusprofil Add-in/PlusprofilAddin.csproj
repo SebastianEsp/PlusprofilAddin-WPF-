@@ -50,9 +50,11 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DisplayedTaggedValue.cs" />
+    <Compile Include="PlusprofilTaggedValueDefinitions.cs" />
     <Compile Include="ViewModels\AttributeDialogViewModel.cs" />
     <Compile Include="ViewModels\ConnectorDialogViewModel.cs" />
-    <Compile Include="Model\PlusprofilTaggedValue.cs" />
+    <Compile Include="PlusprofilTaggedValue.cs" />
     <Compile Include="ViewModels\ElementDialogViewModel.cs" />
     <Compile Include="ViewModels\DialogViewModel.cs" />
     <Compile Include="ViewModels\PackageDialogViewModel.cs" />

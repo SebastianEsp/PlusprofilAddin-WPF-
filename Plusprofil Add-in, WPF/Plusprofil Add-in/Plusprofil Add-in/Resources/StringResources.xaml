@@ -7,16 +7,22 @@
     <system:String x:Key="UMLName">UML Name</system:String>
     <system:String x:Key="Alias">Alias</system:String>
     <system:String x:Key="URI">URI</system:String>
-    <system:String x:Key="Datatype">Datatype</system:String>
     <system:String x:Key="Multiplicity">Multiplicity</system:String>
+    <system:String x:Key="Datatype">Datatype</system:String>
     <system:String x:Key="DanishAnnotations">Danish Annotations</system:String>
     <system:String x:Key="EnglishAnnotations">English Annotations</system:String>
+    <system:String x:Key="ModelMetadata">Model Metadata</system:String>
     <system:String x:Key="Provenance">Provenance</system:String>
-    <system:String x:Key="ElementStereotypeSpecific">Placeholder Stereotype Label</system:String>
-    <system:String x:Key="PackageStereotypeSpecific">Placeholder Stereotype Label</system:String>
-    <system:String x:Key="AttributeStereotypeSpecific">Placeholder Stereotype Label</system:String>
-    <system:String x:Key="ConnectorEndStereotypeSpecific">Placeholder Stereotype Label</system:String>
-    
+    <system:String x:Key="StereotypeCharacteristics">Stereotype Characteristics</system:String>
+    <system:String x:Key="DatatypePropertyCharacteristics">DatatypeProperty Characteristics</system:String>
+    <system:String x:Key="RdfsClassCharacteristics">RdfsClass Characteristics</system:String>
+    <system:String x:Key="RdfsPropertyCharacteristics">RdfsProperty Characteristics</system:String>
+    <system:String x:Key="ObjectPropertyCharacteristics">ObjectProperty Characteristics</system:String>
+    <system:String x:Key="SaveChanges">Save Changes</system:String>
+    <system:String x:Key="Cancel">Cancel</system:String>
+
+
+
     <!-- "Danish / English Annotations" labels -->
     <system:String x:Key="prefLabel">prefLabel</system:String>
     <system:String x:Key="altLabel">altLabel</system:String>
@@ -24,13 +30,46 @@
     <system:String x:Key="definition">definition</system:String>
     <system:String x:Key="example">example</system:String>
     <system:String x:Key="comment">comment</system:String>
-    
+    <system:String x:Key="applicationNote">applicationNote</system:String>
+
+    <!-- Provenance labels -->
+    <system:String x:Key="legalSource">legalSource</system:String>
+    <system:String x:Key="source">source</system:String>
+    <system:String x:Key="isDefinedBy">isDefinedBy</system:String>
+    <system:String x:Key="wasDerivedFrom">wasDerivedFrom</system:String>
+
     <!-- Package specific labels -->
-    
+    <system:String x:Key="namespace">namespace</system:String>
+    <system:String x:Key="namespacePrefix">namespacePrefix</system:String>
+    <system:String x:Key="label">label</system:String>
+    <system:String x:Key="publisher">publisher</system:String>
+    <system:String x:Key="versionInfo">versionInfo</system:String>
+    <system:String x:Key="modified">modified</system:String>
+    <system:String x:Key="modelStatus">modelStatus</system:String>
+    <system:String x:Key="approvalStatus">approvalStatus</system:String>
+    <system:String x:Key="theme">theme</system:String>
+    <!-- Keys already defined: legalSource, source, wasDerivedFrom, comment -->
+
     <!-- Element specific labels -->
+    <system:String x:Key="equivalentClass">equivalentClass</system:String>
+    <system:String x:Key="subClassOf">subClassOf</system:String>
+    <system:String x:Key="sameAs">sameAs</system:String>
+    <system:String x:Key="type">type</system:String>
+
+    <!-- Attribute/ConnectorEnd specific labels -->
+    <system:String x:Key="range">range</system:String>
+    <system:String x:Key="domain">domain</system:String>
+    <system:String x:Key="subPropertyOf">subPropertyOf</system:String>
+    <system:String x:Key="equivalentProperty">equivalentProperty</system:String>
 
     <!-- Attribute specific labels -->
+    <system:String x:Key="functionalProperty">functionalProperty</system:String>
 
     <!-- ConnectorEnd specific labels -->
-
+    <system:String x:Key="inverseOf">inverseOf</system:String>
+    <system:String x:Key="inverseFunctionalProperty">inverseFunctionalProperty</system:String>
+    <system:String x:Key="symmetricProperty">symmetricProperty</system:String>
+    <system:String x:Key="transitiveProperty">transitiveProperty</system:String>
+    <!-- Keys already defined: functionalProperty -->
+    
 </ResourceDictionary>
