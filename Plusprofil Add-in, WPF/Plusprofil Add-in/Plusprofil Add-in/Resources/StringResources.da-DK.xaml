@@ -21,7 +21,6 @@
     <system:String x:Key="SaveChanges">Gem ændringer</system:String>
     <system:String x:Key="Cancel">Annuller</system:String>
 
-
     <!-- "Danish / English Annotations" labels -->
     <system:String x:Key="prefLabel">Foretrukken term</system:String>
     <system:String x:Key="altLabel">Accepterede termer</system:String>

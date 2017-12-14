@@ -26,7 +26,7 @@ namespace PlusprofilAddin
 
 
         public string URIValue { get; set; }
-        public string UMLValue { get; set; }
+        public string UMLNameValue { get; set; }
         public string AliasValue { get; set; }
 
         public ObservableCollection<DisplayedTaggedValue> DanishTaggedValues { get; set; }
@@ -60,7 +60,6 @@ namespace PlusprofilAddin
 				ToAddStereotypeTaggedValues.Add(PDefinitions.type);
 			}
 
-
             //Retrieve all tagged values and store them in a list
             //Tagged values are stored in a list to avoid iterating Collections multiple times, which is very costly
 			//In a future iteration of the addin, avoid iterating the collection even once, instead using Repository.SQLQuery to retrieve
@@ -73,10 +72,10 @@ namespace PlusprofilAddin
             //Declare List to hold result of list lookups
             List<dynamic> result;
             result = RetrieveTaggedValues(TaggedValuesList, "URI");
-            URIValue = result[0].Value; //TODO: Create method to more elegantly retrieve object in single object list
+            if (URIValue.Count() != 0) URIValue = result.First().Value;
 
             //Add all danish tagged values to list
-            foreach(PlusprofilTaggedValue ptv in ToAddDanishTaggedValues)
+            foreach (PlusprofilTaggedValue ptv in ToAddDanishTaggedValues)
             {   
                 result = RetrieveTaggedValues(TaggedValuesList, ptv.Name);
                 foreach (dynamic tv in result) DanishTaggedValues.Add(new DisplayedTaggedValue(tv.Name, tv.Value));
