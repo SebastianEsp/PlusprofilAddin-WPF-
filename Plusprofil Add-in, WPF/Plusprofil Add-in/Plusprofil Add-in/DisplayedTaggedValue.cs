@@ -13,7 +13,8 @@ namespace PlusprofilAddin
 
         public DisplayedTaggedValue(string name, string value)
         {
-            
+            Name = name;
+            Value = value;
         }
     }
 }

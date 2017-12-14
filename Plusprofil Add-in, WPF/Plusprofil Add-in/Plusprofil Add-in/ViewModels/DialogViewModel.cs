@@ -2,6 +2,7 @@
 using PlusprofilAddin.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using PDefinitions = PlusprofilAddin.PlusprofilTaggedValueDefinitions;
 
 namespace PlusprofilAddin.ViewModels
@@ -42,8 +43,8 @@ namespace PlusprofilAddin.ViewModels
         protected List<dynamic> RetrieveTaggedValues(List<dynamic> taggedValueList, string taggedValueName)
         {
             List<dynamic> result = new List<dynamic>();
-            if (taggedValueList.Count == 0) throw new Exception("No tagged values were found");
-            if(taggedValueList[0].ObjectType == (int)ObjectType.otRoleTag)
+            if (taggedValueList.Count == 0) throw new Exception("Object has no tagged values");
+            if(taggedValueList.First().ObjectType == (int)ObjectType.otRoleTag)
             {
                 foreach (dynamic tv in taggedValueList)
                 {

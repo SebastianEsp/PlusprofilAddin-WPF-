@@ -29,28 +29,28 @@ namespace PlusprofilAddin
         public string UMLNameValue { get; set; }
         public string AliasValue { get; set; }
 
-        public ObservableCollection<DisplayedTaggedValue> DanishTaggedValues { get; set; }
-        public ObservableCollection<DisplayedTaggedValue> EnglishTaggedValues { get; set; }
-        public ObservableCollection<DisplayedTaggedValue> ProvenanceTaggedValues { get; set; }
-        public ObservableCollection<DisplayedTaggedValue> StereotypeTaggedValues { get; set; }
+        public ObservableCollection<List<DisplayedTaggedValue>> DanishTaggedValues { get; set; }
+        public ObservableCollection<List<DisplayedTaggedValue>> EnglishTaggedValues { get; set; }
+        public ObservableCollection<List<DisplayedTaggedValue>> ProvenanceTaggedValues { get; set; }
+        public ObservableCollection<List<DisplayedTaggedValue>> StereotypeTaggedValues { get; set; }
 
         public ElementDialogViewModel()
         {
-            DanishTaggedValues = new ObservableCollection<DisplayedTaggedValue>();
-            EnglishTaggedValues = new ObservableCollection<DisplayedTaggedValue>();
-            ProvenanceTaggedValues = new ObservableCollection<DisplayedTaggedValue>();
-            StereotypeTaggedValues = new ObservableCollection<DisplayedTaggedValue>();
+            DanishTaggedValues = new ObservableCollection<List<DisplayedTaggedValue>>();
+            EnglishTaggedValues = new ObservableCollection<List<DisplayedTaggedValue>>();
+            ProvenanceTaggedValues = new ObservableCollection<List<DisplayedTaggedValue>>();
+            StereotypeTaggedValues = new ObservableCollection<List<DisplayedTaggedValue>>();
             TaggedValuesList = new List<dynamic>();
 
             URIValue = "";
-            UMLValue = "";
+            UMLNameValue = "";
             AliasValue = "";
         }
 
         public override void Initialize()
         {
             Element = Repository.GetContextObject();
-            UMLValue = Element.Name;
+            UMLNameValue = Element.Name;
             AliasValue = Element.Alias;
             TaggedValues = Element.TaggedValues;
 			//Finalize list of stereotype tags to add
@@ -78,26 +78,34 @@ namespace PlusprofilAddin
             foreach (PlusprofilTaggedValue ptv in ToAddDanishTaggedValues)
             {   
                 result = RetrieveTaggedValues(TaggedValuesList, ptv.Name);
-                foreach (dynamic tv in result) DanishTaggedValues.Add(new DisplayedTaggedValue(tv.Name, tv.Value));
+                List<DisplayedTaggedValue> resultList = new List<DisplayedTaggedValue>();
+                foreach (dynamic tv in result) resultList.Add(new DisplayedTaggedValue(tv.Name, tv.Value));
+                DanishTaggedValues.Add(resultList);
             }
             //Add all english tagged values to list
             foreach (PlusprofilTaggedValue ptv in ToAddEnglishTaggedValues)
             {
                 result = RetrieveTaggedValues(TaggedValuesList, ptv.Name);
-                foreach (dynamic tv in result) EnglishTaggedValues.Add(new DisplayedTaggedValue(tv.Name, tv.Value));
+                List<DisplayedTaggedValue> resultList = new List<DisplayedTaggedValue>();
+                foreach (dynamic tv in result) resultList.Add(new DisplayedTaggedValue(tv.Name, tv.Value));
+                EnglishTaggedValues.Add(resultList);
             }
             //Add all provenance tagged values to list
             foreach (PlusprofilTaggedValue ptv in ToAddProvenanceTaggedValues)
             {
                 result = RetrieveTaggedValues(TaggedValuesList, ptv.Name);
-                foreach (dynamic tv in result) ProvenanceTaggedValues.Add(new DisplayedTaggedValue(tv.Name, tv.Value));
+                List<DisplayedTaggedValue> resultList = new List<DisplayedTaggedValue>();
+                foreach (dynamic tv in result) resultList.Add(new DisplayedTaggedValue(tv.Name, tv.Value));
+                ProvenanceTaggedValues.Add(resultList);
             }
             //Add all stereotype-specific tagged values to list
             foreach (PlusprofilTaggedValue ptv in ToAddStereotypeTaggedValues)
             {
                 result = RetrieveTaggedValues(TaggedValuesList, ptv.Name);
-				foreach (dynamic tv in result) ProvenanceTaggedValues.Add(new DisplayedTaggedValue(tv.Name, tv.Value));
-			}
+                List<DisplayedTaggedValue> resultList = new List<DisplayedTaggedValue>();
+                foreach (dynamic tv in result) resultList.Add(new DisplayedTaggedValue(tv.Name, tv.Value));
+                StereotypeTaggedValues.Add(resultList);
+            }
         }
     }
 }
