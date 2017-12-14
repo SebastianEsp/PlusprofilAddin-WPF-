@@ -1,159 +1,247 @@
-﻿<Window x:Class="PlusprofilAddin.ElementDialog"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        mc:Ignorable="d"
-        Title="{Binding Path=UMLNameValue}"
-        d:DesignHeight="500"
-        d:DesignWidth="500">
-    <ScrollViewer VerticalScrollBarVisibility="Auto" 
-                  HorizontalScrollBarVisibility="Disabled">
-        <Grid Name="MainGrid" ShowGridLines="True" Grid.IsSharedSizeScope="True">
+﻿<Window
+    x:Class="PlusprofilAddin.ElementDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="{Binding Path=UMLNameValue}"
+    d:DesignHeight="500"
+    d:DesignWidth="500"
+    mc:Ignorable="d">
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+        <Grid
+            Name="MainGrid"
+            Grid.IsSharedSizeScope="True"
+            ShowGridLines="True">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid Name="TopGrid" Grid.Row="0">
-                <ItemsControl ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                              HorizontalContentAlignment="Stretch"
-                              KeyboardNavigation.TabNavigation="Continue"
-                              KeyboardNavigation.IsTabStop="False"
-                              ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                              Padding="0 6 0 6">
-                    <Grid Margin="0 3 0 3">
+                <ItemsControl
+                    Padding="0,6,0,6"
+                    HorizontalContentAlignment="Stretch"
+                    KeyboardNavigation.IsTabStop="False"
+                    KeyboardNavigation.TabNavigation="Continue"
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                    ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                    <Grid Margin="0,3,0,3">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition SharedSizeGroup="FirstCol" Width="Auto"/>
-                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="FirstCol" />
+                            <ColumnDefinition />
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition/>
+                            <RowDefinition />
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Column="0" Text="{DynamicResource ResourceKey=UMLName}" Margin="12 0 6 0"/>
-                        <TextBox Grid.Column="1" Text="{Binding Path=UMLNameValue, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" Margin="0 0 12 0"/>
+                        <TextBlock
+                            Grid.Column="0"
+                            Margin="12,0,6,0"
+                            Text="{DynamicResource ResourceKey=UMLName}" />
+                        <TextBox
+                            Grid.Column="1"
+                            Margin="0,0,12,0"
+                            Text="{Binding Path=UMLNameValue, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
                     </Grid>
-                    <Grid Margin="0 3 0 3">
+                    <Grid Margin="0,3,0,3">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition SharedSizeGroup="FirstCol" Width="Auto"/>
-                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="FirstCol" />
+                            <ColumnDefinition />
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition/>
+                            <RowDefinition />
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Column="0" Text="{DynamicResource ResourceKey=URI}" Margin="12 0 6 0"/>
-                        <TextBox Grid.Column="1" Text="{Binding Path=URIValue, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" Margin="0 0 12 0"/>
+                        <TextBlock
+                            Grid.Column="0"
+                            Margin="12,0,6,0"
+                            Text="{DynamicResource ResourceKey=URI}" />
+                        <TextBox
+                            Grid.Column="1"
+                            Margin="0,0,12,0"
+                            Text="{Binding Path=URIValue, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
                     </Grid>
-                    <Grid Margin="0 3 0 3">
+                    <Grid Margin="0,3,0,3">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition SharedSizeGroup="FirstCol" Width="Auto"/>
-                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="FirstCol" />
+                            <ColumnDefinition />
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition/>
+                            <RowDefinition />
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Column="0" Text="{DynamicResource ResourceKey=Alias}" Margin="12 0 6 0"/>
-                        <TextBox Grid.Column="1" Text="{Binding Path=AliasValue, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" Margin="0 0 12 0"/>
+                        <TextBlock
+                            Grid.Column="0"
+                            Margin="12,0,6,0"
+                            Text="{DynamicResource ResourceKey=Alias}" />
+                        <TextBox
+                            Grid.Column="1"
+                            Margin="0,0,12,0"
+                            Text="{Binding Path=AliasValue, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
                     </Grid>
                 </ItemsControl>
             </Grid>
             <Grid Grid.Row="1" KeyboardNavigation.IsTabStop="False">
-                <!--
                 <TabControl Name="LanguageTabControl">
-                    <TabItem Name="DanishTab" Header="{DynamicResource ResourceKey=DanishAnnotations}" FontWeight="SemiBold">
-                        
-                        <ItemsControl ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                              ItemsSource="{Binding Path=DanishTaggedValues}" 
-                              HorizontalContentAlignment="Stretch" 
-                              KeyboardNavigation.TabNavigation="Continue"
-                              ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                              Padding="0 6 0 6">
+                    <TabItem Name="DanishTab">
+                        <TabItem.Header>
+                            <TextBlock FontWeight="SemiBold" Text="{DynamicResource ResourceKey=DanishAnnotations}" />
+                        </TabItem.Header>
+                        <ItemsControl
+                            Grid.Row="1"
+                            Padding="0,6,0,6"
+                            HorizontalContentAlignment="Stretch"
+                            ItemsSource="{Binding Path=DanishTaggedValues}"
+                            KeyboardNavigation.IsTabStop="False"
+                            KeyboardNavigation.TabNavigation="Continue"
+                            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                            ScrollViewer.VerticalScrollBarVisibility="Disabled">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Grid Margin="0 3 0 3">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition SharedSizeGroup="FirstCol" Width="Auto"/>
-                                            <ColumnDefinition/>
-                                        </Grid.ColumnDefinitions>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition/>
-                                        </Grid.RowDefinitions>
-                                        <TextBlock Grid.Column="0" Text="{Binding Title}" Margin="12 0 6 0"/>
-                                        <TextBox Grid.Column="1" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" IsTabStop="True" Margin="0 0 12 0"/>
-                                    </Grid>
+                                    <ItemsControl
+                                        HorizontalContentAlignment="Stretch"
+                                        ItemsSource="{Binding}"
+                                        KeyboardNavigation.IsTabStop="False"
+                                        KeyboardNavigation.TabNavigation="Continue"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                        ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                                        <ItemsControl.ItemTemplate>
+                                            <!--  Inner content  -->
+                                            <DataTemplate>
+                                                <Grid Margin="0,3,0,3" KeyboardNavigation.IsTabStop="False">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto" SharedSizeGroup="FirstCol" />
+                                                        <ColumnDefinition />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition />
+                                                    </Grid.RowDefinitions>
+                                                    <TextBlock
+                                                        Grid.Column="0"
+                                                        Margin="12,0,6,0"
+                                                        Text="{Binding Name}" />
+                                                    <TextBox
+                                                        Grid.Column="1"
+                                                        Margin="0,0,12,0"
+                                                        IsTabStop="True"
+                                                        Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+                                                </Grid>
+                                            </DataTemplate>
+                                            <!--  Inner content end  -->
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
                     </TabItem>
-                    <TabItem Name="EnglishTab" Header="{DynamicResource ResourceKey=EnglishAnnotations}" FontWeight="SemiBold">
-                        <ItemsControl ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                              ItemsSource="{Binding Path=EnglishTaggedValues}" 
-                              HorizontalContentAlignment="Stretch"
-                              KeyboardNavigation.TabNavigation="Continue"
-                              ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                              Padding="0 6 0 6">
+                    <TabItem
+                        Name="EnglishTab"
+                        FontWeight="SemiBold"
+                        Header="{DynamicResource ResourceKey=EnglishAnnotations}">
+                        <ItemsControl
+                            Grid.Row="1"
+                            Padding="0,6,0,6"
+                            HorizontalContentAlignment="Stretch"
+                            ItemsSource="{Binding Path=EnglishTaggedValues}"
+                            KeyboardNavigation.IsTabStop="False"
+                            KeyboardNavigation.TabNavigation="Continue"
+                            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                            ScrollViewer.VerticalScrollBarVisibility="Disabled">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Grid Margin="0 3 0 3">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition SharedSizeGroup="FirstCol" Width="Auto"/>
-                                            <ColumnDefinition/>
-                                        </Grid.ColumnDefinitions>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition/>
-                                        </Grid.RowDefinitions>
-                                        <TextBlock Grid.Column="0" Text="{Binding Title}" Margin="12 0 6 0"/>
-                                        <TextBox Grid.Column="1" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" IsTabStop="True" Margin="0 0 12 0"/>
-                                    </Grid>
+                                    <ItemsControl
+                                        HorizontalContentAlignment="Stretch"
+                                        ItemsSource="{Binding}"
+                                        KeyboardNavigation.IsTabStop="False"
+                                        KeyboardNavigation.TabNavigation="Continue"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                        ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                                        <ItemsControl.ItemTemplate>
+                                            <!--  Inner content  -->
+                                            <DataTemplate>
+                                                <Grid Margin="0,3,0,3" KeyboardNavigation.IsTabStop="False">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto" SharedSizeGroup="FirstCol" />
+                                                        <ColumnDefinition />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition />
+                                                    </Grid.RowDefinitions>
+                                                    <TextBlock
+                                                        Grid.Column="0"
+                                                        Margin="12,0,6,0"
+                                                        Text="{Binding Name}" />
+                                                    <TextBox
+                                                        Grid.Column="1"
+                                                        Margin="0,0,12,0"
+                                                        IsTabStop="True"
+                                                        Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+                                                </Grid>
+                                            </DataTemplate>
+                                            <!--  Inner content end  -->
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
                     </TabItem>
-                </TabControl>-->
+                </TabControl>
             </Grid>
             <Grid Grid.Row="2" KeyboardNavigation.IsTabStop="False">
                 <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
+                    <RowDefinition />
+                    <RowDefinition />
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Name="ProvenanceTextBlock" Text="{DynamicResource ResourceKey=Provenance}" FontWeight="SemiBold" Margin="12 6 6 0"/>
-                <ItemsControl Grid.Row="1"
-                              ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                              ItemsSource="{Binding Path=ProvenanceTaggedValues}"
-                              HorizontalContentAlignment="Stretch" 
-                              KeyboardNavigation.TabNavigation="Continue"
-                              KeyboardNavigation.IsTabStop="False"
-                              ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                              Padding="0 6 0 6">
+                <TextBlock
+                    Name="ProvenanceTextBlock"
+                    Grid.Row="0"
+                    Margin="12,6,6,0"
+                    FontWeight="SemiBold"
+                    Text="{DynamicResource ResourceKey=Provenance}" />
+                <ItemsControl
+                    Grid.Row="1"
+                    Padding="0,6,0,6"
+                    HorizontalContentAlignment="Stretch"
+                    ItemsSource="{Binding Path=ProvenanceTaggedValues}"
+                    KeyboardNavigation.IsTabStop="False"
+                    KeyboardNavigation.TabNavigation="Continue"
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                    ScrollViewer.VerticalScrollBarVisibility="Disabled">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <ItemsControl ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                                          ItemsSource="{Binding}"
-                                          HorizontalContentAlignment="Stretch" 
-                                          KeyboardNavigation.TabNavigation="Continue"
-                                          KeyboardNavigation.IsTabStop="False"
-                                          ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                            <ItemsControl
+                                HorizontalContentAlignment="Stretch"
+                                ItemsSource="{Binding}"
+                                KeyboardNavigation.IsTabStop="False"
+                                KeyboardNavigation.TabNavigation="Continue"
+                                ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                ScrollViewer.VerticalScrollBarVisibility="Disabled">
                                 <ItemsControl.ItemTemplate>
-                                    <!-- Inner content-->
+                                    <!--  Inner content  -->
                                     <DataTemplate>
-                                        <Grid Margin="0 3 0 3" KeyboardNavigation.IsTabStop="False">
+                                        <Grid Margin="0,3,0,3" KeyboardNavigation.IsTabStop="False">
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition SharedSizeGroup="FirstCol" Width="Auto"/>
-                                                <ColumnDefinition/>
+                                                <ColumnDefinition Width="Auto" SharedSizeGroup="FirstCol" />
+                                                <ColumnDefinition />
                                             </Grid.ColumnDefinitions>
                                             <Grid.RowDefinitions>
-                                                <RowDefinition/>
+                                                <RowDefinition />
                                             </Grid.RowDefinitions>
-                                            <TextBlock Grid.Column="0" Text="{Binding Name}" Margin="12 0 6 0"/>
-                                            <TextBox Grid.Column="1" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" IsTabStop="True" Margin="0 0 12 0"/>
+                                            <TextBlock
+                                                Grid.Column="0"
+                                                Margin="12,0,6,0"
+                                                Text="{Binding Name}" />
+                                            <TextBox
+                                                Grid.Column="1"
+                                                Margin="0,0,12,0"
+                                                IsTabStop="True"
+                                                Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
                                         </Grid>
                                     </DataTemplate>
-                                    <!-- Inner content end-->
+                                    <!--  Inner content end  -->
                                 </ItemsControl.ItemTemplate>
                             </ItemsControl>
                         </DataTemplate>
@@ -161,42 +249,72 @@
                 </ItemsControl>
             </Grid>
             <Grid Grid.Row="3">
-                <!--
                 <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
+                    <RowDefinition />
+                    <RowDefinition />
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Name="StereotypeTextBlock" Text="{DynamicResource ResourceKey=RdfsClassCharacteristics}" FontWeight="SemiBold" Margin="12 6 6 0"/>
-                <ItemsControl Grid.Row="1"
+                <TextBlock
+                    Name="StereotypeTextBlock"
+                    Grid.Row="0"
+                    Margin="12,6,6,0"
+                    FontWeight="SemiBold"
+                    Text="{DynamicResource ResourceKey=RdfsClassCharacteristics}" />
+                <ItemsControl
+                    Grid.Row="1"
+                    Padding="0,6,0,6"
+                    HorizontalContentAlignment="Stretch"
+                    ItemsSource="{Binding Path=ProvenanceTaggedValues}"
+                    KeyboardNavigation.IsTabStop="False"
+                    KeyboardNavigation.TabNavigation="Continue"
                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                              ItemsSource="{Binding Path=StereotypeTaggedValues}"
-                              HorizontalContentAlignment="Stretch" 
-                              KeyboardNavigation.TabNavigation="Continue"
-                              ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                              Padding="0 6 0 6">
+                    ScrollViewer.VerticalScrollBarVisibility="Disabled">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Grid Margin="0 3 0 3">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition SharedSizeGroup="FirstCol" Width="Auto"/>
-                                    <ColumnDefinition/>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
-                                <TextBlock Grid.Column="0" Text="{Binding Title}" Margin="12 0 6 0"/>
-                                <TextBox Grid.Column="1" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" IsTabStop="True" Margin="0 0 12 0"/>
-                            </Grid>
+                            <ItemsControl
+                                HorizontalContentAlignment="Stretch"
+                                ItemsSource="{Binding}"
+                                KeyboardNavigation.IsTabStop="False"
+                                KeyboardNavigation.TabNavigation="Continue"
+                                ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                                <ItemsControl.ItemTemplate>
+                                    <!--  Inner content  -->
+                                    <DataTemplate>
+                                        <Grid Margin="0,3,0,3" KeyboardNavigation.IsTabStop="False">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" SharedSizeGroup="FirstCol" />
+                                                <ColumnDefinition />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition />
+                                            </Grid.RowDefinitions>
+                                            <TextBlock
+                                                Grid.Column="0"
+                                                Margin="12,0,6,0"
+                                                Text="{Binding Name}" />
+                                            <TextBox
+                                                Grid.Column="1"
+                                                Margin="0,0,12,0"
+                                                IsTabStop="True"
+                                                Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+                                        </Grid>
+                                    </DataTemplate>
+                                    <!--  Inner content end  -->
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
-                </ItemsControl> -->
+                </ItemsControl>
             </Grid>
-            <WrapPanel Grid.Row="4" HorizontalAlignment="Right" KeyboardNavigation.IsTabStop="False">
-                <Button Margin="12 6 3 6">
-                    <TextBlock Text="{DynamicResource ResourceKey=Cancel}" Margin="6 2 6 2"/>
+            <WrapPanel
+                Grid.Row="4"
+                HorizontalAlignment="Right"
+                KeyboardNavigation.IsTabStop="False">
+                <Button Margin="12,6,3,6">
+                    <TextBlock Margin="6,2,6,2" Text="{DynamicResource ResourceKey=Cancel}" />
                 </Button>
-                <Button Margin="3 6 12 6">
-                    <TextBlock Text="{DynamicResource ResourceKey=SaveChanges}" Margin="6 2 6 2"/>
+                <Button Margin="3,6,12,6">
+                    <TextBlock Margin="6,2,6,2" Text="{DynamicResource ResourceKey=SaveChanges}" />
                 </Button>
             </WrapPanel>
         </Grid>
