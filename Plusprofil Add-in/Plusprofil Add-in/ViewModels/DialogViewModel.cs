@@ -1,4 +1,5 @@
 ﻿using EA;
+using PlusprofilAddin.Commands;
 using PlusprofilAddin.Model;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,10 @@ namespace PlusprofilAddin.ViewModels
 {
     abstract class DialogViewModel
     {
-        public Repository Repository { get; set; }
+		public SaveCommand SaveCommand { get; set; }
+		public CancelCommand CancelCommand { get; set; }
+
+		public Repository Repository { get; set; }
         abstract public void Initialize();
 
         protected List<PlusprofilTaggedValue> ToAddDanishTaggedValues = new List<PlusprofilTaggedValue>

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 using PDefinitions = PlusprofilAddin.PlusprofilTaggedValueDefinitions;
+using PlusprofilAddin.Commands;
 
 namespace PlusprofilAddin
 {
@@ -36,7 +37,9 @@ namespace PlusprofilAddin
 
         public ElementDialogViewModel()
         {
-            DanishTaggedValues = new ObservableCollection<List<DisplayedTaggedValue>>();
+			SaveCommand = new SaveCommand();
+			CancelCommand = new CancelCommand();
+			DanishTaggedValues = new ObservableCollection<List<DisplayedTaggedValue>>();
             EnglishTaggedValues = new ObservableCollection<List<DisplayedTaggedValue>>();
             ProvenanceTaggedValues = new ObservableCollection<List<DisplayedTaggedValue>>();
             StereotypeTaggedValues = new ObservableCollection<List<DisplayedTaggedValue>>();

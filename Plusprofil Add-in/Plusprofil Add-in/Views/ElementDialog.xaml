@@ -378,10 +378,16 @@
 				Grid.Row="4"
 				HorizontalAlignment="Right"
 				KeyboardNavigation.IsTabStop="False">
-				<Button Margin="12,6,3,6">
+				<Button
+					Margin="12,6,3,6"
+					Command="{Binding Path=CancelCommand}"
+					CommandParameter="{Binding}">
 					<TextBlock Margin="6,2,6,2" Text="{DynamicResource ResourceKey=Cancel}" />
 				</Button>
-				<Button Margin="3,6,12,6" Command="{Binding SaveCommand}">
+				<Button
+					Margin="3,6,12,6"
+					Command="{Binding Path=SaveCommand}"
+					CommandParameter="{Binding}">
 					<TextBlock Margin="6,2,6,2" Text="{DynamicResource ResourceKey=SaveChanges}" />
 				</Button>
 			</WrapPanel>

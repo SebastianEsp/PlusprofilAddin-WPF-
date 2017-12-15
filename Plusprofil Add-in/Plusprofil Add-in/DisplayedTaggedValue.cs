@@ -8,6 +8,7 @@ namespace PlusprofilAddin
 {
     class DisplayedTaggedValue
     {
+		public dynamic TaggedValue { get; }
         public string Name { get; set; }
         public string Value { get; set; }
 
@@ -16,5 +17,9 @@ namespace PlusprofilAddin
             Name = name;
             Value = value;
         }
+
+		public DisplayedTaggedValue(dynamic taggedValue){
+			TaggedValue = taggedValue;
+		}
     }
 }
