@@ -388,7 +388,7 @@
                 <Button
                     Margin="12,6,3,6"
                     Command="{Binding Path=CancelCommand}"
-                    CommandParameter="{Binding}">
+                    CommandParameter="{Binding ElementName=MainWindow}">
                     <TextBlock Margin="6,2,6,2" Text="{DynamicResource ResourceKey=Cancel}" />
                 </Button>
                 <Button

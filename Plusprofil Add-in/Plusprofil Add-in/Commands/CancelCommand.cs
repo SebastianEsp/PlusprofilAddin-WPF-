@@ -20,7 +20,10 @@ namespace PlusprofilAddin.Commands
 
 		public void Execute(object parameter)
 		{
-			MessageBox.Show("Clicked save!");
+            //TODO: Retrieve strings from resources
+            Window window = parameter as Window;
+            MessageBoxResult result = MessageBox.Show("Discard all changes?", "Confirm", MessageBoxButton.OKCancel);
+            if (result == MessageBoxResult.OK) window.Close();
 		}
 	}
 }

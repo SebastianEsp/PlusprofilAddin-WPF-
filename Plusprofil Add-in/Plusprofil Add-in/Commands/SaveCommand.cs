@@ -20,6 +20,7 @@ namespace PlusprofilAddin.Commands
 		public void Execute(object parameter)
 		{
 			MessageBox.Show("Clicked save!");
+            MessageBox.Show(parameter.ToString());
 		}
 	}
 }
