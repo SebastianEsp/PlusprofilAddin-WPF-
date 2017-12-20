@@ -21,5 +21,11 @@ namespace PlusprofilAddin
 		public DisplayedTaggedValue(dynamic taggedValue){
 			TaggedValue = taggedValue;
 		}
+
+        
+        public override String ToString()
+        {
+            return "DisplayTaggedValue with name: " + Name;
+        }
     }
 }

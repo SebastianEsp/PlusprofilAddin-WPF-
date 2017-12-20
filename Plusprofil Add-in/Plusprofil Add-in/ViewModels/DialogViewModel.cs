@@ -12,8 +12,10 @@ namespace PlusprofilAddin.ViewModels
     {
 		public SaveCommand SaveCommand { get; set; }
 		public CancelCommand CancelCommand { get; set; }
+        public AddCommand AddCommand { get; set; }
+        public RemoveCommand RemoveCommand { get; set; }
 
-		public Repository Repository { get; set; }
+        public Repository Repository { get; set; }
         abstract public void Initialize();
 
         protected List<PlusprofilTaggedValue> ToAddDanishTaggedValues = new List<PlusprofilTaggedValue>

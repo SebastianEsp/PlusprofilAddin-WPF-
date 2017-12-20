@@ -1,396 +1,403 @@
 ﻿<Window
-	x:Class="PlusprofilAddin.ElementDialog"
-	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	Title="{Binding Path=UMLNameValue}"
-	d:DesignHeight="500"
-	d:DesignWidth="500"
-	mc:Ignorable="d">
-	<ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
-		<Grid
-			Name="MainGrid"
-			Grid.IsSharedSizeScope="True"
-			ShowGridLines="True">
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition />
-			</Grid.ColumnDefinitions>
-			<Grid.RowDefinitions>
-				<RowDefinition Height="Auto" />
-				<RowDefinition Height="Auto" />
-				<RowDefinition Height="Auto" />
-				<RowDefinition Height="Auto" />
-				<RowDefinition Height="Auto" />
-			</Grid.RowDefinitions>
-			<Grid Name="TopGrid" Grid.Row="0">
-				<ItemsControl
-					Padding="0,6,0,6"
-					HorizontalContentAlignment="Stretch"
-					KeyboardNavigation.IsTabStop="False"
-					KeyboardNavigation.TabNavigation="Continue"
-					ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-					ScrollViewer.VerticalScrollBarVisibility="Disabled">
-					<Grid Margin="0,3,0,3">
-						<Grid.ColumnDefinitions>
-							<ColumnDefinition Width="Auto" SharedSizeGroup="FirstCol" />
-							<ColumnDefinition />
-							<ColumnDefinition SharedSizeGroup="ThirdCol" />
-						</Grid.ColumnDefinitions>
-						<Grid.RowDefinitions>
-							<RowDefinition />
-						</Grid.RowDefinitions>
-						<TextBlock
-							Grid.Column="0"
-							Margin="12,0,6,0"
-							Text="{DynamicResource ResourceKey=UMLName}" />
-						<TextBox
-							Grid.Column="1"
-							Margin="0,0,12,0"
-							Text="{Binding Path=UMLNameValue, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
-					</Grid>
-					<Grid Margin="0,3,0,3">
-						<Grid.ColumnDefinitions>
-							<ColumnDefinition Width="Auto" SharedSizeGroup="FirstCol" />
-							<ColumnDefinition />
-							<ColumnDefinition SharedSizeGroup="ThirdCol" />
-						</Grid.ColumnDefinitions>
-						<Grid.RowDefinitions>
-							<RowDefinition />
-						</Grid.RowDefinitions>
-						<TextBlock
-							Grid.Column="0"
-							Margin="12,0,6,0"
-							Text="{DynamicResource ResourceKey=URI}" />
-						<TextBox
-							Grid.Column="1"
-							Margin="0,0,12,0"
-							Text="{Binding Path=URIValue, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
-					</Grid>
-					<Grid Margin="0,3,0,3">
-						<Grid.ColumnDefinitions>
-							<ColumnDefinition Width="Auto" SharedSizeGroup="FirstCol" />
-							<ColumnDefinition />
-							<ColumnDefinition SharedSizeGroup="ThirdCol" />
-						</Grid.ColumnDefinitions>
-						<Grid.RowDefinitions>
-							<RowDefinition />
-						</Grid.RowDefinitions>
-						<TextBlock
-							Grid.Column="0"
-							Margin="12,0,6,0"
-							Text="{DynamicResource ResourceKey=Alias}" />
-						<TextBox
-							Grid.Column="1"
-							Margin="0,0,12,0"
-							Text="{Binding Path=AliasValue, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
-					</Grid>
-				</ItemsControl>
-			</Grid>
-			<Grid Grid.Row="1" KeyboardNavigation.IsTabStop="False">
-				<TabControl Name="LanguageTabControl">
-					<TabItem Name="DanishTab">
-						<TabItem.Header>
-							<TextBlock FontWeight="SemiBold" Text="{DynamicResource ResourceKey=DanishAnnotations}" />
-						</TabItem.Header>
-						<ItemsControl
-							Grid.Row="1"
-							Padding="0,6,0,6"
-							HorizontalContentAlignment="Stretch"
-							ItemsSource="{Binding Path=DanishTaggedValues}"
-							KeyboardNavigation.IsTabStop="False"
-							KeyboardNavigation.TabNavigation="Continue"
-							ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-							ScrollViewer.VerticalScrollBarVisibility="Disabled">
-							<ItemsControl.ItemTemplate>
-								<DataTemplate>
-									<ItemsControl
-										HorizontalContentAlignment="Stretch"
-										ItemsSource="{Binding}"
-										KeyboardNavigation.IsTabStop="False"
-										KeyboardNavigation.TabNavigation="Continue"
-										ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-										ScrollViewer.VerticalScrollBarVisibility="Disabled">
-										<ItemsControl.ItemTemplate>
-											<!--  Inner content  -->
-											<DataTemplate>
-
-												<Grid Margin="0,3,0,3" KeyboardNavigation.IsTabStop="False">
-													<Grid.ColumnDefinitions>
-														<ColumnDefinition Width="Auto" SharedSizeGroup="FirstCol" />
-														<ColumnDefinition />
-														<ColumnDefinition Width="Auto" />
-													</Grid.ColumnDefinitions>
-													<Grid.RowDefinitions>
-														<RowDefinition />
-													</Grid.RowDefinitions>
-													<TextBlock
-														Grid.Column="0"
-														Margin="12,0,6,0"
-														Text="{Binding Name}" />
-													<TextBox
-														Grid.Column="1"
-														Margin="0,0,12,0"
-														Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
-													<Button
-														Name="ExtraButton"
-														Grid.Column="2"
-														Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
-														Margin="0,0,12,0"
-														Command="{Binding RemoveCommand}"
-														Content="-" />
-												</Grid>
-												<DataTemplate.Triggers>
-													<!--  Trigger if previous element is null (i.e. current element is first)  -->
-													<DataTrigger Binding="{Binding RelativeSource={RelativeSource PreviousData}}" Value="{x:Null}">
-														<DataTrigger.Setters>
-															<Setter TargetName="ExtraButton" Property="Content" Value="+" />
-															<Setter TargetName="ExtraButton" Property="Command" Value="{Binding AddCommand}" />
-														</DataTrigger.Setters>
-													</DataTrigger>
-												</DataTemplate.Triggers>
-											</DataTemplate>
-											<!--  Inner content end  -->
-										</ItemsControl.ItemTemplate>
-									</ItemsControl>
-								</DataTemplate>
-							</ItemsControl.ItemTemplate>
-						</ItemsControl>
-					</TabItem>
-					<TabItem Name="EnglishTab">
-						<TabItem.Header>
-							<TextBlock FontWeight="SemiBold" Text="{DynamicResource ResourceKey=EnglishAnnotations}" />
-						</TabItem.Header>
-						<ItemsControl
-							Grid.Row="1"
-							Padding="0,6,0,6"
-							HorizontalContentAlignment="Stretch"
-							ItemsSource="{Binding Path=EnglishTaggedValues}"
-							KeyboardNavigation.IsTabStop="False"
-							KeyboardNavigation.TabNavigation="Continue"
-							ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-							ScrollViewer.VerticalScrollBarVisibility="Disabled">
-							<ItemsControl.ItemTemplate>
-								<DataTemplate>
-									<ItemsControl
-										HorizontalContentAlignment="Stretch"
-										ItemsSource="{Binding}"
-										KeyboardNavigation.IsTabStop="False"
-										KeyboardNavigation.TabNavigation="Continue"
-										ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-										ScrollViewer.VerticalScrollBarVisibility="Disabled">
-										<ItemsControl.ItemTemplate>
-											<!--  Inner content  -->
-											<DataTemplate>
-												<Grid Margin="0,3,0,3" KeyboardNavigation.IsTabStop="False">
-													<Grid.ColumnDefinitions>
-														<ColumnDefinition Width="Auto" SharedSizeGroup="FirstCol" />
-														<ColumnDefinition />
-														<ColumnDefinition Width="Auto" />
-													</Grid.ColumnDefinitions>
-													<Grid.RowDefinitions>
-														<RowDefinition />
-													</Grid.RowDefinitions>
-													<TextBlock
-														Grid.Column="0"
-														Margin="12,0,6,0"
-														Text="{Binding Name}" />
-													<TextBox
-														Grid.Column="1"
-														Margin="0,0,12,0"
-														Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
-													<Button
-														Name="ExtraButton"
-														Grid.Column="2"
-														Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
-														Margin="0,0,12,0"
-														Command="{Binding RemoveCommand}"
-														Content="-" />
-												</Grid>
-												<DataTemplate.Triggers>
-													<!--  Trigger if previous element is null (i.e. current element is first)  -->
-													<DataTrigger Binding="{Binding RelativeSource={RelativeSource PreviousData}}" Value="{x:Null}">
-														<DataTrigger.Setters>
-															<Setter TargetName="ExtraButton" Property="Content" Value="+" />
-															<Setter TargetName="ExtraButton" Property="Command" Value="{Binding AddCommand}" />
-														</DataTrigger.Setters>
-													</DataTrigger>
-												</DataTemplate.Triggers>
-											</DataTemplate>
-											<!--  Inner content end  -->
-										</ItemsControl.ItemTemplate>
-									</ItemsControl>
-								</DataTemplate>
-							</ItemsControl.ItemTemplate>
-						</ItemsControl>
-					</TabItem>
-				</TabControl>
-			</Grid>
-			<Grid Grid.Row="2" KeyboardNavigation.IsTabStop="False">
-				<Grid.RowDefinitions>
-					<RowDefinition />
-					<RowDefinition />
-				</Grid.RowDefinitions>
-				<TextBlock
-					Grid.Row="0"
-					Margin="12,6,6,0"
-					FontWeight="SemiBold"
-					Text="{DynamicResource ResourceKey=Provenance}" />
-				<ItemsControl
-					Grid.Row="1"
-					Padding="0,6,0,6"
-					HorizontalContentAlignment="Stretch"
-					ItemsSource="{Binding Path=ProvenanceTaggedValues}"
-					KeyboardNavigation.IsTabStop="False"
-					KeyboardNavigation.TabNavigation="Continue"
-					ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-					ScrollViewer.VerticalScrollBarVisibility="Disabled">
-					<ItemsControl.ItemTemplate>
-						<DataTemplate>
-							<ItemsControl
-								HorizontalContentAlignment="Stretch"
-								ItemsSource="{Binding}"
-								KeyboardNavigation.IsTabStop="False"
-								KeyboardNavigation.TabNavigation="Continue"
-								ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-								ScrollViewer.VerticalScrollBarVisibility="Disabled">
-								<ItemsControl.ItemTemplate>
-									<!--  Inner content  -->
-									<DataTemplate>
-
-										<Grid Margin="0,3,0,3" KeyboardNavigation.IsTabStop="False">
-											<Grid.ColumnDefinitions>
-												<ColumnDefinition Width="Auto" SharedSizeGroup="FirstCol" />
-												<ColumnDefinition />
-												<ColumnDefinition Width="Auto" />
-											</Grid.ColumnDefinitions>
-											<Grid.RowDefinitions>
-												<RowDefinition />
-											</Grid.RowDefinitions>
-											<TextBlock
-												Grid.Column="0"
-												Margin="12,0,6,0"
-												Text="{Binding Name}" />
-											<TextBox
-												Grid.Column="1"
-												Margin="0,0,12,0"
-												Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
-											<Button
-												Name="ExtraButton"
-												Grid.Column="2"
-												Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
-												Margin="0,0,12,0"
-												Command="{Binding RemoveCommand}"
-												Content="-" />
-										</Grid>
-										<DataTemplate.Triggers>
-											<!--  Trigger if previous element is null (i.e. current element is first)  -->
-											<DataTrigger Binding="{Binding RelativeSource={RelativeSource PreviousData}}" Value="{x:Null}">
-												<DataTrigger.Setters>
-													<Setter TargetName="ExtraButton" Property="Content" Value="+" />
-													<Setter TargetName="ExtraButton" Property="Command" Value="{Binding AddCommand}" />
-												</DataTrigger.Setters>
-											</DataTrigger>
-										</DataTemplate.Triggers>
-									</DataTemplate>
-									<!--  Inner content end  -->
-								</ItemsControl.ItemTemplate>
-							</ItemsControl>
-						</DataTemplate>
-					</ItemsControl.ItemTemplate>
-				</ItemsControl>
-			</Grid>
-			<Grid Grid.Row="3">
-				<Grid.RowDefinitions>
-					<RowDefinition />
-					<RowDefinition />
-				</Grid.RowDefinitions>
-				<TextBlock
-					Name="StereotypeTextBlock"
-					Grid.Row="0"
-					Margin="12,6,6,0"
-					FontWeight="SemiBold"
-					Text="{DynamicResource ResourceKey=RdfsClassCharacteristics}" />
-				<ItemsControl
-					Grid.Row="1"
-					Padding="0,6,0,6"
-					HorizontalContentAlignment="Stretch"
-					ItemsSource="{Binding Path=StereotypeTaggedValues}"
-					KeyboardNavigation.IsTabStop="False"
-					KeyboardNavigation.TabNavigation="Continue"
-					ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-					ScrollViewer.VerticalScrollBarVisibility="Disabled">
-					<ItemsControl.ItemTemplate>
-						<DataTemplate>
-							<ItemsControl
-								HorizontalContentAlignment="Stretch"
-								ItemsSource="{Binding}"
-								KeyboardNavigation.IsTabStop="False"
-								KeyboardNavigation.TabNavigation="Continue"
-								ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-								ScrollViewer.VerticalScrollBarVisibility="Disabled">
-								<ItemsControl.ItemTemplate>
-									<!--  Inner content  -->
-									<DataTemplate>
-										<Grid Margin="0,3,0,3" KeyboardNavigation.IsTabStop="False">
-											<Grid.ColumnDefinitions>
-												<ColumnDefinition Width="Auto" SharedSizeGroup="FirstCol" />
-												<ColumnDefinition />
-												<ColumnDefinition Width="Auto" SharedSizeGroup="ThirdCol" />
-											</Grid.ColumnDefinitions>
-											<Grid.RowDefinitions>
-												<RowDefinition />
-											</Grid.RowDefinitions>
-											<TextBlock
-												Grid.Column="0"
-												Margin="12,0,6,0"
-												Text="{Binding Name}" />
-											<TextBox
-												Grid.Column="1"
-												Margin="0,0,12,0"
-												Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
-											<Button
-												Name="ExtraButton"
-												Grid.Column="2"
-												Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
-												Margin="0,0,12,0"
-												Command="{Binding RemoveCommand}"
-												Content="-" />
-										</Grid>
-										<DataTemplate.Triggers>
-											<!--  Trigger if previous element is null (i.e. current element is first)  -->
-											<DataTrigger Binding="{Binding RelativeSource={RelativeSource PreviousData}}" Value="{x:Null}">
-												<DataTrigger.Setters>
-													<Setter TargetName="ExtraButton" Property="Content" Value="+" />
-													<Setter TargetName="ExtraButton" Property="Command" Value="{Binding AddCommand}" />
-												</DataTrigger.Setters>
-											</DataTrigger>
-										</DataTemplate.Triggers>
-									</DataTemplate>
-									<!--  Inner content end  -->
-								</ItemsControl.ItemTemplate>
-							</ItemsControl>
-						</DataTemplate>
-					</ItemsControl.ItemTemplate>
-				</ItemsControl>
-			</Grid>
-			<WrapPanel
-				Grid.Row="4"
-				HorizontalAlignment="Right"
-				KeyboardNavigation.IsTabStop="False">
-				<Button
-					Margin="12,6,3,6"
-					Command="{Binding Path=CancelCommand}"
-					CommandParameter="{Binding}">
-					<TextBlock Margin="6,2,6,2" Text="{DynamicResource ResourceKey=Cancel}" />
-				</Button>
-				<Button
-					Margin="3,6,12,6"
-					Command="{Binding Path=SaveCommand}"
-					CommandParameter="{Binding}">
-					<TextBlock Margin="6,2,6,2" Text="{DynamicResource ResourceKey=SaveChanges}" />
-				</Button>
-			</WrapPanel>
-		</Grid>
-	</ScrollViewer>
+    x:Class="PlusprofilAddin.ElementDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Name="MainWindow"
+    Title="{Binding Path=UMLNameValue}"
+    d:DesignHeight="500"
+    d:DesignWidth="500"
+    mc:Ignorable="d">
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+        <Grid
+            Name="MainGrid"
+            Grid.IsSharedSizeScope="True"
+            ShowGridLines="True">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid Name="TopGrid" Grid.Row="0">
+                <ItemsControl
+                    Padding="0,6,0,6"
+                    HorizontalContentAlignment="Stretch"
+                    KeyboardNavigation.IsTabStop="False"
+                    KeyboardNavigation.TabNavigation="Continue"
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                    ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                    <Grid Margin="0,3,0,3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="FirstCol" />
+                            <ColumnDefinition />
+                            <ColumnDefinition SharedSizeGroup="ThirdCol" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <TextBlock
+                            Grid.Column="0"
+                            Margin="12,0,6,0"
+                            Text="{DynamicResource ResourceKey=UMLName}" />
+                        <TextBox
+                            Grid.Column="1"
+                            Margin="0,0,12,0"
+                            Text="{Binding Path=UMLNameValue, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+                    </Grid>
+                    <Grid Margin="0,3,0,3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="FirstCol" />
+                            <ColumnDefinition />
+                            <ColumnDefinition SharedSizeGroup="ThirdCol" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <TextBlock
+                            Grid.Column="0"
+                            Margin="12,0,6,0"
+                            Text="{DynamicResource ResourceKey=URI}" />
+                        <TextBox
+                            Grid.Column="1"
+                            Margin="0,0,12,0"
+                            Text="{Binding Path=URIValue, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+                    </Grid>
+                    <Grid Margin="0,3,0,3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="FirstCol" />
+                            <ColumnDefinition />
+                            <ColumnDefinition SharedSizeGroup="ThirdCol" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <TextBlock
+                            Grid.Column="0"
+                            Margin="12,0,6,0"
+                            Text="{DynamicResource ResourceKey=Alias}" />
+                        <TextBox
+                            Grid.Column="1"
+                            Margin="0,0,12,0"
+                            Text="{Binding Path=AliasValue, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+                    </Grid>
+                </ItemsControl>
+            </Grid>
+            <Grid Name="LanguageGrid" Grid.Row="1">
+                <TabControl Name="LanguageTabControl">
+                    <TabItem Name="DanishTab">
+                        <TabItem.Header>
+                            <TextBlock FontWeight="SemiBold" Text="{DynamicResource ResourceKey=DanishAnnotations}" />
+                        </TabItem.Header>
+                        <ItemsControl
+                            Grid.Row="1"
+                            Padding="0,6,0,6"
+                            HorizontalContentAlignment="Stretch"
+                            ItemsSource="{Binding Path=DanishTaggedValues}"
+                            KeyboardNavigation.IsTabStop="False"
+                            KeyboardNavigation.TabNavigation="Continue"
+                            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                            ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <ItemsControl
+                                        HorizontalContentAlignment="Stretch"
+                                        ItemsSource="{Binding}"
+                                        KeyboardNavigation.IsTabStop="False"
+                                        KeyboardNavigation.TabNavigation="Continue"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                        ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                                        <ItemsControl.ItemTemplate>
+                                            <!--  Inner content  -->
+                                            <DataTemplate>
+                                                <Grid Margin="0,3,0,3">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto" SharedSizeGroup="FirstCol" />
+                                                        <ColumnDefinition />
+                                                        <ColumnDefinition Width="Auto" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition />
+                                                    </Grid.RowDefinitions>
+                                                    <TextBlock
+                                                        Grid.Column="0"
+                                                        Margin="12,0,6,0"
+                                                        Text="{Binding Path=Name}" />
+                                                    <TextBox
+                                                        Grid.Column="1"
+                                                        Margin="0,0,12,0"
+                                                        Text="{Binding Path=Value, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+                                                    <Button
+                                                        Name="ExtraButton"
+                                                        Grid.Column="2"
+                                                        Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
+                                                        Margin="0,0,12,0"
+                                                        Command="{Binding Path=DataContext.RemoveCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
+                                                        CommandParameter="{Binding Path=ItemsSource, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}"
+                                                        Content="-" />
+                                                </Grid>
+                                                <DataTemplate.Triggers>
+                                                    <!--  Trigger if previous element is null (i.e. current element is first)  -->
+                                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource PreviousData}}" Value="{x:Null}">
+                                                        <DataTrigger.Setters>
+                                                            <Setter TargetName="ExtraButton" Property="Content" Value="+" />
+                                                            <Setter TargetName="ExtraButton" Property="Command" Value="{Binding Path=DataContext.AddCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" />
+                                                            <Setter TargetName="ExtraButton" Property="CommandParameter" Value="{Binding Path=ItemsSource, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}" />
+                                                        </DataTrigger.Setters>
+                                                    </DataTrigger>
+                                                </DataTemplate.Triggers>
+                                            </DataTemplate>
+                                            <!--  Inner content end  -->
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </TabItem>
+                    <TabItem Name="EnglishTab">
+                        <TabItem.Header>
+                            <TextBlock FontWeight="SemiBold" Text="{DynamicResource ResourceKey=EnglishAnnotations}" />
+                        </TabItem.Header>
+                        <ItemsControl
+                            Grid.Row="1"
+                            Padding="0,6,0,6"
+                            HorizontalContentAlignment="Stretch"
+                            ItemsSource="{Binding Path=EnglishTaggedValues}"
+                            KeyboardNavigation.IsTabStop="False"
+                            KeyboardNavigation.TabNavigation="Continue"
+                            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                            ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <ItemsControl
+                                        HorizontalContentAlignment="Stretch"
+                                        ItemsSource="{Binding}"
+                                        KeyboardNavigation.IsTabStop="False"
+                                        KeyboardNavigation.TabNavigation="Continue"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                        ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                                        <ItemsControl.ItemTemplate>
+                                            <!--  Inner content  -->
+                                            <DataTemplate>
+                                                <Grid Margin="0,3,0,3">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto" SharedSizeGroup="FirstCol" />
+                                                        <ColumnDefinition />
+                                                        <ColumnDefinition Width="Auto" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition />
+                                                    </Grid.RowDefinitions>
+                                                    <TextBlock
+                                                        Grid.Column="0"
+                                                        Margin="12,0,6,0"
+                                                        Text="{Binding Path=Name}" />
+                                                    <TextBox
+                                                        Grid.Column="1"
+                                                        Margin="0,0,12,0"
+                                                        Text="{Binding Path=Value, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+                                                    <Button
+                                                        Name="ExtraButton"
+                                                        Grid.Column="2"
+                                                        Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
+                                                        Margin="0,0,12,0"
+                                                        Command="{Binding Path=DataContext.RemoveCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
+                                                        CommandParameter="{Binding Path=ItemsSource, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}"
+                                                        Content="-" />
+                                                </Grid>
+                                                <DataTemplate.Triggers>
+                                                    <!--  Trigger if previous element is null (i.e. current element is first)  -->
+                                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource PreviousData}}" Value="{x:Null}">
+                                                        <DataTrigger.Setters>
+                                                            <Setter TargetName="ExtraButton" Property="Content" Value="+" />
+                                                            <Setter TargetName="ExtraButton" Property="Command" Value="{Binding Path=DataContext.AddCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" />
+                                                            <Setter TargetName="ExtraButton" Property="CommandParameter" Value="{Binding Path=ItemsSource, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}" />
+                                                        </DataTrigger.Setters>
+                                                    </DataTrigger>
+                                                </DataTemplate.Triggers>
+                                            </DataTemplate>
+                                            <!--  Inner content end  -->
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </TabItem>
+                </TabControl>
+            </Grid>
+            <Grid Name="ProvenanceGrid" Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <TextBlock
+                    Grid.Row="0"
+                    Margin="12,6,6,0"
+                    FontWeight="SemiBold"
+                    Text="{DynamicResource ResourceKey=Provenance}" />
+                <ItemsControl
+                    Grid.Row="1"
+                    Padding="0,6,0,6"
+                    HorizontalContentAlignment="Stretch"
+                    ItemsSource="{Binding Path=ProvenanceTaggedValues}"
+                    KeyboardNavigation.IsTabStop="False"
+                    KeyboardNavigation.TabNavigation="Continue"
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                    ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <ItemsControl
+                                HorizontalContentAlignment="Stretch"
+                                ItemsSource="{Binding}"
+                                KeyboardNavigation.IsTabStop="False"
+                                KeyboardNavigation.TabNavigation="Continue"
+                                ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                                <ItemsControl.ItemTemplate>
+                                    <!--  Inner content  -->
+                                    <DataTemplate>
+                                        <Grid Margin="0,3,0,3">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" SharedSizeGroup="FirstCol" />
+                                                <ColumnDefinition />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition />
+                                            </Grid.RowDefinitions>
+                                            <TextBlock
+                                                Grid.Column="0"
+                                                Margin="12,0,6,0"
+                                                Text="{Binding Path=Name}" />
+                                            <TextBox
+                                                Grid.Column="1"
+                                                Margin="0,0,12,0"
+                                                Text="{Binding Path=Value, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+                                            <Button
+                                                Name="ExtraButton"
+                                                Grid.Column="2"
+                                                Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
+                                                Margin="0,0,12,0"
+                                                Command="{Binding Path=DataContext.RemoveCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
+                                                CommandParameter="{Binding Path=ItemsSource, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}"
+                                                Content="-" />
+                                        </Grid>
+                                        <DataTemplate.Triggers>
+                                            <!--  Trigger if previous element is null (i.e. current element is first)  -->
+                                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource PreviousData}}" Value="{x:Null}">
+                                                <DataTrigger.Setters>
+                                                    <Setter TargetName="ExtraButton" Property="Content" Value="+" />
+                                                    <Setter TargetName="ExtraButton" Property="Command" Value="{Binding Path=DataContext.AddCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" />
+                                                    <Setter TargetName="ExtraButton" Property="CommandParameter" Value="{Binding Path=ItemsSource, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}" />
+                                                </DataTrigger.Setters>
+                                            </DataTrigger>
+                                        </DataTemplate.Triggers>
+                                    </DataTemplate>
+                                    <!--  Inner content end  -->
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
+            <Grid Name="StereotypeGrid" Grid.Row="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <TextBlock
+                    Name="StereotypeTextBlock"
+                    Grid.Row="0"
+                    Margin="12,6,6,0"
+                    FontWeight="SemiBold"
+                    Text="{DynamicResource ResourceKey=RdfsClassCharacteristics}" />
+                <ItemsControl
+                    Grid.Row="1"
+                    Padding="0,6,0,6"
+                    HorizontalContentAlignment="Stretch"
+                    ItemsSource="{Binding Path=StereotypeTaggedValues}"
+                    KeyboardNavigation.IsTabStop="False"
+                    KeyboardNavigation.TabNavigation="Continue"
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                    ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <ItemsControl
+                                HorizontalContentAlignment="Stretch"
+                                ItemsSource="{Binding}"
+                                KeyboardNavigation.IsTabStop="False"
+                                KeyboardNavigation.TabNavigation="Continue"
+                                ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                                <ItemsControl.ItemTemplate>
+                                    <!--  Inner content  -->
+                                    <DataTemplate>
+                                        <Grid Margin="0,3,0,3" KeyboardNavigation.IsTabStop="False">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" SharedSizeGroup="FirstCol" />
+                                                <ColumnDefinition />
+                                                <ColumnDefinition Width="Auto" SharedSizeGroup="ThirdCol" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition />
+                                            </Grid.RowDefinitions>
+                                            <TextBlock
+                                                Grid.Column="0"
+                                                Margin="12,0,6,0"
+                                                Text="{Binding Path=Name}" />
+                                            <TextBox
+                                                Grid.Column="1"
+                                                Margin="0,0,12,0"
+                                                Text="{Binding Path=Value, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+                                            <Button
+                                                Name="ExtraButton"
+                                                Grid.Column="2"
+                                                Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
+                                                Margin="0,0,12,0"
+                                                Command="{Binding Path=DataContext.RemoveCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
+                                                CommandParameter="{Binding Path=ItemsSource, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}"
+                                                Content="-" />
+                                        </Grid>
+                                        <DataTemplate.Triggers>
+                                            <!--  Trigger if previous element is null (i.e. current element is first)  -->
+                                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource PreviousData}}" Value="{x:Null}">
+                                                <DataTrigger.Setters>
+                                                    <Setter TargetName="ExtraButton" Property="Content" Value="+" />
+                                                    <Setter TargetName="ExtraButton" Property="Command" Value="{Binding Path=DataContext.AddCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" />
+                                                    <Setter TargetName="ExtraButton" Property="CommandParameter" Value="{Binding Path=ItemsSource, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}" />
+                                                </DataTrigger.Setters>
+                                            </DataTrigger>
+                                        </DataTemplate.Triggers>
+                                    </DataTemplate>
+                                    <!--  Inner content end  -->
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
+            <WrapPanel
+                Name="SavePanel"
+                Grid.Row="4"
+                HorizontalAlignment="Right">
+                <Button
+                    Margin="12,6,3,6"
+                    Command="{Binding Path=CancelCommand}"
+                    CommandParameter="{Binding}">
+                    <TextBlock Margin="6,2,6,2" Text="{DynamicResource ResourceKey=Cancel}" />
+                </Button>
+                <Button
+                    Margin="3,6,12,6"
+                    Command="{Binding Path=SaveCommand}"
+                    CommandParameter="{Binding}">
+                    <TextBlock Margin="6,2,6,2" Text="{DynamicResource ResourceKey=SaveChanges}" />
+                </Button>
+            </WrapPanel>
+        </Grid>
+    </ScrollViewer>
 </Window>

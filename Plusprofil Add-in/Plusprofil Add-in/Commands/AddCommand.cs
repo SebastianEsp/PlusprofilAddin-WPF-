@@ -1,14 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace PlusprofilAddin.Commands
 {
-	class AddCommand : ICommand
+    class AddCommand : ICommand
 	{
+        public AddCommand()
+        {
+
+        }
+
 		public event EventHandler CanExecuteChanged;
 
 		public bool CanExecute(object parameter)
@@ -18,7 +22,13 @@ namespace PlusprofilAddin.Commands
 
 		public void Execute(object parameter)
 		{
-			
-		}
+            MessageBox.Show("In AddCommand.Execute(object parameter)");
+            MessageBox.Show(parameter.ToString());
+            if (parameter.GetType() == typeof(ObservableCollection<DisplayedTaggedValue>)){
+                ObservableCollection<DisplayedTaggedValue> list = parameter as ObservableCollection<DisplayedTaggedValue>;
+                string name = list.First().Name;
+                list.Add(new DisplayedTaggedValue(name, ""));
+            }
+        }
 	}
 }
