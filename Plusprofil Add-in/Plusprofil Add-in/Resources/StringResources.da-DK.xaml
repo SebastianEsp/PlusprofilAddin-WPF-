@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
-    <!-- Textlabels -->
+    <!--  Textlabels  -->
     <system:String x:Key="UMLName">UML navn</system:String>
     <system:String x:Key="Alias">Alias</system:String>
     <system:String x:Key="URI">URI</system:String>
@@ -20,8 +20,10 @@
     <system:String x:Key="ObjectPropertyCharacteristics">ObjectProperty karakteristika</system:String>
     <system:String x:Key="SaveChanges">Gem ændringer</system:String>
     <system:String x:Key="Cancel">Annuller</system:String>
+    <system:String x:Key="Discard">Kasser</system:String>
+    <system:String x:Key="DiscardAllChanges">Kasser alle ændringer?</system:String>
 
-    <!-- "Danish / English Annotations" labels -->
+    <!--  "Danish / English Annotations" labels  -->
     <system:String x:Key="prefLabel">Foretrukken term</system:String>
     <system:String x:Key="altLabel">Accepterede termer</system:String>
     <system:String x:Key="deprecatedLabel">Frarådede termer</system:String>
@@ -30,13 +32,13 @@
     <system:String x:Key="comment">Kommentar</system:String>
     <system:String x:Key="applicationNote">Anvendelsesnote</system:String>
 
-    <!-- Provenance labels -->
+    <!--  Provenance labels  -->
     <system:String x:Key="legalSource">Juridisk kilde</system:String>
     <system:String x:Key="source">Kilde</system:String>
     <system:String x:Key="isDefinedBy">isDefinedBy</system:String>
     <system:String x:Key="wasDerivedFrom">wasDerivedFrom</system:String>
 
-    <!-- Package specific labels -->
+    <!--  Package specific labels  -->
     <system:String x:Key="namespace">Namespace</system:String>
     <system:String x:Key="namespacePrefix">namespacePrefix</system:String>
     <system:String x:Key="label">Modelnavn</system:String>
@@ -46,28 +48,28 @@
     <system:String x:Key="modelStatus">Modelstatus</system:String>
     <system:String x:Key="approvalStatus">Godkendelsesstatus</system:String>
     <system:String x:Key="theme">Forretningsområde</system:String>
-    <!-- Keys already defined: legalSource, source, wasDerivedFrom, comment -->
+    <!--  Keys already defined: legalSource, source, wasDerivedFrom, comment  -->
 
-    <!-- Element specific labels -->
+    <!--  Element specific labels  -->
     <system:String x:Key="equivalentClass">equivalentClass</system:String>
     <system:String x:Key="subClassOf">subClassOf</system:String>
     <system:String x:Key="sameAs">sameAs</system:String>
     <system:String x:Key="type">type</system:String>
 
-    <!-- Attribute/ConnectorEnd specific labels -->
+    <!--  Attribute/ConnectorEnd specific labels  -->
     <system:String x:Key="range">range</system:String>
     <system:String x:Key="domain">domain</system:String>
     <system:String x:Key="subPropertyOf">subPropertyOf</system:String>
     <system:String x:Key="equivalentProperty">equivalentProperty</system:String>
 
-    <!-- Attribute specific labels -->
+    <!--  Attribute specific labels  -->
     <system:String x:Key="functionalProperty">functionalProperty</system:String>
 
-    <!-- ConnectorEnd specific labels -->
+    <!--  ConnectorEnd specific labels  -->
     <system:String x:Key="inverseOf">inverseOf</system:String>
     <system:String x:Key="inverseFunctionalProperty">inverseFunctionalProperty</system:String>
     <system:String x:Key="symmetricProperty">symmetricProperty</system:String>
     <system:String x:Key="transitiveProperty">transitiveProperty</system:String>
-    <!-- Keys already defined: functionalProperty -->
+    <!--  Keys already defined: functionalProperty  -->
 
 </ResourceDictionary>

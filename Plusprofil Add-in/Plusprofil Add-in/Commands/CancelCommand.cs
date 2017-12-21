@@ -4,12 +4,16 @@ using System.Windows.Input;
 
 namespace PlusprofilAddin.Commands
 {
-	class CancelCommand : ICommand
-	{
-		public CancelCommand()
-		{
+    class CancelCommand : ICommand
+    {
 
-		}
+        string DiscardAllChangesString;
+        string DiscardString;
+
+        public CancelCommand()
+		{
+            
+        }
 
 		public event EventHandler CanExecuteChanged;
 
@@ -22,7 +26,9 @@ namespace PlusprofilAddin.Commands
 		{
             //TODO: Retrieve strings from resources
             Window window = parameter as Window;
-            MessageBoxResult result = MessageBox.Show("Discard all changes?", "Confirm", MessageBoxButton.OKCancel);
+            DiscardAllChangesString = (string)window.FindResource("DiscardAllChanges");
+            DiscardString = (string)window.FindResource("Discard");
+            MessageBoxResult result = MessageBox.Show(DiscardAllChangesString, DiscardString, MessageBoxButton.OKCancel);
             if (result == MessageBoxResult.OK) window.Close();
 		}
 	}

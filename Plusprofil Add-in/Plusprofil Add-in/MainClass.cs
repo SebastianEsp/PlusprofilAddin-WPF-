@@ -19,7 +19,7 @@ namespace PlusprofilAddin
 
         public void EA_Connect(Repository Repository)
         {
-
+            
         }
         public object EA_GetMenuItems(Repository Repository, string Location, string MenuName)
         {
@@ -70,7 +70,7 @@ namespace PlusprofilAddin
                 };
             }
 
-            //Create new ResourceDictionary and set source for language matching the selected menu option
+            //Create new Application, ResourceDictionary and set source for language matching the selected menu option
             ResourceDictionary dict = new ResourceDictionary();
             if (ItemName == danishMenuOption) dict.Source = new Uri("pack://application:,,,/PlusprofilAddin;component/Resources/StringResources.da-DK.xaml", UriKind.Absolute);
             else if (ItemName == englishMenuOption) dict.Source = new Uri("pack://application:,,,/PlusprofilAddin;component/Resources/StringResources.xaml", UriKind.Absolute);

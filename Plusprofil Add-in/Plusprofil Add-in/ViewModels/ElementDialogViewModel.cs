@@ -35,10 +35,6 @@ namespace PlusprofilAddin
 
         public ElementDialogViewModel()
         {
-			SaveCommand = new SaveCommand();
-			CancelCommand = new CancelCommand();
-            AddCommand = new AddCommand();
-            RemoveCommand = new RemoveCommand();
             DanishTaggedValues = new ObservableCollection<ObservableCollection<DisplayedTaggedValue>>();
             EnglishTaggedValues = new ObservableCollection<ObservableCollection<DisplayedTaggedValue>>();
             ProvenanceTaggedValues = new ObservableCollection<ObservableCollection<DisplayedTaggedValue>>();
@@ -52,6 +48,10 @@ namespace PlusprofilAddin
 
         public override void Initialize()
         {
+            SaveCommand = new SaveCommand();
+            CancelCommand = new CancelCommand();
+            AddCommand = new AddCommand();
+            RemoveCommand = new RemoveCommand();
             Element = Repository.GetContextObject();
             UMLNameValue = Element.Name;
             AliasValue = Element.Alias;

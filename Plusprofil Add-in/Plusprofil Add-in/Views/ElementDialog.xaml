@@ -9,6 +9,7 @@
     d:DesignHeight="500"
     d:DesignWidth="500"
     mc:Ignorable="d">
+    <Window.Resources />
     <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
         <Grid
             Name="MainGrid"
