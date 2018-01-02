@@ -24,7 +24,6 @@ namespace PlusprofilAddin.Commands
 
 		public void Execute(object parameter)
 		{
-            //TODO: Retrieve strings from resources
             Window window = parameter as Window;
             DiscardAllChangesString = (string)window.FindResource("DiscardAllChanges");
             DiscardString = (string)window.FindResource("Discard");

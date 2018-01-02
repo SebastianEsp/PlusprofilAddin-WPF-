@@ -10,9 +10,9 @@ namespace PlusprofilAddin
     public class MainClass
     {
         #region Fields
-        const string menuHeader = "-&Plusprofil Editing Window (WPF)";
-        const string englishMenuOption = "&Open English Editing Window";
-        const string danishMenuOption = "&Open Danish Editing Window";
+        const string MenuHeader = "-&Plusprofil Editing Window (WPF)";
+        const string EnglishMenuOption = "&Open English Editing Window";
+        const string DanishMenuOption = "&Open Danish Editing Window";
         Window Window;
         DialogViewModel ViewModel;
         #endregion
@@ -26,9 +26,9 @@ namespace PlusprofilAddin
             switch (MenuName)
             {
                 case "":
-                    return menuHeader;
-                case menuHeader:
-                    string[] subMenus = { danishMenuOption, englishMenuOption };
+                    return MenuHeader;
+                case MenuHeader:
+                    string[] subMenus = { DanishMenuOption, EnglishMenuOption };
                     return subMenus;
             }
             return "";
@@ -72,8 +72,8 @@ namespace PlusprofilAddin
 
             //Create new Application, ResourceDictionary and set source for language matching the selected menu option
             ResourceDictionary dict = new ResourceDictionary();
-            if (ItemName == danishMenuOption) dict.Source = new Uri("pack://application:,,,/PlusprofilAddin;component/Resources/StringResources.da-DK.xaml", UriKind.Absolute);
-            else if (ItemName == englishMenuOption) dict.Source = new Uri("pack://application:,,,/PlusprofilAddin;component/Resources/StringResources.xaml", UriKind.Absolute);
+            if (ItemName == DanishMenuOption) dict.Source = new Uri("pack://application:,,,/PlusprofilAddin;component/Resources/StringResources.da-DK.xaml", UriKind.Absolute);
+            else if (ItemName == EnglishMenuOption) dict.Source = new Uri("pack://application:,,,/PlusprofilAddin;component/Resources/StringResources.xaml", UriKind.Absolute);
             Window.Resources.MergedDictionaries.Add(dict);
 
             ViewModel.Initialize();

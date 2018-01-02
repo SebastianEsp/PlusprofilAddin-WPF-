@@ -22,8 +22,6 @@ namespace PlusprofilAddin.Commands
 
 		public void Execute(object parameter)
 		{
-            MessageBox.Show("In AddCommand.Execute(object parameter)");
-            MessageBox.Show(parameter.ToString());
             if (parameter.GetType() == typeof(ObservableCollection<DisplayedTaggedValue>)){
                 ObservableCollection<DisplayedTaggedValue> list = parameter as ObservableCollection<DisplayedTaggedValue>;
                 string name = list.First().Name;

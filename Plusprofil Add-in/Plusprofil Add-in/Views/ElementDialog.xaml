@@ -2,6 +2,7 @@
     x:Class="PlusprofilAddin.ElementDialog"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cns="clr-namespace:PlusprofilAddin.Commands"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Name="MainWindow"
@@ -9,12 +10,11 @@
     d:DesignHeight="500"
     d:DesignWidth="500"
     mc:Ignorable="d">
-    <Window.Resources />
+    <Window.Resources>
+        <cns:RemoveCommandConverter x:Key="RemoveCommandConverter" />
+    </Window.Resources>
     <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
-        <Grid
-            Name="MainGrid"
-            Grid.IsSharedSizeScope="True"
-            ShowGridLines="True">
+        <Grid Name="MainGrid" Grid.IsSharedSizeScope="True">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
@@ -26,9 +26,10 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid Name="TopGrid" Grid.Row="0">
-                <ItemsControl
+                <ListBox
                     Padding="0,6,0,6"
                     HorizontalContentAlignment="Stretch"
+                    BorderThickness="0"
                     KeyboardNavigation.IsTabStop="False"
                     KeyboardNavigation.TabNavigation="Continue"
                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
@@ -87,10 +88,10 @@
                             Margin="0,0,12,0"
                             Text="{Binding Path=AliasValue, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
                     </Grid>
-                </ItemsControl>
+                </ListBox>
             </Grid>
             <Grid Name="LanguageGrid" Grid.Row="1">
-                <TabControl Name="LanguageTabControl">
+                <TabControl Name="LanguageTabControl" BorderThickness="0,1,0,1">
                     <TabItem Name="DanishTab">
                         <TabItem.Header>
                             <TextBlock FontWeight="SemiBold" Text="{DynamicResource ResourceKey=DanishAnnotations}" />
@@ -99,6 +100,7 @@
                             Grid.Row="1"
                             Padding="0,6,0,6"
                             HorizontalContentAlignment="Stretch"
+                            BorderThickness="0"
                             ItemsSource="{Binding Path=DanishTaggedValues}"
                             KeyboardNavigation.IsTabStop="False"
                             KeyboardNavigation.TabNavigation="Continue"
@@ -106,17 +108,32 @@
                             ScrollViewer.VerticalScrollBarVisibility="Disabled">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <ItemsControl
+                                    <ListBox
                                         HorizontalContentAlignment="Stretch"
+                                        BorderThickness="0"
                                         ItemsSource="{Binding}"
                                         KeyboardNavigation.IsTabStop="False"
                                         KeyboardNavigation.TabNavigation="Continue"
                                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                                         ScrollViewer.VerticalScrollBarVisibility="Disabled">
-                                        <ItemsControl.ItemTemplate>
+                                        <ListBox.ItemTemplate>
                                             <!--  Inner content  -->
                                             <DataTemplate>
                                                 <Grid Margin="0,3,0,3">
+                                                    <Grid.ContextMenu>
+                                                        <ContextMenu>
+                                                            <MenuItem Command="{Binding Path=DataContext.RemoveCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Header="Delete">
+                                                                <MenuItem.CommandParameter>
+                                                                    <MultiBinding Converter="{StaticResource RemoveCommandConverter}">
+                                                                        <MultiBinding.Bindings>
+                                                                            <Binding Path="ItemsSource" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type ListBox}}" />
+                                                                            <Binding Path="SelectedIndex" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type ListBox}}" />
+                                                                        </MultiBinding.Bindings>
+                                                                    </MultiBinding>
+                                                                </MenuItem.CommandParameter>
+                                                            </MenuItem>
+                                                        </ContextMenu>
+                                                    </Grid.ContextMenu>
                                                     <Grid.ColumnDefinitions>
                                                         <ColumnDefinition Width="Auto" SharedSizeGroup="FirstCol" />
                                                         <ColumnDefinition />
@@ -139,7 +156,6 @@
                                                         Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
                                                         Margin="0,0,12,0"
                                                         Command="{Binding Path=DataContext.RemoveCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
-                                                        CommandParameter="{Binding Path=ItemsSource, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}"
                                                         Content="-" />
                                                 </Grid>
                                                 <DataTemplate.Triggers>
@@ -148,14 +164,14 @@
                                                         <DataTrigger.Setters>
                                                             <Setter TargetName="ExtraButton" Property="Content" Value="+" />
                                                             <Setter TargetName="ExtraButton" Property="Command" Value="{Binding Path=DataContext.AddCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" />
-                                                            <Setter TargetName="ExtraButton" Property="CommandParameter" Value="{Binding Path=ItemsSource, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}" />
+                                                            <Setter TargetName="ExtraButton" Property="CommandParameter" Value="{Binding Path=ItemsSource, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}}" />
                                                         </DataTrigger.Setters>
                                                     </DataTrigger>
                                                 </DataTemplate.Triggers>
                                             </DataTemplate>
                                             <!--  Inner content end  -->
-                                        </ItemsControl.ItemTemplate>
-                                    </ItemsControl>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
@@ -175,14 +191,15 @@
                             ScrollViewer.VerticalScrollBarVisibility="Disabled">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <ItemsControl
+                                    <ListBox
                                         HorizontalContentAlignment="Stretch"
+                                        BorderThickness="0"
                                         ItemsSource="{Binding}"
                                         KeyboardNavigation.IsTabStop="False"
                                         KeyboardNavigation.TabNavigation="Continue"
                                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                                         ScrollViewer.VerticalScrollBarVisibility="Disabled">
-                                        <ItemsControl.ItemTemplate>
+                                        <ListBox.ItemTemplate>
                                             <!--  Inner content  -->
                                             <DataTemplate>
                                                 <Grid Margin="0,3,0,3">
@@ -208,7 +225,7 @@
                                                         Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
                                                         Margin="0,0,12,0"
                                                         Command="{Binding Path=DataContext.RemoveCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
-                                                        CommandParameter="{Binding Path=ItemsSource, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}"
+                                                        CommandParameter="{Binding Path=ItemsSource, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}}"
                                                         Content="-" />
                                                 </Grid>
                                                 <DataTemplate.Triggers>
@@ -217,14 +234,14 @@
                                                         <DataTrigger.Setters>
                                                             <Setter TargetName="ExtraButton" Property="Content" Value="+" />
                                                             <Setter TargetName="ExtraButton" Property="Command" Value="{Binding Path=DataContext.AddCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" />
-                                                            <Setter TargetName="ExtraButton" Property="CommandParameter" Value="{Binding Path=ItemsSource, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}" />
+                                                            <Setter TargetName="ExtraButton" Property="CommandParameter" Value="{Binding Path=ItemsSource, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}}" />
                                                         </DataTrigger.Setters>
                                                     </DataTrigger>
                                                 </DataTemplate.Triggers>
                                             </DataTemplate>
                                             <!--  Inner content end  -->
-                                        </ItemsControl.ItemTemplate>
-                                    </ItemsControl>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
@@ -252,14 +269,15 @@
                     ScrollViewer.VerticalScrollBarVisibility="Disabled">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <ItemsControl
+                            <ListBox
                                 HorizontalContentAlignment="Stretch"
+                                BorderThickness="0"
                                 ItemsSource="{Binding}"
                                 KeyboardNavigation.IsTabStop="False"
                                 KeyboardNavigation.TabNavigation="Continue"
                                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                                 ScrollViewer.VerticalScrollBarVisibility="Disabled">
-                                <ItemsControl.ItemTemplate>
+                                <ListBox.ItemTemplate>
                                     <!--  Inner content  -->
                                     <DataTemplate>
                                         <Grid Margin="0,3,0,3">
@@ -285,7 +303,7 @@
                                                 Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
                                                 Margin="0,0,12,0"
                                                 Command="{Binding Path=DataContext.RemoveCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
-                                                CommandParameter="{Binding Path=ItemsSource, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}"
+                                                CommandParameter="{Binding Path=ItemsSource, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}}"
                                                 Content="-" />
                                         </Grid>
                                         <DataTemplate.Triggers>
@@ -294,14 +312,14 @@
                                                 <DataTrigger.Setters>
                                                     <Setter TargetName="ExtraButton" Property="Content" Value="+" />
                                                     <Setter TargetName="ExtraButton" Property="Command" Value="{Binding Path=DataContext.AddCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" />
-                                                    <Setter TargetName="ExtraButton" Property="CommandParameter" Value="{Binding Path=ItemsSource, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}" />
+                                                    <Setter TargetName="ExtraButton" Property="CommandParameter" Value="{Binding Path=ItemsSource, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}}" />
                                                 </DataTrigger.Setters>
                                             </DataTrigger>
                                         </DataTemplate.Triggers>
                                     </DataTemplate>
                                     <!--  Inner content end  -->
-                                </ItemsControl.ItemTemplate>
-                            </ItemsControl>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
@@ -328,14 +346,15 @@
                     ScrollViewer.VerticalScrollBarVisibility="Disabled">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <ItemsControl
+                            <ListBox
                                 HorizontalContentAlignment="Stretch"
+                                BorderThickness="0"
                                 ItemsSource="{Binding}"
                                 KeyboardNavigation.IsTabStop="False"
                                 KeyboardNavigation.TabNavigation="Continue"
                                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                                 ScrollViewer.VerticalScrollBarVisibility="Disabled">
-                                <ItemsControl.ItemTemplate>
+                                <ListBox.ItemTemplate>
                                     <!--  Inner content  -->
                                     <DataTemplate>
                                         <Grid Margin="0,3,0,3" KeyboardNavigation.IsTabStop="False">
@@ -361,7 +380,7 @@
                                                 Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
                                                 Margin="0,0,12,0"
                                                 Command="{Binding Path=DataContext.RemoveCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
-                                                CommandParameter="{Binding Path=ItemsSource, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}"
+                                                CommandParameter="{Binding Path=ItemsSource, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}}"
                                                 Content="-" />
                                         </Grid>
                                         <DataTemplate.Triggers>
@@ -370,14 +389,14 @@
                                                 <DataTrigger.Setters>
                                                     <Setter TargetName="ExtraButton" Property="Content" Value="+" />
                                                     <Setter TargetName="ExtraButton" Property="Command" Value="{Binding Path=DataContext.AddCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" />
-                                                    <Setter TargetName="ExtraButton" Property="CommandParameter" Value="{Binding Path=ItemsSource, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}" />
+                                                    <Setter TargetName="ExtraButton" Property="CommandParameter" Value="{Binding Path=ItemsSource, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}}" />
                                                 </DataTrigger.Setters>
                                             </DataTrigger>
                                         </DataTemplate.Triggers>
                                     </DataTemplate>
                                     <!--  Inner content end  -->
-                                </ItemsControl.ItemTemplate>
-                            </ItemsControl>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
