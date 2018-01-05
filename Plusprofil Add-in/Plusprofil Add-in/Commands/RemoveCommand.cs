@@ -23,12 +23,13 @@ namespace PlusprofilAddin.Commands
 
 		public void Execute(object parameter)
 		{
+            MessageBox.Show("In RemoveCommand.Execute()");
             if (parameter.GetType() == typeof(object[]))
             {
                 object[] values = parameter as object[];
                 ObservableCollection<DisplayedTaggedValue> list = (ObservableCollection<DisplayedTaggedValue>)values[0];
                 int index = (int)values[1];
-                if (index != -1)
+                if (index != -1 && index != 0)
                 {
                     list.RemoveAt(index);
                 }
