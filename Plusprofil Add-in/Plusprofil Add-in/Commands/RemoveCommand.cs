@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.Linq;
 using System.Windows.Data;
 using System.Windows.Input;
+using PlusprofilAddin.ViewModels;
 
 namespace PlusprofilAddin.Commands
 {
@@ -18,22 +21,42 @@ namespace PlusprofilAddin.Commands
 			return true;
 		}
 
+		// Expected parameter: object[2]
+		// values[0]: ListBox.Source (ObservableCollection<>)
+		// values[1]: ListBox.SelectedIndex (int)
+		// values[2]: DialogViewModel
 		public void Execute(object parameter)
 		{
-			if (parameter.GetType() == typeof(object[]))
+			if (parameter is object[] values && values.Length == 3)
 			{
-				object[] values = parameter as object[];
 				ObservableCollection<DisplayedTaggedValue> list = (ObservableCollection<DisplayedTaggedValue>) values[0];
 				int index = (int) values[1];
-				if (index != -1 && index != 0) list.RemoveAt(index);
+				List<DisplayedTaggedValue> deleteTaggedValues = null;
+				switch (values[2])
+				{
+					case ElementDialogViewModel elementViewModel:
+						deleteTaggedValues = elementViewModel.DeleteTaggedValues;
+						break;
+					case PackageDialogViewModel packageViewModel:
+						deleteTaggedValues = packageViewModel.DeleteTaggedValues;
+						break;
+					case AttributeDialogViewModel attributeViewModel:
+						deleteTaggedValues = attributeViewModel.DeleteTaggedValues;
+						break;
+				}
+
+				if (index != -1 && index != 0)
+				{
+					DisplayedTaggedValue dtv = list.ElementAt(index);
+					deleteTaggedValues?.Add(dtv);
+					list.RemoveAt(index);
+				}
 			}
 		}
 	}
 
 	public class RemoveCommandConverter : IMultiValueConverter
 	{
-		//values[0]: ListBox
-		//values[1]: ListBox.SelectedIndex
 		public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
 		{
 			return values.Clone();
@@ -41,7 +64,7 @@ namespace PlusprofilAddin.Commands
 
 		public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
 		{
-			throw new NotSupportedException("Cannot convert back");
+			throw new NotSupportedException("ConvertBack is not supported");
 		}
 	}
 }

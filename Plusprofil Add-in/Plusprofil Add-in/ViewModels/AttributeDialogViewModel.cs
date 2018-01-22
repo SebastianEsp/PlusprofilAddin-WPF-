@@ -48,6 +48,7 @@ namespace PlusprofilAddin.ViewModels
 		public ObservableCollection<PlusprofilTaggedValue> EnglishTaggedValues { get; set; }
 		public ObservableCollection<PlusprofilTaggedValue> ProvenanceTaggedValues { get; set; }
 		public ObservableCollection<PlusprofilTaggedValue> StereotypeTaggedValues { get; set; }
+		public List<DisplayedTaggedValue> DeleteTaggedValues { get; set; }
 
 		public override void Initialize()
 		{

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.InteropServices;
+using System.Windows;
 using System.Windows.Input;
 using EA;
 using PlusprofilAddin.ViewModels;
@@ -20,11 +21,12 @@ namespace PlusprofilAddin.Commands
 			return true;
 		}
 
-		// Takes a DialogViewModel as parameter
+		// Expected parameter: DialogViewModel
 		public void Execute(object parameter)
 		{
 			if (parameter is ElementDialogViewModel viewModel)
 			{
+				Element element = viewModel.Element;
 				var toUpdateCollectionsList = new List<ObservableCollection<ObservableCollection<DisplayedTaggedValue>>>
 				{
 					viewModel.DanishTaggedValues,
@@ -36,7 +38,14 @@ namespace PlusprofilAddin.Commands
 				foreach (var toUpdateCollection in toUpdateCollectionsList)
 					foreach (var collection in toUpdateCollection)
 						foreach (DisplayedTaggedValue dtv in collection)
+						{
+							if (dtv.TaggedValue == null) dtv.AddTaggedValue(element.TaggedValues);
 							dtv.UpdateTaggedValueValue();
+						}
+				foreach (var dtv in viewModel.DeleteTaggedValues)
+				{
+					dtv.DeleteTaggedValue(element.TaggedValues);
+				}
 			}
 		}
 	}

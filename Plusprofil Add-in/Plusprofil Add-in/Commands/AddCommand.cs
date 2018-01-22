@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Input;
 
@@ -19,12 +20,10 @@ namespace PlusprofilAddin.Commands
 
 		public void Execute(object parameter)
 		{
-			if (parameter.GetType() == typeof(ObservableCollection<DisplayedTaggedValue>))
+			if (parameter is ObservableCollection<DisplayedTaggedValue> list)
 			{
-				ObservableCollection<DisplayedTaggedValue> list = parameter as ObservableCollection<DisplayedTaggedValue>;
 				string name = list.First().Name;
-				//TODO: Create new tagged value instead
-				list.Add(new DisplayedTaggedValue(name, ""));
+				list.Add(new DisplayedTaggedValue(name));
 			}
 		}
 	}

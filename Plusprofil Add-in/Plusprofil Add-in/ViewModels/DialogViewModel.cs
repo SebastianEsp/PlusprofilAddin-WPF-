@@ -19,7 +19,6 @@ namespace PlusprofilAddin.ViewModels
 			PDefinitions.CommentDa,
 			PDefinitions.ApplicationNoteDa
 		};
-
 		protected List<PlusprofilTaggedValue> ToAddEnglishTaggedValues = new List<PlusprofilTaggedValue>
 		{
 			PDefinitions.PrefLabelEn,
@@ -30,7 +29,6 @@ namespace PlusprofilAddin.ViewModels
 			PDefinitions.CommentEn,
 			PDefinitions.ApplicationNoteEn
 		};
-
 		protected List<PlusprofilTaggedValue> ToAddProvenanceTaggedValues = new List<PlusprofilTaggedValue>
 		{
 			PDefinitions.LegalSource,

@@ -114,6 +114,7 @@
 														<MultiBinding.Bindings>
 															<Binding Path="ItemsSource" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type ListBox}}" />
 															<Binding Path="SelectedIndex" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type ListBox}}" />
+															<Binding Path="DataContext" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type Window}}" />
 														</MultiBinding.Bindings>
 													</MultiBinding>
 												</KeyBinding.CommandParameter>
@@ -212,6 +213,7 @@
 														<MultiBinding.Bindings>
 															<Binding Path="ItemsSource" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type ListBox}}" />
 															<Binding Path="SelectedIndex" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type ListBox}}" />
+															<Binding Path="DataContext" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type Window}}" />
 														</MultiBinding.Bindings>
 													</MultiBinding>
 												</KeyBinding.CommandParameter>
@@ -316,6 +318,7 @@
 												<MultiBinding.Bindings>
 													<Binding Path="ItemsSource" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type ListBox}}" />
 													<Binding Path="SelectedIndex" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type ListBox}}" />
+													<Binding Path="DataContext" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type Window}}" />
 												</MultiBinding.Bindings>
 											</MultiBinding>
 										</KeyBinding.CommandParameter>
@@ -420,6 +423,7 @@
 												<MultiBinding.Bindings>
 													<Binding Path="ItemsSource" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type ListBox}}" />
 													<Binding Path="SelectedIndex" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type ListBox}}" />
+													<Binding Path="DataContext" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type Window}}" />
 												</MultiBinding.Bindings>
 											</MultiBinding>
 										</KeyBinding.CommandParameter>

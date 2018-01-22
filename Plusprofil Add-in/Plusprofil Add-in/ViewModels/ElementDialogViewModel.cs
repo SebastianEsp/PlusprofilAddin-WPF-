@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -25,6 +26,7 @@ namespace PlusprofilAddin.ViewModels
 			ProvenanceTaggedValues = new ObservableCollection<ObservableCollection<DisplayedTaggedValue>>();
 			StereotypeTaggedValues = new ObservableCollection<ObservableCollection<DisplayedTaggedValue>>();
 			TaggedValuesList = new List<dynamic>();
+			DeleteTaggedValues = new List<DisplayedTaggedValue>();
 
 			URIValue = "";
 			UMLNameValue = "";
@@ -43,6 +45,7 @@ namespace PlusprofilAddin.ViewModels
 		public ObservableCollection<ObservableCollection<DisplayedTaggedValue>> EnglishTaggedValues { get; set; }
 		public ObservableCollection<ObservableCollection<DisplayedTaggedValue>> ProvenanceTaggedValues { get; set; }
 		public ObservableCollection<ObservableCollection<DisplayedTaggedValue>> StereotypeTaggedValues { get; set; }
+		public List<DisplayedTaggedValue> DeleteTaggedValues { get; set; }
 
 		public override void Initialize()
 		{
