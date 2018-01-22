@@ -1,13 +1,13 @@
-﻿namespace PlusprofilAddin
+﻿namespace PlusprofilAddin.Views
 {
-    /// <summary>
-    /// Interaction logic for ElementDialog.xaml
-    /// </summary>
-    public partial class AttributeDialog
-    {
-        public AttributeDialog()
-        {
-            InitializeComponent();
-        }
-    }
+	/// <summary>
+	///     Interaction logic for ElementDialog.xaml
+	/// </summary>
+	public partial class AttributeDialog
+	{
+		public AttributeDialog()
+		{
+			InitializeComponent();
+		}
+	}
 }

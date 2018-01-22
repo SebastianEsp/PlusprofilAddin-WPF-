@@ -4,13 +4,12 @@ using System.Windows.Input;
 
 namespace PlusprofilAddin.Commands
 {
-	class SaveCommand : ICommand
+	public class SaveCommand : ICommand
 	{
-		public SaveCommand(){
-
-		}
-
+		
+#pragma warning disable 0067
 		public event EventHandler CanExecuteChanged;
+#pragma warning restore 0067
 
 		public bool CanExecute(object parameter)
 		{
@@ -20,7 +19,7 @@ namespace PlusprofilAddin.Commands
 		public void Execute(object parameter)
 		{
 			MessageBox.Show("Clicked save!");
-            MessageBox.Show(parameter.ToString());
+			MessageBox.Show(parameter.ToString());
 		}
 	}
 }

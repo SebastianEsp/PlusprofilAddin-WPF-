@@ -1,62 +1,102 @@
-﻿using PlusprofilAddin.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace PlusprofilAddin
 {
-    static class PlusprofilTaggedValueDefinitions
-    {
-        /*
-         * Definitions of tagged values defined in Plusprofil
-         * Used to retrieve tagged values from Enterprise Architect and present them correctly
-         * by defining the name of the tagged value (PlusprofilTaggedValue.Name), the definition to show on hover
-         * (PlusprofilTaggedValue.Definition), if the value or notes should be edited (PlusprofilTaggedValue.HasMemoField) 
-         * and if adding multiple tagged values is allowed (PlusprofilTaggedValue.ManyMultiplicity)
+	static class PlusprofilTaggedValueDefinitions
+	{
+		/*
+	     * Definitions of tagged values defined in Plusprofil
+	     * Used when retrieving tagged values from Enterprise Architect to present them correctly
+	     * by defining the name of the tagged value (PlusprofilTaggedValue.Name),
+		 * if the value or notes should be edited (PlusprofilTaggedValue.HasMemoField) 
+	     * and if adding multiple tagged values is allowed (PlusprofilTaggedValue.ManyMultiplicity)
 		 * In a future iteration, these definitions could be loaded from a file.
-         */
-        public readonly static PlusprofilTaggedValue altLabelDa = new PlusprofilTaggedValue("altLabel (da)", "", false, true);
-        public readonly static PlusprofilTaggedValue altLabelEn = new PlusprofilTaggedValue("altLabel (en)", "", false, true);
-        public readonly static PlusprofilTaggedValue prefLabelDa = new PlusprofilTaggedValue("prefLabel (da)", "", false, false);
-        public readonly static PlusprofilTaggedValue prefLabelEn = new PlusprofilTaggedValue("prefLabel (en)", "", false, false);
-        public readonly static PlusprofilTaggedValue deprecatedLabelDa = new PlusprofilTaggedValue("deprecatedLabel (da)", "", false, true);
-        public readonly static PlusprofilTaggedValue deprecatedLabelEn = new PlusprofilTaggedValue("deprecatedLabel (en)", "", false, true);
-        public readonly static PlusprofilTaggedValue definitionDa = new PlusprofilTaggedValue("definition (da)", "", true, false);
-        public readonly static PlusprofilTaggedValue definitionEn = new PlusprofilTaggedValue("definition (en)", "", true, false);
-        public readonly static PlusprofilTaggedValue applicationNoteDa = new PlusprofilTaggedValue("applicationNote (da)", "", true, true);
-        public readonly static PlusprofilTaggedValue applicationNoteEn = new PlusprofilTaggedValue("applicationNote (en)", "", true, true);
-        public readonly static PlusprofilTaggedValue exampleDa = new PlusprofilTaggedValue("example (da)", "", true, true);
-        public readonly static PlusprofilTaggedValue exampleEn = new PlusprofilTaggedValue("example (en)", "", true, true);
-        public readonly static PlusprofilTaggedValue commentDa = new PlusprofilTaggedValue("comment (da)", "", true, true);
-        public readonly static PlusprofilTaggedValue commentEn = new PlusprofilTaggedValue("comment (en)", "", true, true);
-        public readonly static PlusprofilTaggedValue legalSource = new PlusprofilTaggedValue("legalSource", "", true, true);
-        public readonly static PlusprofilTaggedValue source = new PlusprofilTaggedValue("source", "", true, true);
-        public readonly static PlusprofilTaggedValue isDefinedBy = new PlusprofilTaggedValue("isDefinedBy", "", false, true);
-        public readonly static PlusprofilTaggedValue wasDerivedFrom = new PlusprofilTaggedValue("wasDerivedFrom", "", false, true);
-        public readonly static PlusprofilTaggedValue equivalentClass = new PlusprofilTaggedValue("equivalentClass", "", false, true);
-        public readonly static PlusprofilTaggedValue range = new PlusprofilTaggedValue("range", "", false, false);
-        public readonly static PlusprofilTaggedValue domain = new PlusprofilTaggedValue("domain", "", false, false);
-        public readonly static PlusprofilTaggedValue subPropertyOf = new PlusprofilTaggedValue("subPropertyOf", "", false, true);
-        public readonly static PlusprofilTaggedValue equivalentProperty = new PlusprofilTaggedValue("equivalentProperty", "", false, true);
-        public readonly static PlusprofilTaggedValue functionalProperty = new PlusprofilTaggedValue("functionalProperty", "", false, false);
-        public readonly static PlusprofilTaggedValue inverseOf = new PlusprofilTaggedValue("inverseOf", "", false, false);
-        public readonly static PlusprofilTaggedValue inverseOfFunctionalProperty = new PlusprofilTaggedValue("inverseOfFunctionalProperty", "", false, false);
-        public readonly static PlusprofilTaggedValue transitiveProperty = new PlusprofilTaggedValue("transitiveProperty", "", false, false);
-        public readonly static PlusprofilTaggedValue symmetricProperty = new PlusprofilTaggedValue("symmetricproperty", "", false, false);
-        public readonly static PlusprofilTaggedValue approvalStatus = new PlusprofilTaggedValue("approvalStatus", "", false, false);
-        public readonly static PlusprofilTaggedValue modelStatus = new PlusprofilTaggedValue("modelStatus", "", false, false);
-        public readonly static PlusprofilTaggedValue modified = new PlusprofilTaggedValue("modified", "", false, false);
-        public readonly static PlusprofilTaggedValue namespace_ = new PlusprofilTaggedValue("namespace", "", false, false); //Underscore added as namespace is a reserved keyword
-        public readonly static PlusprofilTaggedValue namespacePrefix = new PlusprofilTaggedValue("namespacePrefix", "", false, false);
-        public readonly static PlusprofilTaggedValue publisher = new PlusprofilTaggedValue("publisher", "", false, false);
-        public readonly static PlusprofilTaggedValue theme = new PlusprofilTaggedValue("theme", "", false, false);
-        public readonly static PlusprofilTaggedValue versionInfo = new PlusprofilTaggedValue("versionInfo", "", false, false);
-        public readonly static PlusprofilTaggedValue subClassOf = new PlusprofilTaggedValue("subClassOf", "", false, true);
-        public readonly static PlusprofilTaggedValue sameAs = new PlusprofilTaggedValue("sameAs", "", false, true);
-        public readonly static PlusprofilTaggedValue type = new PlusprofilTaggedValue("type", "", false, false);
-        public readonly static PlusprofilTaggedValue labelDa = new PlusprofilTaggedValue("label (da)", "", false, true);
-        public readonly static PlusprofilTaggedValue labelEn = new PlusprofilTaggedValue("label (en)", "", false, true);
-    }
+	     */
+		public static readonly PlusprofilTaggedValue AltLabelDa = new PlusprofilTaggedValue("altLabel (da)", false, true);
+		public static readonly PlusprofilTaggedValue AltLabelEn = new PlusprofilTaggedValue("altLabel (en)", false, true);
+		public static readonly PlusprofilTaggedValue PrefLabelDa = new PlusprofilTaggedValue("prefLabel (da)", false, false);
+		public static readonly PlusprofilTaggedValue PrefLabelEn = new PlusprofilTaggedValue("prefLabel (en)", false, false);
+		public static readonly PlusprofilTaggedValue DeprecatedLabelDa = new PlusprofilTaggedValue("deprecatedLabel (da)", false, true);
+		public static readonly PlusprofilTaggedValue DeprecatedLabelEn = new PlusprofilTaggedValue("deprecatedLabel (en)", false, true);
+		public static readonly PlusprofilTaggedValue DefinitionDa = new PlusprofilTaggedValue("definition (da)", true, false);
+		public static readonly PlusprofilTaggedValue DefinitionEn = new PlusprofilTaggedValue("definition (en)", true, false);
+		public static readonly PlusprofilTaggedValue ApplicationNoteDa = new PlusprofilTaggedValue("applicationNote (da)", true, true);
+		public static readonly PlusprofilTaggedValue ApplicationNoteEn = new PlusprofilTaggedValue("applicationNote (en)", true, true);
+		public static readonly PlusprofilTaggedValue ExampleDa = new PlusprofilTaggedValue("example (da)", true, true);
+		public static readonly PlusprofilTaggedValue ExampleEn = new PlusprofilTaggedValue("example (en)", true, true);
+		public static readonly PlusprofilTaggedValue CommentDa = new PlusprofilTaggedValue("comment (da)", true, true);
+		public static readonly PlusprofilTaggedValue CommentEn = new PlusprofilTaggedValue("comment (en)", true, true);
+		public static readonly PlusprofilTaggedValue LegalSource = new PlusprofilTaggedValue("legalSource", true, true);
+		public static readonly PlusprofilTaggedValue Source = new PlusprofilTaggedValue("source", true, true);
+		public static readonly PlusprofilTaggedValue IsDefinedBy = new PlusprofilTaggedValue("isDefinedBy", false, true);
+		public static readonly PlusprofilTaggedValue WasDerivedFrom = new PlusprofilTaggedValue("wasDerivedFrom", false, true);
+		public static readonly PlusprofilTaggedValue EquivalentClass = new PlusprofilTaggedValue("equivalentClass", false, true);
+		public static readonly PlusprofilTaggedValue Range = new PlusprofilTaggedValue("range", false, false);
+		public static readonly PlusprofilTaggedValue Domain = new PlusprofilTaggedValue("domain", false, false);
+		public static readonly PlusprofilTaggedValue SubPropertyOf = new PlusprofilTaggedValue("subPropertyOf", false, true);
+		public static readonly PlusprofilTaggedValue EquivalentProperty = new PlusprofilTaggedValue("equivalentProperty", false, true);
+		public static readonly PlusprofilTaggedValue FunctionalProperty = new PlusprofilTaggedValue("functionalProperty", false, false);
+		public static readonly PlusprofilTaggedValue InverseOf = new PlusprofilTaggedValue("inverseOf", false, false);
+		public static readonly PlusprofilTaggedValue InverseOfFunctionalProperty = new PlusprofilTaggedValue("inverseOfFunctionalProperty", false, false);
+		public static readonly PlusprofilTaggedValue TransitiveProperty = new PlusprofilTaggedValue("transitiveProperty", false, false);
+		public static readonly PlusprofilTaggedValue SymmetricProperty = new PlusprofilTaggedValue("symmetricproperty", false, false);
+		public static readonly PlusprofilTaggedValue ApprovalStatus = new PlusprofilTaggedValue("approvalStatus", false, false);
+		public static readonly PlusprofilTaggedValue ModelStatus = new PlusprofilTaggedValue("modelStatus", false, false);
+		public static readonly PlusprofilTaggedValue Modified = new PlusprofilTaggedValue("modified", false, false);
+		public static readonly PlusprofilTaggedValue Namespace = new PlusprofilTaggedValue("namespace", false, false);
+		public static readonly PlusprofilTaggedValue NamespacePrefix = new PlusprofilTaggedValue("namespacePrefix", false, false);
+		public static readonly PlusprofilTaggedValue Publisher = new PlusprofilTaggedValue("publisher", false, false);
+		public static readonly PlusprofilTaggedValue Theme = new PlusprofilTaggedValue("theme", false, false);
+		public static readonly PlusprofilTaggedValue VersionInfo = new PlusprofilTaggedValue("versionInfo", false, false);
+		public static readonly PlusprofilTaggedValue SubClassOf = new PlusprofilTaggedValue("subClassOf", false, true);
+		public static readonly PlusprofilTaggedValue SameAs = new PlusprofilTaggedValue("sameAs", false, true);
+		public static readonly PlusprofilTaggedValue Type = new PlusprofilTaggedValue("type", false, false);
+		public static readonly PlusprofilTaggedValue LabelDa = new PlusprofilTaggedValue("label (da)", false, true);
+		public static readonly PlusprofilTaggedValue LabelEn = new PlusprofilTaggedValue("label (en)", false, true);
+
+		public static List<PlusprofilTaggedValue> Definitions = new List<PlusprofilTaggedValue>
+		{
+			AltLabelDa,
+			AltLabelEn,
+			PrefLabelDa,
+			PrefLabelEn,
+			DeprecatedLabelDa,
+			DeprecatedLabelEn,
+			DefinitionDa,
+			DefinitionEn,
+			ApplicationNoteDa,
+			ApplicationNoteEn,
+			ExampleDa,
+			ExampleEn,
+			CommentDa,
+			CommentEn,
+			LegalSource,
+			Source,
+			IsDefinedBy,
+			WasDerivedFrom,
+			EquivalentClass,
+			Range,
+			Domain,
+			SubPropertyOf,
+			EquivalentProperty,
+			FunctionalProperty,
+			InverseOf,
+			InverseOfFunctionalProperty,
+			TransitiveProperty,
+			SymmetricProperty,
+			ApprovalStatus,
+			ModelStatus,
+			Modified,
+			Namespace,
+			NamespacePrefix,
+			Publisher,
+			Theme,
+			VersionInfo,
+			SubClassOf,
+			SameAs,
+			Type,
+			LabelDa,
+			LabelEn
+		};
+	}
 }

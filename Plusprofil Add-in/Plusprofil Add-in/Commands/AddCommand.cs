@@ -1,19 +1,16 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Windows;
 using System.Windows.Input;
 
 namespace PlusprofilAddin.Commands
 {
-    class AddCommand : ICommand
+	public class AddCommand : ICommand
 	{
-        public AddCommand()
-        {
 
-        }
-
+#pragma warning disable 0067
 		public event EventHandler CanExecuteChanged;
+#pragma warning restore 0067
 
 		public bool CanExecute(object parameter)
 		{
@@ -22,11 +19,13 @@ namespace PlusprofilAddin.Commands
 
 		public void Execute(object parameter)
 		{
-            if (parameter.GetType() == typeof(ObservableCollection<DisplayedTaggedValue>)){
-                ObservableCollection<DisplayedTaggedValue> list = parameter as ObservableCollection<DisplayedTaggedValue>;
-                string name = list.First().Name;
-                list.Add(new DisplayedTaggedValue(name, ""));
-            }
-        }
+			if (parameter.GetType() == typeof(ObservableCollection<DisplayedTaggedValue>))
+			{
+				ObservableCollection<DisplayedTaggedValue> list = parameter as ObservableCollection<DisplayedTaggedValue>;
+				string name = list.First().Name;
+				//TODO: Create new tagged value instead
+				list.Add(new DisplayedTaggedValue(name, ""));
+			}
+		}
 	}
 }

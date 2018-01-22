@@ -4,18 +4,14 @@ using System.Windows.Input;
 
 namespace PlusprofilAddin.Commands
 {
-    class CancelCommand : ICommand
-    {
+	public class CancelCommand : ICommand
+	{
+		private string _discardAllChangesString;
+		private string _discardString;
 
-        string DiscardAllChangesString;
-        string DiscardString;
-
-        public CancelCommand()
-		{
-            
-        }
-
+#pragma warning disable 0067
 		public event EventHandler CanExecuteChanged;
+#pragma warning restore 0067
 
 		public bool CanExecute(object parameter)
 		{
@@ -24,11 +20,13 @@ namespace PlusprofilAddin.Commands
 
 		public void Execute(object parameter)
 		{
-            Window window = parameter as Window;
-            DiscardAllChangesString = (string)window.FindResource("DiscardAllChanges");
-            DiscardString = (string)window.FindResource("Discard");
-            MessageBoxResult result = MessageBox.Show(DiscardAllChangesString, DiscardString, MessageBoxButton.OKCancel);
-            if (result == MessageBoxResult.OK) window.Close();
+			if (parameter is Window window)
+			{
+				_discardAllChangesString = (string) window.FindResource("DiscardAllChanges");
+				_discardString = (string) window.FindResource("Discard");
+				MessageBoxResult result = MessageBox.Show(_discardAllChangesString, _discardString, MessageBoxButton.OKCancel);
+				if (result == MessageBoxResult.OK) window.Close();
+			}
 		}
 	}
 }

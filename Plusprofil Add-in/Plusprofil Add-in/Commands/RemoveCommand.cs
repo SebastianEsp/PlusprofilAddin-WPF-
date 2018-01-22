@@ -1,20 +1,17 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Globalization;
-using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
 
 namespace PlusprofilAddin.Commands
 {
-    class RemoveCommand : ICommand
+	public class RemoveCommand : ICommand
 	{
-        public RemoveCommand()
-        {
 
-        }
-
+#pragma warning disable 0067
 		public event EventHandler CanExecuteChanged;
+#pragma warning restore 0067
 
 		public bool CanExecute(object parameter)
 		{
@@ -23,32 +20,28 @@ namespace PlusprofilAddin.Commands
 
 		public void Execute(object parameter)
 		{
-            MessageBox.Show("In RemoveCommand.Execute()");
-            if (parameter.GetType() == typeof(object[]))
-            {
-                object[] values = parameter as object[];
-                ObservableCollection<DisplayedTaggedValue> list = (ObservableCollection<DisplayedTaggedValue>)values[0];
-                int index = (int)values[1];
-                if (index != -1 && index != 0)
-                {
-                    list.RemoveAt(index);
-                }
-            }
-        }
+			if (parameter.GetType() == typeof(object[]))
+			{
+				object[] values = parameter as object[];
+				ObservableCollection<DisplayedTaggedValue> list = (ObservableCollection<DisplayedTaggedValue>) values[0];
+				int index = (int) values[1];
+				if (index != -1 && index != 0) list.RemoveAt(index);
+			}
+		}
 	}
 
-    public class RemoveCommandConverter : IMultiValueConverter
-    {
-        //values[0]: ListBox
-        //values[1]: ListBox.SelectedIndex
-        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
-        {
-            return values.Clone();
-        }
+	public class RemoveCommandConverter : IMultiValueConverter
+	{
+		//values[0]: ListBox
+		//values[1]: ListBox.SelectedIndex
+		public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+		{
+			return values.Clone();
+		}
 
-        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
-        {
-            throw new NotSupportedException("Cannot convert back");
-        }
-    }
+		public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+		{
+			throw new NotSupportedException("Cannot convert back");
+		}
+	}
 }

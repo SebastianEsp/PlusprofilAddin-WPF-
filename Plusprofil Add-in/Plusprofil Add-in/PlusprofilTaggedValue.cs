@@ -1,18 +1,16 @@
-﻿namespace PlusprofilAddin.Model
+﻿namespace PlusprofilAddin
 {
-    public class PlusprofilTaggedValue
-    {
-        public string Name { get; }
-        public string Definition { get; }
-        public bool HasMemoField { get; }
-        public bool ManyMultiplicity { get; }
+	public class PlusprofilTaggedValue
+	{
+		public PlusprofilTaggedValue(string name, bool hasMemoField, bool manyMultiplicity)
+		{
+			Name = name;
+			HasMemoField = hasMemoField;
+			ManyMultiplicity = manyMultiplicity;
+		}
 
-        public PlusprofilTaggedValue(string name, string definition, bool hasMemoField, bool manyMultiplicity)
-        {
-            Name = name;
-            Definition = definition;
-            HasMemoField = hasMemoField;
-            ManyMultiplicity = manyMultiplicity;
-        }
-    }
+		public string Name { get; }
+		public bool HasMemoField { get; }
+		public bool ManyMultiplicity { get; }
+	}
 }
