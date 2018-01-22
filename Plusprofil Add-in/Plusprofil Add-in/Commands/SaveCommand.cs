@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Input;
+using EA;
+using PlusprofilAddin.ViewModels;
 
 namespace PlusprofilAddin.Commands
 {
@@ -16,10 +18,14 @@ namespace PlusprofilAddin.Commands
 			return true;
 		}
 
+		// Takes a DialogViewModel as parameter
 		public void Execute(object parameter)
 		{
-			MessageBox.Show("Clicked save!");
-			MessageBox.Show(parameter.ToString());
+			if (parameter is DialogViewModel viewModel)
+			{
+				Repository repository = viewModel.Repository;
+				// TODO: Update values belonging to element
+			}
 		}
 	}
 }

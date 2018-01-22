@@ -498,7 +498,7 @@
 				<Button
 					Margin="3,6,12,6"
 					Command="{Binding Path=SaveCommand}"
-					CommandParameter="{Binding}">
+					CommandParameter="{Binding Path=DataContext, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}">
 					<TextBlock Margin="6,2,6,2" Text="{DynamicResource ResourceKey=SaveChanges}" />
 				</Button>
 			</WrapPanel>
