@@ -1,5 +1,7 @@
 ﻿using System;
-using System.Windows;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Runtime.InteropServices;
 using System.Windows.Input;
 using EA;
 using PlusprofilAddin.ViewModels;
@@ -21,10 +23,20 @@ namespace PlusprofilAddin.Commands
 		// Takes a DialogViewModel as parameter
 		public void Execute(object parameter)
 		{
-			if (parameter is DialogViewModel viewModel)
+			if (parameter is ElementDialogViewModel viewModel)
 			{
-				Repository repository = viewModel.Repository;
-				// TODO: Update values belonging to element
+				var toUpdateCollectionsList = new List<ObservableCollection<ObservableCollection<DisplayedTaggedValue>>>
+				{
+					viewModel.DanishTaggedValues,
+					viewModel.EnglishTaggedValues,
+					viewModel.ProvenanceTaggedValues,
+					viewModel.StereotypeTaggedValues
+				};
+
+				foreach (var toUpdateCollection in toUpdateCollectionsList)
+					foreach (var collection in toUpdateCollection)
+						foreach (DisplayedTaggedValue dtv in collection)
+							dtv.UpdateTaggedValueValue();
 			}
 		}
 	}

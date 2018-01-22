@@ -1,4 +1,5 @@
-﻿using EA;
+﻿using System.Windows;
+using EA;
 
 namespace PlusprofilAddin
 {
@@ -15,6 +16,7 @@ namespace PlusprofilAddin
 		{
 			TaggedValue = taggedValue;
 			ObjectType = (ObjectType) taggedValue.ObjectType; // Note: taggedValue.ObjectType has type "short"
+
 			// Set Name field based on ObjectType
 			switch (ObjectType)
 			{
@@ -48,16 +50,32 @@ namespace PlusprofilAddin
 				{
 					if (PlusprofilTaggedValue.HasMemoField)
 					{
-						//TODO: Set Value to fit <memo>-type tagged value using regex
+						// TODO: Use regex to set DisplayTaggedValue.Value to substring after $ea_notes=
 					}
 					else
 					{
-						//TODO: Set Value to fit non-<memo>-type tagged value using regex
+						// TODO: Use regex to set DisplayTaggedValue.Value to substring before $ea_notes=
 					}
 					break;
 				}
 			}
+		}
 
+		public void UpdateTaggedValueValue()
+		{
+			switch (ObjectType)
+			{
+				case ObjectType.otAttributeTag:
+				case ObjectType.otTaggedValue:
+					if (PlusprofilTaggedValue.HasMemoField) TaggedValue.Notes = Value;
+					else TaggedValue.Value = Value;
+					break;
+
+				case ObjectType.otRoleTag:
+					// TODO: Use regex to add DisplayTaggedValue.Value before or after $ea_notes=
+					break;
+			}
+			TaggedValue.Update();
 		}
 
 		public dynamic TaggedValue { get; }
