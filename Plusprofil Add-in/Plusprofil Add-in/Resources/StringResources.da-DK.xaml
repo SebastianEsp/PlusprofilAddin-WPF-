@@ -24,52 +24,52 @@
 	<system:String x:Key="DiscardAllChanges">Kasser alle ændringer?</system:String>
 
 	<!--  "Danish / English Annotations" labels  -->
-	<system:String x:Key="prefLabel">Foretrukken term</system:String>
-	<system:String x:Key="altLabel">Accepterede termer</system:String>
-	<system:String x:Key="deprecatedLabel">Frarådede termer</system:String>
-	<system:String x:Key="definition">Definition</system:String>
-	<system:String x:Key="example">Eksempel</system:String>
-	<system:String x:Key="comment">Kommentar</system:String>
-	<system:String x:Key="applicationNote">Anvendelsesnote</system:String>
+	<system:String x:Key="PrefLabel">Foretrukken term</system:String>
+	<system:String x:Key="AltLabel">Accepterede termer</system:String>
+	<system:String x:Key="DeprecatedLabel">Frarådede termer</system:String>
+	<system:String x:Key="Definition">Definition</system:String>
+	<system:String x:Key="Example">Eksempel</system:String>
+	<system:String x:Key="Comment">Kommentar</system:String>
+	<system:String x:Key="ApplicationNote">Anvendelsesnote</system:String>
 
 	<!--  Provenance labels  -->
-	<system:String x:Key="legalSource">Juridisk kilde</system:String>
-	<system:String x:Key="source">Kilde</system:String>
-	<system:String x:Key="isDefinedBy">isDefinedBy</system:String>
-	<system:String x:Key="wasDerivedFrom">wasDerivedFrom</system:String>
+	<system:String x:Key="LegalSource">Juridisk kilde</system:String>
+	<system:String x:Key="Source">Kilde</system:String>
+	<system:String x:Key="IsDefinedBy">isDefinedBy</system:String>
+	<system:String x:Key="WasDerivedFrom">wasDerivedFrom</system:String>
 
 	<!--  Package specific labels  -->
-	<system:String x:Key="namespace">Namespace</system:String>
-	<system:String x:Key="namespacePrefix">namespacePrefix</system:String>
-	<system:String x:Key="label">Modelnavn</system:String>
-	<system:String x:Key="publisher">Modelejer</system:String>
-	<system:String x:Key="versionInfo">Versionnummer</system:String>
-	<system:String x:Key="modified">Seneste opdateringsdato</system:String>
-	<system:String x:Key="modelStatus">Modelstatus</system:String>
-	<system:String x:Key="approvalStatus">Godkendelsesstatus</system:String>
-	<system:String x:Key="theme">Forretningsområde</system:String>
+	<system:String x:Key="Namespace">Namespace</system:String>
+	<system:String x:Key="NamespacePrefix">namespacePrefix</system:String>
+	<system:String x:Key="Label">Modelnavn</system:String>
+	<system:String x:Key="Publisher">Modelejer</system:String>
+	<system:String x:Key="VersionInfo">Versionnummer</system:String>
+	<system:String x:Key="Modified">Seneste opdateringsdato</system:String>
+	<system:String x:Key="ModelStatus">Modelstatus</system:String>
+	<system:String x:Key="ApprovalStatus">Godkendelsesstatus</system:String>
+	<system:String x:Key="Theme">Forretningsområde</system:String>
 	<!--  Keys already defined: legalSource, source, wasDerivedFrom, comment  -->
 
 	<!--  Element specific labels  -->
-	<system:String x:Key="equivalentClass">equivalentClass</system:String>
-	<system:String x:Key="subClassOf">subClassOf</system:String>
-	<system:String x:Key="sameAs">sameAs</system:String>
-	<system:String x:Key="type">type</system:String>
+	<system:String x:Key="EquivalentClass">equivalentClass</system:String>
+	<system:String x:Key="SubClassOf">subClassOf</system:String>
+	<system:String x:Key="SameAs">sameAs</system:String>
+	<system:String x:Key="Type">type</system:String>
 
 	<!--  Attribute/ConnectorEnd specific labels  -->
-	<system:String x:Key="range">range</system:String>
-	<system:String x:Key="domain">domain</system:String>
-	<system:String x:Key="subPropertyOf">subPropertyOf</system:String>
-	<system:String x:Key="equivalentProperty">equivalentProperty</system:String>
+	<system:String x:Key="Range">range</system:String>
+	<system:String x:Key="Domain">domain</system:String>
+	<system:String x:Key="SubPropertyOf">subPropertyOf</system:String>
+	<system:String x:Key="EquivalentProperty">equivalentProperty</system:String>
 
 	<!--  Attribute specific labels  -->
-	<system:String x:Key="functionalProperty">functionalProperty</system:String>
+	<system:String x:Key="FunctionalProperty">functionalProperty</system:String>
 
 	<!--  ConnectorEnd specific labels  -->
-	<system:String x:Key="inverseOf">inverseOf</system:String>
-	<system:String x:Key="inverseFunctionalProperty">inverseFunctionalProperty</system:String>
-	<system:String x:Key="symmetricProperty">symmetricProperty</system:String>
-	<system:String x:Key="transitiveProperty">transitiveProperty</system:String>
+	<system:String x:Key="InverseOf">inverseOf</system:String>
+	<system:String x:Key="InverseFunctionalProperty">inverseFunctionalProperty</system:String>
+	<system:String x:Key="SymmetricProperty">symmetricProperty</system:String>
+	<system:String x:Key="TransitiveProperty">transitiveProperty</system:String>
 	<!--  Keys already defined: functionalProperty  -->
 
 </ResourceDictionary>

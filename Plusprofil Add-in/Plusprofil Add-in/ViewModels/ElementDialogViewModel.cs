@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -14,10 +13,7 @@ namespace PlusprofilAddin.ViewModels
 	{
 		public List<dynamic> TaggedValuesList;
 
-		protected List<PlusprofilTaggedValue> ToAddStereotypeTaggedValues = new List<PlusprofilTaggedValue>
-		{
-			
-		};
+		protected List<PlusprofilTaggedValue> ToAddStereotypeTaggedValues = new List<PlusprofilTaggedValue>();
 
 		public ElementDialogViewModel()
 		{

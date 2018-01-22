@@ -79,7 +79,7 @@
 					ScrollViewer.VerticalScrollBarVisibility="Disabled">
 					<ItemsControl.ItemTemplate>
 						<DataTemplate>
-							<Grid Margin="0,3,0,3">
+							<Grid Margin="0,3,0,3" d:DataContext="{d:DesignInstance}">
 								<Grid.ColumnDefinitions>
 									<ColumnDefinition Width="Auto" SharedSizeGroup="FirstCol" />
 									<ColumnDefinition />
@@ -102,7 +102,7 @@
 				<ItemsControl ItemsSource="{Binding Path=PlusprofilTaggedValues}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
 					<ItemsControl.ItemTemplate>
 						<DataTemplate>
-							<Grid>
+							<Grid d:DataContext="{d:DesignInstance }">
 								<Grid.ColumnDefinitions>
 									<ColumnDefinition Width="Auto" />
 									<ColumnDefinition Width="*" />

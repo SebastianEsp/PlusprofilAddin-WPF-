@@ -1,5 +1,4 @@
-﻿using System.Windows;
-using EA;
+﻿using EA;
 
 namespace PlusprofilAddin
 {

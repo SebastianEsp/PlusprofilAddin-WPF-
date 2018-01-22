@@ -6,11 +6,13 @@
 	xmlns:cns="clr-namespace:PlusprofilAddin.Commands"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:plusprofilAddin="clr-namespace:PlusprofilAddin"
+	xmlns:viewModels="clr-namespace:PlusprofilAddin.ViewModels"
 	Name="MainWindow"
 	Title="{Binding Path=UMLNameValue}"
 	d:DesignHeight="500"
 	d:DesignWidth="500"
-	mc:Ignorable="d">
+	mc:Ignorable="d" d:DataContext="{d:DesignInstance }">
 	<Window.Resources>
 		<cns:RemoveCommandConverter x:Key="RemoveCommandConverter" />
 	</Window.Resources>
@@ -108,7 +110,7 @@
 										ScrollViewer.HorizontalScrollBarVisibility="Disabled"
 										ScrollViewer.VerticalScrollBarVisibility="Disabled">
 										<ListBox.InputBindings>
-											<KeyBinding Key="Delete" Command="{Binding Path=DataContext.RemoveCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}">
+											<KeyBinding Key="Delete" Command="{Binding Path=DataContext.(viewModels:DialogViewModel.RemoveCommand), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}">
 												<KeyBinding.CommandParameter>
 													<MultiBinding Converter="{StaticResource RemoveCommandConverter}">
 														<MultiBinding.Bindings>
@@ -122,7 +124,7 @@
 										</ListBox.InputBindings>
 										<ListBox.ItemTemplate>
 											<!--  Inner content  -->
-											<DataTemplate>
+											<DataTemplate DataType="plusprofilAddin:DisplayedTaggedValue">
 												<Grid
 													Name="TaggedValueGrid"
 													Margin="0,3,0,3"
@@ -151,7 +153,7 @@
 														Width="20px"
 														Height="20px"
 														Margin="0,0,12,0"
-														Command="{Binding Path=DataContext.AddCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
+														Command="{Binding Path=DataContext.(viewModels:DialogViewModel.AddCommand), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
 														CommandParameter="{Binding Path=ItemsSource, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}}"
 														Content="+"
 														Visibility="Hidden" />
@@ -207,7 +209,7 @@
 										ScrollViewer.HorizontalScrollBarVisibility="Disabled"
 										ScrollViewer.VerticalScrollBarVisibility="Disabled">
 										<ListBox.InputBindings>
-											<KeyBinding Key="Delete" Command="{Binding Path=DataContext.RemoveCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}">
+											<KeyBinding Key="Delete" Command="{Binding Path=DataContext.(viewModels:DialogViewModel.RemoveCommand), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}">
 												<KeyBinding.CommandParameter>
 													<MultiBinding Converter="{StaticResource RemoveCommandConverter}">
 														<MultiBinding.Bindings>
@@ -221,7 +223,7 @@
 										</ListBox.InputBindings>
 										<ListBox.ItemTemplate>
 											<!--  Inner content  -->
-											<DataTemplate>
+											<DataTemplate DataType="plusprofilAddin:DisplayedTaggedValue">
 												<Grid Margin="0,3,0,3">
 													<Grid.ColumnDefinitions>
 														<ColumnDefinition Width="Auto" SharedSizeGroup="FirstCol" />
@@ -247,7 +249,7 @@
 														Width="20px"
 														Height="20px"
 														Margin="0,0,12,0"
-														Command="{Binding Path=DataContext.AddCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
+														Command="{Binding Path=DataContext.(viewModels:DialogViewModel.AddCommand), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
 														CommandParameter="{Binding Path=ItemsSource, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}}"
 														Content="+"
 														Visibility="Hidden" />
@@ -312,7 +314,7 @@
 								ScrollViewer.HorizontalScrollBarVisibility="Disabled"
 								ScrollViewer.VerticalScrollBarVisibility="Disabled">
 								<ListBox.InputBindings>
-									<KeyBinding Key="Delete" Command="{Binding Path=DataContext.RemoveCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}">
+									<KeyBinding Key="Delete" Command="{Binding Path=DataContext.(viewModels:DialogViewModel.RemoveCommand), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}">
 										<KeyBinding.CommandParameter>
 											<MultiBinding Converter="{StaticResource RemoveCommandConverter}">
 												<MultiBinding.Bindings>
@@ -326,7 +328,7 @@
 								</ListBox.InputBindings>
 								<ListBox.ItemTemplate>
 									<!--  Inner content  -->
-									<DataTemplate>
+									<DataTemplate DataType="plusprofilAddin:DisplayedTaggedValue">
 										<Grid Margin="0,3,0,3">
 											<Grid.ColumnDefinitions>
 												<ColumnDefinition Width="Auto" SharedSizeGroup="FirstCol" />
@@ -352,7 +354,7 @@
 												Width="20px"
 												Height="20px"
 												Margin="0,0,12,0"
-												Command="{Binding Path=DataContext.AddCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
+												Command="{Binding Path=DataContext.(viewModels:DialogViewModel.AddCommand), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
 												CommandParameter="{Binding Path=ItemsSource, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}}"
 												Content="+"
 												Visibility="Hidden" />
@@ -417,7 +419,7 @@
 								ScrollViewer.HorizontalScrollBarVisibility="Disabled"
 								ScrollViewer.VerticalScrollBarVisibility="Disabled">
 								<ListBox.InputBindings>
-									<KeyBinding Key="Delete" Command="{Binding Path=DataContext.RemoveCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}">
+									<KeyBinding Key="Delete" Command="{Binding Path=DataContext.(viewModels:DialogViewModel.RemoveCommand), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}">
 										<KeyBinding.CommandParameter>
 											<MultiBinding Converter="{StaticResource RemoveCommandConverter}">
 												<MultiBinding.Bindings>
@@ -431,7 +433,7 @@
 								</ListBox.InputBindings>
 								<ListBox.ItemTemplate>
 									<!--  Inner content  -->
-									<DataTemplate>
+									<DataTemplate DataType="plusprofilAddin:DisplayedTaggedValue">
 										<Grid Margin="0,3,0,3" KeyboardNavigation.IsTabStop="False">
 											<Grid.ColumnDefinitions>
 												<ColumnDefinition Width="Auto" SharedSizeGroup="FirstCol" />
@@ -457,7 +459,7 @@
 												Width="20px"
 												Height="20px"
 												Margin="0,0,12,0"
-												Command="{Binding Path=DataContext.AddCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
+												Command="{Binding Path=DataContext.(viewModels:DialogViewModel.AddCommand), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
 												CommandParameter="{Binding Path=ItemsSource, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}}"
 												Content="+"
 												Visibility="Hidden" />
