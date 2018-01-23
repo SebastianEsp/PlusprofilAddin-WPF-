@@ -9,11 +9,41 @@ using PDefinitions = PlusprofilAddin.PlusprofilTaggedValueDefinitions;
 
 namespace PlusprofilAddin.ViewModels
 {
-	internal class ElementDialogViewModel : DialogViewModel
+	public class ElementDialogViewModel : DialogViewModel
 	{
 		public List<dynamic> TaggedValuesList;
+		
+		private readonly List<PlusprofilTaggedValue> _toAddDanishTaggedValues = new List<PlusprofilTaggedValue>
+		{
+			PDefinitions.PrefLabelDa,
+			PDefinitions.AltLabelDa,
+			PDefinitions.DeprecatedLabelDa,
+			PDefinitions.DefinitionDa,
+			PDefinitions.ExampleDa,
+			PDefinitions.CommentDa,
+			PDefinitions.ApplicationNoteDa
+		};
 
-		protected List<PlusprofilTaggedValue> ToAddStereotypeTaggedValues = new List<PlusprofilTaggedValue>();
+		private readonly List<PlusprofilTaggedValue> _toAddEnglishTaggedValues = new List<PlusprofilTaggedValue>
+		{
+			PDefinitions.PrefLabelEn,
+			PDefinitions.AltLabelEn,
+			PDefinitions.DeprecatedLabelEn,
+			PDefinitions.DefinitionEn,
+			PDefinitions.ExampleEn,
+			PDefinitions.CommentEn,
+			PDefinitions.ApplicationNoteEn
+		};
+
+		private readonly List<PlusprofilTaggedValue> _toAddProvenanceTaggedValues = new List<PlusprofilTaggedValue>
+		{
+			PDefinitions.LegalSource,
+			PDefinitions.Source,
+			PDefinitions.IsDefinedBy,
+			PDefinitions.WasDerivedFrom
+		};
+
+		private readonly List<PlusprofilTaggedValue> _toAddStereotypeTaggedValues = new List<PlusprofilTaggedValue>();
 
 		public ElementDialogViewModel()
 		{
@@ -59,12 +89,12 @@ namespace PlusprofilAddin.ViewModels
 			{
 				case "OwlClass":
 				case "RdfsClass":
-					ToAddStereotypeTaggedValues.Add(PDefinitions.EquivalentClass);
-					ToAddStereotypeTaggedValues.Add(PDefinitions.SubClassOf);
+					_toAddStereotypeTaggedValues.Add(PDefinitions.EquivalentClass);
+					_toAddStereotypeTaggedValues.Add(PDefinitions.SubClassOf);
 					break;
 				case "Individual":
-					ToAddStereotypeTaggedValues.Add(PDefinitions.SameAs);
-					ToAddStereotypeTaggedValues.Add(PDefinitions.Type);
+					_toAddStereotypeTaggedValues.Add(PDefinitions.SameAs);
+					_toAddStereotypeTaggedValues.Add(PDefinitions.Type);
 					break;
 			}
 
@@ -77,7 +107,7 @@ namespace PlusprofilAddin.ViewModels
 				dynamic tv = TaggedValues.GetAt((short) i);
 				TaggedValuesList.Add(tv);
 			}
-
+			
 			//Declare List to hold result of list lookups
 			List<dynamic> result;
 
@@ -91,8 +121,8 @@ namespace PlusprofilAddin.ViewModels
 				MessageBox.Show(e.Message);
 			}
 
-			//Add all danish tagged values to list
-			foreach (PlusprofilTaggedValue ptv in ToAddDanishTaggedValues)
+			//Add all Danish tagged values to list
+			foreach (PlusprofilTaggedValue ptv in _toAddDanishTaggedValues)
 			{
 				result = RetrieveTaggedValues(TaggedValuesList, ptv.Name);
 				ObservableCollection<DisplayedTaggedValue> resultList = new ObservableCollection<DisplayedTaggedValue>();
@@ -100,8 +130,8 @@ namespace PlusprofilAddin.ViewModels
 				DanishTaggedValues.Add(resultList);
 			}
 
-			//Add all english tagged values to list
-			foreach (PlusprofilTaggedValue ptv in ToAddEnglishTaggedValues)
+			//Add all English tagged values to list
+			foreach (PlusprofilTaggedValue ptv in _toAddEnglishTaggedValues)
 			{
 				result = RetrieveTaggedValues(TaggedValuesList, ptv.Name);
 				ObservableCollection<DisplayedTaggedValue> resultList = new ObservableCollection<DisplayedTaggedValue>();
@@ -110,7 +140,7 @@ namespace PlusprofilAddin.ViewModels
 			}
 
 			//Add all provenance tagged values to list
-			foreach (PlusprofilTaggedValue ptv in ToAddProvenanceTaggedValues)
+			foreach (PlusprofilTaggedValue ptv in _toAddProvenanceTaggedValues)
 			{
 				result = RetrieveTaggedValues(TaggedValuesList, ptv.Name);
 				ObservableCollection<DisplayedTaggedValue> resultList = new ObservableCollection<DisplayedTaggedValue>();
@@ -119,7 +149,7 @@ namespace PlusprofilAddin.ViewModels
 			}
 
 			//Add all stereotype-specific tagged values to list
-			foreach (PlusprofilTaggedValue ptv in ToAddStereotypeTaggedValues)
+			foreach (PlusprofilTaggedValue ptv in _toAddStereotypeTaggedValues)
 			{
 				result = RetrieveTaggedValues(TaggedValuesList, ptv.Name);
 				ObservableCollection<DisplayedTaggedValue> resultList = new ObservableCollection<DisplayedTaggedValue>();

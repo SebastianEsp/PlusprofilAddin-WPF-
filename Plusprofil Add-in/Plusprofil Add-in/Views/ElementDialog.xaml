@@ -8,11 +8,13 @@
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:plusprofilAddin="clr-namespace:PlusprofilAddin"
 	xmlns:viewModels="clr-namespace:PlusprofilAddin.ViewModels"
+	xmlns:views="clr-namespace:PlusprofilAddin.Views"
 	Name="MainWindow"
 	Title="{Binding Path=UMLNameValue}"
+	d:DataContext="{d:DesignInstance}"
 	d:DesignHeight="500"
 	d:DesignWidth="500"
-	mc:Ignorable="d" d:DataContext="{d:DesignInstance }">
+	mc:Ignorable="d">
 	<Window.Resources>
 		<cns:RemoveCommandConverter x:Key="RemoveCommandConverter" />
 	</Window.Resources>
@@ -99,88 +101,7 @@
 							ScrollViewer.VerticalScrollBarVisibility="Disabled">
 							<ItemsControl.ItemTemplate>
 								<DataTemplate>
-									<ListBox
-										Name="TaggedValueListBox"
-										HorizontalContentAlignment="Stretch"
-										BorderThickness="0"
-										ItemsSource="{Binding}"
-										KeyboardNavigation.IsTabStop="False"
-										KeyboardNavigation.TabNavigation="Continue"
-										LostFocus="TaggedValueListBox_OnLostFocus"
-										ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-										ScrollViewer.VerticalScrollBarVisibility="Disabled">
-										<ListBox.InputBindings>
-											<KeyBinding Key="Delete" Command="{Binding Path=DataContext.(viewModels:DialogViewModel.RemoveCommand), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}">
-												<KeyBinding.CommandParameter>
-													<MultiBinding Converter="{StaticResource RemoveCommandConverter}">
-														<MultiBinding.Bindings>
-															<Binding Path="ItemsSource" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type ListBox}}" />
-															<Binding Path="SelectedIndex" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type ListBox}}" />
-															<Binding Path="DataContext" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type Window}}" />
-														</MultiBinding.Bindings>
-													</MultiBinding>
-												</KeyBinding.CommandParameter>
-											</KeyBinding>
-										</ListBox.InputBindings>
-										<ListBox.ItemTemplate>
-											<!--  Inner content  -->
-											<DataTemplate DataType="plusprofilAddin:DisplayedTaggedValue">
-												<Grid
-													Name="TaggedValueGrid"
-													Margin="0,3,0,3"
-													Background="Transparent">
-													<Grid.ColumnDefinitions>
-														<ColumnDefinition Width="Auto" SharedSizeGroup="FirstCol" />
-														<ColumnDefinition />
-														<ColumnDefinition Width="Auto" />
-													</Grid.ColumnDefinitions>
-													<TextBlock
-														Name="TaggedValueTextBlock"
-														Grid.Column="0"
-														Margin="12,0,6,0"
-														Text="{Binding Path=Name}"
-														Visibility="Hidden" />
-													<TextBox
-														Name="TaggedValueTextBox"
-														Grid.Column="1"
-														Margin="0,0,12,0"
-														MaxLines="5"
-														Text="{Binding Path=Value, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
-														TextWrapping="Wrap" />
-													<Button
-														Name="AddButton"
-														Grid.Column="2"
-														Width="20px"
-														Height="20px"
-														Margin="0,0,12,0"
-														Command="{Binding Path=DataContext.(viewModels:DialogViewModel.AddCommand), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
-														CommandParameter="{Binding Path=ItemsSource, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}}"
-														Content="+"
-														Visibility="Hidden" />
-												</Grid>
-												<DataTemplate.Triggers>
-													<!--  Trigger if previous element is null (i.e. current element is first)  -->
-													<DataTrigger Binding="{Binding RelativeSource={RelativeSource PreviousData}}" Value="{x:Null}">
-														<DataTrigger.Setters>
-															<Setter TargetName="AddButton" Property="Visibility" Value="Visible" />
-															<Setter TargetName="TaggedValueTextBlock" Property="Visibility" Value="Visible" />
-														</DataTrigger.Setters>
-													</DataTrigger>
-													<DataTrigger Binding="{Binding Path=PlusprofilTaggedValue.ManyMultiplicity}" Value="False">
-														<DataTrigger.Setters>
-															<Setter TargetName="AddButton" Property="Visibility" Value="Hidden" />
-														</DataTrigger.Setters>
-													</DataTrigger>
-													<DataTrigger Binding="{Binding Path=PlusprofilTaggedValue.HasMemoField}" Value="True">
-														<DataTrigger.Setters>
-															<Setter TargetName="TaggedValueTextBox" Property="AcceptsReturn" Value="True" />
-														</DataTrigger.Setters>
-													</DataTrigger>
-												</DataTemplate.Triggers>
-											</DataTemplate>
-											<!--  Inner content end  -->
-										</ListBox.ItemTemplate>
-									</ListBox>
+									<views:TaggedValueListControl />
 								</DataTemplate>
 							</ItemsControl.ItemTemplate>
 						</ItemsControl>
@@ -199,84 +120,7 @@
 							ScrollViewer.VerticalScrollBarVisibility="Disabled">
 							<ItemsControl.ItemTemplate>
 								<DataTemplate>
-									<ListBox
-										HorizontalContentAlignment="Stretch"
-										BorderThickness="0"
-										ItemsSource="{Binding}"
-										KeyboardNavigation.IsTabStop="False"
-										KeyboardNavigation.TabNavigation="Continue"
-										LostFocus="TaggedValueListBox_OnLostFocus"
-										ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-										ScrollViewer.VerticalScrollBarVisibility="Disabled">
-										<ListBox.InputBindings>
-											<KeyBinding Key="Delete" Command="{Binding Path=DataContext.(viewModels:DialogViewModel.RemoveCommand), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}">
-												<KeyBinding.CommandParameter>
-													<MultiBinding Converter="{StaticResource RemoveCommandConverter}">
-														<MultiBinding.Bindings>
-															<Binding Path="ItemsSource" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type ListBox}}" />
-															<Binding Path="SelectedIndex" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type ListBox}}" />
-															<Binding Path="DataContext" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type Window}}" />
-														</MultiBinding.Bindings>
-													</MultiBinding>
-												</KeyBinding.CommandParameter>
-											</KeyBinding>
-										</ListBox.InputBindings>
-										<ListBox.ItemTemplate>
-											<!--  Inner content  -->
-											<DataTemplate DataType="plusprofilAddin:DisplayedTaggedValue">
-												<Grid Margin="0,3,0,3">
-													<Grid.ColumnDefinitions>
-														<ColumnDefinition Width="Auto" SharedSizeGroup="FirstCol" />
-														<ColumnDefinition />
-														<ColumnDefinition Width="Auto" />
-													</Grid.ColumnDefinitions>
-													<TextBlock
-														Name="TaggedValueTextBlock"
-														Grid.Column="0"
-														Margin="12,0,6,0"
-														Text="{Binding Path=Name}"
-														Visibility="Hidden" />
-													<TextBox
-														Name="TaggedValueTextBox"
-														Grid.Column="1"
-														Margin="0,0,12,0"
-														MaxLines="5"
-														Text="{Binding Path=Value, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
-														TextWrapping="Wrap" />
-													<Button
-														Name="AddButton"
-														Grid.Column="2"
-														Width="20px"
-														Height="20px"
-														Margin="0,0,12,0"
-														Command="{Binding Path=DataContext.(viewModels:DialogViewModel.AddCommand), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
-														CommandParameter="{Binding Path=ItemsSource, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}}"
-														Content="+"
-														Visibility="Hidden" />
-												</Grid>
-												<DataTemplate.Triggers>
-													<!--  Trigger if previous element is null (i.e. current element is first)  -->
-													<DataTrigger Binding="{Binding RelativeSource={RelativeSource PreviousData}}" Value="{x:Null}">
-														<DataTrigger.Setters>
-															<Setter TargetName="AddButton" Property="Visibility" Value="Visible" />
-															<Setter TargetName="TaggedValueTextBlock" Property="Visibility" Value="Visible" />
-														</DataTrigger.Setters>
-													</DataTrigger>
-													<DataTrigger Binding="{Binding Path=PlusprofilTaggedValue.ManyMultiplicity}" Value="False">
-														<DataTrigger.Setters>
-															<Setter TargetName="AddButton" Property="Visibility" Value="Hidden" />
-														</DataTrigger.Setters>
-													</DataTrigger>
-													<DataTrigger Binding="{Binding Path=PlusprofilTaggedValue.HasMemoField}" Value="True">
-														<DataTrigger.Setters>
-															<Setter TargetName="TaggedValueTextBox" Property="AcceptsReturn" Value="True" />
-														</DataTrigger.Setters>
-													</DataTrigger>
-												</DataTemplate.Triggers>
-											</DataTemplate>
-											<!--  Inner content end  -->
-										</ListBox.ItemTemplate>
-									</ListBox>
+									<views:TaggedValueListControl />
 								</DataTemplate>
 							</ItemsControl.ItemTemplate>
 						</ItemsControl>
@@ -304,84 +148,7 @@
 					ScrollViewer.VerticalScrollBarVisibility="Disabled">
 					<ItemsControl.ItemTemplate>
 						<DataTemplate>
-							<ListBox
-								HorizontalContentAlignment="Stretch"
-								BorderThickness="0"
-								ItemsSource="{Binding}"
-								KeyboardNavigation.IsTabStop="False"
-								KeyboardNavigation.TabNavigation="Continue"
-								LostFocus="TaggedValueListBox_OnLostFocus"
-								ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-								ScrollViewer.VerticalScrollBarVisibility="Disabled">
-								<ListBox.InputBindings>
-									<KeyBinding Key="Delete" Command="{Binding Path=DataContext.(viewModels:DialogViewModel.RemoveCommand), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}">
-										<KeyBinding.CommandParameter>
-											<MultiBinding Converter="{StaticResource RemoveCommandConverter}">
-												<MultiBinding.Bindings>
-													<Binding Path="ItemsSource" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type ListBox}}" />
-													<Binding Path="SelectedIndex" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type ListBox}}" />
-													<Binding Path="DataContext" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type Window}}" />
-												</MultiBinding.Bindings>
-											</MultiBinding>
-										</KeyBinding.CommandParameter>
-									</KeyBinding>
-								</ListBox.InputBindings>
-								<ListBox.ItemTemplate>
-									<!--  Inner content  -->
-									<DataTemplate DataType="plusprofilAddin:DisplayedTaggedValue">
-										<Grid Margin="0,3,0,3">
-											<Grid.ColumnDefinitions>
-												<ColumnDefinition Width="Auto" SharedSizeGroup="FirstCol" />
-												<ColumnDefinition />
-												<ColumnDefinition Width="Auto" />
-											</Grid.ColumnDefinitions>
-											<TextBlock
-												Name="TaggedValueTextBlock"
-												Grid.Column="0"
-												Margin="12,0,6,0"
-												Text="{Binding Path=Name}"
-												Visibility="Hidden" />
-											<TextBox
-												Name="TaggedValueTextBox"
-												Grid.Column="1"
-												Margin="0,0,12,0"
-												MaxLines="5"
-												Text="{Binding Path=Value, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
-												TextWrapping="Wrap" />
-											<Button
-												Name="AddButton"
-												Grid.Column="2"
-												Width="20px"
-												Height="20px"
-												Margin="0,0,12,0"
-												Command="{Binding Path=DataContext.(viewModels:DialogViewModel.AddCommand), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
-												CommandParameter="{Binding Path=ItemsSource, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}}"
-												Content="+"
-												Visibility="Hidden" />
-										</Grid>
-										<DataTemplate.Triggers>
-											<!--  Trigger if previous element is null (i.e. current element is first)  -->
-											<DataTrigger Binding="{Binding RelativeSource={RelativeSource PreviousData}}" Value="{x:Null}">
-												<DataTrigger.Setters>
-													<Setter TargetName="AddButton" Property="Visibility" Value="Visible" />
-													<Setter TargetName="TaggedValueTextBlock" Property="Visibility" Value="Visible" />
-												</DataTrigger.Setters>
-											</DataTrigger>
-											<DataTrigger Binding="{Binding Path=PlusprofilTaggedValue.ManyMultiplicity}" Value="False">
-												<DataTrigger.Setters>
-													<Setter TargetName="AddButton" Property="Visibility" Value="Hidden" />
-												</DataTrigger.Setters>
-											</DataTrigger>
-											<DataTrigger Binding="{Binding Path=PlusprofilTaggedValue.HasMemoField}" Value="True">
-												<DataTrigger.Setters>
-													<Setter TargetName="TaggedValueTextBox" Property="AcceptsReturn" Value="True" />
-												</DataTrigger.Setters>
-											</DataTrigger>
-										</DataTemplate.Triggers>
-									</DataTemplate>
-									<!--  Inner content end  -->
-								</ListBox.ItemTemplate>
-							</ListBox>
+							<views:TaggedValueListControl />
 						</DataTemplate>
 					</ItemsControl.ItemTemplate>
 				</ItemsControl>
@@ -409,84 +176,7 @@
 					ScrollViewer.VerticalScrollBarVisibility="Disabled">
 					<ItemsControl.ItemTemplate>
 						<DataTemplate>
-							<ListBox
-								HorizontalContentAlignment="Stretch"
-								BorderThickness="0"
-								ItemsSource="{Binding}"
-								KeyboardNavigation.IsTabStop="False"
-								KeyboardNavigation.TabNavigation="Continue"
-								LostFocus="TaggedValueListBox_OnLostFocus"
-								ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-								ScrollViewer.VerticalScrollBarVisibility="Disabled">
-								<ListBox.InputBindings>
-									<KeyBinding Key="Delete" Command="{Binding Path=DataContext.(viewModels:DialogViewModel.RemoveCommand), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}">
-										<KeyBinding.CommandParameter>
-											<MultiBinding Converter="{StaticResource RemoveCommandConverter}">
-												<MultiBinding.Bindings>
-													<Binding Path="ItemsSource" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type ListBox}}" />
-													<Binding Path="SelectedIndex" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type ListBox}}" />
-													<Binding Path="DataContext" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type Window}}" />
-												</MultiBinding.Bindings>
-											</MultiBinding>
-										</KeyBinding.CommandParameter>
-									</KeyBinding>
-								</ListBox.InputBindings>
-								<ListBox.ItemTemplate>
-									<!--  Inner content  -->
-									<DataTemplate DataType="plusprofilAddin:DisplayedTaggedValue">
-										<Grid Margin="0,3,0,3" KeyboardNavigation.IsTabStop="False">
-											<Grid.ColumnDefinitions>
-												<ColumnDefinition Width="Auto" SharedSizeGroup="FirstCol" />
-												<ColumnDefinition />
-												<ColumnDefinition Width="Auto" SharedSizeGroup="ThirdCol" />
-											</Grid.ColumnDefinitions>
-											<TextBlock
-												Name="TaggedValueTextBlock"
-												Grid.Column="0"
-												Margin="12,0,6,0"
-												Text="{Binding Path=Name}"
-												Visibility="Hidden" />
-											<TextBox
-												Name="TaggedValueTextBox"
-												Grid.Column="1"
-												Margin="0,0,12,0"
-												MaxLines="5"
-												Text="{Binding Path=Value, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
-												TextWrapping="Wrap" />
-											<Button
-												Name="AddButton"
-												Grid.Column="2"
-												Width="20px"
-												Height="20px"
-												Margin="0,0,12,0"
-												Command="{Binding Path=DataContext.(viewModels:DialogViewModel.AddCommand), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
-												CommandParameter="{Binding Path=ItemsSource, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}}"
-												Content="+"
-												Visibility="Hidden" />
-										</Grid>
-										<DataTemplate.Triggers>
-											<!--  Trigger if previous element is null (i.e. current element is first)  -->
-											<DataTrigger Binding="{Binding RelativeSource={RelativeSource PreviousData}}" Value="{x:Null}">
-												<DataTrigger.Setters>
-													<Setter TargetName="AddButton" Property="Visibility" Value="Visible" />
-													<Setter TargetName="TaggedValueTextBlock" Property="Visibility" Value="Visible" />
-												</DataTrigger.Setters>
-											</DataTrigger>
-											<DataTrigger Binding="{Binding Path=PlusprofilTaggedValue.ManyMultiplicity}" Value="False">
-												<DataTrigger.Setters>
-													<Setter TargetName="AddButton" Property="Visibility" Value="Hidden" />
-												</DataTrigger.Setters>
-											</DataTrigger>
-											<DataTrigger Binding="{Binding Path=PlusprofilTaggedValue.HasMemoField}" Value="True">
-												<DataTrigger.Setters>
-													<Setter TargetName="TaggedValueTextBox" Property="AcceptsReturn" Value="True" />
-												</DataTrigger.Setters>
-											</DataTrigger>
-										</DataTemplate.Triggers>
-									</DataTemplate>
-									<!--  Inner content end  -->
-								</ListBox.ItemTemplate>
-							</ListBox>
+							<views:TaggedValueListControl />
 						</DataTemplate>
 					</ItemsControl.ItemTemplate>
 				</ItemsControl>

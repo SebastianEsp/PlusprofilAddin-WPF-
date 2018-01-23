@@ -7,41 +7,12 @@ using PDefinitions = PlusprofilAddin.PlusprofilTaggedValueDefinitions;
 
 namespace PlusprofilAddin.ViewModels
 {
-	internal abstract class DialogViewModel
+	public abstract class DialogViewModel
 	{
-		protected List<PlusprofilTaggedValue> ToAddDanishTaggedValues = new List<PlusprofilTaggedValue>
-		{
-			PDefinitions.PrefLabelDa,
-			PDefinitions.AltLabelDa,
-			PDefinitions.DeprecatedLabelDa,
-			PDefinitions.DefinitionDa,
-			PDefinitions.ExampleDa,
-			PDefinitions.CommentDa,
-			PDefinitions.ApplicationNoteDa
-		};
-		protected List<PlusprofilTaggedValue> ToAddEnglishTaggedValues = new List<PlusprofilTaggedValue>
-		{
-			PDefinitions.PrefLabelEn,
-			PDefinitions.AltLabelEn,
-			PDefinitions.DeprecatedLabelEn,
-			PDefinitions.DefinitionEn,
-			PDefinitions.ExampleEn,
-			PDefinitions.CommentEn,
-			PDefinitions.ApplicationNoteEn
-		};
-		protected List<PlusprofilTaggedValue> ToAddProvenanceTaggedValues = new List<PlusprofilTaggedValue>
-		{
-			PDefinitions.LegalSource,
-			PDefinitions.Source,
-			PDefinitions.IsDefinedBy,
-			PDefinitions.WasDerivedFrom
-		};
-
 		public SaveCommand SaveCommand { get; set; }
 		public CancelCommand CancelCommand { get; set; }
 		public AddCommand AddCommand { get; set; }
 		public RemoveCommand RemoveCommand { get; set; }
-
 		public Repository Repository { get; set; }
 		public abstract void Initialize();
 
@@ -61,7 +32,7 @@ namespace PlusprofilAddin.ViewModels
 			{
 				foreach (dynamic tv in taggedValueList)
 				{
-						if (tv.Name == taggedValueName) result.Add(tv);
+					if (tv.Name == taggedValueName) result.Add(tv);
 				}
 			}
 			if (result.Count == 0) throw new ArgumentException($"No tagged value with name \"{taggedValueName}\" was found");

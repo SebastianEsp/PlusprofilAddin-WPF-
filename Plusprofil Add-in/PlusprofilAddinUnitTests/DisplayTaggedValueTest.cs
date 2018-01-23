@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PlusprofilAddin;
 
 namespace PlusprofilAddinUnitTests
 {
@@ -8,6 +9,7 @@ namespace PlusprofilAddinUnitTests
 		[TestMethod]
 		public void TestMethod1()
 		{
+
 		}
 	}
 }

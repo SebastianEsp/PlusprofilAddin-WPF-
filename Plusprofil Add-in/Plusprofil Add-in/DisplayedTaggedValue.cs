@@ -2,13 +2,12 @@
 
 namespace PlusprofilAddin
 {
-	class DisplayedTaggedValue
+	public class DisplayedTaggedValue
 	{
 		public DisplayedTaggedValue(string name)
 		{
 			Name = name;
 			Value = "";
-			ToDelete = false;
 			PlusprofilTaggedValue = PlusprofilTaggedValueDefinitions.Definitions.Find(ptv => ptv.Name == Name);
 		}
 
@@ -16,7 +15,6 @@ namespace PlusprofilAddin
 		{
 			TaggedValue = taggedValue;
 			ObjectType = (ObjectType) TaggedValue.ObjectType;
-			ToDelete = false;
 
 			// Set Name field based on ObjectType
 			switch (ObjectType)
@@ -109,7 +107,6 @@ namespace PlusprofilAddin
 		public string Value { get; set; }
 		public ObjectType ObjectType { get; set; }
 		public PlusprofilTaggedValue PlusprofilTaggedValue { get; set; }
-		public bool ToDelete { get; set; }
 
 		public override string ToString()
 		{

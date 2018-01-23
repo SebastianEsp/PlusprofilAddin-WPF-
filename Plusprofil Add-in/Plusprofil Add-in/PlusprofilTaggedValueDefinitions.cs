@@ -2,7 +2,7 @@
 
 namespace PlusprofilAddin
 {
-	static class PlusprofilTaggedValueDefinitions
+	public static class PlusprofilTaggedValueDefinitions
 	{
 		/*
 	     * Definitions of tagged values defined in Plusprofil

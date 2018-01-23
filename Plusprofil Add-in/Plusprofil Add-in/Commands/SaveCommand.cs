@@ -5,6 +5,8 @@ using System.Windows.Input;
 using EA;
 using PlusprofilAddin.ViewModels;
 
+// TODO: Implement saving of name, alias and URI
+
 namespace PlusprofilAddin.Commands
 {
 	public class SaveCommand : ICommand
