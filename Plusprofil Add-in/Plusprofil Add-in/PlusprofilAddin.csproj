@@ -70,6 +70,9 @@
     <Compile Include="Views\AttributeDialog.xaml.cs">
       <DependentUpon>AttributeDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ConnectorUserControl.xaml.cs">
+      <DependentUpon>ConnectorUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PackageDialog.xaml.cs">
       <DependentUpon>PackageDialog.xaml</DependentUpon>
     </Compile>
@@ -101,6 +104,10 @@
     <Page Include="Views\AttributeDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ConnectorUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PackageDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
