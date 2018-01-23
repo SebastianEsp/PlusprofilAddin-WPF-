@@ -18,6 +18,7 @@
 		ItemsSource="{Binding}"
 		KeyboardNavigation.IsTabStop="False"
 		KeyboardNavigation.TabNavigation="Continue"
+		LostFocus="TaggedValueListBox_OnLostFocus"
 		ScrollViewer.HorizontalScrollBarVisibility="Disabled"
 		ScrollViewer.VerticalScrollBarVisibility="Disabled">
 		<ListBox.InputBindings>
