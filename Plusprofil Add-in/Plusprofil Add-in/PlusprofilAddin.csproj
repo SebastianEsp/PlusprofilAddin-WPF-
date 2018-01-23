@@ -81,6 +81,9 @@
     <Compile Include="Views\TaggedValueListControl.xaml.cs">
       <DependentUpon>TaggedValueListControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\TaggedValueListGroupingControl.xaml.cs">
+      <DependentUpon>TaggedValueListGroupingControl.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Include="Resources\StringResources.da-DK.xaml">
@@ -108,6 +111,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\TaggedValueListControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TaggedValueListGroupingControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
