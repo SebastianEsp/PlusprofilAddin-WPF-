@@ -28,7 +28,7 @@ namespace PlusprofilAddin
 
 		public void EA_MenuClick(Repository repository, string location, string menuName, string itemName)
 		{
-			dynamic itemType = repository.GetContextItemType();
+			ObjectType itemType = repository.GetContextItemType();
 
 			if (itemType == ObjectType.otElement)
 			{
@@ -63,7 +63,7 @@ namespace PlusprofilAddin
 				};
 			}
 
-			//Create new Application, ResourceDictionary and set source for language matching the selected menu option
+			//Create new ResourceDictionary and set source for language matching the selected menu option
 			ResourceDictionary dict = new ResourceDictionary();
 			switch (itemName)
 			{

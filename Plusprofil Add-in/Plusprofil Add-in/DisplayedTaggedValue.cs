@@ -20,7 +20,7 @@ namespace PlusprofilAddin
 			switch (ObjectType)
 			{
 				case ObjectType.otTaggedValue:
-				case ObjectType.otAttribute:
+				case ObjectType.otAttributeTag:
 				{
 					Name = TaggedValue.Name;
 					break;
@@ -39,7 +39,7 @@ namespace PlusprofilAddin
 			switch (ObjectType)
 			{
 				case ObjectType.otTaggedValue:
-				case ObjectType.otAttribute:
+				case ObjectType.otAttributeTag:
 				{
 					Value = PlusprofilTaggedValue.HasMemoField ? TaggedValue.Notes : TaggedValue.Value;
 					break;
@@ -63,8 +63,8 @@ namespace PlusprofilAddin
 		{
 			switch (ObjectType)
 			{
-				case ObjectType.otAttributeTag:
 				case ObjectType.otTaggedValue:
+				case ObjectType.otAttributeTag:
 					if (PlusprofilTaggedValue.HasMemoField) TaggedValue.Notes = Value;
 					else TaggedValue.Value = Value;
 					break;

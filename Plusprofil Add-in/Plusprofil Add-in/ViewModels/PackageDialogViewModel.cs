@@ -101,7 +101,7 @@ namespace PlusprofilAddin.ViewModels
 			{
 				result = RetrieveTaggedValues(TaggedValuesList, ptv.Name);
 				var resultList = new ObservableCollection<DisplayedTaggedValue>();
-				foreach (dynamic tv in result) resultList.Add(new DisplayedTaggedValue(tv));
+				foreach (TaggedValue tv in result) resultList.Add(new DisplayedTaggedValue(tv));
 				DanishTaggedValues.Add(resultList);
 			}
 
@@ -110,7 +110,7 @@ namespace PlusprofilAddin.ViewModels
 			{
 				result = RetrieveTaggedValues(TaggedValuesList, ptv.Name);
 				var resultList = new ObservableCollection<DisplayedTaggedValue>();
-				foreach (dynamic tv in result) resultList.Add(new DisplayedTaggedValue(tv));
+				foreach (TaggedValue tv in result) resultList.Add(new DisplayedTaggedValue(tv));
 				EnglishTaggedValues.Add(resultList);
 			}
 
@@ -119,7 +119,7 @@ namespace PlusprofilAddin.ViewModels
 			{
 				result = RetrieveTaggedValues(TaggedValuesList, ptv.Name);
 				var resultList = new ObservableCollection<DisplayedTaggedValue>();
-				foreach (dynamic tv in result) resultList.Add(new DisplayedTaggedValue(tv));
+				foreach (TaggedValue tv in result) resultList.Add(new DisplayedTaggedValue(tv));
 				ModelMetadataTaggedValues.Add(resultList);
 			}
 		}

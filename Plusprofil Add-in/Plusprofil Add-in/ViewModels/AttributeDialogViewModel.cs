@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using EA;
+using PlusprofilAddin.Commands;
 using static PlusprofilAddin.PlusprofilTaggedValueDefinitions;
 using Attribute = EA.Attribute;
 
@@ -78,7 +79,17 @@ namespace PlusprofilAddin.ViewModels
 
 		public override void Initialize()
 		{
+			SaveCommand = new SaveCommand();
+			CancelCommand = new CancelCommand();
+			AddCommand = new AddCommand();
+			RemoveCommand = new RemoveCommand();
+
 			Attribute = Repository.GetContextObject();
+			UMLNameValue = Attribute.Name;
+			AliasValue = Attribute.Alias;
+			DatatypeValue = Attribute.Type;
+			TaggedValues = Attribute.TaggedValues;
+			
 
 			//Finalize list of stereotype tags to add
 			if (Attribute.Stereotype == "DatatypeProperty") _toAddStereotypeTaggedValues.Add(FunctionalProperty);
@@ -94,9 +105,9 @@ namespace PlusprofilAddin.ViewModels
 			//Tagged values are stored in a list to avoid iterating Collections multiple times, which is very costly
 			//In a future iteration of the addin, avoid iterating the collection even once, instead using Repository.SQLQuery to retrieve
 			//an XML-formatted list of every Tagged Value where the owner ID is Element.ElementID
-			for (int i = 0; i < TaggedValues.Count; i++)
+			for (short i = 0; i < TaggedValues.Count; i++)
 			{
-				dynamic tv = TaggedValues.GetAt((short) i);
+				dynamic tv = TaggedValues.GetAt(i);
 				TaggedValuesList.Add(tv);
 			}
 			
@@ -117,8 +128,8 @@ namespace PlusprofilAddin.ViewModels
 			foreach (PlusprofilTaggedValue ptv in _toAddDanishTaggedValues)
 			{
 				result = RetrieveTaggedValues(TaggedValuesList, ptv.Name);
-				ObservableCollection<DisplayedTaggedValue> resultList = new ObservableCollection<DisplayedTaggedValue>();
-				foreach (dynamic tv in result) resultList.Add(new DisplayedTaggedValue(tv));
+				var resultList = new ObservableCollection<DisplayedTaggedValue>();
+				foreach (AttributeTag attributeTag in result) resultList.Add(new DisplayedTaggedValue(attributeTag));
 				DanishTaggedValues.Add(resultList);
 			}
 
@@ -126,8 +137,8 @@ namespace PlusprofilAddin.ViewModels
 			foreach (PlusprofilTaggedValue ptv in _toAddEnglishTaggedValues)
 			{
 				result = RetrieveTaggedValues(TaggedValuesList, ptv.Name);
-				ObservableCollection<DisplayedTaggedValue> resultList = new ObservableCollection<DisplayedTaggedValue>();
-				foreach (dynamic tv in result) resultList.Add(new DisplayedTaggedValue(tv));
+				var resultList = new ObservableCollection<DisplayedTaggedValue>();
+				foreach (AttributeTag attributeTag in result) resultList.Add(new DisplayedTaggedValue(attributeTag));
 				EnglishTaggedValues.Add(resultList);
 			}
 
@@ -135,8 +146,8 @@ namespace PlusprofilAddin.ViewModels
 			foreach (PlusprofilTaggedValue ptv in _toAddProvenanceTaggedValues)
 			{
 				result = RetrieveTaggedValues(TaggedValuesList, ptv.Name);
-				ObservableCollection<DisplayedTaggedValue> resultList = new ObservableCollection<DisplayedTaggedValue>();
-				foreach (dynamic tv in result) resultList.Add(new DisplayedTaggedValue(tv));
+				var resultList = new ObservableCollection<DisplayedTaggedValue>();
+				foreach (AttributeTag attributeTag in result) resultList.Add(new DisplayedTaggedValue(attributeTag));
 				ProvenanceTaggedValues.Add(resultList);
 			}
 
@@ -144,8 +155,8 @@ namespace PlusprofilAddin.ViewModels
 			foreach (PlusprofilTaggedValue ptv in _toAddStereotypeTaggedValues)
 			{
 				result = RetrieveTaggedValues(TaggedValuesList, ptv.Name);
-				ObservableCollection<DisplayedTaggedValue> resultList = new ObservableCollection<DisplayedTaggedValue>();
-				foreach (dynamic tv in result) resultList.Add(new DisplayedTaggedValue(tv));
+				var resultList = new ObservableCollection<DisplayedTaggedValue>();
+				foreach (AttributeTag attributeTag in result) resultList.Add(new DisplayedTaggedValue(attributeTag));
 				StereotypeTaggedValues.Add(resultList);
 			}
 		}
