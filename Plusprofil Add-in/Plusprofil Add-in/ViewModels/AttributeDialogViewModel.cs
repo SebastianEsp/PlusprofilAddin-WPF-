@@ -17,10 +17,10 @@ namespace PlusprofilAddin.ViewModels
 
 		public AttributeDialogViewModel()
 		{
-			DanishTaggedValues = new ObservableCollection<PlusprofilTaggedValue>();
-			EnglishTaggedValues = new ObservableCollection<PlusprofilTaggedValue>();
-			ProvenanceTaggedValues = new ObservableCollection<PlusprofilTaggedValue>();
-			StereotypeTaggedValues = new ObservableCollection<PlusprofilTaggedValue>();
+			DanishTaggedValues = new ObservableCollection<ObservableCollection<DisplayedTaggedValue>>();
+			EnglishTaggedValues = new ObservableCollection<ObservableCollection<DisplayedTaggedValue>>();
+			ProvenanceTaggedValues = new ObservableCollection<ObservableCollection<DisplayedTaggedValue>>();
+			StereotypeTaggedValues = new ObservableCollection<ObservableCollection<DisplayedTaggedValue>>();
 
 			URIText = "URI";
 			UMLText = "UML";
@@ -43,16 +43,17 @@ namespace PlusprofilAddin.ViewModels
 		public string AliasValue { get; set; }
 		public string DatatypeValue { get; set; }
 
-		public ObservableCollection<PlusprofilTaggedValue> TaggedValues { get; set; }
-		public ObservableCollection<PlusprofilTaggedValue> DanishTaggedValues { get; set; }
-		public ObservableCollection<PlusprofilTaggedValue> EnglishTaggedValues { get; set; }
-		public ObservableCollection<PlusprofilTaggedValue> ProvenanceTaggedValues { get; set; }
-		public ObservableCollection<PlusprofilTaggedValue> StereotypeTaggedValues { get; set; }
+		public Collection TaggedValues;
+
+		public ObservableCollection<ObservableCollection<DisplayedTaggedValue>> DanishTaggedValues { get; set; }
+		public ObservableCollection<ObservableCollection<DisplayedTaggedValue>> EnglishTaggedValues { get; set; }
+		public ObservableCollection<ObservableCollection<DisplayedTaggedValue>> ProvenanceTaggedValues { get; set; }
+		public ObservableCollection<ObservableCollection<DisplayedTaggedValue>> StereotypeTaggedValues { get; set; }
 		public List<DisplayedTaggedValue> DeleteTaggedValues { get; set; }
 
 		public override void Initialize()
 		{
-			Attribute = Repository.GetContextObject() as Attribute;
+			Attribute = Repository.GetContextObject();
 
 			//Finalize list of stereotype tags to add
 			if (Attribute.Stereotype == "DatatypeProperty") ToAddStereotypeTaggedValues.Add(PDefinitions.FunctionalProperty);

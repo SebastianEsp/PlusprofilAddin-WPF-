@@ -5,7 +5,8 @@ using System.Linq;
 using System.Windows;
 using EA;
 using PlusprofilAddin.Commands;
-using PDefinitions = PlusprofilAddin.PlusprofilTaggedValueDefinitions;
+using static PlusprofilAddin.PlusprofilTaggedValueDefinitions;
+using PTVD = PlusprofilAddin.PlusprofilTaggedValueDefinitions;
 
 namespace PlusprofilAddin.ViewModels
 {
@@ -15,32 +16,32 @@ namespace PlusprofilAddin.ViewModels
 		
 		private readonly List<PlusprofilTaggedValue> _toAddDanishTaggedValues = new List<PlusprofilTaggedValue>
 		{
-			PDefinitions.PrefLabelDa,
-			PDefinitions.AltLabelDa,
-			PDefinitions.DeprecatedLabelDa,
-			PDefinitions.DefinitionDa,
-			PDefinitions.ExampleDa,
-			PDefinitions.CommentDa,
-			PDefinitions.ApplicationNoteDa
+			PrefLabelDa,
+			AltLabelDa,
+			DeprecatedLabelDa,
+			DefinitionDa,
+			ExampleDa,
+			CommentDa,
+			ApplicationNoteDa
 		};
 
 		private readonly List<PlusprofilTaggedValue> _toAddEnglishTaggedValues = new List<PlusprofilTaggedValue>
 		{
-			PDefinitions.PrefLabelEn,
-			PDefinitions.AltLabelEn,
-			PDefinitions.DeprecatedLabelEn,
-			PDefinitions.DefinitionEn,
-			PDefinitions.ExampleEn,
-			PDefinitions.CommentEn,
-			PDefinitions.ApplicationNoteEn
+			PrefLabelEn,
+			AltLabelEn,
+			DeprecatedLabelEn,
+			DefinitionEn,
+			ExampleEn,
+			CommentEn,
+			ApplicationNoteEn
 		};
 
 		private readonly List<PlusprofilTaggedValue> _toAddProvenanceTaggedValues = new List<PlusprofilTaggedValue>
 		{
-			PDefinitions.LegalSource,
-			PDefinitions.Source,
-			PDefinitions.IsDefinedBy,
-			PDefinitions.WasDerivedFrom
+			LegalSource,
+			Source,
+			IsDefinedBy,
+			WasDerivedFrom
 		};
 
 		private readonly List<PlusprofilTaggedValue> _toAddStereotypeTaggedValues = new List<PlusprofilTaggedValue>();
@@ -89,12 +90,12 @@ namespace PlusprofilAddin.ViewModels
 			{
 				case "OwlClass":
 				case "RdfsClass":
-					_toAddStereotypeTaggedValues.Add(PDefinitions.EquivalentClass);
-					_toAddStereotypeTaggedValues.Add(PDefinitions.SubClassOf);
+					_toAddStereotypeTaggedValues.Add(EquivalentClass);
+					_toAddStereotypeTaggedValues.Add(SubClassOf);
 					break;
 				case "Individual":
-					_toAddStereotypeTaggedValues.Add(PDefinitions.SameAs);
-					_toAddStereotypeTaggedValues.Add(PDefinitions.Type);
+					_toAddStereotypeTaggedValues.Add(SameAs);
+					_toAddStereotypeTaggedValues.Add(PTVD.Type); // Explicit type to avoid ambiguity conflict
 					break;
 			}
 

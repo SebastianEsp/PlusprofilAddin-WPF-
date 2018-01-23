@@ -80,7 +80,7 @@ namespace PlusprofilAddin
 
 			_viewModel.Initialize();
 			_window.DataContext = _viewModel;
-			_window.Show();
+			_window.ShowDialog();
 		}
 
 		public void EA_Disconnect()
