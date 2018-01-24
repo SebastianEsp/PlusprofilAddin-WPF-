@@ -72,7 +72,7 @@ namespace PlusprofilAddin
 						UriKind.Absolute);
 					break;
 				case EnglishMenuOption:
-					dict.Source = new Uri("pack://application:,,,/PlusprofilAddin;component/Resources/StringResources.xaml",
+					dict.Source = new Uri("pack://application:,,,/PlusprofilAddin;component/Resources/StringResources.en-US.xaml",
 						UriKind.Absolute);
 					break;
 			}
