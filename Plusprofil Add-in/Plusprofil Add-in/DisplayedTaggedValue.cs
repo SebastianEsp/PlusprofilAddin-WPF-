@@ -25,7 +25,7 @@ namespace PlusprofilAddin
 					Name = TaggedValue.Name;
 					break;
 				}
-				case ObjectType.otConnectorEnd:
+				case ObjectType.otRoleTag:
 				{
 					Name = TaggedValue.Tag;
 					break;
@@ -34,6 +34,8 @@ namespace PlusprofilAddin
 
 			// Set PlusprofilTaggedValue field based on Name
 			PlusprofilTaggedValue = PlusprofilTaggedValueDefinitions.Definitions.Find(ptv => ptv.Name == Name);
+
+			// TODO: Create property "DisplayName" and set it to the StringsResource equivalent to Name
 
 			// Set Value based on ObjectType and PlusprofilTaggedValue
 			switch (ObjectType)
@@ -44,7 +46,7 @@ namespace PlusprofilAddin
 					Value = PlusprofilTaggedValue.HasMemoField ? TaggedValue.Notes : TaggedValue.Value;
 					break;
 				}
-				case ObjectType.otConnectorEnd:
+				case ObjectType.otRoleTag:
 				{
 					if (PlusprofilTaggedValue.HasMemoField)
 					{

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows;
 using EA;
 using PlusprofilAddin.ViewModels;
@@ -77,7 +78,6 @@ namespace PlusprofilAddin
 					break;
 			}
 			_window.Resources.MergedDictionaries.Add(dict);
-
 			_viewModel.Initialize();
 			_window.DataContext = _viewModel;
 			_window.ShowDialog();

@@ -4,10 +4,14 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:plusprofilAddin="clr-namespace:PlusprofilAddin"
 	xmlns:views="clr-namespace:PlusprofilAddin.Views"
 	Title="{Binding Path=UMLNameValue}"
 	d:DataContext="{d:DesignInstance}"
 	mc:Ignorable="d">
+	<Window.Resources>
+		<plusprofilAddin:DatatypeOptions x:Key="DatatypeOptions" />
+	</Window.Resources>
 	<ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
 		<Grid Grid.IsSharedSizeScope="True">
 			<Grid.RowDefinitions>
@@ -82,9 +86,12 @@
 							Grid.Column="0"
 							Margin="12,0,6,0"
 							Text="{DynamicResource ResourceKey=Datatype}" />
-						<TextBox
+						<ComboBox
 							Grid.Column="1"
 							Margin="0,0,12,0"
+							IsEditable="True"
+							IsReadOnly="False"
+							ItemsSource="{StaticResource DatatypeOptions}"
 							Text="{Binding Path=DatatypeValue, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
 					</Grid>
 				</ListBox>

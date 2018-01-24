@@ -6,10 +6,10 @@
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:views="clr-namespace:PlusprofilAddin.Views"
 	Title="Connector"
-	mc:Ignorable="d" d:DataContext="{d:DesignInstance}">
+	d:DataContext="{d:DesignInstance}"
+	mc:Ignorable="d">
 	<Grid>
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="*" />
 			<ColumnDefinition Width="*" />
 			<ColumnDefinition Width="*" />
 		</Grid.ColumnDefinitions>

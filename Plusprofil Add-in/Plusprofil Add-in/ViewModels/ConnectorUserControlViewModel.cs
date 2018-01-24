@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Windows;
 using EA;
 using static PlusprofilAddin.PlusprofilTaggedValueDefinitions;
 
@@ -50,15 +53,19 @@ namespace PlusprofilAddin.ViewModels
 			TaggedValuesList = new List<dynamic>();
 			DeleteTaggedValues = new List<DisplayedTaggedValue>();
 
-			UMLNameValue = "Placeholder1";
-			URIValue = "Placeholder2";
-			AliasValue = "Placeholder3";
+			ElementNameValue = "";
+			UMLNameValue = "";
+			URIValue = "";
+			AliasValue = "";
 			MultiplicityValue = "";
 		}
 
+		
 		public ConnectorEnd ConnectorEnd { get; set; }
 		public Collection TaggedValues { get; set; }
 
+		public string ElementNameValue { get; set; }
+		public string ConnectorEndType { get; set; }
 		public string UMLNameValue { get; set; }
 		public string URIValue { get; set; }
 		public string AliasValue { get; set; }
@@ -72,6 +79,85 @@ namespace PlusprofilAddin.ViewModels
 
 		public override void Initialize()
 		{
+			ConnectorEndType = (ConnectorEnd.End == "Supplier") ? "Source" : "Target";
+			UMLNameValue = ConnectorEnd.Role;
+			AliasValue = ConnectorEnd.Alias;
+			MultiplicityValue = ConnectorEnd.Cardinality;
+			TaggedValues = ConnectorEnd.TaggedValues;
+
+			//Finalize list of stereotype tags to add
+			if (ConnectorEnd.Stereotype == "ObjectProperty")
+			{
+				_toAddStereotypeTaggedValues.Add(InverseOf);
+				_toAddStereotypeTaggedValues.Add(FunctionalProperty);
+				_toAddStereotypeTaggedValues.Add(InverseFunctionalProperty);
+				_toAddStereotypeTaggedValues.Add(SymmetricProperty);
+				_toAddStereotypeTaggedValues.Add(TransitiveProperty);
+			}
+			if (ConnectorEnd.Stereotype == "RdfsProperty" || ConnectorEnd.Stereotype == "ObjectProperty")
+			{
+				_toAddStereotypeTaggedValues.Add(Range);
+				_toAddStereotypeTaggedValues.Add(Domain);
+				_toAddStereotypeTaggedValues.Add(SubPropertyOf);
+				_toAddStereotypeTaggedValues.Add(EquivalentProperty);
+			}
+
+			//Retrieve all tagged values and store them in a list
+			//Tagged values are stored in a list to avoid iterating Collections multiple times, which is very costly
+			//In a future iteration of the addin, avoid iterating the collection even once, instead using Repository.SQLQuery to retrieve
+			//an XML-formatted list of every Tagged Value where the owner ID is Element.ElementID
+			for (int i = 0; i < TaggedValues.Count; i++)
+			{
+				RoleTag tv = TaggedValues.GetAt((short) i);
+				TaggedValuesList.Add(tv);
+			}
+			//Declare List to hold result of list lookups
+			List<dynamic> result;
+
+			try
+			{
+				result = RetrieveTaggedValues(TaggedValuesList, "URI");
+				URIValue = result.First().Value;
+			}
+			catch (ArgumentException e)
+			{
+				MessageBox.Show(e.Message);
+			}
+			//Add all Danish tagged values to list
+			foreach (PlusprofilTaggedValue ptv in _toAddDanishTaggedValues)
+			{
+				result = RetrieveTaggedValues(TaggedValuesList, ptv.Name);
+				var resultList = new ObservableCollection<DisplayedTaggedValue>();
+				foreach (RoleTag rt in result) resultList.Add(new DisplayedTaggedValue(rt));
+				DanishTaggedValues.Add(resultList);
+			}
+
+			//Add all English tagged values to list
+			foreach (PlusprofilTaggedValue ptv in _toAddEnglishTaggedValues)
+			{
+				result = RetrieveTaggedValues(TaggedValuesList, ptv.Name);
+				var resultList = new ObservableCollection<DisplayedTaggedValue>();
+				foreach (RoleTag rt in result) resultList.Add(new DisplayedTaggedValue(rt));
+				EnglishTaggedValues.Add(resultList);
+			}
+
+			//Add all provenance tagged values to list
+			foreach (PlusprofilTaggedValue ptv in _toAddProvenanceTaggedValues)
+			{
+				result = RetrieveTaggedValues(TaggedValuesList, ptv.Name);
+				var resultList = new ObservableCollection<DisplayedTaggedValue>();
+				foreach (RoleTag rt in result) resultList.Add(new DisplayedTaggedValue(rt));
+				ProvenanceTaggedValues.Add(resultList);
+			}
+
+			//Add all stereotype-specific tagged values to list
+			foreach (PlusprofilTaggedValue ptv in _toAddStereotypeTaggedValues)
+			{
+				result = RetrieveTaggedValues(TaggedValuesList, ptv.Name);
+				var resultList = new ObservableCollection<DisplayedTaggedValue>();
+				foreach (RoleTag rt in result) resultList.Add(new DisplayedTaggedValue(rt));
+				StereotypeTaggedValues.Add(resultList);
+			}
 		}
 	}
 }

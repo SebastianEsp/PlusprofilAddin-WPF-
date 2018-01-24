@@ -37,9 +37,9 @@ namespace PlusprofilAddin
 		public static readonly PlusprofilTaggedValue EquivalentProperty = new PlusprofilTaggedValue("equivalentProperty", false, true);
 		public static readonly PlusprofilTaggedValue FunctionalProperty = new PlusprofilTaggedValue("functionalProperty", false, false);
 		public static readonly PlusprofilTaggedValue InverseOf = new PlusprofilTaggedValue("inverseOf", false, false);
-		public static readonly PlusprofilTaggedValue InverseOfFunctionalProperty = new PlusprofilTaggedValue("inverseOfFunctionalProperty", false, false);
+		public static readonly PlusprofilTaggedValue InverseFunctionalProperty = new PlusprofilTaggedValue("inverseFunctionalProperty", false, false);
 		public static readonly PlusprofilTaggedValue TransitiveProperty = new PlusprofilTaggedValue("transitiveProperty", false, false);
-		public static readonly PlusprofilTaggedValue SymmetricProperty = new PlusprofilTaggedValue("symmetricproperty", false, false);
+		public static readonly PlusprofilTaggedValue SymmetricProperty = new PlusprofilTaggedValue("symmetricProperty", false, false);
 		public static readonly PlusprofilTaggedValue ApprovalStatus = new PlusprofilTaggedValue("approvalStatus", false, false);
 		public static readonly PlusprofilTaggedValue ModelStatus = new PlusprofilTaggedValue("modelStatus", false, false);
 		public static readonly PlusprofilTaggedValue Modified = new PlusprofilTaggedValue("modified", false, false);
@@ -81,7 +81,7 @@ namespace PlusprofilAddin
 			EquivalentProperty,
 			FunctionalProperty,
 			InverseOf,
-			InverseOfFunctionalProperty,
+			InverseFunctionalProperty,
 			TransitiveProperty,
 			SymmetricProperty,
 			ApprovalStatus,
