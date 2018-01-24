@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2020
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlusprofilAddin", "Plusprofil Add-in\PlusprofilAddin.csproj", "{9CABFADF-E159-425F-B66B-288A0FFB99DF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlusprofilAddin", "PlusprofilAddin\PlusprofilAddin.csproj", "{9CABFADF-E159-425F-B66B-288A0FFB99DF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlusprofilAddinUnitTests", "PlusprofilAddinUnitTests\PlusprofilAddinUnitTests.csproj", "{E265F9E5-351A-44FC-9A58-5F018E489F6A}"
 EndProject
