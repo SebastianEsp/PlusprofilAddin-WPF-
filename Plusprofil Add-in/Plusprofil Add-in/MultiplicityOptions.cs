@@ -6,10 +6,12 @@ namespace PlusprofilAddin
 	{
 		public MultiplicityOptions()
 		{
-			Add("0..0");
-			Add("0..1");
-			Add("1..1");
+			Add("*");
+			Add("0");
 			Add("0..*");
+			Add("0..1");
+			Add("1");
+			Add("1..");
 			Add("1..*");
 		}
 	}

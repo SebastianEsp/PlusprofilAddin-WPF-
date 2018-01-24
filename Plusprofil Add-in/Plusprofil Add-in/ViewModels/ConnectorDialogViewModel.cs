@@ -21,18 +21,18 @@ namespace PlusprofilAddin.ViewModels
 			CancelCommand = new CancelCommand();
 			AddCommand = new AddCommand();
 			RemoveCommand = new RemoveCommand();
-
-			SourceViewModel = new ConnectorUserControlViewModel();
-			TargetViewModel = new ConnectorUserControlViewModel();
 		}
 
 		public override void Initialize()
 		{
+			// TODO: Check ConnectorEnds for existence and handle cases where they do not exist
 			Connector = Repository.GetContextObject();
 			SourceEnd = Connector.SupplierEnd;
 			TargetEnd = Connector.ClientEnd;
 
-			// TODO: Check ConnectorEnds for existence and handle cases where they do not exist
+			SourceViewModel = new ConnectorUserControlViewModel {ConnectorEnd = SourceEnd};
+			TargetViewModel = new ConnectorUserControlViewModel {ConnectorEnd = TargetEnd};
+			
 			SourceViewModel.Initialize();
 			TargetViewModel.Initialize();
 		}
