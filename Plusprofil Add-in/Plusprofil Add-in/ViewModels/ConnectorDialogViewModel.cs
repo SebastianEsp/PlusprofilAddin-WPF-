@@ -1,6 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Windows;
-using EA;
+﻿using EA;
 using PlusprofilAddin.Commands;
 
 namespace PlusprofilAddin.ViewModels

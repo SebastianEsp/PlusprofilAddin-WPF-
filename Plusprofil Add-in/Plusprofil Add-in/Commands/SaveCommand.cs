@@ -6,12 +6,10 @@ using System.Windows.Input;
 using EA;
 using PlusprofilAddin.ViewModels;
 using Attribute = EA.Attribute;
+using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace PlusprofilAddin.Commands
 {
-	
-	// TODO: Implement saving of name, alias and URI
-
 	public class SaveCommand : ICommand
 	{
 		
@@ -119,9 +117,54 @@ namespace PlusprofilAddin.Commands
 					break;
 				
 				case ConnectorDialogViewModel viewModel:
-					MessageBox.Show("In ConnectorDialogViewModel case");
 					ConnectorEnd sourceEnd = viewModel.SourceEnd;
 					ConnectorEnd targetEnd = viewModel.TargetEnd;
+
+					toUpdateCollectionsList = new List<ObservableCollection<ObservableCollection<DisplayedTaggedValue>>>
+					{
+						viewModel.SourceViewModel.DanishTaggedValues,
+						viewModel.SourceViewModel.EnglishTaggedValues,
+						viewModel.SourceViewModel.ProvenanceTaggedValues,
+						viewModel.SourceViewModel.StereotypeTaggedValues,
+
+					};
+					foreach (var toUpdateCollection in toUpdateCollectionsList)
+					foreach (var collection in toUpdateCollection)
+					foreach (DisplayedTaggedValue dtv in collection)
+					{
+						if (dtv.TaggedValue == null) dtv.AddTaggedValue(sourceEnd.TaggedValues);
+						dtv.UpdateTaggedValueValue();
+					}
+					foreach (var dtv in viewModel.SourceViewModel.DeleteTaggedValues)
+					{
+						MessageBox.Show("In Source deletion loop");
+						dtv.DeleteTaggedValue(sourceEnd.TaggedValues);
+					}
+
+					// Repeat for TargetConnectorEnd
+
+					toUpdateCollectionsList = new List<ObservableCollection<ObservableCollection<DisplayedTaggedValue>>>
+					{
+						viewModel.TargetViewModel.DanishTaggedValues,
+						viewModel.TargetViewModel.EnglishTaggedValues,
+						viewModel.TargetViewModel.ProvenanceTaggedValues,
+						viewModel.TargetViewModel.StereotypeTaggedValues,
+					};
+					foreach (var toUpdateCollection in toUpdateCollectionsList)
+					foreach (var collection in toUpdateCollection)
+					foreach (DisplayedTaggedValue dtv in collection)
+					{
+						if (dtv.TaggedValue == null) dtv.AddTaggedValue(targetEnd.TaggedValues);
+						MessageBox.Show("Tagged value was added");
+						MessageBox.Show("Calling dtv.UpdateTaggedValue");
+						dtv.UpdateTaggedValueValue();
+					}
+					foreach (var dtv in viewModel.TargetViewModel.DeleteTaggedValues)
+					{
+						MessageBox.Show("In Target deletion loop");
+						dtv.DeleteTaggedValue(targetEnd.TaggedValues);
+					}
+
 
 					// TODO: Implement saving of ConnectorEnd tagged values
 

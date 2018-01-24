@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Windows;
+using System.Windows.Forms;
 using EA;
 
 namespace PlusprofilAddin
@@ -52,7 +52,9 @@ namespace PlusprofilAddin
 				{
 					// Ensure that TaggedValue.Value has format "{value}$ea_notes={notes}",
 					// tokenize the string, then set Value = {notes} if HasMemoField, otherwise Value = {value}
-					if (!TaggedValue.Value.Contains("$ea_notes")) TaggedValue.Value = String.Concat(TaggedValue.Value, "$ea_notes=");
+					if (!TaggedValue.Value.Contains("$ea_notes")) {TaggedValue.Value = String.Concat(TaggedValue.Value, "$ea_notes=");
+						TaggedValue.Update();
+					}
 					string[] tokens = TaggedValue.Value.Split(new[] {"$ea_notes="}, StringSplitOptions.None);
 					Value = PlusprofilTaggedValue.HasMemoField ? tokens[1] : tokens[0];
 					break;
@@ -71,7 +73,12 @@ namespace PlusprofilAddin
 					break;
 
 				case ObjectType.otRoleTag:
-					// TODO: Use regex to add DisplayTaggedValue.Value before or after $ea_notes=
+					// Ensure that TaggedValue.Value has format "{value}$ea_notes={notes}",
+					// tokenize the string, then set Value = {notes} if HasMemoField, otherwise Value = {value}
+					// "$ea_notes=" check may be superfluous, requires additional testing
+					if (!TaggedValue.Value.Contains("$ea_notes")) TaggedValue.Value = String.Concat(TaggedValue.Value, "$ea_notes=");
+					string[] tokens = TaggedValue.Value.Split(new[] {"$ea_notes="}, StringSplitOptions.None);
+					TaggedValue.Value = PlusprofilTaggedValue.HasMemoField ? $"{tokens[0]}$ea_notes={Value}" : $"{Value}$ea_notes={tokens[1]}";
 					break;
 			}
 			TaggedValue.Update();
@@ -79,9 +86,13 @@ namespace PlusprofilAddin
 
 		public void AddTaggedValue(Collection taggedValues)
 		{
+			MessageBox.Show("In AddTaggedValue");
 			dynamic taggedValue = taggedValues.AddNew(Name, "");
+			MessageBox.Show("Setting TaggedValue = taggedValue");
 			TaggedValue = taggedValue;
+			MessageBox.Show($"Setting ObjectType = {TaggedValue.ObjectType}");
 			ObjectType = (ObjectType) TaggedValue.ObjectType;
+			MessageBox.Show("Exiting AddTaggedValue");
 		}
 
 		public void DeleteTaggedValue(Collection taggedValues)
