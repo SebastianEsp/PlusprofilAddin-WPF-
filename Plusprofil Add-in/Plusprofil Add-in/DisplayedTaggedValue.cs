@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows.Forms;
 using EA;
 
 namespace PlusprofilAddin
@@ -86,13 +85,9 @@ namespace PlusprofilAddin
 
 		public void AddTaggedValue(Collection taggedValues)
 		{
-			MessageBox.Show("In AddTaggedValue");
 			dynamic taggedValue = taggedValues.AddNew(Name, "");
-			MessageBox.Show("Setting TaggedValue = taggedValue");
 			TaggedValue = taggedValue;
-			MessageBox.Show($"Setting ObjectType = {TaggedValue.ObjectType}");
 			ObjectType = (ObjectType) TaggedValue.ObjectType;
-			MessageBox.Show("Exiting AddTaggedValue");
 		}
 
 		public void DeleteTaggedValue(Collection taggedValues)

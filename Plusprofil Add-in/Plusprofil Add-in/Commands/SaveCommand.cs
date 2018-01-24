@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Windows;
 using System.Windows.Input;
 using EA;
 using PlusprofilAddin.ViewModels;
 using Attribute = EA.Attribute;
-using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace PlusprofilAddin.Commands
 {
@@ -137,7 +135,6 @@ namespace PlusprofilAddin.Commands
 					}
 					foreach (var dtv in viewModel.SourceViewModel.DeleteTaggedValues)
 					{
-						MessageBox.Show("In Source deletion loop");
 						dtv.DeleteTaggedValue(sourceEnd.TaggedValues);
 					}
 
@@ -155,13 +152,10 @@ namespace PlusprofilAddin.Commands
 					foreach (DisplayedTaggedValue dtv in collection)
 					{
 						if (dtv.TaggedValue == null) dtv.AddTaggedValue(targetEnd.TaggedValues);
-						MessageBox.Show("Tagged value was added");
-						MessageBox.Show("Calling dtv.UpdateTaggedValue");
 						dtv.UpdateTaggedValueValue();
 					}
 					foreach (var dtv in viewModel.TargetViewModel.DeleteTaggedValues)
 					{
-						MessageBox.Show("In Target deletion loop");
 						dtv.DeleteTaggedValue(targetEnd.TaggedValues);
 					}
 

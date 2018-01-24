@@ -110,19 +110,10 @@ namespace PlusprofilAddin.ViewModels
 				TaggedValuesList.Add(tv);
 			}
 			
-			//Declare List to hold result of list lookups
-			List<dynamic> result;
-
-			try
-			{
-				result = RetrieveTaggedValues(TaggedValuesList, "URI");
-				URIDisplayedTaggedValue = new DisplayedTaggedValue(result.First());
-				URIValue = URIDisplayedTaggedValue.Value;
-			}
-			catch (ArgumentException e)
-			{
-				MessageBox.Show(e.Message);
-			}
+			// Retrieve URI tagged value and save it in URIDisplayedTaggedValue
+			var result = RetrieveTaggedValues(TaggedValuesList, "URI");
+			URIDisplayedTaggedValue = new DisplayedTaggedValue(result.First());
+			URIValue = URIDisplayedTaggedValue.Value;
 
 			//Add all Danish tagged values to list
 			foreach (PlusprofilTaggedValue ptv in _toAddDanishTaggedValues)
