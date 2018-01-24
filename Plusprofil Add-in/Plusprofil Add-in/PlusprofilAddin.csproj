@@ -61,6 +61,7 @@
     <Compile Include="ViewModels\AttributeDialogViewModel.cs" />
     <Compile Include="ViewModels\ConnectorDialogViewModel.cs" />
     <Compile Include="PlusprofilTaggedValue.cs" />
+    <Compile Include="ViewModels\ConnectorUserControlViewModel.cs" />
     <Compile Include="ViewModels\ElementDialogViewModel.cs" />
     <Compile Include="ViewModels\DialogViewModel.cs" />
     <Compile Include="ViewModels\PackageDialogViewModel.cs" />

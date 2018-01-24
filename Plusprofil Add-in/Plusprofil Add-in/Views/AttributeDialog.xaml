@@ -1,5 +1,4 @@
-﻿<!--  TODO: Refactor ListBox.LostFocus (Breaks MVVM-pattern)  -->
-<Window
+﻿<Window
 	x:Class="PlusprofilAddin.Views.AttributeDialog"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"

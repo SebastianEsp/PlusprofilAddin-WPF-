@@ -29,5 +29,10 @@ namespace PlusprofilAddin.Views
 		{
 			if (sender is ListBox listBox) listBox.SelectedIndex = -1;
 		}
+
+		private void UIElement_OnGotFocus(object sender, RoutedEventArgs e)
+		{
+			MessageBox.Show(DataContext.ToString());
+		}
 	}
 }
