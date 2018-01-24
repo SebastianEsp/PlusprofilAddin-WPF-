@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Input;
 using EA;
 using PlusprofilAddin.ViewModels;
@@ -59,7 +60,7 @@ namespace PlusprofilAddin.Commands
 					element.Name = viewModel.UMLNameValue;
 					element.Alias = viewModel.AliasValue;
 					viewModel.URIDisplayedTaggedValue.UpdateTaggedValueValue();
-
+					element.Update();
 					break;
 				
 				case PackageDialogViewModel viewModel:
@@ -85,7 +86,7 @@ namespace PlusprofilAddin.Commands
 					// Special cases
 					packageElement.Name = viewModel.UMLNameValue;
 					packageElement.Alias = viewModel.AliasValue;
-
+					packageElement.Update();
 					break;
 				
 				case AttributeDialogViewModel viewModel:
@@ -114,9 +115,11 @@ namespace PlusprofilAddin.Commands
 					attribute.Alias = viewModel.AliasValue;
 					attribute.Type = viewModel.DatatypeValue;
 					viewModel.URIDisplayedTaggedValue.UpdateTaggedValueValue();
+					attribute.Update();
 					break;
 				
 				case ConnectorDialogViewModel viewModel:
+					MessageBox.Show("In ConnectorDialogViewModel case");
 					ConnectorEnd sourceEnd = viewModel.SourceEnd;
 					ConnectorEnd targetEnd = viewModel.TargetEnd;
 
@@ -131,6 +134,8 @@ namespace PlusprofilAddin.Commands
 					targetEnd.Cardinality = viewModel.TargetViewModel.MultiplicityValue;
 					viewModel.SourceViewModel.URIDisplayedTaggedValue.UpdateTaggedValueValue();
 					viewModel.TargetViewModel.URIDisplayedTaggedValue.UpdateTaggedValueValue();
+					sourceEnd.Update();
+					targetEnd.Update();
 					break;
 			}
 		}

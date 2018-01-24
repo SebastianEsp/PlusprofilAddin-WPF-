@@ -9,11 +9,39 @@
 	d:DataContext="{d:DesignInstance}"
 	mc:Ignorable="d">
 	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*" />
+			<RowDefinition Height="Auto" />
+		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="*" />
 			<ColumnDefinition Width="*" />
 		</Grid.ColumnDefinitions>
-		<views:ConnectorUserControl Grid.Column="0" DataContext="{Binding SourceViewModel}" />
-		<views:ConnectorUserControl Grid.Column="1" DataContext="{Binding TargetViewModel}" />
+		<views:ConnectorUserControl
+			Grid.Row="0"
+			Grid.Column="0"
+			DataContext="{Binding SourceViewModel}" />
+		<views:ConnectorUserControl
+			Grid.Row="0"
+			Grid.Column="1"
+			DataContext="{Binding TargetViewModel}" />
+		<WrapPanel
+			Grid.Row="1"
+			Grid.Column="0"
+			Grid.ColumnSpan="2"
+			HorizontalAlignment="Right">
+			<Button
+				Margin="12,6,3,6"
+				Command="{Binding Path=CancelCommand}"
+				CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}">
+				<TextBlock Margin="6,2,6,2" Text="{DynamicResource ResourceKey=Cancel}" />
+			</Button>
+			<Button
+				Margin="3,6,12,6"
+				Command="{Binding Path=SaveCommand}"
+				CommandParameter="{Binding Path=DataContext, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}">
+				<TextBlock Margin="6,2,6,2" Text="{DynamicResource ResourceKey=SaveChanges}" />
+			</Button>
+		</WrapPanel>
 	</Grid>
 </Window>
