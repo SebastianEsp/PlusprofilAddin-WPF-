@@ -54,6 +54,11 @@ namespace PlusprofilAddin.Commands
 					{
 						dtv.DeleteTaggedValue(element.TaggedValues);
 					}
+					
+					// Special cases
+					element.Name = viewModel.UMLNameValue;
+					element.Alias = viewModel.AliasValue;
+					viewModel.URIDisplayedTaggedValue.UpdateTaggedValueValue();
 
 					break;
 				
@@ -76,6 +81,10 @@ namespace PlusprofilAddin.Commands
 					{
 						dtv.DeleteTaggedValue(packageElement.TaggedValues);
 					}
+
+					// Special cases
+					packageElement.Name = viewModel.UMLNameValue;
+					packageElement.Alias = viewModel.AliasValue;
 
 					break;
 				
@@ -100,10 +109,28 @@ namespace PlusprofilAddin.Commands
 						dtv.DeleteTaggedValue(attribute.TaggedValues);
 					}
 
+					// Special cases
+					attribute.Name = viewModel.UMLNameValue;
+					attribute.Alias = viewModel.AliasValue;
+					attribute.Type = viewModel.DatatypeValue;
+					viewModel.URIDisplayedTaggedValue.UpdateTaggedValueValue();
 					break;
 				
 				case ConnectorDialogViewModel viewModel:
-					throw new NotImplementedException("Saving connectors is not implemented");
+					ConnectorEnd sourceEnd = viewModel.SourceEnd;
+					ConnectorEnd targetEnd = viewModel.TargetEnd;
+
+					// TODO: Implement saving of ConnectorEnd tagged values
+
+					// Special cases
+					sourceEnd.Role = viewModel.SourceViewModel.UMLNameValue;
+					targetEnd.Role = viewModel.TargetViewModel.UMLNameValue;
+					sourceEnd.Alias = viewModel.SourceViewModel.AliasValue;
+					targetEnd.Alias = viewModel.TargetViewModel.AliasValue;
+					sourceEnd.Cardinality = viewModel.SourceViewModel.MultiplicityValue;
+					targetEnd.Cardinality = viewModel.TargetViewModel.MultiplicityValue;
+					viewModel.SourceViewModel.URIDisplayedTaggedValue.UpdateTaggedValueValue();
+					viewModel.TargetViewModel.URIDisplayedTaggedValue.UpdateTaggedValueValue();
 					break;
 			}
 		}

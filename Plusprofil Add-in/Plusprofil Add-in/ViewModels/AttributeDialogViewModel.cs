@@ -71,6 +71,7 @@ namespace PlusprofilAddin.ViewModels
 		public string AliasValue { get; set; }
 		public string DatatypeValue { get; set; }
 
+		public DisplayedTaggedValue URIDisplayedTaggedValue { get; set; }
 		public ObservableCollection<ObservableCollection<DisplayedTaggedValue>> DanishTaggedValues { get; set; }
 		public ObservableCollection<ObservableCollection<DisplayedTaggedValue>> EnglishTaggedValues { get; set; }
 		public ObservableCollection<ObservableCollection<DisplayedTaggedValue>> ProvenanceTaggedValues { get; set; }
@@ -117,7 +118,8 @@ namespace PlusprofilAddin.ViewModels
 			try
 			{
 				result = RetrieveTaggedValues(TaggedValuesList, "URI");
-				URIValue = result.First().Value;
+				URIDisplayedTaggedValue = new DisplayedTaggedValue(result.First());
+				URIValue = URIDisplayedTaggedValue.Value;
 			}
 			catch (ArgumentException e)
 			{

@@ -1,4 +1,6 @@
-﻿using EA;
+﻿using System;
+using System.Windows;
+using EA;
 
 namespace PlusprofilAddin
 {
@@ -48,14 +50,11 @@ namespace PlusprofilAddin
 				}
 				case ObjectType.otRoleTag:
 				{
-					if (PlusprofilTaggedValue.HasMemoField)
-					{
-						// TODO: Use regex to set DisplayTaggedValue.Value to substring after $ea_notes=
-					}
-					else
-					{
-						// TODO: Use regex to set DisplayTaggedValue.Value to substring before $ea_notes=
-					}
+					// Ensure that TaggedValue.Value has format "{value}$ea_notes={notes}",
+					// tokenize the string, then set Value = {notes} if HasMemoField, otherwise Value = {value}
+					if (!TaggedValue.Value.Contains("$ea_notes")) TaggedValue.Value = String.Concat(TaggedValue.Value, "$ea_notes=");
+					string[] tokens = TaggedValue.Value.Split(new[] {"$ea_notes="}, StringSplitOptions.None);
+					Value = PlusprofilTaggedValue.HasMemoField ? tokens[1] : tokens[0];
 					break;
 				}
 			}

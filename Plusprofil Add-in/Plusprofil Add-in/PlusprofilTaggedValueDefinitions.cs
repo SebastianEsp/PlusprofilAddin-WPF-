@@ -53,6 +53,7 @@ namespace PlusprofilAddin
 		public static readonly PlusprofilTaggedValue Type = new PlusprofilTaggedValue("type", false, false);
 		public static readonly PlusprofilTaggedValue LabelDa = new PlusprofilTaggedValue("label (da)", false, true);
 		public static readonly PlusprofilTaggedValue LabelEn = new PlusprofilTaggedValue("label (en)", false, true);
+		public static readonly PlusprofilTaggedValue URI = new PlusprofilTaggedValue("URI", false, false);
 
 		public static List<PlusprofilTaggedValue> Definitions = new List<PlusprofilTaggedValue>
 		{
@@ -96,7 +97,8 @@ namespace PlusprofilAddin
 			SameAs,
 			Type,
 			LabelDa,
-			LabelEn
+			LabelEn,
+			URI
 		};
 	}
 }
