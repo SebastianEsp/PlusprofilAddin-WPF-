@@ -5,11 +5,20 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	d:DataContext="{d:DesignInstance}"
-	mc:Ignorable="d">
-		<ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+  xmlns:src="clr-namespace:PlusprofilAddin"
+  xmlns:views="clr-namespace:PlusprofilAddin.Views"
+  mc:Ignorable="d">
+	<UserControl.Resources>
+		<src:MultiplicityOptions x:Key="MultiplicityOptions" />
+	</UserControl.Resources>
+	<ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
   		<Grid Grid.IsSharedSizeScope="True">
   			<Grid.RowDefinitions>
   				<RowDefinition Height="Auto" />
+				  <RowDefinition Height="Auto" />
+				  <RowDefinition Height="Auto" />
+				  <RowDefinition Height="Auto" />
+				  <RowDefinition Height="Auto" />
   			</Grid.RowDefinitions>
   			<Grid Grid.Row="0">
   				<ListBox
@@ -67,8 +76,78 @@
   							Margin="0,0,12,0"
   							Text="{Binding AliasValue, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
   					</Grid>
+					  <Grid Margin="0,3,0,3">
+						  <Grid.ColumnDefinitions>
+							  <ColumnDefinition Width="Auto" SharedSizeGroup="FirstCol" />
+							  <ColumnDefinition />
+							  <ColumnDefinition SharedSizeGroup="ThirdCol" />
+						  </Grid.ColumnDefinitions>
+						  <TextBlock
+							  Grid.Column="0"
+							  Margin="12,0,6,0"
+							  Text="{DynamicResource ResourceKey=Multiplicity}" />
+						  <ComboBox
+							  Grid.Column="1"
+							  Margin="0,0,12,0"
+							  Text="{Binding MultiplicityValue, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" IsEditable="False" IsReadOnly="True" ItemsSource="{StaticResource MultiplicityOptions}"/>
+					  </Grid>
   				</ListBox>
   			</Grid>
-  	</Grid>
-  </ScrollViewer>
+        <Grid Grid.Row="1">
+				<TabControl BorderThickness="0,1,0,1">
+					<TabItem>
+						<TabItem.Header>
+							<TextBlock FontWeight="SemiBold" Text="{DynamicResource ResourceKey=DanishAnnotations}" />
+						</TabItem.Header>
+						<views:TaggedValueListGroupingControl Tag="{Binding Path=DanishTaggedValues}" />
+					</TabItem>
+					<TabItem>
+						<TabItem.Header>
+							<TextBlock FontWeight="SemiBold" Text="{DynamicResource ResourceKey=EnglishAnnotations}" />
+						</TabItem.Header>
+						<views:TaggedValueListGroupingControl Tag="{Binding Path=EnglishTaggedValues}" />
+					</TabItem>
+				</TabControl>
+			</Grid>
+			<Grid Grid.Row="2">
+				<Grid.RowDefinitions>
+					<RowDefinition />
+					<RowDefinition />
+				</Grid.RowDefinitions>
+				<TextBlock
+					Grid.Row="0"
+					Margin="12,6,6,0"
+					FontWeight="SemiBold"
+					Text="{DynamicResource ResourceKey=Provenance}" />
+				<views:TaggedValueListGroupingControl Grid.Row="1" Tag="{Binding Path=ProvenanceTaggedValues}" />
+			</Grid>
+			<Grid Grid.Row="3">
+				<Grid.RowDefinitions>
+					<RowDefinition />
+					<RowDefinition />
+				</Grid.RowDefinitions>
+				<!--  TODO: Update Text to reflect correct stereotype  (RdfsProperty / DatatypeProperty)  -->
+				<TextBlock
+					Grid.Row="0"
+					Margin="12,6,6,0"
+					FontWeight="SemiBold"
+					Text="{DynamicResource ResourceKey=RdfsPropertyCharacteristics}" />
+				<views:TaggedValueListGroupingControl Grid.Row="1" Tag="{Binding Path=StereotypeTaggedValues}" />
+			</Grid>
+			<WrapPanel Grid.Row="4" HorizontalAlignment="Right">
+				<Button
+					Margin="12,6,3,6"
+					Command="{Binding Path=CancelCommand}"
+					CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}">
+					<TextBlock Margin="6,2,6,2" Text="{DynamicResource ResourceKey=Cancel}" />
+				</Button>
+				<Button
+					Margin="3,6,12,6"
+					Command="{Binding Path=SaveCommand}"
+					CommandParameter="{Binding Path=DataContext, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}">
+					<TextBlock Margin="6,2,6,2" Text="{DynamicResource ResourceKey=SaveChanges}" />
+				</Button>
+			</WrapPanel>
+		</Grid>
+	</ScrollViewer>
 </UserControl>

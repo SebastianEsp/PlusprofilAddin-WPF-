@@ -6,7 +6,7 @@
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:views="clr-namespace:PlusprofilAddin.Views"
 	Title="Connector"
-	mc:Ignorable="d" d:DataContext="{d:DesignInstance }">
+	mc:Ignorable="d" d:DataContext="{d:DesignInstance}">
 	<Grid>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="*" />
@@ -15,6 +15,5 @@
 		</Grid.ColumnDefinitions>
 		<views:ConnectorUserControl Grid.Column="0" DataContext="{Binding SourceViewModel}" />
 		<views:ConnectorUserControl Grid.Column="1" DataContext="{Binding TargetViewModel}" />
-    <TextBox Grid.Column="2" Text="{Binding Text}"/>
 	</Grid>
 </Window>

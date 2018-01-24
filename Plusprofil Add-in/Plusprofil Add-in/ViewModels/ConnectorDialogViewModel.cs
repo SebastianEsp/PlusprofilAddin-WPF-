@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows;
 using EA;
+using PlusprofilAddin.Commands;
 
 namespace PlusprofilAddin.ViewModels
 {
@@ -16,6 +17,11 @@ namespace PlusprofilAddin.ViewModels
 
 		public ConnectorDialogViewModel()
 		{
+			SaveCommand = new SaveCommand();
+			CancelCommand = new CancelCommand();
+			AddCommand = new AddCommand();
+			RemoveCommand = new RemoveCommand();
+
 			SourceViewModel = new ConnectorUserControlViewModel();
 			TargetViewModel = new ConnectorUserControlViewModel();
 		}
