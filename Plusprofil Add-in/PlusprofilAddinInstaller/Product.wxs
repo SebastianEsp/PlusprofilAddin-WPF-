@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+  <Product Id="*" Name="PlusprofilAddinInstaller" Language="0" Version="0.9" Manufacturer="Digitaliseringsstyrelsen" UpgradeCode="d23f0b41-5868-439c-abb8-a2a411dce91f">
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <MediaTemplate />
+
+    <Feature Id="ProductFeature" Title="PlusprofilAddinInstaller" Level="1">
+      <ComponentGroupRef Id="ProductComponents" />
+    </Feature>
+  </Product>
+
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="LocalAppDataFolder">
+        <Directory Id="INSTALLFOLDER" Name="Sparx Enterprise Architect - Plusprofil Addin" />
+      </Directory>
+    </Directory>
+  </Fragment>
+
+  <Fragment>
+    <ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+      <Component Id="FileAndFolderRemover">
+        <RemoveFile Id="RemoveAllFiles" Name="*" On="uninstall" />
+        <RemoveFolder Id="RemoveFolder" On="uninstall" />
+        <RegistryValue Root="HKCU" Key="Software\Sparx Systems\EAAddins\PlusprofilAddin" Name="Path" Type="string" Value="[INSTALLDIR]"/>
+        <util:RemoveFolderEx On="uninstall" Property="INSTALLDIR" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix>
