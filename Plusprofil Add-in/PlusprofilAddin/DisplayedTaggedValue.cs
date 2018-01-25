@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 using EA;
 
 namespace PlusprofilAddin
@@ -36,7 +37,9 @@ namespace PlusprofilAddin
 			// Set PlusprofilTaggedValue field based on Name
 			PlusprofilTaggedValue = PlusprofilTaggedValueDefinitions.Definitions.Find(ptv => ptv.Name == Name);
 
-			// TODO: Create property "DisplayName" and set it to the StringsResource equivalent to Name
+			// TODO: Set "DisplayName" to the StringsResource equivalent to "Name"
+
+
 
 			// Set Value based on ObjectType and PlusprofilTaggedValue
 			switch (ObjectType)
@@ -60,6 +63,14 @@ namespace PlusprofilAddin
 				}
 			}
 		}
+
+		public dynamic TaggedValue { get; set; }
+		public string Name { get; set; }
+		public string DisplayedName { get; set; }
+		public string Value { get; set; }
+		public ObjectType ObjectType { get; set; }
+		public PlusprofilTaggedValue PlusprofilTaggedValue { get; set; }
+		public ResourceDictionary ResourceDictionary { get; set; }
 
 		public void UpdateTaggedValueValue()
 		{
@@ -108,12 +119,6 @@ namespace PlusprofilAddin
 				taggedValues.Refresh();
 			}
 		}
-
-		public dynamic TaggedValue { get; set; }
-		public string Name { get; set; }
-		public string Value { get; set; }
-		public ObjectType ObjectType { get; set; }
-		public PlusprofilTaggedValue PlusprofilTaggedValue { get; set; }
 
 		public override string ToString()
 		{
