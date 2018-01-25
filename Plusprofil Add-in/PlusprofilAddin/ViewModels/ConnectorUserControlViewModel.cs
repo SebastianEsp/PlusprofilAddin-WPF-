@@ -114,7 +114,7 @@ namespace PlusprofilAddin.ViewModels
 			}
 			// Retrieve URI tagged value and save it in URIDisplayedTaggedValue
 			var result = RetrieveTaggedValues(TaggedValuesList, "URI");
-			URIDisplayedTaggedValue = new DisplayedTaggedValue(result.First());
+			URIDisplayedTaggedValue = new DisplayedTaggedValue(result.First(), ResourceDictionary);
 			URIValue = URIDisplayedTaggedValue.Value;
 
 			//Add all Danish tagged values to list
@@ -122,7 +122,7 @@ namespace PlusprofilAddin.ViewModels
 			{
 				result = RetrieveTaggedValues(TaggedValuesList, ptv.Name);
 				var resultList = new ObservableCollection<DisplayedTaggedValue>();
-				foreach (RoleTag rt in result) resultList.Add(new DisplayedTaggedValue(rt));
+				foreach (RoleTag rt in result) resultList.Add(new DisplayedTaggedValue(rt, ResourceDictionary));
 				DanishTaggedValues.Add(resultList);
 			}
 
@@ -131,7 +131,7 @@ namespace PlusprofilAddin.ViewModels
 			{
 				result = RetrieveTaggedValues(TaggedValuesList, ptv.Name);
 				var resultList = new ObservableCollection<DisplayedTaggedValue>();
-				foreach (RoleTag rt in result) resultList.Add(new DisplayedTaggedValue(rt));
+				foreach (RoleTag rt in result) resultList.Add(new DisplayedTaggedValue(rt, ResourceDictionary));
 				EnglishTaggedValues.Add(resultList);
 			}
 
@@ -140,7 +140,7 @@ namespace PlusprofilAddin.ViewModels
 			{
 				result = RetrieveTaggedValues(TaggedValuesList, ptv.Name);
 				var resultList = new ObservableCollection<DisplayedTaggedValue>();
-				foreach (RoleTag rt in result) resultList.Add(new DisplayedTaggedValue(rt));
+				foreach (RoleTag rt in result) resultList.Add(new DisplayedTaggedValue(rt, ResourceDictionary));
 				ProvenanceTaggedValues.Add(resultList);
 			}
 
@@ -149,7 +149,7 @@ namespace PlusprofilAddin.ViewModels
 			{
 				result = RetrieveTaggedValues(TaggedValuesList, ptv.Name);
 				var resultList = new ObservableCollection<DisplayedTaggedValue>();
-				foreach (RoleTag rt in result) resultList.Add(new DisplayedTaggedValue(rt));
+				foreach (RoleTag rt in result) resultList.Add(new DisplayedTaggedValue(rt, ResourceDictionary));
 				StereotypeTaggedValues.Add(resultList);
 			}
 		}

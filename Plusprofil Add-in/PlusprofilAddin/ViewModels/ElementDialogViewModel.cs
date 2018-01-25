@@ -112,7 +112,7 @@ namespace PlusprofilAddin.ViewModels
 			
 			// Retrieve URI tagged value and save it in URIDisplayedTaggedValue
 			var result = RetrieveTaggedValues(TaggedValuesList, "URI");
-			URIDisplayedTaggedValue = new DisplayedTaggedValue(result.First());
+			URIDisplayedTaggedValue = new DisplayedTaggedValue(result.First(), ResourceDictionary);
 			URIValue = URIDisplayedTaggedValue.Value;
 
 			//Add all Danish tagged values to list
@@ -120,7 +120,10 @@ namespace PlusprofilAddin.ViewModels
 			{
 				result = RetrieveTaggedValues(TaggedValuesList, ptv.Name);
 				var resultList = new ObservableCollection<DisplayedTaggedValue>();
-				foreach (TaggedValue tv in result) resultList.Add(new DisplayedTaggedValue(tv));
+				foreach (TaggedValue tv in result)
+				{
+					resultList.Add(new DisplayedTaggedValue(tv, ResourceDictionary));
+				}
 				DanishTaggedValues.Add(resultList);
 			}
 
@@ -129,7 +132,7 @@ namespace PlusprofilAddin.ViewModels
 			{
 				result = RetrieveTaggedValues(TaggedValuesList, ptv.Name);
 				var resultList = new ObservableCollection<DisplayedTaggedValue>();
-				foreach (TaggedValue tv in result) resultList.Add(new DisplayedTaggedValue(tv));
+				foreach (TaggedValue tv in result) resultList.Add(new DisplayedTaggedValue(tv, ResourceDictionary));
 				EnglishTaggedValues.Add(resultList);
 			}
 
@@ -138,7 +141,7 @@ namespace PlusprofilAddin.ViewModels
 			{
 				result = RetrieveTaggedValues(TaggedValuesList, ptv.Name);
 				var resultList = new ObservableCollection<DisplayedTaggedValue>();
-				foreach (TaggedValue tv in result) resultList.Add(new DisplayedTaggedValue(tv));
+				foreach (TaggedValue tv in result) resultList.Add(new DisplayedTaggedValue(tv, ResourceDictionary));
 				ProvenanceTaggedValues.Add(resultList);
 			}
 
@@ -147,7 +150,7 @@ namespace PlusprofilAddin.ViewModels
 			{
 				result = RetrieveTaggedValues(TaggedValuesList, ptv.Name);
 				var resultList = new ObservableCollection<DisplayedTaggedValue>();
-				foreach (TaggedValue tv in result) resultList.Add(new DisplayedTaggedValue(tv));
+				foreach (TaggedValue tv in result) resultList.Add(new DisplayedTaggedValue(tv, ResourceDictionary));
 				StereotypeTaggedValues.Add(resultList);
 			}
 		}

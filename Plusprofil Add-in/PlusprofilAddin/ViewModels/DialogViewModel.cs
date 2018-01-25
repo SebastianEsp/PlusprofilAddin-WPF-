@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
 using EA;
 using PlusprofilAddin.Commands;
 using PDefinitions = PlusprofilAddin.PlusprofilTaggedValueDefinitions;
@@ -14,6 +15,8 @@ namespace PlusprofilAddin.ViewModels
 		public AddCommand AddCommand { get; set; }
 		public RemoveCommand RemoveCommand { get; set; }
 		public Repository Repository { get; set; }
+		public ResourceDictionary ResourceDictionary { get; set; }
+
 		public abstract void Initialize();
 
 		protected List<dynamic> RetrieveTaggedValues(List<dynamic> taggedValueList, string taggedValueName)

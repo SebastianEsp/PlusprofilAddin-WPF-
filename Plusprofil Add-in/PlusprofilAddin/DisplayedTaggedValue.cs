@@ -11,10 +11,12 @@ namespace PlusprofilAddin
 			Name = name;
 			Value = "";
 			PlusprofilTaggedValue = PlusprofilTaggedValueDefinitions.Definitions.Find(ptv => ptv.Name == Name);
+			DisplayedName = "";
 		}
 
-		public DisplayedTaggedValue(dynamic taggedValue)
+		public DisplayedTaggedValue(dynamic taggedValue, ResourceDictionary resourceDictionary)
 		{
+			ResourceDictionary = resourceDictionary;
 			TaggedValue = taggedValue;
 			ObjectType = (ObjectType) TaggedValue.ObjectType;
 
@@ -37,8 +39,8 @@ namespace PlusprofilAddin
 			// Set PlusprofilTaggedValue field based on Name
 			PlusprofilTaggedValue = PlusprofilTaggedValueDefinitions.Definitions.Find(ptv => ptv.Name == Name);
 
-			// TODO: Set "DisplayName" to the StringsResource equivalent to "Name"
-
+			// Set DisplayedNamed by retrieving localized string from ResourceDictionary using PlusprofilTaggedValue.ResourceKey
+			DisplayedName = (string) ResourceDictionary[PlusprofilTaggedValue.ResourceKey];
 
 
 			// Set Value based on ObjectType and PlusprofilTaggedValue
@@ -122,7 +124,7 @@ namespace PlusprofilAddin
 
 		public override string ToString()
 		{
-			return $"DisplayTaggedValue with name \"{Name}\"\nValue: {Value}\nObjectType: {ObjectType}";
+			return $"DisplayTaggedValue with name \"{Name}\"\nValue: {Value}\nObjectType: {ObjectType}\nPlusprofilTaggedValue: {PlusprofilTaggedValue.Name}\nResourceDictionary: {ResourceDictionary}";
 		}
 	}
 }

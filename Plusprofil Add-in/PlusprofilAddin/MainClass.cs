@@ -77,6 +77,7 @@ namespace PlusprofilAddin
 					break;
 			}
 			_window.Resources.MergedDictionaries.Add(dict);
+			_viewModel.ResourceDictionary = dict;
 			_viewModel.Initialize();
 			_window.DataContext = _viewModel;
 			_window.ShowDialog();

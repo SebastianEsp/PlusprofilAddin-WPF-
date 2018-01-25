@@ -27,7 +27,9 @@ namespace PlusprofilAddin.ViewModels
 
 			SourceViewModel = new ConnectorUserControlViewModel {ConnectorEnd = SourceEnd, ElementNameValue = Repository.GetElementByID(Connector.SupplierID).Name};
 			TargetViewModel = new ConnectorUserControlViewModel {ConnectorEnd = TargetEnd, ElementNameValue = Repository.GetElementByID(Connector.ClientID).Name};
-			
+			SourceViewModel.ResourceDictionary = ResourceDictionary;
+			TargetViewModel.ResourceDictionary = ResourceDictionary;
+
 			SourceViewModel.Initialize();
 			TargetViewModel.Initialize();
 		}
