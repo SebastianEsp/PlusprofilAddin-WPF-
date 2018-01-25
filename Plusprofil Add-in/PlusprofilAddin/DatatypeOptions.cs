@@ -2,6 +2,9 @@
 
 namespace PlusprofilAddin
 {
+	/// <summary>
+	/// Class used as <c>ItemsSource</c> for <c>ComboBox</c> used for value <c>Datatype</c> when editing attributes
+	/// </summary>
 	internal class DatatypeOptions : ObservableCollection<string>
 	{
 		public DatatypeOptions()

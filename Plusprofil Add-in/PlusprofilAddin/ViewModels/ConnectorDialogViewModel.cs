@@ -1,4 +1,5 @@
-﻿using EA;
+﻿using System.Collections.Generic;
+using EA;
 using PlusprofilAddin.Commands;
 
 namespace PlusprofilAddin.ViewModels
@@ -12,6 +13,11 @@ namespace PlusprofilAddin.ViewModels
 		public Connector Connector { get; set; }
 		public ConnectorEnd SourceEnd { get; set; }
 		public ConnectorEnd TargetEnd { get; set; }
+
+		public ConnectorDialogViewModel()
+		{
+			DeleteTaggedValues = new List<ViewmodelTaggedValue>();
+		}
 
 		public override void Initialize()
 		{

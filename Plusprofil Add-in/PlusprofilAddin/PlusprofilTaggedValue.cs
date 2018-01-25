@@ -1,6 +1,4 @@
-﻿using System.Windows;
-
-namespace PlusprofilAddin
+﻿namespace PlusprofilAddin
 {
 	public class PlusprofilTaggedValue
 	{

@@ -12,6 +12,9 @@ namespace PlusprofilAddin.Commands
 	{
 		
 #pragma warning disable 0067
+		/// <summary>
+		/// Required interface member of ICommand
+		/// </summary>
 		public event EventHandler CanExecuteChanged;
 #pragma warning restore 0067
 
@@ -27,12 +30,12 @@ namespace PlusprofilAddin.Commands
 		// Expected parameter: DialogViewModel
 		public void Execute(object parameter)
 		{
-			List<ObservableCollection<ObservableCollection<DisplayedTaggedValue>>> toUpdateCollectionsList;
+			List<ObservableCollection<ObservableCollection<ViewmodelTaggedValue>>> toUpdateCollectionsList;
 			switch (parameter)
 			{
 				case ElementDialogViewModel viewModel:
 					Element element = viewModel.Element;
-					toUpdateCollectionsList = new List<ObservableCollection<ObservableCollection<DisplayedTaggedValue>>>
+					toUpdateCollectionsList = new List<ObservableCollection<ObservableCollection<ViewmodelTaggedValue>>>
 					{
 						viewModel.DanishTaggedValues,
 						viewModel.EnglishTaggedValues,
@@ -40,44 +43,27 @@ namespace PlusprofilAddin.Commands
 						viewModel.StereotypeTaggedValues
 					};
 
-					foreach (var toUpdateCollection in toUpdateCollectionsList)
-					foreach (var collection in toUpdateCollection)
-					foreach (DisplayedTaggedValue dtv in collection)
-					{
-						if (dtv.TaggedValue == null) dtv.AddTaggedValue(element.TaggedValues);
-						dtv.UpdateTaggedValueValue();
-					}
-					foreach (var dtv in viewModel.DeleteTaggedValues)
-					{
-						dtv.DeleteTaggedValue(element.TaggedValues);
-					}
+					UpdateTaggedValues(element.TaggedValues, toUpdateCollectionsList);
+					DeleteTaggedValues(element.TaggedValues, viewModel.DeleteTaggedValues);
 					
 					// Special cases
 					element.Name = viewModel.UMLNameValue;
 					element.Alias = viewModel.AliasValue;
-					viewModel.URIDisplayedTaggedValue.UpdateTaggedValueValue();
+					viewModel.URIViewmodelTaggedValue.UpdateTaggedValueValue();
 					element.Update();
 					break;
 				
 				case PackageDialogViewModel viewModel:
 					Element packageElement = viewModel.PackageElement;
-					toUpdateCollectionsList = new List<ObservableCollection<ObservableCollection<DisplayedTaggedValue>>>
+					toUpdateCollectionsList = new List<ObservableCollection<ObservableCollection<ViewmodelTaggedValue>>>
 					{
 						viewModel.DanishTaggedValues,
 						viewModel.EnglishTaggedValues,
 						viewModel.ModelMetadataTaggedValues
 					};
-					foreach (var toUpdateCollection in toUpdateCollectionsList)
-					foreach (var collection in toUpdateCollection)
-					foreach (DisplayedTaggedValue dtv in collection)
-					{
-						if (dtv.TaggedValue == null) dtv.AddTaggedValue(packageElement.TaggedValues);
-						dtv.UpdateTaggedValueValue();
-					}
-					foreach (var dtv in viewModel.DeleteTaggedValues)
-					{
-						dtv.DeleteTaggedValue(packageElement.TaggedValues);
-					}
+					
+					UpdateTaggedValues(packageElement.TaggedValues, toUpdateCollectionsList);
+					DeleteTaggedValues(packageElement.TaggedValues, viewModel.DeleteTaggedValues);
 
 					// Special cases
 					packageElement.Name = viewModel.UMLNameValue;
@@ -87,30 +73,22 @@ namespace PlusprofilAddin.Commands
 				
 				case AttributeDialogViewModel viewModel:
 					Attribute attribute = viewModel.Attribute;
-					toUpdateCollectionsList = new List<ObservableCollection<ObservableCollection<DisplayedTaggedValue>>>
+					toUpdateCollectionsList = new List<ObservableCollection<ObservableCollection<ViewmodelTaggedValue>>>
 					{
 						viewModel.DanishTaggedValues,
 						viewModel.EnglishTaggedValues,
 						viewModel.ProvenanceTaggedValues,
 						viewModel.StereotypeTaggedValues
 					};
-					foreach (var toUpdateCollection in toUpdateCollectionsList)
-					foreach (var collection in toUpdateCollection)
-					foreach (DisplayedTaggedValue dtv in collection)
-					{
-						if (dtv.TaggedValue == null) dtv.AddTaggedValue(attribute.TaggedValues);
-						dtv.UpdateTaggedValueValue();
-					}
-					foreach (var dtv in viewModel.DeleteTaggedValues)
-					{
-						dtv.DeleteTaggedValue(attribute.TaggedValues);
-					}
+					
+					UpdateTaggedValues(attribute.TaggedValues, toUpdateCollectionsList);
+					DeleteTaggedValues(attribute.TaggedValues, viewModel.DeleteTaggedValues);
 
 					// Special cases
 					attribute.Name = viewModel.UMLNameValue;
 					attribute.Alias = viewModel.AliasValue;
 					attribute.Type = viewModel.DatatypeValue;
-					viewModel.URIDisplayedTaggedValue.UpdateTaggedValueValue();
+					viewModel.URIViewmodelTaggedValue.UpdateTaggedValueValue();
 					attribute.Update();
 					break;
 				
@@ -118,7 +96,7 @@ namespace PlusprofilAddin.Commands
 					ConnectorEnd sourceEnd = viewModel.SourceEnd;
 					ConnectorEnd targetEnd = viewModel.TargetEnd;
 
-					toUpdateCollectionsList = new List<ObservableCollection<ObservableCollection<DisplayedTaggedValue>>>
+					toUpdateCollectionsList = new List<ObservableCollection<ObservableCollection<ViewmodelTaggedValue>>>
 					{
 						viewModel.SourceViewModel.DanishTaggedValues,
 						viewModel.SourceViewModel.EnglishTaggedValues,
@@ -126,41 +104,22 @@ namespace PlusprofilAddin.Commands
 						viewModel.SourceViewModel.StereotypeTaggedValues,
 
 					};
-					foreach (var toUpdateCollection in toUpdateCollectionsList)
-					foreach (var collection in toUpdateCollection)
-					foreach (DisplayedTaggedValue dtv in collection)
-					{
-						if (dtv.TaggedValue == null) dtv.AddTaggedValue(sourceEnd.TaggedValues);
-						dtv.UpdateTaggedValueValue();
-					}
-					foreach (var dtv in viewModel.SourceViewModel.DeleteTaggedValues)
-					{
-						dtv.DeleteTaggedValue(sourceEnd.TaggedValues);
-					}
+
+					UpdateTaggedValues(sourceEnd.TaggedValues, toUpdateCollectionsList);
+					DeleteTaggedValues(sourceEnd.TaggedValues, viewModel.DeleteTaggedValues);
 
 					// Repeat for TargetConnectorEnd
 
-					toUpdateCollectionsList = new List<ObservableCollection<ObservableCollection<DisplayedTaggedValue>>>
+					toUpdateCollectionsList = new List<ObservableCollection<ObservableCollection<ViewmodelTaggedValue>>>
 					{
 						viewModel.TargetViewModel.DanishTaggedValues,
 						viewModel.TargetViewModel.EnglishTaggedValues,
 						viewModel.TargetViewModel.ProvenanceTaggedValues,
 						viewModel.TargetViewModel.StereotypeTaggedValues,
 					};
-					foreach (var toUpdateCollection in toUpdateCollectionsList)
-					foreach (var collection in toUpdateCollection)
-					foreach (DisplayedTaggedValue dtv in collection)
-					{
-						if (dtv.TaggedValue == null) dtv.AddTaggedValue(targetEnd.TaggedValues);
-						dtv.UpdateTaggedValueValue();
-					}
-					foreach (var dtv in viewModel.TargetViewModel.DeleteTaggedValues)
-					{
-						dtv.DeleteTaggedValue(targetEnd.TaggedValues);
-					}
 
-
-					// TODO: Implement saving of ConnectorEnd tagged values
+					UpdateTaggedValues(targetEnd.TaggedValues, toUpdateCollectionsList);
+					DeleteTaggedValues(targetEnd.TaggedValues, viewModel.DeleteTaggedValues);
 
 					// Special cases
 					sourceEnd.Role = viewModel.SourceViewModel.UMLNameValue;
@@ -169,12 +128,28 @@ namespace PlusprofilAddin.Commands
 					targetEnd.Alias = viewModel.TargetViewModel.AliasValue;
 					sourceEnd.Cardinality = viewModel.SourceViewModel.MultiplicityValue;
 					targetEnd.Cardinality = viewModel.TargetViewModel.MultiplicityValue;
-					viewModel.SourceViewModel.URIDisplayedTaggedValue.UpdateTaggedValueValue();
-					viewModel.TargetViewModel.URIDisplayedTaggedValue.UpdateTaggedValueValue();
+					viewModel.SourceViewModel.URIViewmodelTaggedValue.UpdateTaggedValueValue();
+					viewModel.TargetViewModel.URIViewmodelTaggedValue.UpdateTaggedValueValue();
 					sourceEnd.Update();
 					targetEnd.Update();
 					break;
 			}
+		}
+
+		private void UpdateTaggedValues(Collection taggedValues, List<ObservableCollection<ObservableCollection<ViewmodelTaggedValue>>> list)
+		{
+			foreach (var toUpdateCollection in list)
+			foreach (var collection in toUpdateCollection)
+			foreach (ViewmodelTaggedValue dtv in collection)
+			{
+				if (dtv.TaggedValue == null) dtv.AddTaggedValue(taggedValues);
+				dtv.UpdateTaggedValueValue();
+			}
+		}
+
+		private void DeleteTaggedValues(Collection taggedValues, List<ViewmodelTaggedValue> list)
+		{
+			foreach(var dtv in list) dtv.DeleteTaggedValue(taggedValues);
 		}
 	}
 }

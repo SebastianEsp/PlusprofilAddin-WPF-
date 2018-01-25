@@ -36,7 +36,7 @@
 		</ListBox.InputBindings>
 		<ListBox.ItemTemplate>
 			<!--  Inner content  -->
-			<DataTemplate DataType="plusprofilAddin:DisplayedTaggedValue">
+			<DataTemplate DataType="plusprofilAddin:ViewmodelTaggedValue">
 				<Grid
 					Name="TaggedValueGrid"
 					Margin="0,3,0,3"

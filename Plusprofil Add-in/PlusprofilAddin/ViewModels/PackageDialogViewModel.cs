@@ -40,19 +40,16 @@ namespace PlusprofilAddin.ViewModels
 		public string UMLNameValue { get; set; }
 		public string AliasValue { get; set; }
 
-		public ObservableCollection<ObservableCollection<DisplayedTaggedValue>> DanishTaggedValues { get; set; }
-		public ObservableCollection<ObservableCollection<DisplayedTaggedValue>> EnglishTaggedValues { get; set; }
-		public ObservableCollection<ObservableCollection<DisplayedTaggedValue>> ModelMetadataTaggedValues { get; set; }
+		public ObservableCollection<ObservableCollection<ViewmodelTaggedValue>> ModelMetadataTaggedValues { get; set; }
 		public List<dynamic> TaggedValuesList;
-		public List<DisplayedTaggedValue> DeleteTaggedValues { get; set; }
 
 		public PackageDialogViewModel()
 		{
-			DanishTaggedValues = new ObservableCollection<ObservableCollection<DisplayedTaggedValue>>();
-			EnglishTaggedValues = new ObservableCollection<ObservableCollection<DisplayedTaggedValue>>();
-			ModelMetadataTaggedValues = new ObservableCollection<ObservableCollection<DisplayedTaggedValue>>();
+			DanishTaggedValues = new ObservableCollection<ObservableCollection<ViewmodelTaggedValue>>();
+			EnglishTaggedValues = new ObservableCollection<ObservableCollection<ViewmodelTaggedValue>>();
+			ModelMetadataTaggedValues = new ObservableCollection<ObservableCollection<ViewmodelTaggedValue>>();
 			TaggedValuesList = new List<dynamic>();
-			DeleteTaggedValues = new List<DisplayedTaggedValue>();
+			DeleteTaggedValues = new List<ViewmodelTaggedValue>();
 			
 			UMLNameValue = "";
 			AliasValue = "";
@@ -100,8 +97,8 @@ namespace PlusprofilAddin.ViewModels
 			foreach (PlusprofilTaggedValue ptv in _toAddDanishTaggedValues)
 			{
 				result = RetrieveTaggedValues(TaggedValuesList, ptv.Name);
-				var resultList = new ObservableCollection<DisplayedTaggedValue>();
-				foreach (TaggedValue tv in result) resultList.Add(new DisplayedTaggedValue(tv, ResourceDictionary));
+				var resultList = new ObservableCollection<ViewmodelTaggedValue>();
+				foreach (TaggedValue tv in result) resultList.Add(new ViewmodelTaggedValue(tv, ResourceDictionary));
 				DanishTaggedValues.Add(resultList);
 			}
 
@@ -109,8 +106,8 @@ namespace PlusprofilAddin.ViewModels
 			foreach (PlusprofilTaggedValue ptv in _toAddEnglishTaggedValues)
 			{
 				result = RetrieveTaggedValues(TaggedValuesList, ptv.Name);
-				var resultList = new ObservableCollection<DisplayedTaggedValue>();
-				foreach (TaggedValue tv in result) resultList.Add(new DisplayedTaggedValue(tv, ResourceDictionary));
+				var resultList = new ObservableCollection<ViewmodelTaggedValue>();
+				foreach (TaggedValue tv in result) resultList.Add(new ViewmodelTaggedValue(tv, ResourceDictionary));
 				EnglishTaggedValues.Add(resultList);
 			}
 
@@ -118,8 +115,8 @@ namespace PlusprofilAddin.ViewModels
 			foreach (PlusprofilTaggedValue ptv in _toAddModelMetadataTaggedValues)
 			{
 				result = RetrieveTaggedValues(TaggedValuesList, ptv.Name);
-				var resultList = new ObservableCollection<DisplayedTaggedValue>();
-				foreach (TaggedValue tv in result) resultList.Add(new DisplayedTaggedValue(tv, ResourceDictionary));
+				var resultList = new ObservableCollection<ViewmodelTaggedValue>();
+				foreach (TaggedValue tv in result) resultList.Add(new ViewmodelTaggedValue(tv, ResourceDictionary));
 				ModelMetadataTaggedValues.Add(resultList);
 			}
 		}

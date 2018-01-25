@@ -6,6 +6,9 @@ using PlusprofilAddin.Views;
 
 namespace PlusprofilAddin
 {
+	/// <summary>
+	/// 
+	/// </summary>
 	public class MainClass
 	{
 		public void EA_Connect(Repository repository)

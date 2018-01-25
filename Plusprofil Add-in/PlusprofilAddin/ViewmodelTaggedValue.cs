@@ -4,9 +4,12 @@ using EA;
 
 namespace PlusprofilAddin
 {
-	public class DisplayedTaggedValue
+	/// <summary>
+	/// 
+	/// </summary>
+	public class ViewmodelTaggedValue
 	{
-		public DisplayedTaggedValue(string name)
+		public ViewmodelTaggedValue(string name)
 		{
 			Name = name;
 			Value = "";
@@ -14,7 +17,7 @@ namespace PlusprofilAddin
 			DisplayedName = "";
 		}
 
-		public DisplayedTaggedValue(dynamic taggedValue, ResourceDictionary resourceDictionary)
+		public ViewmodelTaggedValue(dynamic taggedValue, ResourceDictionary resourceDictionary)
 		{
 			ResourceDictionary = resourceDictionary;
 			TaggedValue = taggedValue;
@@ -124,7 +127,12 @@ namespace PlusprofilAddin
 
 		public override string ToString()
 		{
-			return $"DisplayTaggedValue with name \"{Name}\"\nValue: {Value}\nObjectType: {ObjectType}\nPlusprofilTaggedValue: {PlusprofilTaggedValue.Name}\nResourceDictionary: {ResourceDictionary}";
+			return $"Type: {GetType()}\n" +
+			       $"Name: {Name}\n" +
+			       $"Value: {Value}\n" +
+			       $"ObjectType: {ObjectType}\n" +
+			       $"PlusprofilTaggedValue: {PlusprofilTaggedValue.Name}\n" +
+			       $"ResourceDictionary: {ResourceDictionary}";
 		}
 	}
 }

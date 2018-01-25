@@ -56,7 +56,7 @@
     <Compile Include="Commands\AddCommand.cs" />
     <Compile Include="Commands\CancelCommand.cs" />
     <Compile Include="Commands\SaveCommand.cs" />
-    <Compile Include="DisplayedTaggedValue.cs" />
+    <Compile Include="ViewmodelTaggedValue.cs" />
     <Compile Include="DatatypeOptions.cs" />
     <Compile Include="MultiplicityOptions.cs" />
     <Compile Include="PlusprofilTaggedValueDefinitions.cs" />

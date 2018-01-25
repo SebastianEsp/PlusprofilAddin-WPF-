@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using EA;
@@ -16,6 +17,10 @@ namespace PlusprofilAddin.ViewModels
 		public RemoveCommand RemoveCommand { get; set; }
 		public Repository Repository { get; set; }
 		public ResourceDictionary ResourceDictionary { get; set; }
+
+		public ObservableCollection<ObservableCollection<ViewmodelTaggedValue>> DanishTaggedValues { get; set; }
+		public ObservableCollection<ObservableCollection<ViewmodelTaggedValue>> EnglishTaggedValues { get; set; }
+		public List<ViewmodelTaggedValue> DeleteTaggedValues { get; set; }
 
 		public abstract void Initialize();
 
@@ -40,6 +45,10 @@ namespace PlusprofilAddin.ViewModels
 			}
 			if (result.Count == 0) throw new ArgumentException($"No tagged value with name \"{taggedValueName}\" was found");
 			return result;
+		}
+		public override string ToString()
+		{
+			return $"Type: {GetType()}";
 		}
 	}
 }

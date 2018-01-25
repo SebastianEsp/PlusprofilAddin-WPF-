@@ -3,18 +3,24 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
+using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
 using PlusprofilAddin.ViewModels;
 
 namespace PlusprofilAddin.Commands
 {
+	/// <summary>
+	/// Command used to remove an <c>ViewmodelTaggedValue</c> from the <c>ItemsSource</c> of a View element and add it to the 
+	/// </summary>
 	public class RemoveCommand : ICommand
 	{
 
 #pragma warning disable 0067
+		/// <inheritdoc />
 		public event EventHandler CanExecuteChanged;
 #pragma warning restore 0067
+
 
 		public bool CanExecute(object parameter)
 		{
@@ -27,27 +33,22 @@ namespace PlusprofilAddin.Commands
 		// values[2]: DialogViewModel
 		public void Execute(object parameter)
 		{
+			MessageBox.Show("In RemoveCommand.Execute()");
 			if (parameter is object[] values && values.Length == 3)
 			{
-				ObservableCollection<DisplayedTaggedValue> list = (ObservableCollection<DisplayedTaggedValue>) values[0];
+				ObservableCollection<ViewmodelTaggedValue> list = (ObservableCollection<ViewmodelTaggedValue>) values[0];
 				int index = (int) values[1];
-				List<DisplayedTaggedValue> deleteTaggedValues = null;
+				List<ViewmodelTaggedValue> deleteTaggedValues = null;
 				switch (values[2])
 				{
-					case ElementDialogViewModel elementViewModel:
-						deleteTaggedValues = elementViewModel.DeleteTaggedValues;
-						break;
-					case PackageDialogViewModel packageViewModel:
-						deleteTaggedValues = packageViewModel.DeleteTaggedValues;
-						break;
-					case AttributeDialogViewModel attributeViewModel:
-						deleteTaggedValues = attributeViewModel.DeleteTaggedValues;
+					case DialogViewModel viewModel:
+						deleteTaggedValues = viewModel.DeleteTaggedValues;
 						break;
 				}
 
 				if (index != -1 && index != 0)
 				{
-					DisplayedTaggedValue dtv = list.ElementAt(index);
+					ViewmodelTaggedValue dtv = list.ElementAt(index);
 					deleteTaggedValues?.Add(dtv);
 					list.RemoveAt(index);
 				}
