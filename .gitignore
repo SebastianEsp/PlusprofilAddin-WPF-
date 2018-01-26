@@ -288,4 +288,4 @@ __pycache__/
 *.xsd.cs
 
 #Include installer file
-!PlusprofilAddinInstaller.msi
+![Bb]in/[Dd]ebug/PlusprofilAddinInstaller.msi
