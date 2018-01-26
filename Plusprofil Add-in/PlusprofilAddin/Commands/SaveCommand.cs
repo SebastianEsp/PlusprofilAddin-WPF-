@@ -37,10 +37,10 @@ namespace PlusprofilAddin.Commands
 					Element element = viewModel.Element;
 					toUpdateCollectionsList = new List<ObservableCollection<ObservableCollection<ViewmodelTaggedValue>>>
 					{
-						viewModel.DanishTaggedValues,
-						viewModel.EnglishTaggedValues,
-						viewModel.ProvenanceTaggedValues,
-						viewModel.StereotypeTaggedValues
+						viewModel.DanishViewmodelTaggedValues,
+						viewModel.EnglishViewmodelTaggedValues,
+						viewModel.ProvenanceViewmodelTaggedValues,
+						viewModel.StereotypeViewmodelTaggedValues
 					};
 
 					UpdateTaggedValues(element.TaggedValues, toUpdateCollectionsList);
@@ -57,9 +57,9 @@ namespace PlusprofilAddin.Commands
 					Element packageElement = viewModel.PackageElement;
 					toUpdateCollectionsList = new List<ObservableCollection<ObservableCollection<ViewmodelTaggedValue>>>
 					{
-						viewModel.DanishTaggedValues,
-						viewModel.EnglishTaggedValues,
-						viewModel.ModelMetadataTaggedValues
+						viewModel.DanishViewmodelTaggedValues,
+						viewModel.EnglishViewmodelTaggedValues,
+						viewModel.ModelMetadataViewmodelTaggedValues
 					};
 					
 					UpdateTaggedValues(packageElement.TaggedValues, toUpdateCollectionsList);
@@ -75,10 +75,10 @@ namespace PlusprofilAddin.Commands
 					Attribute attribute = viewModel.Attribute;
 					toUpdateCollectionsList = new List<ObservableCollection<ObservableCollection<ViewmodelTaggedValue>>>
 					{
-						viewModel.DanishTaggedValues,
-						viewModel.EnglishTaggedValues,
-						viewModel.ProvenanceTaggedValues,
-						viewModel.StereotypeTaggedValues
+						viewModel.DanishViewmodelTaggedValues,
+						viewModel.EnglishViewmodelTaggedValues,
+						viewModel.ProvenanceViewmodelTaggedValues,
+						viewModel.StereotypeViewmodelTaggedValues
 					};
 					
 					UpdateTaggedValues(attribute.TaggedValues, toUpdateCollectionsList);
@@ -98,10 +98,10 @@ namespace PlusprofilAddin.Commands
 
 					toUpdateCollectionsList = new List<ObservableCollection<ObservableCollection<ViewmodelTaggedValue>>>
 					{
-						viewModel.SourceViewModel.DanishTaggedValues,
-						viewModel.SourceViewModel.EnglishTaggedValues,
-						viewModel.SourceViewModel.ProvenanceTaggedValues,
-						viewModel.SourceViewModel.StereotypeTaggedValues,
+						viewModel.SourceViewModel.DanishViewmodelTaggedValues,
+						viewModel.SourceViewModel.EnglishViewmodelTaggedValues,
+						viewModel.SourceViewModel.ProvenanceViewmodelTaggedValues,
+						viewModel.SourceViewModel.StereotypeViewmodelTaggedValues,
 
 					};
 
@@ -112,10 +112,10 @@ namespace PlusprofilAddin.Commands
 
 					toUpdateCollectionsList = new List<ObservableCollection<ObservableCollection<ViewmodelTaggedValue>>>
 					{
-						viewModel.TargetViewModel.DanishTaggedValues,
-						viewModel.TargetViewModel.EnglishTaggedValues,
-						viewModel.TargetViewModel.ProvenanceTaggedValues,
-						viewModel.TargetViewModel.StereotypeTaggedValues,
+						viewModel.TargetViewModel.DanishViewmodelTaggedValues,
+						viewModel.TargetViewModel.EnglishViewmodelTaggedValues,
+						viewModel.TargetViewModel.ProvenanceViewmodelTaggedValues,
+						viewModel.TargetViewModel.StereotypeViewmodelTaggedValues,
 					};
 
 					UpdateTaggedValues(targetEnd.TaggedValues, toUpdateCollectionsList);

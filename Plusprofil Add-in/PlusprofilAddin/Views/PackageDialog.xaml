@@ -65,13 +65,13 @@
 						<TabItem.Header>
 							<TextBlock FontWeight="SemiBold" Text="{DynamicResource ResourceKey=DanishAnnotations}" />
 						</TabItem.Header>
-						<views:TaggedValueListGroupingControl Tag="{Binding Path=DanishTaggedValues}" />
+						<views:TaggedValueListGroupingControl Tag="{Binding Path=DanishViewmodelTaggedValues}" />
 					</TabItem>
 					<TabItem>
 						<TabItem.Header>
 							<TextBlock FontWeight="SemiBold" Text="{DynamicResource ResourceKey=EnglishAnnotations}" />
 						</TabItem.Header>
-						<views:TaggedValueListGroupingControl Tag="{Binding Path=EnglishTaggedValues}" />
+						<views:TaggedValueListGroupingControl Tag="{Binding Path=EnglishViewmodelTaggedValues}" />
 					</TabItem>
 				</TabControl>
 			</Grid>
@@ -85,7 +85,7 @@
 					Margin="12,6,6,0"
 					FontWeight="SemiBold"
 					Text="{DynamicResource ResourceKey=ModelMetadata}" />
-				<views:TaggedValueListGroupingControl Grid.Row="1" Tag="{Binding Path=ModelMetadataTaggedValues}" />
+				<views:TaggedValueListGroupingControl Grid.Row="1" Tag="{Binding Path=ModelMetadataViewmodelTaggedValues}" />
 			</Grid>
 			<WrapPanel Grid.Row="4" HorizontalAlignment="Right">
 				<Button

@@ -80,13 +80,13 @@
 						<TabItem.Header>
 							<TextBlock FontWeight="SemiBold" Text="{DynamicResource ResourceKey=DanishAnnotations}" />
 						</TabItem.Header>
-						<views:TaggedValueListGroupingControl Tag="{Binding Path=DanishTaggedValues}" />
+						<views:TaggedValueListGroupingControl Tag="{Binding Path=DanishViewmodelTaggedValues}" />
 					</TabItem>
 					<TabItem>
 						<TabItem.Header>
 							<TextBlock FontWeight="SemiBold" Text="{DynamicResource ResourceKey=EnglishAnnotations}" />
 						</TabItem.Header>
-						<views:TaggedValueListGroupingControl Tag="{Binding Path=EnglishTaggedValues}" />
+						<views:TaggedValueListGroupingControl Tag="{Binding Path=EnglishViewmodelTaggedValues}" />
 					</TabItem>
 				</TabControl>
 			</Grid>
@@ -100,7 +100,7 @@
 					Margin="12,6,6,0"
 					FontWeight="SemiBold"
 					Text="{DynamicResource ResourceKey=Provenance}" />
-				<views:TaggedValueListGroupingControl Grid.Row="1" Tag="{Binding Path=ProvenanceTaggedValues}" />
+				<views:TaggedValueListGroupingControl Grid.Row="1" Tag="{Binding Path=ProvenanceViewmodelTaggedValues}" />
 			</Grid>
 			<Grid Grid.Row="3">
 				<Grid.RowDefinitions>
@@ -113,7 +113,7 @@
 					Margin="12,6,6,0"
 					FontWeight="SemiBold"
 					Text="{DynamicResource ResourceKey=RdfsClassCharacteristics}" />
-				<views:TaggedValueListGroupingControl Grid.Row="1" Tag="{Binding Path=StereotypeTaggedValues}" />
+				<views:TaggedValueListGroupingControl Grid.Row="1" Tag="{Binding Path=StereotypeViewmodelTaggedValues}" />
 			</Grid>
 			<WrapPanel Grid.Row="4" HorizontalAlignment="Right">
 				<Button

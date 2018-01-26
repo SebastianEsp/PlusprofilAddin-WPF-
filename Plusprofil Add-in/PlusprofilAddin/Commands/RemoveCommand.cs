@@ -33,7 +33,6 @@ namespace PlusprofilAddin.Commands
 		// values[2]: DialogViewModel
 		public void Execute(object parameter)
 		{
-			MessageBox.Show("In RemoveCommand.Execute()");
 			if (parameter is object[] values && values.Length == 3)
 			{
 				ObservableCollection<ViewmodelTaggedValue> list = (ObservableCollection<ViewmodelTaggedValue>) values[0];

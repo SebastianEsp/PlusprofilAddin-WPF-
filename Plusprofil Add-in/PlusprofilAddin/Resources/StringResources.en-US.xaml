@@ -24,14 +24,23 @@
 	<system:String x:Key="DiscardAllChanges">Discard all changes?</system:String>
 
 
-	<!--  "Danish / English Annotations" labels  -->
-	<system:String x:Key="PrefLabel">prefLabel</system:String>
-	<system:String x:Key="AltLabel">altLabel</system:String>
-	<system:String x:Key="DeprecatedLabel">deprecatedLabel</system:String>
-	<system:String x:Key="Definition">definition</system:String>
-	<system:String x:Key="Example">example</system:String>
-	<system:String x:Key="Comment">comment</system:String>
-	<system:String x:Key="ApplicationNote">applicationNote</system:String>
+	<!--  Danish Annotations labels  -->
+	<system:String x:Key="PrefLabelDa">prefLabel</system:String>
+	<system:String x:Key="AltLabelDa">altLabel</system:String>
+	<system:String x:Key="DeprecatedLabelDa">deprecatedLabel</system:String>
+	<system:String x:Key="DefinitionDa">definition</system:String>
+	<system:String x:Key="ExampleDa">example</system:String>
+	<system:String x:Key="CommentDa">comment</system:String>
+	<system:String x:Key="ApplicationNoteDa">applicationNote</system:String>
+    
+	<!--  English Annotations labels  -->
+	<system:String x:Key="PrefLabelEn">prefLabel</system:String>
+	<system:String x:Key="AltLabelEn">altLabel</system:String>
+	<system:String x:Key="DeprecatedLabelEn">deprecatedLabel</system:String>
+	<system:String x:Key="DefinitionEn">definition</system:String>
+	<system:String x:Key="ExampleEn">example</system:String>
+	<system:String x:Key="CommentEn">comment</system:String>
+	<system:String x:Key="ApplicationNoteEn">applicationNote</system:String>
 
 	<!--  Provenance labels  -->
 	<system:String x:Key="LegalSource">legalSource</system:String>
@@ -39,16 +48,19 @@
 	<system:String x:Key="IsDefinedBy">isDefinedBy</system:String>
 	<system:String x:Key="WasDerivedFrom">wasDerivedFrom</system:String>
 
-	<!--  Package specific labels  -->
+	<!--  Model metadata specific labels  -->
 	<system:String x:Key="Namespace">namespace</system:String>
 	<system:String x:Key="NamespacePrefix">namespacePrefix</system:String>
-	<system:String x:Key="Label">label</system:String>
+	<system:String x:Key="LabelDa">label</system:String>
+	<system:String x:Key="LabelEn">label</system:String>
 	<system:String x:Key="Publisher">publisher</system:String>
 	<system:String x:Key="VersionInfo">versionInfo</system:String>
 	<system:String x:Key="Modified">modified</system:String>
 	<system:String x:Key="ModelStatus">modelStatus</system:String>
 	<system:String x:Key="ApprovalStatus">approvalStatus</system:String>
 	<system:String x:Key="Theme">theme</system:String>
+	<system:String x:Key="LegalSourcePackage">legalSource</system:String>
+	<system:String x:Key="SourcePackage">source</system:String>
 	<!--  Keys already defined: legalSource, source, wasDerivedFrom, comment  -->
 
 	<!--  Element specific labels  -->

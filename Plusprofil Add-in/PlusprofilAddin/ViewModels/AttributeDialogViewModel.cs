@@ -14,32 +14,30 @@ namespace PlusprofilAddin.ViewModels
 		
 		private readonly List<PlusprofilTaggedValue> _toAddDanishTaggedValues = new List<PlusprofilTaggedValue>
 		{
-			PrefLabelDa,
-			AltLabelDa,
-			DeprecatedLabelDa,
-			DefinitionDa,
-			ExampleDa,
-			CommentDa,
-			ApplicationNoteDa
+			Definitions.Find(ptv => ptv.Key == "PrefLabelDa"),
+			Definitions.Find(ptv => ptv.Key == "AltLabelDa"),
+			Definitions.Find(ptv => ptv.Key == "DeprecatedLabelDa"),
+			Definitions.Find(ptv => ptv.Key == "DefinitionDa"),
+			Definitions.Find(ptv => ptv.Key == "CommentDa"),
+			Definitions.Find(ptv => ptv.Key == "ApplicationNoteDa"),
 		};
 
 		private readonly List<PlusprofilTaggedValue> _toAddEnglishTaggedValues = new List<PlusprofilTaggedValue>
 		{
-			PrefLabelEn,
-			AltLabelEn,
-			DeprecatedLabelEn,
-			DefinitionEn,
-			ExampleEn,
-			CommentEn,
-			ApplicationNoteEn
+			Definitions.Find(ptv => ptv.Key == "PrefLabelEn"),
+			Definitions.Find(ptv => ptv.Key == "AltLabelEn"),
+			Definitions.Find(ptv => ptv.Key == "DeprecatedLabelEn"),
+			Definitions.Find(ptv => ptv.Key == "DefinitionEn"),
+			Definitions.Find(ptv => ptv.Key == "CommentEn"),
+			Definitions.Find(ptv => ptv.Key == "ApplicationNoteEn"),
 		};
 
 		private readonly List<PlusprofilTaggedValue> _toAddProvenanceTaggedValues = new List<PlusprofilTaggedValue>
 		{
-			LegalSource,
-			Source,
-			IsDefinedBy,
-			WasDerivedFrom
+			Definitions.Find(ptv => ptv.Key == "LegalSource"),
+			Definitions.Find(ptv => ptv.Key == "Source"),
+			Definitions.Find(ptv => ptv.Key == "IsDefinedBy"),
+			Definitions.Find(ptv => ptv.Key == "WasDerivedFrom"),
 		};
 
 		private readonly List<PlusprofilTaggedValue> _toAddStereotypeTaggedValues = new List<PlusprofilTaggedValue>();
@@ -47,10 +45,10 @@ namespace PlusprofilAddin.ViewModels
 
 		public AttributeDialogViewModel()
 		{
-			DanishTaggedValues = new ObservableCollection<ObservableCollection<ViewmodelTaggedValue>>();
-			EnglishTaggedValues = new ObservableCollection<ObservableCollection<ViewmodelTaggedValue>>();
-			ProvenanceTaggedValues = new ObservableCollection<ObservableCollection<ViewmodelTaggedValue>>();
-			StereotypeTaggedValues = new ObservableCollection<ObservableCollection<ViewmodelTaggedValue>>();
+			DanishViewmodelTaggedValues = new ObservableCollection<ObservableCollection<ViewmodelTaggedValue>>();
+			EnglishViewmodelTaggedValues = new ObservableCollection<ObservableCollection<ViewmodelTaggedValue>>();
+			ProvenanceViewmodelTaggedValues = new ObservableCollection<ObservableCollection<ViewmodelTaggedValue>>();
+			StereotypeViewmodelTaggedValues = new ObservableCollection<ObservableCollection<ViewmodelTaggedValue>>();
 			TaggedValuesList = new List<dynamic>();
 			DeleteTaggedValues = new List<ViewmodelTaggedValue>();
 
@@ -70,8 +68,8 @@ namespace PlusprofilAddin.ViewModels
 		public string DatatypeValue { get; set; }
 
 		public ViewmodelTaggedValue URIViewmodelTaggedValue { get; set; }
-		public ObservableCollection<ObservableCollection<ViewmodelTaggedValue>> ProvenanceTaggedValues { get; set; }
-		public ObservableCollection<ObservableCollection<ViewmodelTaggedValue>> StereotypeTaggedValues { get; set; }
+		public ObservableCollection<ObservableCollection<ViewmodelTaggedValue>> ProvenanceViewmodelTaggedValues { get; set; }
+		public ObservableCollection<ObservableCollection<ViewmodelTaggedValue>> StereotypeViewmodelTaggedValues { get; set; }
 		
 
 		public override void Initialize()
@@ -89,13 +87,13 @@ namespace PlusprofilAddin.ViewModels
 			
 
 			//Finalize list of stereotype tags to add
-			if (Attribute.Stereotype == "DatatypeProperty") _toAddStereotypeTaggedValues.Add(FunctionalProperty);
+			if (Attribute.Stereotype == "DatatypeProperty") _toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "FunctionalProperty"));
 			if (Attribute.Stereotype == "RdfsProperty" || Attribute.Stereotype == "DatatypeProperty")
 			{
-				_toAddStereotypeTaggedValues.Add(Range);
-				_toAddStereotypeTaggedValues.Add(Domain);
-				_toAddStereotypeTaggedValues.Add(SubPropertyOf);
-				_toAddStereotypeTaggedValues.Add(EquivalentProperty);
+				_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "Range"));
+				_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "Domain"));
+				_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "SubPropertyOf"));
+				_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "EquivalentProperty"));
 			}
 
 			//Retrieve all tagged values and store them in a list
@@ -110,44 +108,18 @@ namespace PlusprofilAddin.ViewModels
 			
 			// Retrieve URI tagged value and save it in URIViewmodelTaggedValue
 			var result = RetrieveTaggedValues(TaggedValuesList, "URI");
-			URIViewmodelTaggedValue = new ViewmodelTaggedValue(result.First(), ResourceDictionary);
+			URIViewmodelTaggedValue = new ViewmodelTaggedValue(result.First())
+			{
+				ResourceDictionary = ResourceDictionary,
+				Key = Definitions.Find(ptv => ptv.Key == "URI").Key
+			};
 			URIValue = URIViewmodelTaggedValue.Value;
 
-			//Add all Danish tagged values to list
-			foreach (PlusprofilTaggedValue ptv in _toAddDanishTaggedValues)
-			{
-				result = RetrieveTaggedValues(TaggedValuesList, ptv.Name);
-				var resultList = new ObservableCollection<ViewmodelTaggedValue>();
-				foreach (AttributeTag attributeTag in result) resultList.Add(new ViewmodelTaggedValue(attributeTag, ResourceDictionary));
-				DanishTaggedValues.Add(resultList);
-			}
-
-			//Add all English tagged values to list
-			foreach (PlusprofilTaggedValue ptv in _toAddEnglishTaggedValues)
-			{
-				result = RetrieveTaggedValues(TaggedValuesList, ptv.Name);
-				var resultList = new ObservableCollection<ViewmodelTaggedValue>();
-				foreach (AttributeTag attributeTag in result) resultList.Add(new ViewmodelTaggedValue(attributeTag, ResourceDictionary));
-				EnglishTaggedValues.Add(resultList);
-			}
-
-			//Add all provenance tagged values to list
-			foreach (PlusprofilTaggedValue ptv in _toAddProvenanceTaggedValues)
-			{
-				result = RetrieveTaggedValues(TaggedValuesList, ptv.Name);
-				var resultList = new ObservableCollection<ViewmodelTaggedValue>();
-				foreach (AttributeTag attributeTag in result) resultList.Add(new ViewmodelTaggedValue(attributeTag, ResourceDictionary));
-				ProvenanceTaggedValues.Add(resultList);
-			}
-
-			//Add all stereotype-specific tagged values to list
-			foreach (PlusprofilTaggedValue ptv in _toAddStereotypeTaggedValues)
-			{
-				result = RetrieveTaggedValues(TaggedValuesList, ptv.Name);
-				var resultList = new ObservableCollection<ViewmodelTaggedValue>();
-				foreach (AttributeTag attributeTag in result) resultList.Add(new ViewmodelTaggedValue(attributeTag, ResourceDictionary));
-				StereotypeTaggedValues.Add(resultList);
-			}
+			// Add tagged values to list of ViewmodelTaggedValues
+			AddTaggedValuesToViewmodelTaggedValues(_toAddDanishTaggedValues, TaggedValuesList, DanishViewmodelTaggedValues);
+			AddTaggedValuesToViewmodelTaggedValues(_toAddEnglishTaggedValues, TaggedValuesList, EnglishViewmodelTaggedValues);
+			AddTaggedValuesToViewmodelTaggedValues(_toAddProvenanceTaggedValues, TaggedValuesList, ProvenanceViewmodelTaggedValues);
+			AddTaggedValuesToViewmodelTaggedValues(_toAddStereotypeTaggedValues, TaggedValuesList, StereotypeViewmodelTaggedValues);
 		}
 	}
 }

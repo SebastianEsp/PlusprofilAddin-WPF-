@@ -59,7 +59,6 @@
     <Compile Include="ViewmodelTaggedValue.cs" />
     <Compile Include="DatatypeOptions.cs" />
     <Compile Include="MultiplicityOptions.cs" />
-    <Compile Include="PlusprofilTaggedValueDefinitions.cs" />
     <Compile Include="ViewModels\AttributeDialogViewModel.cs" />
     <Compile Include="ViewModels\ConnectorDialogViewModel.cs" />
     <Compile Include="PlusprofilTaggedValue.cs" />

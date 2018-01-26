@@ -5,7 +5,6 @@ using System.Linq;
 using System.Windows;
 using EA;
 using PlusprofilAddin.Commands;
-using PDefinitions = PlusprofilAddin.PlusprofilTaggedValueDefinitions;
 
 namespace PlusprofilAddin.ViewModels
 {
@@ -18,37 +17,63 @@ namespace PlusprofilAddin.ViewModels
 		public Repository Repository { get; set; }
 		public ResourceDictionary ResourceDictionary { get; set; }
 
-		public ObservableCollection<ObservableCollection<ViewmodelTaggedValue>> DanishTaggedValues { get; set; }
-		public ObservableCollection<ObservableCollection<ViewmodelTaggedValue>> EnglishTaggedValues { get; set; }
+		public ObservableCollection<ObservableCollection<ViewmodelTaggedValue>> DanishViewmodelTaggedValues { get; set; }
+		public ObservableCollection<ObservableCollection<ViewmodelTaggedValue>> EnglishViewmodelTaggedValues { get; set; }
 		public List<ViewmodelTaggedValue> DeleteTaggedValues { get; set; }
 
 		public abstract void Initialize();
 
 		protected List<dynamic> RetrieveTaggedValues(List<dynamic> taggedValueList, string taggedValueName)
 		{
-			List<dynamic> result = new List<dynamic>();
+			var result = new List<dynamic>();
 			if (taggedValueList.Count == 0) throw new ArgumentException("Object has no tagged values");
 
 			if (taggedValueList.First().ObjectType == (short) ObjectType.otRoleTag)
 			{
 				foreach (RoleTag rt in taggedValueList)
-				{
-					if (rt.Tag == taggedValueName) result.Add(rt);
-				}
+					if (rt.Tag == taggedValueName)
+					{
+						result.Add(rt);
+						break;
+					}
 			}
 			else
 			{
 				foreach (dynamic tv in taggedValueList)
-				{
-					if (tv.Name == taggedValueName) result.Add(tv);
-				}
+					if (tv.Name == taggedValueName)
+					{
+						result.Add(tv);
+						break;
+					}
 			}
-			if (result.Count == 0) throw new ArgumentException($"No tagged value with name \"{taggedValueName}\" was found");
-			return result;
+
+			return result.Count != 0
+				? result
+				: throw new ArgumentException($"No tagged value with name \"{taggedValueName}\" was found");
 		}
 		public override string ToString()
 		{
 			return $"Type: {GetType()}";
+		}
+
+		public void AddTaggedValuesToViewmodelTaggedValues(List<PlusprofilTaggedValue> toAddList, List<dynamic> taggedValuesList, ObservableCollection<ObservableCollection<ViewmodelTaggedValue>> viewmodelTaggedValues)
+		{
+			foreach (PlusprofilTaggedValue ptv in toAddList)
+			{
+				List<dynamic> result = RetrieveTaggedValues(taggedValuesList, ptv.Name);
+				var resultList = new ObservableCollection<ViewmodelTaggedValue>();
+				foreach (dynamic tv in result)
+				{
+					var vtv = new ViewmodelTaggedValue(tv)
+					{
+						ResourceDictionary = ResourceDictionary,
+						Key = ptv.Key
+					};
+					vtv.Initialize();
+					resultList.Add(vtv);
+				}
+				viewmodelTaggedValues.Add(resultList);
+			}
 		}
 	}
 }

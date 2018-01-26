@@ -23,14 +23,23 @@
 	<system:String x:Key="Discard">Kasser</system:String>
 	<system:String x:Key="DiscardAllChanges">Kasser alle ændringer?</system:String>
 
-	<!--  "Danish / English Annotations" labels  -->
-	<system:String x:Key="PrefLabel">Foretrukken term</system:String>
-	<system:String x:Key="AltLabel">Accepterede termer</system:String>
-	<system:String x:Key="DeprecatedLabel">Frarådede termer</system:String>
-	<system:String x:Key="Definition">Definition</system:String>
-	<system:String x:Key="Example">Eksempel</system:String>
-	<system:String x:Key="Comment">Kommentar</system:String>
-	<system:String x:Key="ApplicationNote">Anvendelsesnote</system:String>
+	<!--  Danish Annotations labels  -->
+	<system:String x:Key="PrefLabelDa">Foretrukken term</system:String>
+	<system:String x:Key="AltLabelDa">Accepterede termer</system:String>
+	<system:String x:Key="DeprecatedLabelDa">Frarådede termer</system:String>
+	<system:String x:Key="DefinitionDa">Definition</system:String>
+	<system:String x:Key="ExampleDa">Eksempel</system:String>
+	<system:String x:Key="CommentDa">Kommentar</system:String>
+	<system:String x:Key="ApplicationNoteDa">Anvendelsesnote</system:String>
+    
+	<!--  English Annotations labels  -->
+	<system:String x:Key="PrefLabelEn">Foretrukken term</system:String>
+	<system:String x:Key="AltLabelEn">Accepterede termer</system:String>
+	<system:String x:Key="DeprecatedLabelEn">Frarådede termer</system:String>
+	<system:String x:Key="DefinitionEn">Definition</system:String>
+	<system:String x:Key="ExampleEn">Eksempel</system:String>
+	<system:String x:Key="CommentEn">Kommentar</system:String>
+	<system:String x:Key="ApplicationNoteEn">Anvendelsesnote</system:String>
 
 	<!--  Provenance labels  -->
 	<system:String x:Key="LegalSource">Juridisk kilde</system:String>
@@ -38,16 +47,19 @@
 	<system:String x:Key="IsDefinedBy">isDefinedBy</system:String>
 	<system:String x:Key="WasDerivedFrom">wasDerivedFrom</system:String>
 
-	<!--  Package specific labels  -->
+	<!--  Model metadata specific labels  -->
 	<system:String x:Key="Namespace">Namespace</system:String>
 	<system:String x:Key="NamespacePrefix">namespacePrefix</system:String>
-	<system:String x:Key="Label">Modelnavn</system:String>
+	<system:String x:Key="LabelDa">Modelnavn</system:String>
+	<system:String x:Key="LabelEn">Modelnavn</system:String>
 	<system:String x:Key="Publisher">Modelejer</system:String>
 	<system:String x:Key="VersionInfo">Versionnummer</system:String>
 	<system:String x:Key="Modified">Seneste opdateringsdato</system:String>
 	<system:String x:Key="ModelStatus">Modelstatus</system:String>
 	<system:String x:Key="ApprovalStatus">Godkendelsesstatus</system:String>
 	<system:String x:Key="Theme">Forretningsområde</system:String>
+	<system:String x:Key="LegalSourcePackage">Juridisk kilde</system:String>
+	<system:String x:Key="SourcePackage">Kilde</system:String>
 	<!--  Keys already defined: legalSource, source, wasDerivedFrom, comment  -->
 
 	<!--  Element specific labels  -->

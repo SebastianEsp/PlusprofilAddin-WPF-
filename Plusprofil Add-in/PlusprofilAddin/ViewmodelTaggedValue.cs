@@ -16,10 +16,8 @@ namespace PlusprofilAddin
 			PlusprofilTaggedValue = PlusprofilTaggedValueDefinitions.Definitions.Find(ptv => ptv.Name == Name);
 			DisplayedName = "";
 		}
-
-		public ViewmodelTaggedValue(dynamic taggedValue, ResourceDictionary resourceDictionary)
+		public ViewmodelTaggedValue(dynamic taggedValue)
 		{
-			ResourceDictionary = resourceDictionary;
 			TaggedValue = taggedValue;
 			ObjectType = (ObjectType) TaggedValue.ObjectType;
 
@@ -38,12 +36,24 @@ namespace PlusprofilAddin
 					break;
 				}
 			}
+		}
 
-			// Set PlusprofilTaggedValue field based on Name
-			PlusprofilTaggedValue = PlusprofilTaggedValueDefinitions.Definitions.Find(ptv => ptv.Name == Name);
+		public string Key { get; set; }
+		public string Name { get; set; }
+		public string DisplayedName { get; set; }
+		public string Value { get; set; }
+		public dynamic TaggedValue { get; set; }
+		public ObjectType ObjectType { get; set; }
+		public PlusprofilTaggedValue PlusprofilTaggedValue { get; set; }
+		public ResourceDictionary ResourceDictionary { get; set; }
 
-			// Set DisplayedNamed by retrieving localized string from ResourceDictionary using PlusprofilTaggedValue.ResourceKey
-			DisplayedName = (string) ResourceDictionary[PlusprofilTaggedValue.ResourceKey];
+		public void Initialize()
+		{
+			// Set PlusprofilTaggedValue field based on Key
+			PlusprofilTaggedValue = PlusprofilTaggedValueDefinitions.Definitions.Find(ptv => ptv.Key == Key);
+
+			// Set DisplayedNamed by retrieving localized string from ResourceDictionary using PlusprofilTaggedValue.Key
+			DisplayedName = (string) ResourceDictionary[PlusprofilTaggedValue.Key];
 
 
 			// Set Value based on ObjectType and PlusprofilTaggedValue
@@ -68,14 +78,6 @@ namespace PlusprofilAddin
 				}
 			}
 		}
-
-		public dynamic TaggedValue { get; set; }
-		public string Name { get; set; }
-		public string DisplayedName { get; set; }
-		public string Value { get; set; }
-		public ObjectType ObjectType { get; set; }
-		public PlusprofilTaggedValue PlusprofilTaggedValue { get; set; }
-		public ResourceDictionary ResourceDictionary { get; set; }
 
 		public void UpdateTaggedValueValue()
 		{
@@ -128,6 +130,7 @@ namespace PlusprofilAddin
 		public override string ToString()
 		{
 			return $"Type: {GetType()}\n" +
+				   $"Key: {Key}\n" +
 			       $"Name: {Name}\n" +
 			       $"Value: {Value}\n" +
 			       $"ObjectType: {ObjectType}\n" +
