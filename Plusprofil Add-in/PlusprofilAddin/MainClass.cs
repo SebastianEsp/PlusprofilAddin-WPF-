@@ -13,6 +13,8 @@ namespace PlusprofilAddin
 	{
 		public void EA_Connect(Repository repository)
 		{
+			//Create a new hotkeyForm to allow the add-in window to be opened using hotkeys
+			_hotkeyForm = new InvisibleHotkeyForm(this, repository, DanishMenuOption, EnglishMenuOption);
 		}
 
 		public object EA_GetMenuItems(Repository repository, string location, string menuName)
@@ -25,7 +27,6 @@ namespace PlusprofilAddin
 					string[] subMenus = {DanishMenuOption, EnglishMenuOption};
 					return subMenus;
 			}
-
 			return "";
 		}
 
@@ -106,6 +107,7 @@ namespace PlusprofilAddin
 		private const string DanishMenuOption = "&Open Danish Editing Window";
 		private Window _window;
 		private DialogViewModel _viewModel;
+		private InvisibleHotkeyForm _hotkeyForm;
 
 		#endregion
 	}

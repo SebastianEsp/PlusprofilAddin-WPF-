@@ -56,6 +56,13 @@
     <Compile Include="Commands\AddCommand.cs" />
     <Compile Include="Commands\CancelCommand.cs" />
     <Compile Include="Commands\SaveCommand.cs" />
+    <Compile Include="InvisibleHotkeyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InvisibleHotkeyForm.Designer.cs">
+      <DependentUpon>InvisibleHotkeyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KeyboardHook.cs" />
     <Compile Include="ViewmodelTaggedValue.cs" />
     <Compile Include="DatatypeOptions.cs" />
     <Compile Include="MultiplicityOptions.cs" />
