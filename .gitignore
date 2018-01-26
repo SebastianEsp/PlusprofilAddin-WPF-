@@ -13,12 +13,14 @@
 *.userprefs
 
 # Build results
+[Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/
 x64/
 x86/
 bld/
+[Bb]in/
 [Oo]bj/
 [Ll]og/
 
@@ -285,5 +287,5 @@ __pycache__/
 *.odx.cs
 *.xsd.cs
 
-#Unrelated project
-/Enterprise Architect, Custom Window
+#Include installer file
+!PlusprofilAddinInstaller.msi
