@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Windows;
 using EA;
 using PlusprofilAddin.Commands;
 
@@ -14,9 +13,6 @@ namespace PlusprofilAddin.ViewModels
 		public Connector Connector { get; set; }
 		public ConnectorEnd SourceEnd { get; set; }
 		public ConnectorEnd TargetEnd { get; set; }
-
-		public Visibility ShowSourceEnd { get; set; }
-		public Visibility ShowTargetEnd { get; set; }
 
 		public ConnectorDialogViewModel()
 		{
@@ -33,9 +29,6 @@ namespace PlusprofilAddin.ViewModels
 			Connector = Repository.GetContextObject();
 			SourceEnd = Connector.SupplierEnd;
 			TargetEnd = Connector.ClientEnd;
-			
-			ShowSourceEnd = SourceEnd.Stereotype == "ObjectProperty" ? Visibility.Visible : Visibility.Collapsed;
-			ShowTargetEnd = TargetEnd.Stereotype == "ObjectProperty" ? Visibility.Visible : Visibility.Collapsed;
 
 			SourceViewModel = new ConnectorUserControlViewModel {ConnectorEnd = SourceEnd, ElementNameValue = Repository.GetElementByID(Connector.SupplierID).Name};
 			TargetViewModel = new ConnectorUserControlViewModel {ConnectorEnd = TargetEnd, ElementNameValue = Repository.GetElementByID(Connector.ClientID).Name};

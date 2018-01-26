@@ -17,14 +17,21 @@
 			<ColumnDefinition Width="*" />
 			<ColumnDefinition Width="*" />
 		</Grid.ColumnDefinitions>
-		<views:ConnectorUserControl
+		<!--  Border wrapper used to allow Visibility to be set  -->
+		<Border
 			Grid.Row="0"
 			Grid.Column="0"
-			DataContext="{Binding SourceViewModel}" />
-		<views:ConnectorUserControl
+			BorderThickness="0"
+			Visibility="{Binding ShowSourceEnd, FallbackValue=Visibility.Hidden}">
+			<views:ConnectorUserControl DataContext="{Binding SourceViewModel}" />
+		</Border>
+		<Border
 			Grid.Row="0"
 			Grid.Column="1"
-			DataContext="{Binding TargetViewModel}" />
+			BorderThickness="0"
+			Visibility="{Binding ShowTargetEnd, FallbackValue=Visibility.Hidden}">
+			<views:ConnectorUserControl DataContext="{Binding TargetViewModel}" />
+		</Border>
 		<WrapPanel
 			Grid.Row="1"
 			Grid.Column="0"

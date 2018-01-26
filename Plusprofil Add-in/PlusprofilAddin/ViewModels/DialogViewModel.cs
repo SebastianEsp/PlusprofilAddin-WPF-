@@ -60,19 +60,27 @@ namespace PlusprofilAddin.ViewModels
 		{
 			foreach (PlusprofilTaggedValue ptv in toAddList)
 			{
-				List<dynamic> result = RetrieveTaggedValues(taggedValuesList, ptv.Name);
-				var resultList = new ObservableCollection<ViewmodelTaggedValue>();
-				foreach (dynamic tv in result)
+				try
 				{
-					var vtv = new ViewmodelTaggedValue(tv)
+					List<dynamic> result = RetrieveTaggedValues(taggedValuesList, ptv.Name);
+					var resultList = new ObservableCollection<ViewmodelTaggedValue>();
+					foreach (dynamic tv in result)
 					{
-						ResourceDictionary = ResourceDictionary,
-						Key = ptv.Key
-					};
-					vtv.Initialize();
-					resultList.Add(vtv);
+						var vtv = new ViewmodelTaggedValue(tv)
+						{
+							ResourceDictionary = ResourceDictionary,
+							Key = ptv.Key
+						};
+						vtv.Initialize();
+						resultList.Add(vtv);
+					}
+					viewmodelTaggedValues.Add(resultList);
 				}
-				viewmodelTaggedValues.Add(resultList);
+				catch (ArgumentException e)
+				{
+					// No tagged values with name ptv.Name is found, thus the list is not added (do nothing)
+					// TODO: Warn the user in a non-intrusive manner (i.e. do not use a MessageBox)
+				}
 			}
 		}
 	}

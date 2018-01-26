@@ -64,8 +64,6 @@ namespace PlusprofilAddin
 				{
 					Repository = repository
 				};
-
-				// Check for ConnectorEnd stereotypes. If it is unknown, hide that side of the interface
 			}
 
 			//Create new ResourceDictionary and set source for language matching the selected menu option
@@ -85,12 +83,8 @@ namespace PlusprofilAddin
 			_viewModel.ResourceDictionary = dict;
 			_viewModel.Initialize();
 			_window.DataContext = _viewModel;
-
-			//Set window size
-			_window.MinHeight = _window.Height = 520;
-			_window.MinWidth = _window.Width = 540;
-
 			_window.ShowDialog();
+			// To add window as docked window, use repository.AddWindow(_window);
 		}
 
 		public void EA_Disconnect()

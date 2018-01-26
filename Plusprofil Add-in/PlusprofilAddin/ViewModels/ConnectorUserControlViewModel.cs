@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using EA;
@@ -107,13 +108,20 @@ namespace PlusprofilAddin.ViewModels
 			}
 			
 			// Retrieve URI tagged value and save it in URIViewmodelTaggedValue
-			var result = RetrieveTaggedValues(TaggedValuesList, "URI");
-			URIViewmodelTaggedValue = new ViewmodelTaggedValue(result.First())
+			try
 			{
-				ResourceDictionary = ResourceDictionary,
-				Key = Definitions.Find(ptv => ptv.Key == "URI").Key
-			};
-			URIValue = URIViewmodelTaggedValue.Value;
+				var result = RetrieveTaggedValues(TaggedValuesList, "URI");
+				URIViewmodelTaggedValue = new ViewmodelTaggedValue(result.First())
+				{
+					ResourceDictionary = ResourceDictionary,
+					Key = Definitions.Find(ptv => ptv.Key == "URI").Key
+				};
+				URIValue = URIViewmodelTaggedValue.Value;
+			}
+			catch (ArgumentException)
+			{
+				//URI does not exist: Do nothing
+			}
 
 			// Add tagged values to list of ViewmodelTaggedValues
 			AddTaggedValuesToViewmodelTaggedValues(_toAddDanishTaggedValues, TaggedValuesList, DanishViewmodelTaggedValues);
