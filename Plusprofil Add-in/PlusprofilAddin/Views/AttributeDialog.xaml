@@ -138,18 +138,8 @@
 				<views:TaggedValueListGroupingControl Grid.Row="1" Tag="{Binding Path=StereotypeViewmodelTaggedValues}" />
 			</Grid>
 			<WrapPanel Grid.Row="4" HorizontalAlignment="Right">
-				<Button
-					Margin="12,6,3,6"
-					Command="{Binding Path=CancelCommand}"
-					CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}">
-					<TextBlock Margin="6,2,6,2" Text="{DynamicResource ResourceKey=Cancel}" />
-				</Button>
-				<Button
-					Margin="3,6,12,6"
-					Command="{Binding Path=SaveCommand}"
-					CommandParameter="{Binding Path=DataContext, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}">
-					<TextBlock Margin="6,2,6,2" Text="{DynamicResource ResourceKey=SaveChanges}" />
-				</Button>
+				<views:CancelButton />
+				<views:SaveButton />
 			</WrapPanel>
 		</Grid>
 	</ScrollViewer>

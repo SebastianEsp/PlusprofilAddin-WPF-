@@ -73,6 +73,9 @@
     <Compile Include="ViewModels\ElementDialogViewModel.cs" />
     <Compile Include="ViewModels\DialogViewModel.cs" />
     <Compile Include="ViewModels\PackageDialogViewModel.cs" />
+    <Compile Include="Views\CancelButton.xaml.cs">
+      <DependentUpon>CancelButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ConnectorDialog.xaml.cs">
       <DependentUpon>ConnectorDialog.xaml</DependentUpon>
     </Compile>
@@ -90,6 +93,9 @@
     </Compile>
     <Compile Include="MainClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\SaveButton.xaml.cs">
+      <DependentUpon>SaveButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\TaggedValueListControl.xaml.cs">
       <DependentUpon>TaggedValueListControl.xaml</DependentUpon>
     </Compile>
@@ -103,6 +109,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Resources\StringResources.en-US.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CancelButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -123,6 +133,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\ElementDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SaveButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

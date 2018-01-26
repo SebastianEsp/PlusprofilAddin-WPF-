@@ -18,7 +18,7 @@
 	<system:String x:Key="RdfsClassCharacteristics">RdfsClass Characteristics</system:String>
 	<system:String x:Key="RdfsPropertyCharacteristics">RdfsProperty Characteristics</system:String>
 	<system:String x:Key="ObjectPropertyCharacteristics">ObjectProperty Characteristics</system:String>
-	<system:String x:Key="SaveChanges">Save Changes</system:String>
+	<system:String x:Key="SaveChanges">Save</system:String>
 	<system:String x:Key="Cancel">Cancel</system:String>
 	<system:String x:Key="Discard">Discard</system:String>
 	<system:String x:Key="DiscardAllChanges">Discard all changes?</system:String>
@@ -32,7 +32,7 @@
 	<system:String x:Key="ExampleDa">example</system:String>
 	<system:String x:Key="CommentDa">comment</system:String>
 	<system:String x:Key="ApplicationNoteDa">applicationNote</system:String>
-    
+
 	<!--  English Annotations labels  -->
 	<system:String x:Key="PrefLabelEn">prefLabel</system:String>
 	<system:String x:Key="AltLabelEn">altLabel</system:String>

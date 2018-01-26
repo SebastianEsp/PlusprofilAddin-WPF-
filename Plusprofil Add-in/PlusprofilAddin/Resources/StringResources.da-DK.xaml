@@ -18,7 +18,7 @@
 	<system:String x:Key="RdfsClassCharacteristics">RdfsClass karakteristika</system:String>
 	<system:String x:Key="RdfsPropertyCharacteristics">RdfsProperty karakteristika</system:String>
 	<system:String x:Key="ObjectPropertyCharacteristics">ObjectProperty karakteristika</system:String>
-	<system:String x:Key="SaveChanges">Gem ændringer</system:String>
+	<system:String x:Key="SaveChanges">Gem</system:String>
 	<system:String x:Key="Cancel">Annuller</system:String>
 	<system:String x:Key="Discard">Kasser</system:String>
 	<system:String x:Key="DiscardAllChanges">Kasser alle ændringer?</system:String>
@@ -31,7 +31,7 @@
 	<system:String x:Key="ExampleDa">Eksempel</system:String>
 	<system:String x:Key="CommentDa">Kommentar</system:String>
 	<system:String x:Key="ApplicationNoteDa">Anvendelsesnote</system:String>
-    
+
 	<!--  English Annotations labels  -->
 	<system:String x:Key="PrefLabelEn">Foretrukken term</system:String>
 	<system:String x:Key="AltLabelEn">Accepterede termer</system:String>

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Windows;
+using System.Windows.Data;
 using System.Windows.Input;
 using EA;
 using PlusprofilAddin.ViewModels;
@@ -32,11 +34,12 @@ namespace PlusprofilAddin.Commands
 		public void Execute(object parameter)
 		{
 			List<ObservableCollection<ObservableCollection<ViewmodelTaggedValue>>> toUpdateCollectionsList;
-			switch (parameter)
+			if (!(parameter is object[] values) || values.Length != 2) return;
+			switch (values[0])
 			{
 				case ElementDialogViewModel viewModel:
 					Element element = viewModel.Element;
-					
+
 					toUpdateCollectionsList = new List<ObservableCollection<ObservableCollection<ViewmodelTaggedValue>>>
 					{
 						viewModel.DanishViewmodelTaggedValues,
@@ -44,20 +47,18 @@ namespace PlusprofilAddin.Commands
 						viewModel.ProvenanceViewmodelTaggedValues,
 						viewModel.StereotypeViewmodelTaggedValues
 					};
-					
+
 					UpdateTaggedValues(element.TaggedValues, toUpdateCollectionsList);
 					DeleteTaggedValues(element.TaggedValues, viewModel.DeleteTaggedValues);
-					
+
 					// Special cases
 					element.Name = viewModel.UMLNameValue;
 					element.Alias = viewModel.AliasValue;
-					MessageBox.Show($"URIViewmodelTaggedValue info\n{viewModel.URIViewmodelTaggedValue}");
-					MessageBox.Show($"Setting element URI");
 					viewModel.URIViewmodelTaggedValue.Value = viewModel.URIValue;
 					viewModel.URIViewmodelTaggedValue.UpdateTaggedValueValue();
 					element.Update();
 					break;
-				
+
 				case PackageDialogViewModel viewModel:
 					Element packageElement = viewModel.PackageElement;
 					toUpdateCollectionsList = new List<ObservableCollection<ObservableCollection<ViewmodelTaggedValue>>>
@@ -66,7 +67,7 @@ namespace PlusprofilAddin.Commands
 						viewModel.EnglishViewmodelTaggedValues,
 						viewModel.ModelMetadataViewmodelTaggedValues
 					};
-					
+
 					UpdateTaggedValues(packageElement.TaggedValues, toUpdateCollectionsList);
 					DeleteTaggedValues(packageElement.TaggedValues, viewModel.DeleteTaggedValues);
 
@@ -75,7 +76,7 @@ namespace PlusprofilAddin.Commands
 					packageElement.Alias = viewModel.AliasValue;
 					packageElement.Update();
 					break;
-				
+
 				case AttributeDialogViewModel viewModel:
 					Attribute attribute = viewModel.Attribute;
 					toUpdateCollectionsList = new List<ObservableCollection<ObservableCollection<ViewmodelTaggedValue>>>
@@ -85,7 +86,7 @@ namespace PlusprofilAddin.Commands
 						viewModel.ProvenanceViewmodelTaggedValues,
 						viewModel.StereotypeViewmodelTaggedValues
 					};
-					
+
 					UpdateTaggedValues(attribute.TaggedValues, toUpdateCollectionsList);
 					DeleteTaggedValues(attribute.TaggedValues, viewModel.DeleteTaggedValues);
 
@@ -97,7 +98,7 @@ namespace PlusprofilAddin.Commands
 					viewModel.URIViewmodelTaggedValue.UpdateTaggedValueValue();
 					attribute.Update();
 					break;
-				
+
 				case ConnectorDialogViewModel viewModel:
 					ConnectorEnd sourceEnd = viewModel.SourceEnd;
 					ConnectorEnd targetEnd = viewModel.TargetEnd;
@@ -143,6 +144,9 @@ namespace PlusprofilAddin.Commands
 					targetEnd.Update();
 					break;
 			}
+
+			Window window = (Window) values[1];
+			window.Close();
 		}
 
 		private void UpdateTaggedValues(Collection taggedValues, List<ObservableCollection<ObservableCollection<ViewmodelTaggedValue>>> list)
@@ -159,6 +163,18 @@ namespace PlusprofilAddin.Commands
 		private void DeleteTaggedValues(Collection taggedValues, List<ViewmodelTaggedValue> list)
 		{
 			foreach(var dtv in list) dtv.DeleteTaggedValue(taggedValues);
+		}
+	}
+	public class SaveCommandConverter : IMultiValueConverter
+	{
+		public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+		{
+			return values.Clone();
+		}
+
+		public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+		{
+			throw new NotSupportedException("ConvertBack is not supported");
 		}
 	}
 }

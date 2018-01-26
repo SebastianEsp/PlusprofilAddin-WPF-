@@ -29,7 +29,7 @@ namespace PlusprofilAddin
             InitializeComponent();
 
 			//Add event handler for keypress
-			keyboardHook.KeyPressed += keyboardHook_KeyPressed;
+			keyboardHook.KeyPressed += KeyboardHook_KeyPressed;
 			try
 			{
 				//Register CTRL + Q and CTRL + Ras hotkeys
@@ -42,7 +42,7 @@ namespace PlusprofilAddin
 			}
 		}
 
-		private void keyboardHook_KeyPressed(object sender, KeyPressedEventArgs e)
+		private void KeyboardHook_KeyPressed(object sender, KeyPressedEventArgs e)
 		{
 			switch (e.Key)
 			{
