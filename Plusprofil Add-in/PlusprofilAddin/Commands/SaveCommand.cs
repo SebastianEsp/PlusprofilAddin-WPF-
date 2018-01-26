@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Input;
 using EA;
 using PlusprofilAddin.ViewModels;
@@ -35,6 +36,7 @@ namespace PlusprofilAddin.Commands
 			{
 				case ElementDialogViewModel viewModel:
 					Element element = viewModel.Element;
+					
 					toUpdateCollectionsList = new List<ObservableCollection<ObservableCollection<ViewmodelTaggedValue>>>
 					{
 						viewModel.DanishViewmodelTaggedValues,
@@ -42,13 +44,16 @@ namespace PlusprofilAddin.Commands
 						viewModel.ProvenanceViewmodelTaggedValues,
 						viewModel.StereotypeViewmodelTaggedValues
 					};
-
+					
 					UpdateTaggedValues(element.TaggedValues, toUpdateCollectionsList);
 					DeleteTaggedValues(element.TaggedValues, viewModel.DeleteTaggedValues);
 					
 					// Special cases
 					element.Name = viewModel.UMLNameValue;
 					element.Alias = viewModel.AliasValue;
+					MessageBox.Show($"URIViewmodelTaggedValue info\n{viewModel.URIViewmodelTaggedValue}");
+					MessageBox.Show($"Setting element URI");
+					viewModel.URIViewmodelTaggedValue.Value = viewModel.URIValue;
 					viewModel.URIViewmodelTaggedValue.UpdateTaggedValueValue();
 					element.Update();
 					break;
@@ -88,6 +93,7 @@ namespace PlusprofilAddin.Commands
 					attribute.Name = viewModel.UMLNameValue;
 					attribute.Alias = viewModel.AliasValue;
 					attribute.Type = viewModel.DatatypeValue;
+					viewModel.URIViewmodelTaggedValue.Value = viewModel.URIValue;
 					viewModel.URIViewmodelTaggedValue.UpdateTaggedValueValue();
 					attribute.Update();
 					break;
@@ -128,8 +134,11 @@ namespace PlusprofilAddin.Commands
 					targetEnd.Alias = viewModel.TargetViewModel.AliasValue;
 					sourceEnd.Cardinality = viewModel.SourceViewModel.MultiplicityValue;
 					targetEnd.Cardinality = viewModel.TargetViewModel.MultiplicityValue;
+					viewModel.SourceViewModel.URIViewmodelTaggedValue.Value = viewModel.SourceViewModel.URIValue;
 					viewModel.SourceViewModel.URIViewmodelTaggedValue.UpdateTaggedValueValue();
+					viewModel.TargetViewModel.URIViewmodelTaggedValue.Value = viewModel.TargetViewModel.URIValue;
 					viewModel.TargetViewModel.URIViewmodelTaggedValue.UpdateTaggedValueValue();
+
 					sourceEnd.Update();
 					targetEnd.Update();
 					break;

@@ -113,6 +113,8 @@ namespace PlusprofilAddin.ViewModels
 				ResourceDictionary = ResourceDictionary,
 				Key = Definitions.Find(ptv => ptv.Key == "URI").Key
 			};
+			
+			URIViewmodelTaggedValue.Initialize();
 			URIValue = URIViewmodelTaggedValue.Value;
 
 			// Add tagged values to list of ViewmodelTaggedValues
