@@ -69,19 +69,21 @@
 	<system:String x:Key="Type">type</system:String>
 
 	<!--  Attribute/ConnectorEnd specific labels  -->
-	<system:String x:Key="Range">range</system:String>
-	<system:String x:Key="Domain">domain</system:String>
 	<system:String x:Key="SubPropertyOf">subPropertyOf</system:String>
 	<system:String x:Key="EquivalentProperty">equivalentProperty</system:String>
 
 	<!--  Attribute specific labels  -->
 	<system:String x:Key="FunctionalProperty">functionalProperty</system:String>
+	<system:String x:Key="Range">range</system:String>
+	<system:String x:Key="Domain">domain</system:String>
 
 	<!--  ConnectorEnd specific labels  -->
 	<system:String x:Key="InverseOf">inverseOf</system:String>
 	<system:String x:Key="InverseFunctionalProperty">inverseFunctionalProperty</system:String>
 	<system:String x:Key="SymmetricProperty">symmetricProperty</system:String>
 	<system:String x:Key="TransitiveProperty">transitiveProperty</system:String>
+	<system:String x:Key="RangeConnectorEnd">range</system:String>
+	<system:String x:Key="DomainConnectorEnd">domain</system:String>
 	<!--  Keys already defined: functionalProperty  -->
 
 </ResourceDictionary>

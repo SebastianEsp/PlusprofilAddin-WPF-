@@ -90,8 +90,8 @@ namespace PlusprofilAddin.ViewModels
 			}
 			if (ConnectorEnd.Stereotype == "RdfsProperty" || ConnectorEnd.Stereotype == "ObjectProperty")
 			{
-				_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "Range"));
-				_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "Domain"));
+				_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "RangeConnectorEnd"));
+				_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "DomainConnectorEnd"));
 				_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "SubPropertyOf"));
 				_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "EquivalentProperty"));
 			}
