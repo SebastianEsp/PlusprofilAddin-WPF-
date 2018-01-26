@@ -26,10 +26,23 @@ namespace PlusprofilAddin.ViewModels
 			AddCommand = new AddCommand();
 			RemoveCommand = new RemoveCommand();
 
-			// TODO: Check ConnectorEnds for existence and handle cases where they do not exist
 			Connector = Repository.GetContextObject();
 			SourceEnd = Connector.SupplierEnd;
 			TargetEnd = Connector.ClientEnd;
+
+			// Enforce stereotypes
+			if (SourceEnd.Stereotype != "ObjectProperty")
+			{
+				SourceEnd.Stereotype = "ObjectProperty";
+				SourceEnd.Update();
+			}
+
+			if (TargetEnd.Stereotype != "ObjectProperty")
+			{
+				TargetEnd.Stereotype = "ObjectProperty";
+				TargetEnd.Update();
+			}
+			Repository.SynchProfile("Plusprofil", "ObjectProperty");
 
 			SourceViewModel = new ConnectorUserControlViewModel {ConnectorEnd = SourceEnd, ElementNameValue = Repository.GetElementByID(Connector.SupplierID).Name};
 			TargetViewModel = new ConnectorUserControlViewModel {ConnectorEnd = TargetEnd, ElementNameValue = Repository.GetElementByID(Connector.ClientID).Name};

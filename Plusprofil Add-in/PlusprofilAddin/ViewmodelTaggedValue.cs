@@ -69,7 +69,7 @@ namespace PlusprofilAddin
 				{
 					// Ensure that TaggedValue.Value has format "{value}$ea_notes={notes}",
 					// tokenize the string, then set Value = {notes} if HasMemoField, otherwise Value = {value}
-					if (!TaggedValue.Value.Contains("$ea_notes")) {TaggedValue.Value = String.Concat(TaggedValue.Value, "$ea_notes=");
+					if (!TaggedValue.Value.Contains("$ea_notes")) {TaggedValue.Value = string.Concat(TaggedValue.Value, "$ea_notes=");
 						TaggedValue.Update();
 					}
 					string[] tokens = TaggedValue.Value.Split(new[] {"$ea_notes="}, StringSplitOptions.None);
