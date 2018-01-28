@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
-using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
-using PlusprofilAddin.ViewModels;
 
-namespace PlusprofilAddin.Commands
+namespace PlusprofilAddin.ViewModels.Commands
 {
 	/// <summary>
 	/// Command used to remove an <c>ViewmodelTaggedValue</c> from the <c>ItemsSource</c> of a View element and add it to the 

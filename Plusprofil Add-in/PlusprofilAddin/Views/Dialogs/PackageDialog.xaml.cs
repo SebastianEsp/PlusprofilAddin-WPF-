@@ -1,14 +1,14 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace PlusprofilAddin.Views
+namespace PlusprofilAddin.Views.Dialogs
 {
 	/// <summary>
-	/// Interaction logic for ConnectorUserControl.xaml
+	///     Interaction logic for ElementDialog.xaml
 	/// </summary>
-	public partial class ConnectorUserControl : UserControl
+	public partial class PackageDialog
 	{
-		public ConnectorUserControl()
+		public PackageDialog()
 		{
 			InitializeComponent();
 		}

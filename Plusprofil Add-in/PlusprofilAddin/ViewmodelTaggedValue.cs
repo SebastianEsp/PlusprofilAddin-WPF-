@@ -9,13 +9,24 @@ namespace PlusprofilAddin
 	/// </summary>
 	public class ViewmodelTaggedValue
 	{
-		public ViewmodelTaggedValue(string name)
+
+		/// <summary>
+		/// Creates a new <c>ViewmodelTaggedValue</c> to represent an <c>EA.TaggedValue</c>, <c>EA.RoleTag</c> or <c>EA.AttributeTag</c> which is unknown or has not yet been created.
+		/// </summary>
+		/// <param name="key"></param>
+		public ViewmodelTaggedValue(string key)
 		{
-			Name = name;
+			Key = key;
+			PlusprofilTaggedValue = PlusprofilTaggedValueDefinitions.Definitions.Find(ptv => ptv.Key == Key);
+			Name = PlusprofilTaggedValue.Name;
 			Value = "";
-			PlusprofilTaggedValue = PlusprofilTaggedValueDefinitions.Definitions.Find(ptv => ptv.Name == Name);
 			DisplayedName = "";
 		}
+
+		/// <summary>
+		/// Creates a new <c>ViewmodelTaggedValue</c> to represent an <c>EA.TaggedValue</c>, <c>EA.RoleTag</c> or <c>EA.AttributeTag</c> passed as a parameter.
+		/// </summary>
+		/// <param name="taggedValue"></param>
 		public ViewmodelTaggedValue(dynamic taggedValue)
 		{
 			TaggedValue = taggedValue;
@@ -47,6 +58,10 @@ namespace PlusprofilAddin
 		public PlusprofilTaggedValue PlusprofilTaggedValue { get; set; }
 		public ResourceDictionary ResourceDictionary { get; set; }
 
+
+		/// <summary>
+		/// Used to initialize properties which cannot be initialized during creation of the <c>ViewmodelTaggedValue</c> due to missing information.
+		/// </summary>
 		public void Initialize()
 		{
 			// Set PlusprofilTaggedValue field based on Key
@@ -79,6 +94,9 @@ namespace PlusprofilAddin
 			}
 		}
 
+		/// <summary>
+		/// Updates the <c>Value</c> property of the <c>ViewmodelTaggedValue.TaggedValue</c>, effectively saving changes made to the value in the add-in.
+		/// </summary>
 		public void UpdateTaggedValueValue()
 		{
 			switch (ObjectType)
@@ -101,13 +119,25 @@ namespace PlusprofilAddin
 			TaggedValue.Update();
 		}
 
+		/// <summary>
+		/// Given a collection of tagged values, adds a new tagged value with information corresponding to that given in the <c>ViewmodelTaggedValue</c>.
+		/// <c>ViewmodelTaggedValue.UpdateTaggedValueValue()</c> is used to update information and ensure that <c>EA.TaggedValue.Update()</c> is called or similar for classes <c>EA.RoleTag</c> or <c>EA.AttributeTag</c>.
+		/// </summary>
+		/// <param name="taggedValues">The <c>EA.Collection</c> to add the tagged value to.</param>
 		public void AddTaggedValue(Collection taggedValues)
 		{
 			dynamic taggedValue = taggedValues.AddNew(Name, "");
 			TaggedValue = taggedValue;
 			ObjectType = (ObjectType) TaggedValue.ObjectType;
+			UpdateTaggedValueValue();
 		}
 
+
+		/// <summary>
+		/// Given a collection of tagged values, removes the tagged value with a GUID matching the GUID of the <c>ViewmodelTaggedValue.Value</c>.
+		/// As <c>EA.Collection.GetByName(string Name)</c> does not support classes <c>EA.Attribute</c> and <c>EA.ConnectorEnd</c>, the <c>EA.Collection</c> must be iterated through using <c>EA.Collection.GetAt(short index)</c>, comparing the GUID at each index.
+		/// </summary>
+		/// <param name="taggedValues">The <c>Collection</c> to delete the tagged value from.</param>
 		public void DeleteTaggedValue(Collection taggedValues)
 		{
 			// TODO: Find alternative to Collection traversal

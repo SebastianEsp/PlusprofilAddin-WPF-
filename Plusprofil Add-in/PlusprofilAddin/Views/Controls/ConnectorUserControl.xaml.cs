@@ -1,17 +1,18 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace PlusprofilAddin.Views
+namespace PlusprofilAddin.Views.Controls
 {
 	/// <summary>
-	/// Interaction logic for TaggedValueList.xaml
+	/// Interaction logic for ConnectorUserControl.xaml
 	/// </summary>
-	public partial class TaggedValueListControl : UserControl
+	public partial class ConnectorUserControl : UserControl
 	{
-		public TaggedValueListControl()
+		public ConnectorUserControl()
 		{
 			InitializeComponent();
 		}
+
 		private void TaggedValueListBox_OnLostFocus(object sender, RoutedEventArgs e)
 		{
 			if (sender is ListBox listBox) listBox.SelectedIndex = -1;

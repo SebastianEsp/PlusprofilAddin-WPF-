@@ -1,4 +1,4 @@
-﻿namespace PlusprofilAddin.Views
+﻿namespace PlusprofilAddin.Views.Dialogs
 {
 	/// <summary>
 	///     Interaction logic for ElementDialog.xaml

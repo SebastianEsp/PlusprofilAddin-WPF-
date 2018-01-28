@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 using EA;
-using PlusprofilAddin.Commands;
+using PlusprofilAddin.ViewModels.Commands;
 
 namespace PlusprofilAddin.ViewModels
 {

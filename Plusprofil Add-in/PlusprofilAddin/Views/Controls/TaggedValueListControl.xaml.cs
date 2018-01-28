@@ -1,18 +1,17 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace PlusprofilAddin.Views
+namespace PlusprofilAddin.Views.Controls
 {
 	/// <summary>
-	///     Interaction logic for ElementDialog.xaml
+	/// Interaction logic for TaggedValueList.xaml
 	/// </summary>
-	public partial class AttributeDialog
+	public partial class TaggedValueListControl : UserControl
 	{
-		public AttributeDialog()
+		public TaggedValueListControl()
 		{
 			InitializeComponent();
 		}
-
 		private void TaggedValueListBox_OnLostFocus(object sender, RoutedEventArgs e)
 		{
 			if (sender is ListBox listBox) listBox.SelectedIndex = -1;

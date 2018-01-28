@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Input;
 
-namespace PlusprofilAddin.Commands
+namespace PlusprofilAddin.ViewModels.Commands
 {
 	/// <summary>
 	/// Command used to close the current <c>Window</c> without saving any changes made

@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using EA;
-using PlusprofilAddin.Commands;
+using PlusprofilAddin.ViewModels.Commands;
 
 namespace PlusprofilAddin.ViewModels
 {

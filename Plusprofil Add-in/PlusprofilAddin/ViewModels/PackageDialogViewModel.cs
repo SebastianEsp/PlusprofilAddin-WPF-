@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using EA;
-using PlusprofilAddin.Commands;
+using PlusprofilAddin.ViewModels.Commands;
 using static PlusprofilAddin.PlusprofilTaggedValueDefinitions;
 
 namespace PlusprofilAddin.ViewModels

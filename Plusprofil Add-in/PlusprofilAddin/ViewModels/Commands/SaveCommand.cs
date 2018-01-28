@@ -6,10 +6,9 @@ using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
 using EA;
-using PlusprofilAddin.ViewModels;
 using Attribute = EA.Attribute;
 
-namespace PlusprofilAddin.Commands
+namespace PlusprofilAddin.ViewModels.Commands
 {
 	public class SaveCommand : ICommand
 	{
@@ -156,7 +155,7 @@ namespace PlusprofilAddin.Commands
 			foreach (ViewmodelTaggedValue dtv in collection)
 			{
 				if (dtv.TaggedValue == null) dtv.AddTaggedValue(taggedValues);
-				dtv.UpdateTaggedValueValue();
+				else dtv.UpdateTaggedValueValue();
 			}
 		}
 

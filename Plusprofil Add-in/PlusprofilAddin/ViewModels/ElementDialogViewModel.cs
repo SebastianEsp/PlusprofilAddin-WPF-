@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using EA;
-using PlusprofilAddin.Commands;
+using PlusprofilAddin.ViewModels.Commands;
 using static PlusprofilAddin.PlusprofilTaggedValueDefinitions;
 using PTVD = PlusprofilAddin.PlusprofilTaggedValueDefinitions;
 

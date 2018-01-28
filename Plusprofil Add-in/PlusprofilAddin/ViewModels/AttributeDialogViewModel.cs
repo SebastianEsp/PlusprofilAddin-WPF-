@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using EA;
-using PlusprofilAddin.Commands;
+using PlusprofilAddin.ViewModels.Commands;
 using static PlusprofilAddin.PlusprofilTaggedValueDefinitions;
 using Attribute = EA.Attribute;
 

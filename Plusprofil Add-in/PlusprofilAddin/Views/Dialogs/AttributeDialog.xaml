@@ -1,0 +1,130 @@
+﻿<Window
+	x:Class="PlusprofilAddin.Views.Dialogs.AttributeDialog"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:controls="clr-namespace:PlusprofilAddin.Views.Controls"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:plusprofilAddin="clr-namespace:PlusprofilAddin"
+	Title="{Binding Path=UMLNameValue}"
+	d:DataContext="{d:DesignInstance}"
+	mc:Ignorable="d">
+	<Window.Resources>
+		<plusprofilAddin:DatatypeOptions x:Key="DatatypeOptions" />
+	</Window.Resources>
+	<ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+		<Grid Grid.IsSharedSizeScope="True">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+			</Grid.RowDefinitions>
+			<ListBox
+				Grid.Row="0"
+				Padding="0,6,0,6"
+				HorizontalContentAlignment="Stretch"
+				BorderThickness="0"
+				KeyboardNavigation.IsTabStop="False"
+				KeyboardNavigation.TabNavigation="Continue"
+				LostFocus="TaggedValueListBox_OnLostFocus"
+				ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+				ScrollViewer.VerticalScrollBarVisibility="Disabled">
+				<Grid Margin="0,3,0,3">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto" SharedSizeGroup="FirstCol" />
+						<ColumnDefinition />
+						<ColumnDefinition SharedSizeGroup="ThirdCol" />
+					</Grid.ColumnDefinitions>
+					<TextBlock
+						Grid.Column="0"
+						Margin="12,0,6,0"
+						Text="{DynamicResource ResourceKey=UMLName}" />
+					<TextBox
+						Grid.Column="1"
+						Margin="0,0,12,0"
+						Text="{Binding Path=UMLNameValue, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+				</Grid>
+				<Grid Margin="0,3,0,3">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto" SharedSizeGroup="FirstCol" />
+						<ColumnDefinition />
+						<ColumnDefinition SharedSizeGroup="ThirdCol" />
+					</Grid.ColumnDefinitions>
+					<TextBlock
+						Grid.Column="0"
+						Margin="12,0,6,0"
+						Text="{DynamicResource ResourceKey=URI}" />
+					<TextBox
+						Grid.Column="1"
+						Margin="0,0,12,0"
+						Text="{Binding Path=URIValue, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+				</Grid>
+				<Grid Margin="0,3,0,3">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto" SharedSizeGroup="FirstCol" />
+						<ColumnDefinition />
+						<ColumnDefinition SharedSizeGroup="ThirdCol" />
+					</Grid.ColumnDefinitions>
+					<TextBlock
+						Grid.Column="0"
+						Margin="12,0,6,0"
+						Text="{DynamicResource ResourceKey=Alias}" />
+					<TextBox
+						Grid.Column="1"
+						Margin="0,0,12,0"
+						Text="{Binding Path=AliasValue, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+				</Grid>
+				<Grid Margin="0,3,0,3">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto" SharedSizeGroup="FirstCol" />
+						<ColumnDefinition />
+						<ColumnDefinition SharedSizeGroup="ThirdCol" />
+					</Grid.ColumnDefinitions>
+					<TextBlock
+						Grid.Column="0"
+						Margin="12,0,6,0"
+						Text="{DynamicResource ResourceKey=Datatype}" />
+					<ComboBox
+						Grid.Column="1"
+						Margin="0,0,12,0"
+						IsEditable="True"
+						IsReadOnly="False"
+						ItemsSource="{StaticResource DatatypeOptions}"
+						Text="{Binding Path=DatatypeValue, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+				</Grid>
+			</ListBox>
+			<controls:LanguageTabUserControl Grid.Row="1" BorderThickness="0,1,0,1" />
+			<Grid Grid.Row="2">
+				<Grid.RowDefinitions>
+					<RowDefinition />
+					<RowDefinition />
+				</Grid.RowDefinitions>
+				<TextBlock
+					Grid.Row="0"
+					Margin="12,6,6,0"
+					FontWeight="SemiBold"
+					Text="{DynamicResource ResourceKey=Provenance}" />
+				<controls:TaggedValueListGroupingControl Grid.Row="1" Tag="{Binding Path=ProvenanceViewmodelTaggedValues}" />
+			</Grid>
+			<Grid Grid.Row="3">
+				<Grid.RowDefinitions>
+					<RowDefinition />
+					<RowDefinition />
+				</Grid.RowDefinitions>
+				<!--  TODO: Update Text to reflect correct stereotype  (RdfsProperty / DatatypeProperty)  -->
+				<TextBlock
+					Grid.Row="0"
+					Margin="12,6,6,0"
+					FontWeight="SemiBold"
+					Text="{DynamicResource ResourceKey=RdfsPropertyCharacteristics}" />
+				<controls:TaggedValueListGroupingControl Grid.Row="1" Tag="{Binding Path=StereotypeViewmodelTaggedValues}" />
+			</Grid>
+			<WrapPanel Grid.Row="4" HorizontalAlignment="Right">
+				<controls:CancelButtonUserControl />
+				<controls:SaveButtonUserControl />
+			</WrapPanel>
+		</Grid>
+	</ScrollViewer>
+</Window>

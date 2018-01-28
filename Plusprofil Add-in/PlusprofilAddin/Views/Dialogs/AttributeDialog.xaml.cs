@@ -1,25 +1,21 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace PlusprofilAddin.Views
+namespace PlusprofilAddin.Views.Dialogs
 {
 	/// <summary>
 	///     Interaction logic for ElementDialog.xaml
 	/// </summary>
-	public partial class ElementDialog
+	public partial class AttributeDialog
 	{
-		public ElementDialog()
+		public AttributeDialog()
 		{
 			InitializeComponent();
 		}
 
-		// TODO: Refactor (Breaks MVVM pattern)
 		private void TaggedValueListBox_OnLostFocus(object sender, RoutedEventArgs e)
 		{
-			if (sender is ListBox listBox)
-			{
-				listBox.SelectedIndex = -1;
-			}
+			if (sender is ListBox listBox) listBox.SelectedIndex = -1;
 		}
 	}
 }

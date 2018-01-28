@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace PlusprofilAddin.Views
+namespace PlusprofilAddin.Views.Controls
 {
 	/// <summary>
 	/// Interaction logic for TaggedValueListGroupingControl.xaml

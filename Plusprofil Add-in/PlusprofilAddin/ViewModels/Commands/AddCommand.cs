@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
 
-namespace PlusprofilAddin.Commands
+namespace PlusprofilAddin.ViewModels.Commands
 {
 	/// <summary>
 	/// Command used to add an additional <c>ViewmodelTaggedValue</c> to the <c>ItemsSource</c> of a View element
@@ -37,8 +37,7 @@ namespace PlusprofilAddin.Commands
 		{
 			if (parameter is ObservableCollection<ViewmodelTaggedValue> list)
 			{
-				string name = list.First().Name;
-				list.Add(new ViewmodelTaggedValue(name));
+				list.Add(new ViewmodelTaggedValue(list.First().Key));
 			}
 		}
 	}
