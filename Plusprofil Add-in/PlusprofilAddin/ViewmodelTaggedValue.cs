@@ -5,7 +5,8 @@ using EA;
 namespace PlusprofilAddin
 {
 	/// <summary>
-	/// 
+	/// Class used to represent a single <c>EA.TaggedValue</c>, <c>EA.RoleTag</c> or <c>EA.AttributeTag</c> in the add-in.
+	/// View classes retrieve information from the properties of this class. Likewise, <c>SaveCommand</c> uses the information stored in this class to update the corresponding tagged value in Sparwx Enterprise Architect.
 	/// </summary>
 	public class ViewmodelTaggedValue
 	{
@@ -49,13 +50,48 @@ namespace PlusprofilAddin
 			}
 		}
 
+		/// <summary>
+		/// String to identify what <c>PlusprofilTaggedValue</c> the <c>ViewmodelTaggedValue</c> corresponds to.
+		/// </summary>
 		public string Key { get; set; }
+		
+		/// <summary>
+		/// String used to identify the name of the tagged value in Sparx Enterprise Architect.
+		/// </summary>
 		public string Name { get; set; }
+
+		/// <summary>
+		/// String used as the name displayed in the view, based on <c>Key</c> and the language selected in <c>MainClass</c>.
+		/// </summary>
 		public string DisplayedName { get; set; }
+
+		/// <summary>
+		/// String representing the value of the tagged value as shown in the view.
+		/// Saving the value correctly in Sparx Enterprise Architect is handled in the <c>ViewmodelTaggedValue.UpdateTaggedValue()</c> method, rather than here.
+		/// </summary>
 		public string Value { get; set; }
+
+		/// <summary>
+		/// The <c>EA.TaggedValue</c>, <c>EA.RoleTag</c> or <c>EA.AttributeTag</c> in Sparx Enterprise Architect that this <c>ViewmodelTaggedValue</c> represents.
+		/// </summary>
 		public dynamic TaggedValue { get; set; }
+
+		/// <summary>
+		/// The <c>EA.ObjectType</c> of <c>ViewmodelTaggedValue.TaggedValue</c>
+		/// Always has type <c>EA.ObjectType.otTaggedValue</c>, <c>EA.ObjectType.otRoleTag</c> or <c>EA.ObjectType.otAttributeTag</c>.
+		/// Note that when retrieving the value from Sparx Enterprise Architect, it has type <c>short</c>, and thus must be casted to <c>EA.ObjectType</c>
+		/// </summary>
 		public ObjectType ObjectType { get; set; }
+
+		/// <summary>
+		/// The <c>PlusprofilTaggedValue</c> that corresponds to the tagged value retrieved from Enterprise Architect.
+		/// </summary>
 		public PlusprofilTaggedValue PlusprofilTaggedValue { get; set; }
+
+		/// <summary>
+		/// The <c>ResourceDictionary</c> used for the view.
+		/// Used to set <c>ViewmodelTaggedValue.DisplayedName</c> based on <c>ViewmodelTaggedValue.Key</c>.
+		/// </summary>
 		public ResourceDictionary ResourceDictionary { get; set; }
 
 
@@ -110,7 +146,7 @@ namespace PlusprofilAddin
 				case ObjectType.otRoleTag:
 					// Ensure that TaggedValue.Value has format "{value}$ea_notes={notes}",
 					// tokenize the string, then set Value = {notes} if HasMemoField, otherwise Value = {value}
-					// "$ea_notes=" check may be superfluous, requires additional testing
+					// TODO: "$ea_notes=" check may be superfluous, requires additional testing
 					if (!TaggedValue.Value.Contains("$ea_notes")) TaggedValue.Value = String.Concat(TaggedValue.Value, "$ea_notes=");
 					string[] tokens = TaggedValue.Value.Split(new[] {"$ea_notes="}, StringSplitOptions.None);
 					TaggedValue.Value = PlusprofilTaggedValue.HasMemoField ? $"{tokens[0]}$ea_notes={Value}" : $"{Value}$ea_notes={tokens[1]}";

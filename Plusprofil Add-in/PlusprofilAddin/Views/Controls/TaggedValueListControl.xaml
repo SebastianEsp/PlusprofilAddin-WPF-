@@ -11,6 +11,24 @@
 	<UserControl.Resources>
 		<commands:RemoveCommandConverter x:Key="RemoveCommandConverter" />
 		<BitmapImage x:Key="AddImage" UriSource="/PlusprofilAddin;component/Resources/add.png" />
+    <Style x:Key="ButtonHoverStyle" TargetType="Button">
+	    <Setter Property="OverridesDefaultStyle" Value="True" />
+	    <Setter Property="Cursor" Value="Hand" />
+	    <Setter Property="Template">
+		    <Setter.Value>
+			    <ControlTemplate TargetType="Button">
+				    <Border Name="border" BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}">
+					    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+				    </Border>
+				    <ControlTemplate.Triggers>
+					    <Trigger Property="IsMouseOver" Value="True">
+						    <Setter Property="Opacity" Value="0.8" />
+					    </Trigger>
+				    </ControlTemplate.Triggers>
+			    </ControlTemplate>
+		    </Setter.Value>
+	    </Setter>
+    </Style>
 	</UserControl.Resources>
 	<ListBox
 		Name="TaggedValueListBox"
@@ -22,6 +40,13 @@
 		LostFocus="TaggedValueListBox_OnLostFocus"
 		ScrollViewer.HorizontalScrollBarVisibility="Disabled"
 		ScrollViewer.VerticalScrollBarVisibility="Disabled">
+		<!-- TODO: Implement ContextMenu, then remove AddButton -->
+		<!--<ListBox.ContextMenu>
+      <ContextMenu>
+			  <MenuItem Header="Add"/>
+			  <MenuItem Header="Delete"/>
+      </ContextMenu>
+		</ListBox.ContextMenu>-->
 		<ListBox.InputBindings>
 			<KeyBinding Key="Delete" Command="{Binding Path=DataContext.(viewModels:DialogViewModel.RemoveCommand), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}">
 				<KeyBinding.CommandParameter>
@@ -36,7 +61,6 @@
 			</KeyBinding>
 		</ListBox.InputBindings>
 		<ListBox.ItemTemplate>
-			<!--  Inner content  -->
 			<DataTemplate DataType="plusprofilAddin:ViewmodelTaggedValue">
 				<Grid
 					Name="TaggedValueGrid"
@@ -68,7 +92,7 @@
 						Margin="0,0,12,0"
 						Command="{Binding Path=DataContext.(viewModels:DialogViewModel.AddCommand), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
 						CommandParameter="{Binding Path=ItemsSource, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}}"
-						Visibility="Hidden" BorderThickness="0">
+						Visibility="Hidden" BorderThickness="0" Style="{StaticResource ButtonHoverStyle}">
 						<Button.Background>
 							<ImageBrush ImageSource="{StaticResource AddImage}" Stretch="Fill"/>
 						</Button.Background>
@@ -94,7 +118,6 @@
 					</DataTrigger>
 				</DataTemplate.Triggers>
 			</DataTemplate>
-			<!--  Inner content end  -->
 		</ListBox.ItemTemplate>
 	</ListBox>
 </UserControl>
