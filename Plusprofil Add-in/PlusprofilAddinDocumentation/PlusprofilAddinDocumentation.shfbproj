@@ -31,7 +31,7 @@
       <DocumentationSource sourceFile="..\PlusprofilAddin\bin\Debug\PlusprofilAddin.dll" xmlns="" />
     </DocumentationSources>
     <HelpFileFormat>HtmlHelp1, MSHelpViewer, Website</HelpFileFormat>
-    <SyntaxFilters>None</SyntaxFilters>
+    <SyntaxFilters>C#</SyntaxFilters>
     <PresentationStyle>VS2013</PresentationStyle>
     <CleanIntermediates>True</CleanIntermediates>
     <KeepLogFile>True</KeepLogFile>
