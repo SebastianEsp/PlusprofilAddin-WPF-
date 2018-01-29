@@ -38,7 +38,7 @@ namespace PlusprofilAddin
 			}
 			catch (InvalidOperationException)
 			{
-				MessageBox.Show("Exception occurred while trying to register the hotkeys.");
+				MessageBox.Show("Exception occurred while trying to register hotkeys for Plusprofil Add-in.\nEnsure that no other instances of Sparx Enterprise Architect are running.", "Plusprofil Add-in");
 			}
 		}
 

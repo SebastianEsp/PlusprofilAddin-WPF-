@@ -23,6 +23,13 @@ namespace PlusprofilAddin.ViewModels
 
 		public abstract void Initialize();
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="taggedValueList"></param>
+		/// <param name="taggedValueName"></param>
+		/// <returns></returns>
+		/// <exception cref="ArgumentException"></exception>
 		protected List<dynamic> RetrieveTaggedValues(List<dynamic> taggedValueList, string taggedValueName)
 		{
 			var result = new List<dynamic>();
@@ -51,11 +58,13 @@ namespace PlusprofilAddin.ViewModels
 				? result
 				: throw new ArgumentException($"No tagged value with name \"{taggedValueName}\" was found");
 		}
-		public override string ToString()
-		{
-			return $"Type: {GetType()}";
-		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="toAddList"></param>
+		/// <param name="taggedValuesList"></param>
+		/// <param name="viewmodelTaggedValues"></param>
 		public void AddTaggedValuesToViewmodelTaggedValues(List<PlusprofilTaggedValue> toAddList, List<dynamic> taggedValuesList, ObservableCollection<ObservableCollection<ViewmodelTaggedValue>> viewmodelTaggedValues)
 		{
 			foreach (PlusprofilTaggedValue ptv in toAddList)
@@ -76,7 +85,7 @@ namespace PlusprofilAddin.ViewModels
 					}
 					viewmodelTaggedValues.Add(resultList);
 				}
-				catch (ArgumentException e)
+				catch (ArgumentException)
 				{
 					// No tagged values with name ptv.Name is found, thus the list is not added (do nothing)
 					// TODO: Warn the user in a non-intrusive manner (i.e. do not use a MessageBox)

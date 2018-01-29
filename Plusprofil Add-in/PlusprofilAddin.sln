@@ -10,6 +10,8 @@ Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "PlusprofilAddinInstaller", 
 		{9CABFADF-E159-425F-B66B-288A0FFB99DF} = {9CABFADF-E159-425F-B66B-288A0FFB99DF}
 	EndProjectSection
 EndProject
+Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "PlusprofilAddinDocumentation", "PlusprofilAddinDocumentation\PlusprofilAddinDocumentation.shfbproj", "{38A57D2A-210D-4437-AC17-3D669FE00BCD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,14 @@ Global
 		{14235615-48FA-45B7-AFC9-84628F1B19F7}.Release|Any CPU.ActiveCfg = Release|x86
 		{14235615-48FA-45B7-AFC9-84628F1B19F7}.Release|x86.ActiveCfg = Release|x86
 		{14235615-48FA-45B7-AFC9-84628F1B19F7}.Release|x86.Build.0 = Release|x86
+		{38A57D2A-210D-4437-AC17-3D669FE00BCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38A57D2A-210D-4437-AC17-3D669FE00BCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38A57D2A-210D-4437-AC17-3D669FE00BCD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{38A57D2A-210D-4437-AC17-3D669FE00BCD}.Debug|x86.Build.0 = Debug|Any CPU
+		{38A57D2A-210D-4437-AC17-3D669FE00BCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38A57D2A-210D-4437-AC17-3D669FE00BCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38A57D2A-210D-4437-AC17-3D669FE00BCD}.Release|x86.ActiveCfg = Release|Any CPU
+		{38A57D2A-210D-4437-AC17-3D669FE00BCD}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
