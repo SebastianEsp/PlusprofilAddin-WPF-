@@ -7,6 +7,7 @@ namespace PlusprofilAddin.Views.Controls
 	/// </summary>
 	public partial class LanguageTabUserControl : UserControl
 	{
+		/// <inheritdoc />
 		public LanguageTabUserControl()
 		{
 			InitializeComponent();

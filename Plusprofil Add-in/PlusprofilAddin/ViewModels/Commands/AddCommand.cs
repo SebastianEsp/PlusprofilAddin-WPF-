@@ -19,15 +19,15 @@ namespace PlusprofilAddin.ViewModels.Commands
 		/// Determines if <c>AddCommand.Execute(object parameter)</c> can be called.
 		/// As View currently hides elements that call <c>AddCommand.Execute(object parameter)</c>, this will always return true.
 		/// </summary>
-		/// <param name="parameter">Currently not used</param>
 		/// <returns>Returns true.</returns>
+		/// <inheritdoc/>
 		public bool CanExecute(object parameter)
 		{
 			return true;
 		}
 
 		/// <summary>
-		/// Adds a new <c>ViewmodelTaggedValue</c> to the <c>IEnumerable</c> using the Name of the first element in the <c>IEnumerable</c>
+		/// Adds a new <c>ViewmodelTaggedValue</c> to the <c>ObservableCollection</c> using the <c>Key</c> of the first element in the <c>ObservableCollection</c>
 		/// </summary>
 		/// <param name="parameter">
 		/// <c>IEnumerable</c>to add the new <c>ViewmodelTaggedValue</c>.
@@ -35,9 +35,9 @@ namespace PlusprofilAddin.ViewModels.Commands
 		/// </param>
 		public void Execute(object parameter)
 		{
-			if (parameter is ObservableCollection<ViewmodelTaggedValue> list)
+			if (parameter is ObservableCollection<ViewModelTaggedValue> list)
 			{
-				list.Add(new ViewmodelTaggedValue(list.First().Key));
+				list.Add(new ViewModelTaggedValue(list.First().Key));
 			}
 		}
 	}

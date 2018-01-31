@@ -35,7 +35,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>icon.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Interop.EA">
@@ -63,14 +63,14 @@
     <Compile Include="ViewModels\Commands\AddCommand.cs" />
     <Compile Include="ViewModels\Commands\CancelCommand.cs" />
     <Compile Include="ViewModels\Commands\SaveCommand.cs" />
-    <Compile Include="InvisibleHotkeyForm.cs">
+    <Compile Include="HotkeyForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InvisibleHotkeyForm.Designer.cs">
-      <DependentUpon>InvisibleHotkeyForm.cs</DependentUpon>
+    <Compile Include="HotkeyForm.Designer.cs">
+      <DependentUpon>HotkeyForm.cs</DependentUpon>
     </Compile>
     <Compile Include="KeyboardHook.cs" />
-    <Compile Include="ViewmodelTaggedValue.cs" />
+    <Compile Include="ViewModelTaggedValue.cs" />
     <Compile Include="DatatypeOptions.cs" />
     <Compile Include="MultiplicityOptions.cs" />
     <Compile Include="ViewModels\AttributeDialogViewModel.cs" />
@@ -164,7 +164,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="icon.ico" />
+    <Content Include="Resources\icon.ico" />
     <Resource Include="Resources\add.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

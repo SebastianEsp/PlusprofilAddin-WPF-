@@ -6,40 +6,47 @@ using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
 using EA;
-using Attribute = EA.Attribute;
 
 namespace PlusprofilAddin.ViewModels.Commands
 {
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <inheritdoc />
 	public class SaveCommand : ICommand
 	{
 		
 #pragma warning disable 0067
-		/// <summary>
-		/// Required interface member of ICommand
-		/// </summary>
+		/// <inheritdoc/>
 		public event EventHandler CanExecuteChanged;
 #pragma warning restore 0067
 
+		/// <summary>
+		/// Determines if <c>SaveCommand.Execute(object parameter)</c> can be called.
+		/// </summary>
+		/// <returns>Returns true.</returns>
+		/// <inheritdoc/>
 		public bool CanExecute(object parameter)
 		{
 			return true;
 		}
 
-		// TODO: Add MultiBinding and converter to SaveCommand such that
-		// TODO: parameter[0] is DialogViewModel viewModel and
-		// TODO: parameter[1] is Window window
-
-		// Expected parameter: DialogViewModel
+		/// <summary>
+		/// Expected parameter is type object[2]
+		/// Source / Type of parameter[0]: DialogViewModel
+		/// Source / Type of parameter[1]: ListBox.SelectedIndex (int)
+		/// </summary>
+		/// <inheritdoc/>
 		public void Execute(object parameter)
 		{
-			List<ObservableCollection<ObservableCollection<ViewmodelTaggedValue>>> toUpdateCollectionsList;
+			List<ObservableCollection<ObservableCollection<ViewModelTaggedValue>>> toUpdateCollectionsList;
 			if (!(parameter is object[] values) || values.Length != 2) return;
 			switch (values[0])
 			{
 				case ElementDialogViewModel viewModel:
-					Element element = viewModel.Element;
+					var element = viewModel.Element;
 
-					toUpdateCollectionsList = new List<ObservableCollection<ObservableCollection<ViewmodelTaggedValue>>>
+					toUpdateCollectionsList = new List<ObservableCollection<ObservableCollection<ViewModelTaggedValue>>>
 					{
 						viewModel.DanishViewmodelTaggedValues,
 						viewModel.EnglishViewmodelTaggedValues,
@@ -59,8 +66,8 @@ namespace PlusprofilAddin.ViewModels.Commands
 					break;
 
 				case PackageDialogViewModel viewModel:
-					Element packageElement = viewModel.PackageElement;
-					toUpdateCollectionsList = new List<ObservableCollection<ObservableCollection<ViewmodelTaggedValue>>>
+					var packageElement = viewModel.PackageElement;
+					toUpdateCollectionsList = new List<ObservableCollection<ObservableCollection<ViewModelTaggedValue>>>
 					{
 						viewModel.DanishViewmodelTaggedValues,
 						viewModel.EnglishViewmodelTaggedValues,
@@ -77,8 +84,8 @@ namespace PlusprofilAddin.ViewModels.Commands
 					break;
 
 				case AttributeDialogViewModel viewModel:
-					Attribute attribute = viewModel.Attribute;
-					toUpdateCollectionsList = new List<ObservableCollection<ObservableCollection<ViewmodelTaggedValue>>>
+					var attribute = viewModel.Attribute;
+					toUpdateCollectionsList = new List<ObservableCollection<ObservableCollection<ViewModelTaggedValue>>>
 					{
 						viewModel.DanishViewmodelTaggedValues,
 						viewModel.EnglishViewmodelTaggedValues,
@@ -99,15 +106,15 @@ namespace PlusprofilAddin.ViewModels.Commands
 					break;
 
 				case ConnectorDialogViewModel viewModel:
-					ConnectorEnd sourceEnd = viewModel.SourceEnd;
-					ConnectorEnd targetEnd = viewModel.TargetEnd;
+					var sourceEnd = viewModel.SourceEnd;
+					var targetEnd = viewModel.TargetEnd;
 
-					toUpdateCollectionsList = new List<ObservableCollection<ObservableCollection<ViewmodelTaggedValue>>>
+					toUpdateCollectionsList = new List<ObservableCollection<ObservableCollection<ViewModelTaggedValue>>>
 					{
 						viewModel.SourceViewModel.DanishViewmodelTaggedValues,
 						viewModel.SourceViewModel.EnglishViewmodelTaggedValues,
 						viewModel.SourceViewModel.ProvenanceViewmodelTaggedValues,
-						viewModel.SourceViewModel.StereotypeViewmodelTaggedValues,
+						viewModel.SourceViewModel.StereotypeViewmodelTaggedValues
 
 					};
 
@@ -116,12 +123,12 @@ namespace PlusprofilAddin.ViewModels.Commands
 
 					// Repeat for TargetConnectorEnd
 
-					toUpdateCollectionsList = new List<ObservableCollection<ObservableCollection<ViewmodelTaggedValue>>>
+					toUpdateCollectionsList = new List<ObservableCollection<ObservableCollection<ViewModelTaggedValue>>>
 					{
 						viewModel.TargetViewModel.DanishViewmodelTaggedValues,
 						viewModel.TargetViewModel.EnglishViewmodelTaggedValues,
 						viewModel.TargetViewModel.ProvenanceViewmodelTaggedValues,
-						viewModel.TargetViewModel.StereotypeViewmodelTaggedValues,
+						viewModel.TargetViewModel.StereotypeViewmodelTaggedValues
 					};
 
 					UpdateTaggedValues(targetEnd.TaggedValues, toUpdateCollectionsList);
@@ -144,33 +151,40 @@ namespace PlusprofilAddin.ViewModels.Commands
 					break;
 			}
 
-			Window window = (Window) values[1];
+			var window = (Window) values[1];
 			window.Close();
 		}
 
-		private void UpdateTaggedValues(Collection taggedValues, List<ObservableCollection<ObservableCollection<ViewmodelTaggedValue>>> list)
+		private static void UpdateTaggedValues(Collection taggedValues, List<ObservableCollection<ObservableCollection<ViewModelTaggedValue>>> list)
 		{
 			foreach (var toUpdateCollection in list)
 			foreach (var collection in toUpdateCollection)
-			foreach (ViewmodelTaggedValue dtv in collection)
+			foreach (var dtv in collection)
 			{
 				if (dtv.TaggedValue == null) dtv.AddTaggedValue(taggedValues);
 				else dtv.UpdateTaggedValueValue();
 			}
 		}
 
-		private void DeleteTaggedValues(Collection taggedValues, List<ViewmodelTaggedValue> list)
+		private static void DeleteTaggedValues(Collection taggedValues, List<ViewModelTaggedValue> list)
 		{
 			foreach(var dtv in list) dtv.DeleteTaggedValue(taggedValues);
 		}
 	}
+
+	/// <summary>
+	/// Converter used to return a clone of the <c>MultiBinding</c> values used in <c>SaveCommand</c>
+	/// </summary>
+	/// <inheritdoc />
 	public class SaveCommandConverter : IMultiValueConverter
 	{
+		/// <inheritdoc />
 		public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
 		{
 			return values.Clone();
 		}
 
+		/// <inheritdoc />
 		public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
 		{
 			throw new NotSupportedException("ConvertBack is not supported");

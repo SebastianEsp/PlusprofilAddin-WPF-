@@ -4,14 +4,22 @@ using EA;
 
 namespace PlusprofilAddin
 {
-	public partial class InvisibleHotkeyForm : Form
+	///<summary>
+	/// <c>Form</c> used to register hotkeys.
+	/// </summary>
+	public partial class HotkeyForm : Form
 	{
 		private readonly MainClass _mainClass;
         private readonly string _danishMenuOption;
         private readonly string _englishMenuOption;
 		private readonly Repository _repository;
 
-		public InvisibleHotkeyForm(MainClass mainClass, Repository repository, string danishMenuOption, string englishMenuOption)
+		/// <param name="mainClass"></param>
+		/// <param name="repository"></param>
+		/// <param name="danishMenuOption"></param>
+		/// <param name="englishMenuOption"></param>
+		/// <inheritdoc/>
+		public HotkeyForm(MainClass mainClass, Repository repository, string danishMenuOption, string englishMenuOption)
 		{
 			/* Creates a new form with a KeyboardHook for capturing keypresses.
 			 * To add new shortcuts, register another hotkey using the function hook.RegisterHotKey(global::ModifierKeys modifier, Keys key).
@@ -19,7 +27,7 @@ namespace PlusprofilAddin
 			 * if(e.Keys == Keys.W && e.Modifier == global::ModifierKeys.Control | global::ModifierKeys.Shift) { foo(); }
 			 * to call function foo(); when CTRL + SHIFT + W is pressed
 			 */
-			KeyboardHook keyboardHook = new KeyboardHook();
+			var keyboardHook = new KeyboardHook();
 
 			_mainClass = mainClass;
 			_repository = repository;

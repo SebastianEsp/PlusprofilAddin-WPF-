@@ -8,6 +8,7 @@ namespace PlusprofilAddin.Views.Dialogs
 	/// </summary>
 	public partial class AttributeDialog
 	{
+		/// <inheritdoc />
 		public AttributeDialog()
 		{
 			InitializeComponent();

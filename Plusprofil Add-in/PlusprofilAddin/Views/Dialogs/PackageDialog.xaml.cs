@@ -8,6 +8,7 @@ namespace PlusprofilAddin.Views.Dialogs
 	/// </summary>
 	public partial class PackageDialog
 	{
+		/// <inheritdoc />
 		public PackageDialog()
 		{
 			InitializeComponent();

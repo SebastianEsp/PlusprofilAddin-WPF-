@@ -5,25 +5,57 @@ using PlusprofilAddin.ViewModels.Commands;
 
 namespace PlusprofilAddin.ViewModels
 {
+	/// <inheritdoc />
 	public class ConnectorDialogViewModel : DialogViewModel
 	{
+		/// <summary>
+		/// 
+		/// </summary>
 		public ConnectorUserControlViewModel SourceViewModel { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public ConnectorUserControlViewModel TargetViewModel { get; set; }
+
+		/// <summary>
+		/// 
+		/// </summary>
 		public string Text { get; set; }
 
+		/// <summary>
+		/// 
+		/// </summary>
 		public Connector Connector { get; set; }
+		
+		/// <summary>
+		/// 
+		/// </summary>
 		public ConnectorEnd SourceEnd { get; set; }
+		
+		/// <summary>
+		/// 
+		/// </summary>
 		public ConnectorEnd TargetEnd { get; set; }
 
+		/// <summary>
+		/// 
+		/// </summary>
 		public Visibility ShowSourceEnd { get; set; }
+		
+		/// <summary>
+		/// 
+		/// </summary>
 		public Visibility ShowTargetEnd { get; set; }
 
+
+		/// <inheritdoc />
 		public ConnectorDialogViewModel()
 		{
-			DeleteTaggedValues = new List<ViewmodelTaggedValue>();
+			DeleteTaggedValues = new List<ViewModelTaggedValue>();
 		}
 
-		public override void Initialize()
+		/// <inheritdoc />
+		protected internal override void Initialize()
 		{
 			SaveCommand = new SaveCommand();
 			CancelCommand = new CancelCommand();

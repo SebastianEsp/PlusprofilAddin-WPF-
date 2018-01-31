@@ -1,18 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Windows;
 using EA;
 using PlusprofilAddin.ViewModels.Commands;
 using static PlusprofilAddin.PlusprofilTaggedValueDefinitions;
-using PTVD = PlusprofilAddin.PlusprofilTaggedValueDefinitions;
 
 namespace PlusprofilAddin.ViewModels
 {
+	/// <summary>
+	/// 
+	/// </summary>
 	public class ElementDialogViewModel : DialogViewModel
-	{
-		public List<dynamic> TaggedValuesList;
-		
+	{	
 		private readonly List<PlusprofilTaggedValue> _toAddDanishTaggedValues = new List<PlusprofilTaggedValue>
 		{
 			Definitions.Find(ptv => ptv.Key == "PrefLabelDa"),
@@ -20,7 +19,7 @@ namespace PlusprofilAddin.ViewModels
 			Definitions.Find(ptv => ptv.Key == "DeprecatedLabelDa"),
 			Definitions.Find(ptv => ptv.Key == "DefinitionDa"),
 			Definitions.Find(ptv => ptv.Key == "CommentDa"),
-			Definitions.Find(ptv => ptv.Key == "ApplicationNoteDa"),
+			Definitions.Find(ptv => ptv.Key == "ApplicationNoteDa")
 		};
 
 		private readonly List<PlusprofilTaggedValue> _toAddEnglishTaggedValues = new List<PlusprofilTaggedValue>
@@ -30,7 +29,7 @@ namespace PlusprofilAddin.ViewModels
 			Definitions.Find(ptv => ptv.Key == "DeprecatedLabelEn"),
 			Definitions.Find(ptv => ptv.Key == "DefinitionEn"),
 			Definitions.Find(ptv => ptv.Key == "CommentEn"),
-			Definitions.Find(ptv => ptv.Key == "ApplicationNoteEn"),
+			Definitions.Find(ptv => ptv.Key == "ApplicationNoteEn")
 		};
 
 		private readonly List<PlusprofilTaggedValue> _toAddProvenanceTaggedValues = new List<PlusprofilTaggedValue>
@@ -38,37 +37,72 @@ namespace PlusprofilAddin.ViewModels
 			Definitions.Find(ptv => ptv.Key == "LegalSource"),
 			Definitions.Find(ptv => ptv.Key == "Source"),
 			Definitions.Find(ptv => ptv.Key == "IsDefinedBy"),
-			Definitions.Find(ptv => ptv.Key == "WasDerivedFrom"),
+			Definitions.Find(ptv => ptv.Key == "WasDerivedFrom")
 		};
 
 		private readonly List<PlusprofilTaggedValue> _toAddStereotypeTaggedValues = new List<PlusprofilTaggedValue>();
 
+		private readonly List<dynamic> _taggedValuesList;
+
+		/// <summary>
+		/// 
+		/// </summary>
 		public ElementDialogViewModel()
 		{
-			DanishViewmodelTaggedValues = new ObservableCollection<ObservableCollection<ViewmodelTaggedValue>>();
-			EnglishViewmodelTaggedValues = new ObservableCollection<ObservableCollection<ViewmodelTaggedValue>>();
-			ProvenanceViewmodelTaggedValues = new ObservableCollection<ObservableCollection<ViewmodelTaggedValue>>();
-			StereotypeViewmodelTaggedValues = new ObservableCollection<ObservableCollection<ViewmodelTaggedValue>>();
-			TaggedValuesList = new List<dynamic>();
-			DeleteTaggedValues = new List<ViewmodelTaggedValue>();
+			DanishViewmodelTaggedValues = new ObservableCollection<ObservableCollection<ViewModelTaggedValue>>();
+			EnglishViewmodelTaggedValues = new ObservableCollection<ObservableCollection<ViewModelTaggedValue>>();
+			ProvenanceViewmodelTaggedValues = new ObservableCollection<ObservableCollection<ViewModelTaggedValue>>();
+			StereotypeViewmodelTaggedValues = new ObservableCollection<ObservableCollection<ViewModelTaggedValue>>();
+			_taggedValuesList = new List<dynamic>();
+			DeleteTaggedValues = new List<ViewModelTaggedValue>();
 
 			URIValue = "";
 			UMLNameValue = "";
 			AliasValue = "";
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
 		public Element Element { get; set; }
+
+		/// <summary>
+		/// 
+		/// </summary>
 		public Collection TaggedValues { get; set; }
 
+		/// <summary>
+		/// 
+		/// </summary>
 		public string URIValue { get; set; }
+
+		/// <summary>
+		/// 
+		/// </summary>
 		public string UMLNameValue { get; set; }
+
+		/// <summary>
+		/// 
+		/// </summary>
 		public string AliasValue { get; set; }
 
-		public ViewmodelTaggedValue URIViewmodelTaggedValue { get; set; }
-		public ObservableCollection<ObservableCollection<ViewmodelTaggedValue>> ProvenanceViewmodelTaggedValues { get; set; }
-		public ObservableCollection<ObservableCollection<ViewmodelTaggedValue>> StereotypeViewmodelTaggedValues { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public ViewModelTaggedValue URIViewmodelTaggedValue { get; set; }
 
-		public override void Initialize()
+		/// <summary>
+		/// 
+		/// </summary>
+		public ObservableCollection<ObservableCollection<ViewModelTaggedValue>> ProvenanceViewmodelTaggedValues { get; set; }
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public ObservableCollection<ObservableCollection<ViewModelTaggedValue>> StereotypeViewmodelTaggedValues { get; set; }
+
+		/// <inheritdoc />
+		protected internal override void Initialize()
 		{
 			SaveCommand = new SaveCommand();
 			CancelCommand = new CancelCommand();
@@ -98,15 +132,15 @@ namespace PlusprofilAddin.ViewModels
 			//Tagged values are stored in a list to avoid iterating Collections multiple times, which is very costly
 			//In a future iteration of the addin, avoid iterating the collection even once, instead using Repository.SQLQuery to retrieve
 			//an XML-formatted list of every Tagged Value where the owner ID is Element.ElementID
-			for (int i = 0; i < TaggedValues.Count; i++)
+			for (short i = 0; i < TaggedValues.Count; i++)
 			{
-				TaggedValue tv = TaggedValues.GetAt((short) i);
-				TaggedValuesList.Add(tv);
+				TaggedValue tv = TaggedValues.GetAt(i);
+				_taggedValuesList.Add(tv);
 			}
 			
 			// Retrieve URI tagged value and save it in URIViewmodelTaggedValue
-			var result = RetrieveTaggedValues(TaggedValuesList, "URI");
-			URIViewmodelTaggedValue = new ViewmodelTaggedValue(result.First())
+			var result = RetrieveTaggedValues(_taggedValuesList, "URI");
+			URIViewmodelTaggedValue = new ViewModelTaggedValue(result.First())
 			{
 				ResourceDictionary = ResourceDictionary,
 				Key = Definitions.Find(ptv => ptv.Key == "URI").Key
@@ -115,10 +149,10 @@ namespace PlusprofilAddin.ViewModels
 			URIValue = URIViewmodelTaggedValue.Value;
 
 			// Add tagged values to list of ViewmodelTaggedValues
-			AddTaggedValuesToViewmodelTaggedValues(_toAddDanishTaggedValues, TaggedValuesList, DanishViewmodelTaggedValues);
-			AddTaggedValuesToViewmodelTaggedValues(_toAddEnglishTaggedValues, TaggedValuesList, EnglishViewmodelTaggedValues);
-			AddTaggedValuesToViewmodelTaggedValues(_toAddProvenanceTaggedValues, TaggedValuesList, ProvenanceViewmodelTaggedValues);
-			AddTaggedValuesToViewmodelTaggedValues(_toAddStereotypeTaggedValues, TaggedValuesList, StereotypeViewmodelTaggedValues);
+			DanishViewmodelTaggedValues = AddTaggedValuesToViewmodelTaggedValues(_toAddDanishTaggedValues, _taggedValuesList);
+			EnglishViewmodelTaggedValues = AddTaggedValuesToViewmodelTaggedValues(_toAddEnglishTaggedValues, _taggedValuesList);
+			ProvenanceViewmodelTaggedValues = AddTaggedValuesToViewmodelTaggedValues(_toAddProvenanceTaggedValues, _taggedValuesList);
+			StereotypeViewmodelTaggedValues = AddTaggedValuesToViewmodelTaggedValues(_toAddStereotypeTaggedValues, _taggedValuesList);
 		}
 	}
 }

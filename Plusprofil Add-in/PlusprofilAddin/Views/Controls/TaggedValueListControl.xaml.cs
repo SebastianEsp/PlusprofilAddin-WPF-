@@ -8,6 +8,7 @@ namespace PlusprofilAddin.Views.Controls
 	/// </summary>
 	public partial class TaggedValueListControl : UserControl
 	{
+		/// <inheritdoc />
 		public TaggedValueListControl()
 		{
 			InitializeComponent();

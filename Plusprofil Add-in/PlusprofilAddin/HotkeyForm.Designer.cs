@@ -1,6 +1,6 @@
 ﻿namespace PlusprofilAddin
 {
-	partial class InvisibleHotkeyForm
+	partial class HotkeyForm
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -30,7 +30,7 @@
 		{
 			this.components = new System.ComponentModel.Container();
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.Text = "InvisibleHotkeyForm";
+			this.Text = "HotkeyForm";
 		}
 
 		#endregion

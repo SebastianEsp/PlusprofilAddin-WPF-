@@ -4,6 +4,9 @@ using System.Windows.Forms;
 
 namespace PlusprofilAddin
 {
+	/// <summary>
+	/// 
+	/// </summary>
 	public sealed class KeyboardHook : IDisposable
 	{
 		// Registers a hot key with Windows.
@@ -35,15 +38,13 @@ namespace PlusprofilAddin
 				base.WndProc(ref m);
 
 				// check if we got a hot key pressed.
-				if (m.Msg == WmHotkey)
-				{
-					// get the keys.
-					Keys key = (Keys)(((int)m.LParam >> 16) & 0xFFFF);
-					ModifierKeys modifier = (ModifierKeys)((int)m.LParam & 0xFFFF);
+				if (m.Msg != WmHotkey) return;
+				// get the keys.
+				var key = (Keys)(((int)m.LParam >> 16) & 0xFFFF);
+				var modifier = (ModifierKeys)((int)m.LParam & 0xFFFF);
 
-					// invoke the event to notify the parent.
-					KeyPressed?.Invoke(this, new KeyPressedEventArgs(modifier, key));
-				}
+				// invoke the event to notify the parent.
+				KeyPressed?.Invoke(this, new KeyPressedEventArgs(modifier, key));
 			}
 
 			public event EventHandler<KeyPressedEventArgs> KeyPressed;
@@ -61,6 +62,7 @@ namespace PlusprofilAddin
 		private readonly Window _window = new Window();
 		private int _currentId;
 
+		/// <inheritdoc />
 		public KeyboardHook()
 		{
 			// register the event of the inner native window.
@@ -92,10 +94,11 @@ namespace PlusprofilAddin
 
 		#region IDisposable Members
 
+		/// <inheritdoc />
 		public void Dispose()
 		{
 			// unregister all the registered hot keys.
-			for (int i = _currentId; i > 0; i--)
+			for (var i = _currentId; i > 0; i--)
 			{
 				UnregisterHotKey(_window.Handle, i);
 			}
@@ -118,8 +121,14 @@ namespace PlusprofilAddin
 			Key = key;
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
 		public ModifierKeys Modifier { get; }
 
+		/// <summary>
+		/// 
+		/// </summary>
 		public Keys Key { get; }
 	}
 
@@ -129,9 +138,21 @@ namespace PlusprofilAddin
 	[Flags]
 	public enum ModifierKeys : uint
 	{
+		/// <summary>
+		/// Alt-key
+		/// </summary>
 		Alt = 1,
+		/// <summary>
+		/// Control-key
+		/// </summary>
 		Control = 2,
+		/// <summary>
+		/// Shift-key
+		/// </summary>
 		Shift = 4,
+		/// <summary>
+		/// Windows-key
+		/// </summary>
 		Win = 8
 	}
 }

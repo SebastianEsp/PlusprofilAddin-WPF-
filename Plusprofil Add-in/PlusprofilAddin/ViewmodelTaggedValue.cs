@@ -8,14 +8,14 @@ namespace PlusprofilAddin
 	/// Class used to represent a single <c>EA.TaggedValue</c>, <c>EA.RoleTag</c> or <c>EA.AttributeTag</c> in the add-in.
 	/// View classes retrieve information from the properties of this class. Likewise, <c>SaveCommand</c> uses the information stored in this class to update the corresponding tagged value in Sparwx Enterprise Architect.
 	/// </summary>
-	public class ViewmodelTaggedValue
+	public class ViewModelTaggedValue
 	{
 
 		/// <summary>
-		/// Creates a new <c>ViewmodelTaggedValue</c> to represent an <c>EA.TaggedValue</c>, <c>EA.RoleTag</c> or <c>EA.AttributeTag</c> which is unknown or has not yet been created.
+		/// Creates a new <c>ViewModelTaggedValue</c> to represent an <c>EA.TaggedValue</c>, <c>EA.RoleTag</c> or <c>EA.AttributeTag</c> which is unknown or has not yet been created.
 		/// </summary>
 		/// <param name="key"></param>
-		public ViewmodelTaggedValue(string key)
+		public ViewModelTaggedValue(string key)
 		{
 			Key = key;
 			PlusprofilTaggedValue = PlusprofilTaggedValueDefinitions.Definitions.Find(ptv => ptv.Key == Key);
@@ -25,10 +25,10 @@ namespace PlusprofilAddin
 		}
 
 		/// <summary>
-		/// Creates a new <c>ViewmodelTaggedValue</c> to represent an <c>EA.TaggedValue</c>, <c>EA.RoleTag</c> or <c>EA.AttributeTag</c> passed as a parameter.
+		/// Creates a new <c>ViewModelTaggedValue</c> to represent an <c>EA.TaggedValue</c>, <c>EA.RoleTag</c> or <c>EA.AttributeTag</c> passed as a parameter.
 		/// </summary>
 		/// <param name="taggedValue"></param>
-		public ViewmodelTaggedValue(dynamic taggedValue)
+		public ViewModelTaggedValue(dynamic taggedValue)
 		{
 			TaggedValue = taggedValue;
 			ObjectType = (ObjectType) TaggedValue.ObjectType;
@@ -51,7 +51,7 @@ namespace PlusprofilAddin
 		}
 
 		/// <summary>
-		/// String to identify what <c>PlusprofilTaggedValue</c> the <c>ViewmodelTaggedValue</c> corresponds to.
+		/// String to identify what <c>PlusprofilTaggedValue</c> the <c>ViewModelTaggedValue</c> corresponds to.
 		/// </summary>
 		public string Key { get; set; }
 		
@@ -67,17 +67,17 @@ namespace PlusprofilAddin
 
 		/// <summary>
 		/// String representing the value of the tagged value as shown in the view.
-		/// Saving the value correctly in Sparx Enterprise Architect is handled in the <c>ViewmodelTaggedValue.UpdateTaggedValue()</c> method, rather than here.
+		/// Saving the value correctly in Sparx Enterprise Architect is handled in the <c>ViewModelTaggedValue.UpdateTaggedValue()</c> method, rather than here.
 		/// </summary>
 		public string Value { get; set; }
 
 		/// <summary>
-		/// The <c>EA.TaggedValue</c>, <c>EA.RoleTag</c> or <c>EA.AttributeTag</c> in Sparx Enterprise Architect that this <c>ViewmodelTaggedValue</c> represents.
+		/// The <c>EA.TaggedValue</c>, <c>EA.RoleTag</c> or <c>EA.AttributeTag</c> in Sparx Enterprise Architect that this <c>ViewModelTaggedValue</c> represents.
 		/// </summary>
 		public dynamic TaggedValue { get; set; }
 
 		/// <summary>
-		/// The <c>EA.ObjectType</c> of <c>ViewmodelTaggedValue.TaggedValue</c>
+		/// The <c>EA.ObjectType</c> of <c>ViewModelTaggedValue.TaggedValue</c>
 		/// Always has type <c>EA.ObjectType.otTaggedValue</c>, <c>EA.ObjectType.otRoleTag</c> or <c>EA.ObjectType.otAttributeTag</c>.
 		/// Note that when retrieving the value from Sparx Enterprise Architect, it has type <c>short</c>, and thus must be casted to <c>EA.ObjectType</c>
 		/// </summary>
@@ -90,13 +90,13 @@ namespace PlusprofilAddin
 
 		/// <summary>
 		/// The <c>ResourceDictionary</c> used for the view.
-		/// Used to set <c>ViewmodelTaggedValue.DisplayedName</c> based on <c>ViewmodelTaggedValue.Key</c>.
+		/// Used to set <c>ViewModelTaggedValue.DisplayedName</c> based on <c>ViewModelTaggedValue.Key</c>.
 		/// </summary>
 		public ResourceDictionary ResourceDictionary { get; set; }
 
 
 		/// <summary>
-		/// Used to initialize properties which cannot be initialized during creation of the <c>ViewmodelTaggedValue</c> due to missing information.
+		/// Used to initialize properties which cannot be initialized during creation of the <c>ViewModelTaggedValue</c> due to missing information.
 		/// </summary>
 		public void Initialize()
 		{
@@ -131,7 +131,7 @@ namespace PlusprofilAddin
 		}
 
 		/// <summary>
-		/// Updates the <c>Value</c> property of the <c>ViewmodelTaggedValue.TaggedValue</c>, effectively saving changes made to the value in the add-in.
+		/// Updates the <c>Value</c> property of the <c>ViewModelTaggedValue.TaggedValue</c>, effectively saving changes made to the value in the add-in.
 		/// </summary>
 		public void UpdateTaggedValueValue()
 		{
@@ -147,7 +147,7 @@ namespace PlusprofilAddin
 					// Ensure that TaggedValue.Value has format "{value}$ea_notes={notes}",
 					// tokenize the string, then set Value = {notes} if HasMemoField, otherwise Value = {value}
 					// TODO: "$ea_notes=" check may be superfluous, requires additional testing
-					if (!TaggedValue.Value.Contains("$ea_notes")) TaggedValue.Value = String.Concat(TaggedValue.Value, "$ea_notes=");
+					if (!TaggedValue.Value.Contains("$ea_notes")) TaggedValue.Value = string.Concat(TaggedValue.Value, "$ea_notes=");
 					string[] tokens = TaggedValue.Value.Split(new[] {"$ea_notes="}, StringSplitOptions.None);
 					TaggedValue.Value = PlusprofilTaggedValue.HasMemoField ? $"{tokens[0]}$ea_notes={Value}" : $"{Value}$ea_notes={tokens[1]}";
 					break;
@@ -156,13 +156,13 @@ namespace PlusprofilAddin
 		}
 
 		/// <summary>
-		/// Given a collection of tagged values, adds a new tagged value with information corresponding to that given in the <c>ViewmodelTaggedValue</c>.
-		/// <c>ViewmodelTaggedValue.UpdateTaggedValueValue()</c> is used to update information and ensure that <c>EA.TaggedValue.Update()</c> is called or similar for classes <c>EA.RoleTag</c> or <c>EA.AttributeTag</c>.
+		/// Given a collection of tagged values, adds a new tagged value with information corresponding to that given in the <c>ViewModelTaggedValue</c>.
+		/// <c>ViewModelTaggedValue.UpdateTaggedValueValue()</c> is used to update information and ensure that <c>EA.TaggedValue.Update()</c> is called or similar for classes <c>EA.RoleTag</c> or <c>EA.AttributeTag</c>.
 		/// </summary>
 		/// <param name="taggedValues">The <c>EA.Collection</c> to add the tagged value to.</param>
 		public void AddTaggedValue(Collection taggedValues)
 		{
-			dynamic taggedValue = taggedValues.AddNew(Name, "");
+			var taggedValue = taggedValues.AddNew(Name, "");
 			TaggedValue = taggedValue;
 			ObjectType = (ObjectType) TaggedValue.ObjectType;
 			UpdateTaggedValueValue();
@@ -170,7 +170,7 @@ namespace PlusprofilAddin
 
 
 		/// <summary>
-		/// Given a collection of tagged values, removes the tagged value with a GUID matching the GUID of the <c>ViewmodelTaggedValue.Value</c>.
+		/// Given a collection of tagged values, removes the tagged value with a GUID matching the GUID of the <c>ViewModelTaggedValue.Value</c>.
 		/// As <c>EA.Collection.GetByName(string Name)</c> does not support classes <c>EA.Attribute</c> and <c>EA.ConnectorEnd</c>, the <c>EA.Collection</c> must be iterated through using <c>EA.Collection.GetAt(short index)</c>, comparing the GUID at each index.
 		/// </summary>
 		/// <param name="taggedValues">The <c>Collection</c> to delete the tagged value from.</param>
@@ -193,6 +193,7 @@ namespace PlusprofilAddin
 			}
 		}
 
+		/// <inheritdoc />
 		public override string ToString()
 		{
 			return $"Type: {GetType()}\n" +

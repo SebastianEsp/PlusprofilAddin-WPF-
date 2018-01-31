@@ -56,6 +56,7 @@ namespace PlusprofilAddin
 	{
 		/// <summary>
 		/// List of all definitions used for setting the property <c>ViewmodelTaggedValue.PlusprofilTaggedValue</c>
+		/// Using a <c>HashMap</c> will improve performance. However, a <c>List</c> is used for simplicity.
 		/// </summary>
 		public static List<PlusprofilTaggedValue> Definitions = new List<PlusprofilTaggedValue>
 		{

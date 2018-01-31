@@ -7,6 +7,7 @@ namespace PlusprofilAddin.Views.Controls
 	/// </summary>
 	public partial class TaggedValueListGroupingControl : UserControl
 	{
+		/// <inheritdoc />
 		public TaggedValueListGroupingControl()
 		{
 			InitializeComponent();

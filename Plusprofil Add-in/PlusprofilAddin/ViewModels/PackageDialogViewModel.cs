@@ -6,6 +6,9 @@ using static PlusprofilAddin.PlusprofilTaggedValueDefinitions;
 
 namespace PlusprofilAddin.ViewModels
 {
+	/// <summary>
+	/// 
+	/// </summary>
 	public class PackageDialogViewModel : DialogViewModel
 	{
 		private readonly List<PlusprofilTaggedValue> _toAddDanishTaggedValues = new List<PlusprofilTaggedValue>
@@ -34,28 +37,50 @@ namespace PlusprofilAddin.ViewModels
 			Definitions.Find(ptv => ptv.Key == "SourcePackage")
 		};
 
-		public Element PackageElement { get; set; }
-		public Collection TaggedValues { get; set; }
+		private readonly List<dynamic> _taggedValuesList;
 
-		public string UMLNameValue { get; set; }
-		public string AliasValue { get; set; }
-
-		public ObservableCollection<ObservableCollection<ViewmodelTaggedValue>> ModelMetadataViewmodelTaggedValues { get; set; }
-		public List<dynamic> TaggedValuesList;
-
+		/// <summary>
+		/// 
+		/// </summary>
 		public PackageDialogViewModel()
 		{
-			DanishViewmodelTaggedValues = new ObservableCollection<ObservableCollection<ViewmodelTaggedValue>>();
-			EnglishViewmodelTaggedValues = new ObservableCollection<ObservableCollection<ViewmodelTaggedValue>>();
-			ModelMetadataViewmodelTaggedValues = new ObservableCollection<ObservableCollection<ViewmodelTaggedValue>>();
-			TaggedValuesList = new List<dynamic>();
-			DeleteTaggedValues = new List<ViewmodelTaggedValue>();
+			DanishViewmodelTaggedValues = new ObservableCollection<ObservableCollection<ViewModelTaggedValue>>();
+			EnglishViewmodelTaggedValues = new ObservableCollection<ObservableCollection<ViewModelTaggedValue>>();
+			ModelMetadataViewmodelTaggedValues = new ObservableCollection<ObservableCollection<ViewModelTaggedValue>>();
+			_taggedValuesList = new List<dynamic>();
+			DeleteTaggedValues = new List<ViewModelTaggedValue>();
 			
 			UMLNameValue = "";
 			AliasValue = "";
 		}
 
-		public override void Initialize()
+		/// <summary>
+		/// 
+		/// </summary>
+		public Element PackageElement { get; set; }
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		public Collection TaggedValues { get; set; }
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public string UMLNameValue { get; set; }
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		public string AliasValue { get; set; }
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public ObservableCollection<ObservableCollection<ViewModelTaggedValue>> ModelMetadataViewmodelTaggedValues { get; set; }
+
+		/// <inheritdoc />
+		protected internal override void Initialize()
 		{
 			SaveCommand = new SaveCommand();
 			CancelCommand = new CancelCommand();
@@ -84,14 +109,14 @@ namespace PlusprofilAddin.ViewModels
 			//an XML-formatted list of every Tagged Value where the owner ID is PackageElement.ElementID
 			for (short i = 0; i < TaggedValues.Count; i++)
 			{
-				dynamic tv = TaggedValues.GetAt(i);
-				TaggedValuesList.Add(tv);
+				var tv = TaggedValues.GetAt(i);
+				_taggedValuesList.Add(tv);
 			}
 
 			// Add tagged values to list of ViewmodelTaggedValues
-			AddTaggedValuesToViewmodelTaggedValues(_toAddDanishTaggedValues, TaggedValuesList, DanishViewmodelTaggedValues);
-			AddTaggedValuesToViewmodelTaggedValues(_toAddEnglishTaggedValues, TaggedValuesList, EnglishViewmodelTaggedValues);
-			AddTaggedValuesToViewmodelTaggedValues(_toAddModelMetadataTaggedValues, TaggedValuesList, ModelMetadataViewmodelTaggedValues);
+			DanishViewmodelTaggedValues = AddTaggedValuesToViewmodelTaggedValues(_toAddDanishTaggedValues, _taggedValuesList);
+			EnglishViewmodelTaggedValues = AddTaggedValuesToViewmodelTaggedValues(_toAddEnglishTaggedValues, _taggedValuesList);
+			ModelMetadataViewmodelTaggedValues = AddTaggedValuesToViewmodelTaggedValues(_toAddModelMetadataTaggedValues, _taggedValuesList);
 		}
 	}
 }

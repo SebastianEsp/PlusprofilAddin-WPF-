@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpTOC>
+
+  <HelpTOCNode Title="Welcome to the [TODO: Add project name]" Url="html/871c4b37-8413-43ed-b563-0282f66af518.htm" />
+  <HelpTOCNode Id="e23e2e44-ab88-4132-b364-f319121303c4" Title="Version History" Url="html/e78a511c-4b62-4d32-8bba-640d8414c75b.htm">
+    <HelpTOCNode Title="Version 1.0.0.0" Url="html/b1b6bd75-c17e-498f-93b1-646957706d4e.htm" />
+  </HelpTOCNode>
+  <HelpTOCNode Id="bb561d18-a122-4177-bba2-4af1f623d034" Title="PlusprofilAddin" Url="html/686f8597-81ec-6ac7-1120-345c5a954554.htm">
+    <HelpTOCNode Id="4ad4251e-d537-4ffc-b4c0-439625d6169f" Title="HotkeyForm Class" Url="html/b65d27d9-78a0-8062-5a25-a3cce383659f.htm">
+      <HelpTOCNode Title="HotkeyForm Constructor " Url="html/0174ece7-def5-8378-873e-a9ff2c4d6363.htm" />
+      <HelpTOCNode Title="HotkeyForm Properties" Url="html/ceb72326-187c-1a1b-c561-789116b862cc.htm" />
+      <HelpTOCNode Id="66ed0180-31ee-4abe-a4dc-cf58c0dfacd0" Title="HotkeyForm Methods" Url="html/3be89d08-ca2a-f0b7-00d7-ce630cfb52fe.htm">
+        <HelpTOCNode Id="e7d106fb-1090-4af4-b8c0-6b22c9018fa2" Title="Dispose Method " Url="html/5db0da89-b048-c856-3f72-a36e51e1f92c.htm">
+          <HelpTOCNode Title="Dispose Method (Boolean)" Url="html/565ff92d-95b7-9598-d0d7-22b7e8bc9cc6.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Title="HotkeyForm Events" Url="html/a6e3c512-9e22-64f3-39b5-25ad853065fc.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="9c6e41fd-d0b6-4a52-8a1d-b086a05caa64" Title="KeyboardHook Class" Url="html/5997404b-ba7c-aca9-d733-722c3d6ce1d4.htm">
+      <HelpTOCNode Title="KeyboardHook Constructor " Url="html/3c0fc5fa-e285-fb10-fde1-8bb768e65d14.htm" />
+      <HelpTOCNode Id="4d4a7267-a1fa-4cf9-a435-5f4fd934d650" Title="KeyboardHook Methods" Url="html/3fd2d0ac-6d70-fa82-7fa0-d96b706c3cd7.htm">
+        <HelpTOCNode Title="Dispose Method " Url="html/c719907b-ad5c-17bc-a53c-1c5d8be86a75.htm" />
+        <HelpTOCNode Title="RegisterHotKey Method " Url="html/ff5cca4e-d8bd-77eb-14ad-a52d90a2ea3b.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="73ce8e41-7e91-4efd-acf7-b4336040c40d" Title="KeyboardHook Events" Url="html/ff6c9d66-b8f8-37ac-208f-aa852dc1ba9d.htm">
+        <HelpTOCNode Title="KeyPressed Event" Url="html/c781cc26-619f-ef50-83c4-3974e4a3c9cd.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="283d5f81-d568-49c3-bba2-f07d895817ee" Title="KeyPressedEventArgs Class" Url="html/811f0d8c-515b-3d29-8042-1baf87f58ec5.htm">
+      <HelpTOCNode Id="da9f1b42-9d86-410b-965e-f3ffc312a273" Title="KeyPressedEventArgs Properties" Url="html/4002250c-4548-201c-9717-0a8a2e2b5d2e.htm">
+        <HelpTOCNode Title="Key Property " Url="html/d71f7e97-846b-868c-8b28-82f8729aa0f0.htm" />
+        <HelpTOCNode Title="Modifier Property " Url="html/8815cb27-07b6-281e-3f7b-23346ae0b926.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="KeyPressedEventArgs Methods" Url="html/349bd627-0dc1-95f9-2f4d-adffffc1b24d.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="8c1bab35-a148-4fcf-876c-dc4d3c8729a1" Title="MainClass Class" Url="html/8b935fd4-1aaa-5ed2-c541-5fcfc87f018a.htm">
+      <HelpTOCNode Title="MainClass Constructor " Url="html/d032c8f5-5153-6ecd-e128-6f08d17c641b.htm" />
+      <HelpTOCNode Id="1db009a8-e289-46b3-8649-9554dc52126d" Title="MainClass Methods" Url="html/c4b6a897-f872-6622-24cf-3f17f5d25f8d.htm">
+        <HelpTOCNode Title="EA_Connect Method " Url="html/6e1a01ce-d83f-a7ed-0719-7648d8d2347d.htm" />
+        <HelpTOCNode Title="EA_Disconnect Method " Url="html/78c002a0-195b-383f-7fac-7a9156c5547e.htm" />
+        <HelpTOCNode Title="EA_GetMenuItems Method " Url="html/1cb29d32-f420-8c2d-ea67-0e57e9f7ee49.htm" />
+        <HelpTOCNode Title="EA_MenuClick Method " Url="html/1395c50a-3bea-53b3-396a-2cd3ad38f7f0.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Title="ModifierKeys Enumeration" Url="html/bd6f0633-c6b2-6f52-3af9-80d2684b515c.htm" />
+    <HelpTOCNode Id="66527d25-8c25-4d75-ac58-ced9571c14dc" Title="PlusprofilTaggedValue Class" Url="html/4b40e57a-17c6-3651-3a85-eb6682d19fa5.htm">
+      <HelpTOCNode Title="PlusprofilTaggedValue Constructor " Url="html/7678323c-c025-ee18-012f-0c53e73b00b3.htm" />
+      <HelpTOCNode Id="d29c5757-ee70-4224-bba2-03724b258872" Title="PlusprofilTaggedValue Properties" Url="html/78c9ce55-9221-c784-3137-8eaba18255b3.htm">
+        <HelpTOCNode Title="HasMemoField Property " Url="html/09dde310-21e2-e580-2506-613d15dfd26e.htm" />
+        <HelpTOCNode Title="Key Property " Url="html/f2355852-a4cf-ad89-2269-ebdf5fdd7d2d.htm" />
+        <HelpTOCNode Title="ManyMultiplicity Property " Url="html/03eab50e-ba1e-7ba7-f1ad-a8bad9b84af6.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/bdcb2dd5-6c2c-57b3-d83b-8906039528b4.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="PlusprofilTaggedValue Methods" Url="html/e466b7dd-ff8f-9887-17d0-76015a762a26.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="0a6eba59-cc60-4455-914b-d351584dea9f" Title="PlusprofilTaggedValueDefinitions Class" Url="html/53534edb-09c8-3c8e-0cd2-e44b7ca1dee9.htm">
+      <HelpTOCNode Id="0f641f56-24e4-4eb1-9afb-4d4d90d2ef98" Title="PlusprofilTaggedValueDefinitions Fields" Url="html/61bfca62-c86e-6d78-a0a7-381450f7166f.htm">
+        <HelpTOCNode Title="Definitions Field" Url="html/5163aed9-5b73-ab01-e2ca-564e2f415b10.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="71a5ac20-9716-4192-83ae-8335c50d4efe" Title="ViewModelTaggedValue Class" Url="html/c5415670-bada-83a2-98df-e367b42b40d8.htm">
+      <HelpTOCNode Id="7745c6f6-e8cf-4c81-af93-0964a749f967" Title="ViewModelTaggedValue Constructor " Url="html/41feda0d-4737-8a6c-b06a-11a9d87575c1.htm">
+        <HelpTOCNode Title="ViewModelTaggedValue Constructor (Object)" Url="html/9799e052-a558-d285-f0ba-8d367ae4b0b8.htm" />
+        <HelpTOCNode Title="ViewModelTaggedValue Constructor (String)" Url="html/753436ec-47bb-9e3e-c8e4-23c8c58b870a.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="65390a40-152f-4a1d-a8ba-b0f1407d879a" Title="ViewModelTaggedValue Properties" Url="html/329063e1-9abd-89ca-b48d-e8de52a8d8e9.htm">
+        <HelpTOCNode Title="DisplayedName Property " Url="html/787d0584-cef8-9f32-1a54-da4e5c60aeee.htm" />
+        <HelpTOCNode Title="Key Property " Url="html/6abd26f4-c0bc-79f7-29e3-09e2d04194a3.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/9cc0be7c-230d-ca89-e039-79adfeda73d1.htm" />
+        <HelpTOCNode Title="ObjectType Property " Url="html/eec9d362-3468-6b9e-ffd5-2edcdd921185.htm" />
+        <HelpTOCNode Title="PlusprofilTaggedValue Property " Url="html/8cc3eb63-4208-f944-5d85-7f5c4cdd2fa8.htm" />
+        <HelpTOCNode Title="ResourceDictionary Property " Url="html/1accab35-aab8-d516-080f-882dedc9c152.htm" />
+        <HelpTOCNode Title="TaggedValue Property " Url="html/4f981113-2b6f-cf59-b784-417be57fc5ad.htm" />
+        <HelpTOCNode Title="Value Property " Url="html/573e9c0d-7e1d-9a58-b600-6c95033d4a29.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="2d7d3589-99af-4712-b6e1-5948dcbb3bb4" Title="ViewModelTaggedValue Methods" Url="html/4ca9eab5-85ac-1236-8b4d-8775fe690350.htm">
+        <HelpTOCNode Title="AddTaggedValue Method " Url="html/f3229510-5f54-8e1c-0551-2c7bfd398f28.htm" />
+        <HelpTOCNode Title="DeleteTaggedValue Method " Url="html/cdd60eea-2ebb-29e3-aaa0-4751f0a16278.htm" />
+        <HelpTOCNode Title="Initialize Method " Url="html/ffbae929-7105-7562-497e-f6c2c659ec9c.htm" />
+        <HelpTOCNode Title="ToString Method " Url="html/62aa0028-235d-1c81-fdd0-5b9ea84227b8.htm" />
+        <HelpTOCNode Title="UpdateTaggedValueValue Method " Url="html/705c412a-b2ed-bb5d-6c55-2703834c2774.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="2e880784-171c-45fa-b6f7-07401dc6c979" Title="PlusprofilAddin.ViewModels" Url="html/e6cd72cb-d57e-6aec-a9f4-21aeb511f9d3.htm">
+    <HelpTOCNode Id="6231d2d9-be97-4397-af15-6bc8f9a741c1" Title="AttributeDialogViewModel Class" Url="html/fd00fd27-6548-bdd8-249e-09a6883153a0.htm">
+      <HelpTOCNode Title="AttributeDialogViewModel Constructor " Url="html/c7e2d845-f455-9537-bcdc-91108e9f3eaf.htm" />
+      <HelpTOCNode Id="e55b3993-5c74-40d5-a1bd-ff6eae01301a" Title="AttributeDialogViewModel Properties" Url="html/c3adc014-cbcc-91b5-f9a3-1fc2c882cfd0.htm">
+        <HelpTOCNode Title="AliasValue Property " Url="html/2bb73f3b-8df4-50e6-4b68-ffc61df97100.htm" />
+        <HelpTOCNode Title="Attribute Property " Url="html/b2ca042b-8265-8e42-0bdd-da5aa630c33f.htm" />
+        <HelpTOCNode Title="DatatypeValue Property " Url="html/bfb87445-8e36-885a-2906-b448691036c5.htm" />
+        <HelpTOCNode Title="ProvenanceViewmodelTaggedValues Property " Url="html/3307cf09-c072-1520-a27e-7f044e0dfc2a.htm" />
+        <HelpTOCNode Title="StereotypeViewmodelTaggedValues Property " Url="html/467e4b60-7d74-bd4c-7ac4-534320e69548.htm" />
+        <HelpTOCNode Title="TaggedValues Property " Url="html/320de62d-5927-4b16-ad6c-e5bdcf4c64d7.htm" />
+        <HelpTOCNode Title="UMLNameValue Property " Url="html/6ecf2dae-a201-c4fc-6c75-317562a886e2.htm" />
+        <HelpTOCNode Title="URIValue Property " Url="html/095e0110-7802-d58e-fc90-7efc9b99bbc5.htm" />
+        <HelpTOCNode Title="URIViewmodelTaggedValue Property " Url="html/af12aed0-33b0-78db-e9ca-549d39ce910b.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="26d7273b-249a-4849-a8e9-0472370210fc" Title="AttributeDialogViewModel Methods" Url="html/c64d04b3-9ce0-0212-7493-2890284f7728.htm">
+        <HelpTOCNode Title="Initialize Method " Url="html/f97f704d-ba8d-c5ef-93b7-cc538298cb55.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="ea7ba26c-2bcd-47ec-ba02-b926fdd5757d" Title="ConnectorDialogViewModel Class" Url="html/e509d43f-6741-7c61-8730-9fc1b8b13f12.htm">
+      <HelpTOCNode Title="ConnectorDialogViewModel Constructor " Url="html/6eba0c1b-54ea-18e4-d224-17965929573d.htm" />
+      <HelpTOCNode Id="d44120de-2a6a-43c1-bd17-81340de3e1f4" Title="ConnectorDialogViewModel Properties" Url="html/db8d1d4f-4ef6-d0f8-4cec-cac45cdbd26f.htm">
+        <HelpTOCNode Title="Connector Property " Url="html/71eee15e-5839-51e2-4f9c-4dad8e471591.htm" />
+        <HelpTOCNode Title="ShowSourceEnd Property " Url="html/ce286eb8-7eb7-805a-b4d8-2d6e81fef5e4.htm" />
+        <HelpTOCNode Title="ShowTargetEnd Property " Url="html/bf81c344-d6ce-f648-be13-7007ab1e53c0.htm" />
+        <HelpTOCNode Title="SourceEnd Property " Url="html/994652cf-4a3a-6eee-1015-3a223fa6faaf.htm" />
+        <HelpTOCNode Title="SourceViewModel Property " Url="html/ed15220e-0289-9a4f-85c0-9c926e7a59d6.htm" />
+        <HelpTOCNode Title="TargetEnd Property " Url="html/f018abd3-ed32-cad3-4a73-b3e1d23d2a3d.htm" />
+        <HelpTOCNode Title="TargetViewModel Property " Url="html/c0e37d94-546d-0e3b-ce5e-ef0a5c1ed2e2.htm" />
+        <HelpTOCNode Title="Text Property " Url="html/18b82458-effc-9166-6a63-02e19b0864b8.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="a9daf4ee-8561-4b81-b7c5-8436351d0764" Title="ConnectorDialogViewModel Methods" Url="html/fa1be1b7-b3ca-f5ca-adb4-f1dbf975e207.htm">
+        <HelpTOCNode Title="Initialize Method " Url="html/0089aceb-a6c8-e9a9-36d2-2763029f02c9.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="62c263a4-fe6f-4646-bf46-841d9afe6857" Title="ConnectorUserControlViewModel Class" Url="html/72e08405-9624-093e-722d-fd946291ed0b.htm">
+      <HelpTOCNode Title="ConnectorUserControlViewModel Constructor " Url="html/a05e29fc-38f9-57b2-e843-2df47ffa7f4d.htm" />
+      <HelpTOCNode Id="d33e7c2f-133a-4d41-a38e-a02343fbfaf8" Title="ConnectorUserControlViewModel Properties" Url="html/61900160-3497-54ff-e08d-6254f4813934.htm">
+        <HelpTOCNode Title="AliasValue Property " Url="html/f144c1e7-d353-f303-d9b7-cac4f9bc5bae.htm" />
+        <HelpTOCNode Title="ConnectorEnd Property " Url="html/dfc67cb4-d712-9596-96ad-52498ff98808.htm" />
+        <HelpTOCNode Title="ConnectorEndType Property " Url="html/5594cedc-a276-6f79-f047-1ed81b01b79b.htm" />
+        <HelpTOCNode Title="ElementNameValue Property " Url="html/0e91139f-83b0-6dcb-9b52-0395d9a70f11.htm" />
+        <HelpTOCNode Title="MultiplicityValue Property " Url="html/5cdde174-4a2e-bcbc-03d9-f98b22efa37f.htm" />
+        <HelpTOCNode Title="ProvenanceViewmodelTaggedValues Property " Url="html/8d637c3d-51e2-e3b0-29fd-27057b1e1145.htm" />
+        <HelpTOCNode Title="StereotypeViewmodelTaggedValues Property " Url="html/eb6ffc4d-1379-9b23-159e-6e7547080a35.htm" />
+        <HelpTOCNode Title="TaggedValues Property " Url="html/212ef9cf-dfc5-5007-8fea-e8e706884d19.htm" />
+        <HelpTOCNode Title="UMLNameValue Property " Url="html/13bd9b3c-d35c-6877-841e-648c716e0bf4.htm" />
+        <HelpTOCNode Title="URIValue Property " Url="html/d3056ba6-baed-17fd-72ad-3e94c5c87ba9.htm" />
+        <HelpTOCNode Title="URIViewmodelTaggedValue Property " Url="html/3e61871b-8bab-40b0-4ab7-b4a554b4580d.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="c0d5e0c7-8461-46c3-b535-afac1dd89eed" Title="ConnectorUserControlViewModel Methods" Url="html/9ce26c82-46aa-c183-8d19-3ffd50d0b076.htm">
+        <HelpTOCNode Title="Initialize Method " Url="html/6178e9a5-84da-0e60-120e-f5e149e39e85.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="f07bff34-49d7-4f32-91c2-4e857335272e" Title="ConnectorUserControlViewModel Fields" Url="html/7ebea91f-fc44-4990-36c6-5f829674905e.htm">
+        <HelpTOCNode Title="TaggedValuesList Field" Url="html/6a0c72e0-0a16-57a6-aaf8-732fdcd4d8b7.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="e81bc9eb-bccc-4444-bb06-db2a3248d051" Title="DialogViewModel Class" Url="html/158ddaa7-358c-6f46-393d-8a1371e5d999.htm">
+      <HelpTOCNode Title="DialogViewModel Constructor " Url="html/d820659d-857b-a8a8-0ae4-7d215e304bdc.htm" />
+      <HelpTOCNode Id="78282e25-9aca-4a3c-b59e-8d63f9b9eea5" Title="DialogViewModel Methods" Url="html/e20d6203-a3c6-200d-0feb-4646f760913c.htm">
+        <HelpTOCNode Title="AddTaggedValuesToViewmodelTaggedValues Method " Url="html/b408d17f-9d85-d984-d920-2ec5b25a83b2.htm" />
+        <HelpTOCNode Title="Initialize Method " Url="html/03cd3d36-022d-0f6f-5a21-9ce999fc8da9.htm" />
+        <HelpTOCNode Title="RetrieveTaggedValues Method " Url="html/485c6791-7a08-cc18-530e-146573c3e915.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="1a0c382b-3b32-4082-8592-353d925b853d" Title="ElementDialogViewModel Class" Url="html/d2cf2999-51f8-345a-2270-a5ca8b92f8f2.htm">
+      <HelpTOCNode Title="ElementDialogViewModel Constructor " Url="html/f949ebd1-fd0b-1478-0a20-ec47c9f4229d.htm" />
+      <HelpTOCNode Id="66c8131f-ac59-4efe-ad82-1ce85874fe39" Title="ElementDialogViewModel Properties" Url="html/75b813d0-feb0-5cb7-e74b-68ca32132eb9.htm">
+        <HelpTOCNode Title="AliasValue Property " Url="html/b681db77-7500-9bd8-d9d7-2afbaa2ae2ea.htm" />
+        <HelpTOCNode Title="Element Property " Url="html/0dee4c9d-316e-204d-ff20-692b1526d807.htm" />
+        <HelpTOCNode Title="ProvenanceViewmodelTaggedValues Property " Url="html/88ff5c8b-0c80-1fa0-cdac-314120911986.htm" />
+        <HelpTOCNode Title="StereotypeViewmodelTaggedValues Property " Url="html/fcbab8b3-61a2-a516-37dd-56c411575c52.htm" />
+        <HelpTOCNode Title="TaggedValues Property " Url="html/04f56df5-6e1f-f96c-b5e1-a0cff0355fec.htm" />
+        <HelpTOCNode Title="UMLNameValue Property " Url="html/3a85286c-92c6-ea23-4252-0018ccb13261.htm" />
+        <HelpTOCNode Title="URIValue Property " Url="html/cf1b4a45-8bfa-9d9d-9cd0-b2e67cd1a13e.htm" />
+        <HelpTOCNode Title="URIViewmodelTaggedValue Property " Url="html/4cd11ee1-5745-3aa2-4936-3b50acdefb20.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="e2e4b9b4-3dbc-42e9-9b35-3f4aa683d288" Title="ElementDialogViewModel Methods" Url="html/27609024-86b3-22cc-c736-cb9a8247e6ad.htm">
+        <HelpTOCNode Title="Initialize Method " Url="html/80c07f84-377a-fc15-dd34-8c6d7d9be4f5.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="35447d92-7a59-4a53-8f25-66f35ab889fc" Title="PackageDialogViewModel Class" Url="html/47a17d2b-0270-b7e8-9343-37e2685b6dc2.htm">
+      <HelpTOCNode Title="PackageDialogViewModel Constructor " Url="html/c0066f4e-d36a-82f6-b963-713dbc6328f5.htm" />
+      <HelpTOCNode Id="d6575448-e007-4036-948a-7396ce6e9b0c" Title="PackageDialogViewModel Properties" Url="html/fa552328-f859-4c29-0f67-61af574e9ece.htm">
+        <HelpTOCNode Title="AliasValue Property " Url="html/1462b6b0-5d7e-1103-0606-fbde1e3fe53f.htm" />
+        <HelpTOCNode Title="ModelMetadataViewmodelTaggedValues Property " Url="html/8cb9c78c-0d18-2282-de50-7230c3c35e1c.htm" />
+        <HelpTOCNode Title="PackageElement Property " Url="html/75de208e-1512-a351-3a35-980dd9b67cae.htm" />
+        <HelpTOCNode Title="TaggedValues Property " Url="html/10d1fa42-c68c-df31-5595-ddacbe3916d4.htm" />
+        <HelpTOCNode Title="UMLNameValue Property " Url="html/2f22a03a-e10d-bcc4-b01f-d9bbdc11c97c.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="5fd0536b-213d-4e69-a897-dbbf1fd3ad30" Title="PackageDialogViewModel Methods" Url="html/5f0ab41a-b96d-75ec-d1c9-7db7f80a01af.htm">
+        <HelpTOCNode Title="Initialize Method " Url="html/7d31f616-4e8c-a430-8277-ac134eb78496.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="2bba11b8-186b-4b7f-9039-b97b2f7b27c6" Title="PlusprofilAddin.ViewModels.Commands" Url="html/58963371-2089-1514-d9e7-6bf4583c4f5d.htm">
+    <HelpTOCNode Id="f2c500f5-c864-4e5b-a4a2-edd8b2e74125" Title="AddCommand Class" Url="html/1689ca6b-4c5f-7d34-4011-8f49d772bc6d.htm">
+      <HelpTOCNode Title="AddCommand Constructor " Url="html/a82c70e3-9bb9-1ce7-7c75-5d489316e09f.htm" />
+      <HelpTOCNode Id="fff8ecef-bfa2-40f9-b9e1-d0be5e45ce48" Title="AddCommand Methods" Url="html/4762977a-51f1-958d-899e-93ebc22e0a76.htm">
+        <HelpTOCNode Title="CanExecute Method " Url="html/dd750756-b185-e472-b570-d7f28ee8bf39.htm" />
+        <HelpTOCNode Title="Execute Method " Url="html/3e6fcf24-b5f1-15fc-30fc-5a5c9962207f.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="1b11a251-0002-4b03-91b8-0b729b2b57fb" Title="AddCommand Events" Url="html/665b49ed-6ce1-1409-570c-45ff28b8f047.htm">
+        <HelpTOCNode Title="CanExecuteChanged Event" Url="html/449f15c8-936d-f93e-eff9-c64ac9fdca4d.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="5ef39948-4f67-4756-81fd-8a6b604d7153" Title="CancelCommand Class" Url="html/ee572dfb-237d-02b3-eb6d-8523cf57520c.htm">
+      <HelpTOCNode Title="CancelCommand Constructor " Url="html/85d27523-d239-e6c7-b76b-8b2d79dfa4d2.htm" />
+      <HelpTOCNode Id="872bf7d4-a3d9-40f4-b272-e695f4822551" Title="CancelCommand Methods" Url="html/8252f1cc-5940-bde1-c2b5-9b0570eb2c0c.htm">
+        <HelpTOCNode Title="CanExecute Method " Url="html/f3dc1000-8e88-64d0-7b40-1d20b223ed4c.htm" />
+        <HelpTOCNode Title="Execute Method " Url="html/09d6cd6c-d8de-4f5a-7880-5684f7dd1038.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="46498d61-f628-4be3-855e-948fa670e0b3" Title="CancelCommand Events" Url="html/48282068-ec4c-96e4-c0f7-72d64a8cb471.htm">
+        <HelpTOCNode Title="CanExecuteChanged Event" Url="html/3122d0d0-20a4-6841-2c62-bb8ff7219634.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="2ad5c256-c63f-40f5-8075-fb1a30876329" Title="RemoveCommand Class" Url="html/abf47c01-f564-3eb3-f0b0-6ddafe77c639.htm">
+      <HelpTOCNode Title="RemoveCommand Constructor " Url="html/f27d58bc-bc7f-de82-70f6-cf38e622c791.htm" />
+      <HelpTOCNode Id="8f056445-a512-41db-be92-fd7041ff81a1" Title="RemoveCommand Methods" Url="html/e635f509-42fe-1af1-2f41-d138bba57e00.htm">
+        <HelpTOCNode Title="CanExecute Method " Url="html/a775c0ac-0ea0-8829-f72a-e59bb6c4e7a3.htm" />
+        <HelpTOCNode Title="Execute Method " Url="html/92204b8f-ddab-24ae-9644-2a77d7810693.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="0ebb364d-6f95-492d-b35d-e6db05b70668" Title="RemoveCommand Events" Url="html/d4eb74a4-95ac-4f0b-2b06-171c200c779f.htm">
+        <HelpTOCNode Title="CanExecuteChanged Event" Url="html/c7c588f9-b859-dffb-c638-5b8962537cbb.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="c2bfe26f-a2fc-499c-9064-681e3b253072" Title="RemoveCommandConverter Class" Url="html/4fd7cb31-b997-1cc4-669c-c0e338621a7b.htm">
+      <HelpTOCNode Title="RemoveCommandConverter Constructor " Url="html/684e9fc1-5295-4986-1e2b-94f90c5cfd33.htm" />
+      <HelpTOCNode Id="8c0383bc-fd67-43d9-a5f2-ac74faa6cff6" Title="RemoveCommandConverter Methods" Url="html/a86cf958-1214-dbd7-8846-e03c800ac969.htm">
+        <HelpTOCNode Title="Convert Method " Url="html/5ad87889-76ab-e91e-c94a-4e76b68308c9.htm" />
+        <HelpTOCNode Title="ConvertBack Method " Url="html/d78c1652-677d-94ed-c2b0-43207da74a1c.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="479c4b82-d573-47a8-8b18-557bab29e1c9" Title="SaveCommand Class" Url="html/b7775718-6fdf-7569-1d11-2fd43201e076.htm">
+      <HelpTOCNode Title="SaveCommand Constructor " Url="html/a3e5ad97-df62-adf7-ecd7-6e62bc404c2e.htm" />
+      <HelpTOCNode Id="bc992456-2147-4e74-8e8c-a432d125e63a" Title="SaveCommand Methods" Url="html/f06fb1d1-8296-e68c-ce2e-6acea1bd4b9a.htm">
+        <HelpTOCNode Title="CanExecute Method " Url="html/cebc0655-eb7a-2dfa-e45d-fe1e63c8d003.htm" />
+        <HelpTOCNode Title="Execute Method " Url="html/22ce7d53-849d-e0ff-5936-1fb8eb50aac9.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="1bbc4fc2-7b5e-445d-97e1-0f02a60d28f5" Title="SaveCommand Events" Url="html/81de326d-a40b-b620-43c8-034f622cc329.htm">
+        <HelpTOCNode Title="CanExecuteChanged Event" Url="html/a3179bb0-1f67-06f2-38f0-acfe8569f74d.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="42ac268a-b84c-41e9-a238-d72e37f92d5d" Title="SaveCommandConverter Class" Url="html/298740bc-aa19-57d7-6811-315fff05addb.htm">
+      <HelpTOCNode Title="SaveCommandConverter Constructor " Url="html/908ba163-1200-1a55-dec4-33a2e54aebc2.htm" />
+      <HelpTOCNode Id="1f78332b-29d7-4dd1-895d-7e5f6bc6dfa1" Title="SaveCommandConverter Methods" Url="html/12c8ee1f-627b-78c6-235c-ea8b4f4ee63d.htm">
+        <HelpTOCNode Title="Convert Method " Url="html/85a599dc-9225-bbcc-87f8-87543e1d6f08.htm" />
+        <HelpTOCNode Title="ConvertBack Method " Url="html/79f057c6-822e-2d56-42a7-7ba213aefea7.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="73f297ac-a8cd-4c80-a79f-59da0cb4732b" Title="PlusprofilAddin.Views.Controls" Url="html/4d4bc035-e30e-1464-2ee1-252e767d71d1.htm">
+    <HelpTOCNode Id="d73f9248-fc76-47ec-869b-78d648c734e9" Title="CancelButtonUserControl Class" Url="html/e85b9eb4-540d-7c1c-0f94-a85794537e60.htm">
+      <HelpTOCNode Title="CancelButtonUserControl Constructor " Url="html/d7601d95-f46c-ae4c-f405-23ea3d47e769.htm" />
+      <HelpTOCNode Title="CancelButtonUserControl Properties" Url="html/26a525a4-d4dc-5043-6574-edc74fc681bb.htm" />
+      <HelpTOCNode Id="1af9a6cd-b9dd-4ea1-af9e-6d4402c312b4" Title="CancelButtonUserControl Methods" Url="html/561fa1c2-41b8-b49a-c37c-e187f0e568ac.htm">
+        <HelpTOCNode Title="InitializeComponent Method " Url="html/8c103ba4-e74e-6b41-5b98-6de2e57c1a93.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="CancelButtonUserControl Events" Url="html/10a4f8aa-f2cc-9315-9ffb-0115b2f9a38c.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="af3e3735-1e6b-4397-a6ca-5090c4acb5e8" Title="ConnectorUserControl Class" Url="html/9b49f724-04db-f8bc-67ef-42da7d9a9c37.htm">
+      <HelpTOCNode Title="ConnectorUserControl Constructor " Url="html/12b6552d-b651-37b5-3fda-966dd8603ab3.htm" />
+      <HelpTOCNode Title="ConnectorUserControl Properties" Url="html/9a79e4f6-6166-ad6e-0ec5-ea24a0f643bb.htm" />
+      <HelpTOCNode Id="27b61138-0e77-40af-86bc-6e6f765cea00" Title="ConnectorUserControl Methods" Url="html/16299a8e-80bc-480e-900d-3901f75e4936.htm">
+        <HelpTOCNode Title="InitializeComponent Method " Url="html/16cfca26-3aef-cb30-d562-c8907430e99e.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="ConnectorUserControl Events" Url="html/e8525869-093e-05b3-24a5-e1325898c4ee.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="20848583-7d29-4668-86fe-8451b0bcf364" Title="LanguageTabUserControl Class" Url="html/7b392922-8f3e-e163-23fd-dde2801d2956.htm">
+      <HelpTOCNode Title="LanguageTabUserControl Constructor " Url="html/84d8bb9d-cb17-6893-4cd4-d2cf4324eea8.htm" />
+      <HelpTOCNode Title="LanguageTabUserControl Properties" Url="html/00a93a64-5f1b-a240-7f76-4699072ffcbd.htm" />
+      <HelpTOCNode Id="670705cf-f163-4d1b-a6a5-43caa882f893" Title="LanguageTabUserControl Methods" Url="html/aec2871e-d1c7-2a18-e8fd-f92e75e44254.htm">
+        <HelpTOCNode Title="InitializeComponent Method " Url="html/94c86ce2-6331-f988-9a47-834d6cc67883.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="LanguageTabUserControl Events" Url="html/c52cf92e-a385-945a-0692-33de1e4a15b3.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="0f958079-990b-46d1-ab64-2641833dd19b" Title="SaveButtonUserControl Class" Url="html/fdf5cb80-5c4b-7691-f678-6002da27cb63.htm">
+      <HelpTOCNode Title="SaveButtonUserControl Constructor " Url="html/83865de4-89d4-312d-1e15-b086caa83538.htm" />
+      <HelpTOCNode Title="SaveButtonUserControl Properties" Url="html/3200d54b-77a6-98f6-72e6-41617622102e.htm" />
+      <HelpTOCNode Id="c2e980a1-2d94-4c09-bfb3-3449d1a4a991" Title="SaveButtonUserControl Methods" Url="html/8db7b7c5-0c26-5a7d-b118-e6d46991c16a.htm">
+        <HelpTOCNode Title="InitializeComponent Method " Url="html/7e6c1dec-0bac-436c-01fc-9777ce0e72a0.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="SaveButtonUserControl Events" Url="html/ad51f557-1f44-41bb-74c5-c7bbbf510dde.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="931bdc5c-9495-406d-aded-8a23deafc0ca" Title="TaggedValueListControl Class" Url="html/255fb2e7-eda5-8cd7-affd-e30182f0eef2.htm">
+      <HelpTOCNode Title="TaggedValueListControl Constructor " Url="html/9e1ddb23-eda6-8779-3e83-31eed2406e24.htm" />
+      <HelpTOCNode Title="TaggedValueListControl Properties" Url="html/46f6299c-064f-7063-5f01-b85ca4f3308b.htm" />
+      <HelpTOCNode Id="4f0e997e-f3a0-49f4-b75c-cd03ed17dee3" Title="TaggedValueListControl Methods" Url="html/30a9f1b0-e56b-44aa-b8c1-f1e67851ad80.htm">
+        <HelpTOCNode Title="InitializeComponent Method " Url="html/5e05c83a-57ec-72f8-bf34-1525cb34db91.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="TaggedValueListControl Events" Url="html/cc543bb8-307d-282a-7c77-d7ce6387d5a0.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="a2b531e5-057f-4f8c-91f7-6e9eda899b8b" Title="TaggedValueListGroupingControl Class" Url="html/ababfd8b-c2f1-e5fe-12b2-742690ddc457.htm">
+      <HelpTOCNode Title="TaggedValueListGroupingControl Constructor " Url="html/43be317d-e18e-df23-3565-20c714d061fb.htm" />
+      <HelpTOCNode Title="TaggedValueListGroupingControl Properties" Url="html/af9866a5-a4e9-54e1-16a5-b46c14ec629e.htm" />
+      <HelpTOCNode Id="078016d3-f02e-47da-bff7-f04367755f42" Title="TaggedValueListGroupingControl Methods" Url="html/2b92910b-8823-8d41-45fa-6a725f381b6e.htm">
+        <HelpTOCNode Title="InitializeComponent Method " Url="html/e6fd4bdf-4fd1-a90b-3d0d-2f8544d6a519.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="TaggedValueListGroupingControl Events" Url="html/1dd34933-e6b9-274b-55e4-698a926c1e92.htm" />
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="f9aeb8f7-c2f9-46d2-ad62-0df29a8b0471" Title="PlusprofilAddin.Views.Dialogs" Url="html/7086f040-15e3-fd55-d83e-ed9cb44d32b0.htm">
+    <HelpTOCNode Id="012c2105-c803-423a-a892-6993f4a7262a" Title="AttributeDialog Class" Url="html/1a659a1f-35c4-e1c7-d696-b3a2054d510a.htm">
+      <HelpTOCNode Title="AttributeDialog Constructor " Url="html/f46990ee-f19d-90ba-ad7d-5df8b6bb3e5c.htm" />
+      <HelpTOCNode Title="AttributeDialog Properties" Url="html/e12efcb7-d1ad-997d-d67f-b7101ab61b3f.htm" />
+      <HelpTOCNode Id="649f04fa-84e2-4dcd-81c4-6b30684b8502" Title="AttributeDialog Methods" Url="html/7fca4b80-3302-1ff1-4ccc-a655fd6701eb.htm">
+        <HelpTOCNode Title="InitializeComponent Method " Url="html/062b7e0d-d4cc-2890-baa4-28390fae693e.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="AttributeDialog Events" Url="html/83681c05-41cf-73a1-fcef-e6de9c734d43.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="ec39b778-93cd-4c77-98a6-98b3067fc87c" Title="ConnectorDialog Class" Url="html/47927860-818c-6915-0c2f-a3a05ab583a2.htm">
+      <HelpTOCNode Title="ConnectorDialog Constructor " Url="html/20c17a08-3ac9-4b8e-6708-aa3886a7cdb6.htm" />
+      <HelpTOCNode Title="ConnectorDialog Properties" Url="html/6f29beea-5cc5-cc14-ec19-7988cf23d55c.htm" />
+      <HelpTOCNode Id="e9b7a16c-55c0-4a72-b102-0b6ad5d49e35" Title="ConnectorDialog Methods" Url="html/99634a5a-2f26-1a09-3d53-5a5476cdae9f.htm">
+        <HelpTOCNode Title="InitializeComponent Method " Url="html/62e3c417-fb54-f917-3565-a042ff059712.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="ConnectorDialog Events" Url="html/0f913af5-1992-5546-c9c6-1e035e511960.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="09d9510b-663d-49c9-a757-330a27ae352b" Title="ElementDialog Class" Url="html/a65d6494-b598-017b-0afc-0a31bb98fc4b.htm">
+      <HelpTOCNode Title="ElementDialog Constructor " Url="html/ffd4c36d-00d6-17cd-a9a5-a3fdac2afc5c.htm" />
+      <HelpTOCNode Title="ElementDialog Properties" Url="html/94d16344-7b0a-5ef2-9760-8672a30c169d.htm" />
+      <HelpTOCNode Id="6aaa3cac-d256-4559-bb0f-83b97e7c0038" Title="ElementDialog Methods" Url="html/e2f9dd9a-0e53-61f6-62f4-8e41f3493167.htm">
+        <HelpTOCNode Title="InitializeComponent Method " Url="html/e2b2eb0d-0e96-e6fc-4488-3f2cbb3c3f18.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="ElementDialog Events" Url="html/a64ce9e0-071c-2238-067d-ffbc7afb94f0.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="c4cdc920-6f75-439e-bef3-20d6bd0e290b" Title="PackageDialog Class" Url="html/45540985-e5c3-bcf2-d813-d65ddd7d9e3f.htm">
+      <HelpTOCNode Title="PackageDialog Constructor " Url="html/66a92e36-8a22-a2f1-0cfb-7ac246c7b03e.htm" />
+      <HelpTOCNode Title="PackageDialog Properties" Url="html/827ae0e9-aa8d-cfa6-1fe9-a2d38583d6d2.htm" />
+      <HelpTOCNode Id="555cf749-3331-4be9-99bd-64ca6c600f84" Title="PackageDialog Methods" Url="html/ffdfbd94-58e6-f712-478f-a1aed463b1ba.htm">
+        <HelpTOCNode Title="InitializeComponent Method " Url="html/58de840e-1778-a4ce-8988-47f9226adad1.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="PackageDialog Events" Url="html/05076559-6f63-d61c-2b5d-603f4e089d43.htm" />
+    </HelpTOCNode>
+  </HelpTOCNode>
+</HelpTOC>

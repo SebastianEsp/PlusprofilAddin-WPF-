@@ -21,7 +21,7 @@ namespace PlusprofilAddin
 		public void EA_Connect(Repository repository)
 		{
 			// Create a new hotkeyForm to allow the add-in window to be opened using hotkeys
-			var invisibleHotkeyForm = new InvisibleHotkeyForm(this, repository, DanishMenuOption, EnglishMenuOption);
+			var hotkeyForm = new HotkeyForm(this, repository, DanishMenuOption, EnglishMenuOption);
 		}
 
 		/// <summary>
@@ -59,39 +59,36 @@ namespace PlusprofilAddin
 		{
 			var itemType = repository.GetContextItemType();
 
-			if (itemType == ObjectType.otElement)
+			switch (itemType)
 			{
-				_window = new ElementDialog();
-				_viewModel = new ElementDialogViewModel
-				{
-					Repository = repository
-				};
-			}
-			else if (itemType == ObjectType.otPackage)
-			{
-				_window = new PackageDialog();
-				_viewModel = new PackageDialogViewModel
-				{
-					Repository = repository
-				};
-			}
-			else if (itemType == ObjectType.otAttribute)
-			{
-				_window = new AttributeDialog();
-				_viewModel = new AttributeDialogViewModel
-				{
-					Repository = repository
-				};
-			}
-			else if (itemType == ObjectType.otConnector)
-			{
-				_window = new ConnectorDialog();
-				_viewModel = new ConnectorDialogViewModel
-				{
-					Repository = repository
-				};
-
-				// Check for ConnectorEnd stereotypes. If it is unknown, hide that side of the interface
+				case ObjectType.otElement:
+					_window = new ElementDialog();
+					_viewModel = new ElementDialogViewModel
+					{
+						Repository = repository
+					};
+					break;
+				case ObjectType.otPackage:
+					_window = new PackageDialog();
+					_viewModel = new PackageDialogViewModel
+					{
+						Repository = repository
+					};
+					break;
+				case ObjectType.otAttribute:
+					_window = new AttributeDialog();
+					_viewModel = new AttributeDialogViewModel
+					{
+						Repository = repository
+					};
+					break;
+				case ObjectType.otConnector:
+					_window = new ConnectorDialog();
+					_viewModel = new ConnectorDialogViewModel
+					{
+						Repository = repository
+					};
+					break;
 			}
 
 			//Create new ResourceDictionary and set source for language matching the selected menu option
@@ -106,6 +103,8 @@ namespace PlusprofilAddin
 					dict.Source = new Uri("pack://application:,,,/PlusprofilAddin;component/Resources/StringResources.en-US.xaml",
 						UriKind.Absolute);
 					break;
+				default:
+					throw new ArgumentException("Invalid Menu Option selected");
 			}
 			_window.Resources.MergedDictionaries.Add(dict);
 			_viewModel.ResourceDictionary = dict;
@@ -120,11 +119,9 @@ namespace PlusprofilAddin
 		}
 
 		/// <summary>
-		///The EA_Disconnect event enables the Add-In to respond to user requests to disconnect the model branch from an external project.
+		/// The EA_Disconnect event enables the Add-In to respond to user requests to disconnect the model branch from an external project.
 		/// This function is called when the Enterprise Architect closes. If you have stored references to Enterprise Architect objects (not particularly recommended anyway), you must release them here.
-		/// In addition, .NET users must call memory management functions as shown below:
-		/// <c>GC.Collect();</c>
-		/// <c>GC.WaitForPendingFinalizers();</c>
+		/// In addition, .NET users must call the memory management functions <c>GC.Collect()</c> and <c>GC.WaitForPendingFinalizers()</c>.
 		/// </summary>
 		public void EA_Disconnect()
 		{

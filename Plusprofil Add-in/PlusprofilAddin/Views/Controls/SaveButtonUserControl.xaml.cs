@@ -7,6 +7,7 @@ namespace PlusprofilAddin.Views.Controls
 	/// </summary>
 	public partial class SaveButtonUserControl : UserControl
 	{
+		/// <inheritdoc />
 		public SaveButtonUserControl()
 		{
 			InitializeComponent();

@@ -8,6 +8,7 @@ namespace PlusprofilAddin.Views.Controls
 	/// </summary>
 	public partial class ConnectorUserControl : UserControl
 	{
+		/// <inheritdoc />
 		public ConnectorUserControl()
 		{
 			InitializeComponent();

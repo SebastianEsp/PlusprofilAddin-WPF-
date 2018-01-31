@@ -7,6 +7,7 @@ namespace PlusprofilAddin.Views.Controls
 	/// </summary>
 	public partial class CancelButtonUserControl : UserControl
 	{
+		/// <inheritdoc />
 		public CancelButtonUserControl()
 		{
 			InitializeComponent();
