@@ -96,7 +96,7 @@
 				</Grid>
 			</ListBox>
 			<controls:LanguageTabUserControl Grid.Row="1" BorderThickness="0,1,0,1" />
-			<Grid Grid.Row="2">
+			<Grid Grid.Row="2" IsSharedSizeScope="true">
 				<Grid.RowDefinitions>
 					<RowDefinition />
 					<RowDefinition />
@@ -108,7 +108,7 @@
 					Text="{DynamicResource ResourceKey=Provenance}" />
 				<controls:TaggedValueListGroupingControl Grid.Row="1" Tag="{Binding Path=ProvenanceViewmodelTaggedValues}" />
 			</Grid>
-			<Grid Grid.Row="3">
+			<Grid Grid.Row="3" IsSharedSizeScope="True">
 				<Grid.RowDefinitions>
 					<RowDefinition />
 					<RowDefinition />

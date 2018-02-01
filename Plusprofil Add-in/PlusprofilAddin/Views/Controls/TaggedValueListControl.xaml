@@ -79,7 +79,7 @@
 						<Grid>
 							<TextBlock
 								Padding="0,0,0,4"
-								HorizontalAlignment="Left"
+								HorizontalAlignment="Stretch"
 								VerticalAlignment="Center"
 								FontSize="20"
 								Text="+" />

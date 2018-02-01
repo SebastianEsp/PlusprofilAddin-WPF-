@@ -74,10 +74,10 @@ namespace PlusprofilAddin.ViewModels
 			var resultCollectionCollection = new ObservableCollection<ObservableCollection<ViewModelTaggedValue>>();
 			foreach (var ptv in toAddList)
 			{
-				var result = RetrieveTaggedValues(taggedValuesList, ptv.Name);
-				var resultCollection = new ObservableCollection<ViewModelTaggedValue>();
 				try
 				{
+					var result = RetrieveTaggedValues(taggedValuesList, ptv.Name);
+					var resultCollection = new ObservableCollection<ViewModelTaggedValue>();
 					foreach (var tv in result)
 					{
 						var vtv = new ViewModelTaggedValue(tv)
