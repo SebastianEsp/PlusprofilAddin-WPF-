@@ -13,7 +13,7 @@
     <RootNamespace>PlusprofilAddinDocumentation</RootNamespace>
     <Name>PlusprofilAddinDocumentation</Name>
     <!-- SHFB properties -->
-    <FrameworkVersion>.NET Framework 4.6.2</FrameworkVersion>
+    <FrameworkVersion>.NET Portable Library 4.5</FrameworkVersion>
     <OutputPath>Output\</OutputPath>
     <HtmlHelpName>PlusprofilAddinDocumentation</HtmlHelpName>
     <Language>en-US</Language>

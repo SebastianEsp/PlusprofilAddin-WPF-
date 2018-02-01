@@ -83,6 +83,8 @@
 	<system:String x:Key="InverseFunctionalProperty">inverseFunctionalProperty</system:String>
 	<system:String x:Key="SymmetricProperty">symmetricProperty</system:String>
 	<system:String x:Key="TransitiveProperty">transitiveProperty</system:String>
+	<system:String x:Key="RangeConnectorEnd">range</system:String>
+	<system:String x:Key="DomainConnectorEnd">domain</system:String>
 	<!--  Keys already defined: functionalProperty  -->
 
 </ResourceDictionary>

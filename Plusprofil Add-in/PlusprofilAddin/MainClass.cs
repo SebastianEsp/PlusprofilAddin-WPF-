@@ -111,9 +111,17 @@ namespace PlusprofilAddin
 			_viewModel.Initialize();
 			_window.DataContext = _viewModel;
 
-			//Set window size
-			_window.MinHeight = _window.Height = 520;
-			_window.MinWidth = _window.Width = 540;
+			// Set window size
+			_window.MinHeight = _window.Height = 512;
+			_window.MinWidth = _window.Width = 576;
+
+			// Increase size for Connector dialogs
+			if (_window is ConnectorDialog)
+			{
+				_window.MinHeight = _window.Height = 512;
+				_window.MinWidth = _window.Width = 768;
+			}
+			
 
 			_window.ShowDialog();
 		}

@@ -13,21 +13,21 @@ namespace PlusprofilAddin.ViewModels
 	/// </summary>
 	public abstract class DialogViewModel
 	{
-		internal SaveCommand SaveCommand { get; set; }
-		internal CancelCommand CancelCommand { get; set; }
-		internal AddCommand AddCommand { get; set; }
-		internal RemoveCommand RemoveCommand { get; set; }
-		internal Repository Repository { get; set; }
-		internal ResourceDictionary ResourceDictionary { get; set; }
+		public SaveCommand SaveCommand { get; set; }
+		public CancelCommand CancelCommand { get; set; }
+		public AddCommand AddCommand { get; set; }
+		public RemoveCommand RemoveCommand { get; set; }
+		public Repository Repository { get; set; }
+		public ResourceDictionary ResourceDictionary { get; set; }
 
-		internal ObservableCollection<ObservableCollection<ViewModelTaggedValue>> DanishViewmodelTaggedValues { get; set; }
-		internal ObservableCollection<ObservableCollection<ViewModelTaggedValue>> EnglishViewmodelTaggedValues { get; set; }
-		internal List<ViewModelTaggedValue> DeleteTaggedValues { get; set; }
+		public ObservableCollection<ObservableCollection<ViewModelTaggedValue>> DanishViewmodelTaggedValues { get; set; }
+		public ObservableCollection<ObservableCollection<ViewModelTaggedValue>> EnglishViewmodelTaggedValues { get; set; }
+		public List<ViewModelTaggedValue> DeleteTaggedValues { get; set; }
 		
 		/// <summary>
 		/// Sets properties where parameters are not available at object creation.
 		/// </summary>
-		protected internal abstract void Initialize();
+		public abstract void Initialize();
 
 		/// <summary>
 		/// Given a <c>List</c> of tagged values and the name of the tagged value to retrieve, returns a sublist with tagged values that satisfy <c>TaggedValue.Name == taggedValueName</c>
@@ -37,7 +37,7 @@ namespace PlusprofilAddin.ViewModels
 		/// <param name="taggedValueName"></param>
 		/// <returns></returns>
 		/// <exception cref="ArgumentException"></exception>
-		protected internal List<dynamic> RetrieveTaggedValues(List<dynamic> taggedValueList, string taggedValueName)
+		public static List<dynamic> RetrieveTaggedValues(List<dynamic> taggedValueList, string taggedValueName)
 		{
 			var result = new List<dynamic>();
 			if (taggedValueList.Count == 0) throw new ArgumentException("Object has no tagged values");
@@ -48,7 +48,6 @@ namespace PlusprofilAddin.ViewModels
 					if (rt.Tag == taggedValueName)
 					{
 						result.Add(rt);
-						break;
 					}
 			}
 			else
@@ -57,10 +56,9 @@ namespace PlusprofilAddin.ViewModels
 					if (tv.Name == taggedValueName)
 					{
 						result.Add(tv);
-						break;
 					}
 			}
-
+			
 			return result.Count != 0
 				? result
 				: throw new ArgumentException($"No tagged value with name \"{taggedValueName}\" was found");
@@ -68,7 +66,6 @@ namespace PlusprofilAddin.ViewModels
 
 		/// <summary>
 		/// Populates a view ItemsSource that displays lists of <c>ViewmodelTaggedValue</c>.
-		/// TODO: Refactor to return an ObservableCollection
 		/// </summary>
 		/// <param name="toAddList">A list defining what type of <c>ViewmodelTaggedValue</c> should be added to the list, based on <c>PlusprofilTaggedValue.Key</c>.</param>
 		/// <param name="taggedValuesList">A <c>List</c> containing the tagged values of an object.</param>
@@ -77,10 +74,10 @@ namespace PlusprofilAddin.ViewModels
 			var resultCollectionCollection = new ObservableCollection<ObservableCollection<ViewModelTaggedValue>>();
 			foreach (var ptv in toAddList)
 			{
+				var result = RetrieveTaggedValues(taggedValuesList, ptv.Name);
+				var resultCollection = new ObservableCollection<ViewModelTaggedValue>();
 				try
 				{
-					var result = RetrieveTaggedValues(taggedValuesList, ptv.Name);
-					var resultCollection = new ObservableCollection<ViewModelTaggedValue>();
 					foreach (var tv in result)
 					{
 						var vtv = new ViewModelTaggedValue(tv)

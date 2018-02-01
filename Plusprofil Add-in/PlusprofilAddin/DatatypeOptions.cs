@@ -5,13 +5,13 @@ namespace PlusprofilAddin
 	/// <summary>
 	/// Class used as <c>ItemsSource</c> for <c>ComboBox</c> used for value <c>Type</c> when editing attributes
 	/// </summary>
-	internal class DatatypeOptions : ObservableCollection<string>
+	public class DatatypeOptions : ObservableCollection<string>
 	{
 		/// <summary>
 		/// Constructor adding the datatypes supported by the Plusprofil.
 		/// TODO: In a future iteration, it may be worthwhile to load these from an external file, e.g. the Plusprofil MDG, to increase flexibility.
 		/// </summary>
-		internal DatatypeOptions()
+		public DatatypeOptions()
 		{
 			Add("rdfs:Literal");
 			Add("rdf:XMLLiteral");

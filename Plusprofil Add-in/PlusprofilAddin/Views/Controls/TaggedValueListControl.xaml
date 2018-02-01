@@ -10,29 +10,6 @@
 	mc:Ignorable="d">
 	<UserControl.Resources>
 		<commands:RemoveCommandConverter x:Key="RemoveCommandConverter" />
-		<BitmapImage x:Key="AddImage" UriSource="/PlusprofilAddin;component/Resources/add.png" />
-		<Style x:Key="ButtonHoverStyle" TargetType="Button">
-			<Setter Property="OverridesDefaultStyle" Value="True" />
-			<Setter Property="Cursor" Value="Hand" />
-			<Setter Property="Template">
-				<Setter.Value>
-					<ControlTemplate TargetType="Button">
-						<Border
-							Name="border"
-							Background="{TemplateBinding Background}"
-							BorderBrush="Black"
-							BorderThickness="0">
-							<ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-						</Border>
-						<ControlTemplate.Triggers>
-							<Trigger Property="IsMouseOver" Value="True">
-								<Setter Property="Opacity" Value="0.8" />
-							</Trigger>
-						</ControlTemplate.Triggers>
-					</ControlTemplate>
-				</Setter.Value>
-			</Setter>
-		</Style>
 	</UserControl.Resources>
 	<ListBox
 		Name="TaggedValueListBox"
@@ -94,14 +71,19 @@
 						Width="20px"
 						Height="20px"
 						Margin="0,0,12,0"
+						Background="Transparent"
 						BorderThickness="0"
 						Command="{Binding Path=DataContext.(viewModels:DialogViewModel.AddCommand), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
 						CommandParameter="{Binding Path=ItemsSource, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}}"
-						Style="{StaticResource ButtonHoverStyle}"
 						Visibility="Hidden">
-						<Button.Background>
-							<ImageBrush ImageSource="{StaticResource AddImage}" Stretch="Fill" />
-						</Button.Background>
+						<Grid>
+							<TextBlock
+								Padding="0,0,0,4"
+								HorizontalAlignment="Left"
+								VerticalAlignment="Center"
+								FontSize="20"
+								Text="+" />
+						</Grid>
 					</Button>
 				</Grid>
 				<DataTemplate.Triggers>

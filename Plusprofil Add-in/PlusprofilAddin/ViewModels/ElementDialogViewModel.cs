@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 using EA;
 using PlusprofilAddin.ViewModels.Commands;
 using static PlusprofilAddin.PlusprofilTaggedValueDefinitions;
@@ -12,6 +13,9 @@ namespace PlusprofilAddin.ViewModels
 	/// </summary>
 	public class ElementDialogViewModel : DialogViewModel
 	{	
+
+		private readonly List<dynamic> _taggedValuesList;
+
 		private readonly List<PlusprofilTaggedValue> _toAddDanishTaggedValues = new List<PlusprofilTaggedValue>
 		{
 			Definitions.Find(ptv => ptv.Key == "PrefLabelDa"),
@@ -41,8 +45,6 @@ namespace PlusprofilAddin.ViewModels
 		};
 
 		private readonly List<PlusprofilTaggedValue> _toAddStereotypeTaggedValues = new List<PlusprofilTaggedValue>();
-
-		private readonly List<dynamic> _taggedValuesList;
 
 		/// <summary>
 		/// 
@@ -102,7 +104,7 @@ namespace PlusprofilAddin.ViewModels
 		public ObservableCollection<ObservableCollection<ViewModelTaggedValue>> StereotypeViewmodelTaggedValues { get; set; }
 
 		/// <inheritdoc />
-		protected internal override void Initialize()
+		public override void Initialize()
 		{
 			SaveCommand = new SaveCommand();
 			CancelCommand = new CancelCommand();

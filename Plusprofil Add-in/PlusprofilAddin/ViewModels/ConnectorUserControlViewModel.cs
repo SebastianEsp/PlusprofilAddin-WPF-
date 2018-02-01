@@ -122,7 +122,7 @@ namespace PlusprofilAddin.ViewModels
 		public ObservableCollection<ObservableCollection<ViewModelTaggedValue>> StereotypeViewmodelTaggedValues { get; set; }
 
 		/// <inheritdoc />
-		protected internal override void Initialize()
+		public override void Initialize()
 		{
 			ConnectorEndType = ConnectorEnd.End == "Supplier" ? "Source" : "Target";
 			UMLNameValue = ConnectorEnd.Role;

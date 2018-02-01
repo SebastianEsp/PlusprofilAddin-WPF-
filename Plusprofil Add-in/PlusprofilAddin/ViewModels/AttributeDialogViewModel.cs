@@ -4,7 +4,6 @@ using System.Linq;
 using EA;
 using PlusprofilAddin.ViewModels.Commands;
 using static PlusprofilAddin.PlusprofilTaggedValueDefinitions;
-using Attribute = EA.Attribute;
 
 namespace PlusprofilAddin.ViewModels
 {
@@ -109,7 +108,7 @@ namespace PlusprofilAddin.ViewModels
 		public ObservableCollection<ObservableCollection<ViewModelTaggedValue>> StereotypeViewmodelTaggedValues { get; set; }
 
 		/// <inheritdoc />
-		protected internal override void Initialize()
+		public override void Initialize()
 		{
 			SaveCommand = new SaveCommand();
 			CancelCommand = new CancelCommand();

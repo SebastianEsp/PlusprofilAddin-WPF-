@@ -27,7 +27,7 @@ namespace PlusprofilAddin
 		/// <summary>
 		/// Creates a new <c>ViewModelTaggedValue</c> to represent an <c>EA.TaggedValue</c>, <c>EA.RoleTag</c> or <c>EA.AttributeTag</c> passed as a parameter.
 		/// </summary>
-		/// <param name="taggedValue"></param>
+		/// <param name="taggedValue"><c>EA.TaggedValue</c>, <c>EA.RoleTag</c> or <c>EA.AttributeTag</c> that the <c>ViewModelTaggedValue</c> represents.</param>
 		public ViewModelTaggedValue(dynamic taggedValue)
 		{
 			TaggedValue = taggedValue;
@@ -96,7 +96,7 @@ namespace PlusprofilAddin
 
 
 		/// <summary>
-		/// Used to initialize properties which cannot be initialized during creation of the <c>ViewModelTaggedValue</c> due to missing information.
+		/// Sets properties where parameters are not available at object creation.
 		/// </summary>
 		public void Initialize()
 		{

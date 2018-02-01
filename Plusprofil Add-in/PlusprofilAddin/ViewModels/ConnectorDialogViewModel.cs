@@ -55,7 +55,7 @@ namespace PlusprofilAddin.ViewModels
 		}
 
 		/// <inheritdoc />
-		protected internal override void Initialize()
+		public override void Initialize()
 		{
 			SaveCommand = new SaveCommand();
 			CancelCommand = new CancelCommand();
