@@ -288,8 +288,5 @@ __pycache__/
 *.odx.cs
 *.xsd.cs
 
-#Include installer file
-![Bb]in/[Dd]ebug/PlusprofilAddinInstaller.msi
-
 #Solution files
 *.sln
