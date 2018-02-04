@@ -10,17 +10,14 @@ namespace PlusprofilAddin.ViewModels.Commands
 	/// <inheritdoc/>
 	public class CancelCommand : ICommand
 	{
-
 		private string _discardAllChangesString;
 		private string _discardString;
 
-#pragma warning disable 0067
 		/// <inheritdoc />
 		public event EventHandler CanExecuteChanged;
-#pragma warning restore 0067
 
 		/// <summary>
-		/// Determines if <c>CancelCommand.Execute(object parameter)</c> can be called.
+		/// Determines if <c>CancelCommand.Execute(object parameter)</c> can be called.<para/>
 		/// As exiting should be available at all times, this always returns true.
 		/// </summary>
 		/// <returns>Returns <c>true</c>.</returns>
@@ -31,7 +28,7 @@ namespace PlusprofilAddin.ViewModels.Commands
 		}
 
 		/// <summary>
-		/// Presents a warning <c>MessageBox</c>, then closes the current <c>Window</c> if confirmed
+		/// Presents a warning <c>MessageBox</c>, then closes the current <c>Window</c> if confirmed.<para/>
 		/// Expected parameter is type <c>Window</c> 
 		/// </summary>
 		/// <inheritdoc/>

@@ -10,16 +10,13 @@ using EA;
 namespace PlusprofilAddin.ViewModels.Commands
 {
 	/// <summary>
-	/// 
+	/// Command used to register changes made in the add-in in Sparx Systems Enterprise Architect.
 	/// </summary>
 	/// <inheritdoc />
 	public class SaveCommand : ICommand
 	{
-		
-#pragma warning disable 0067
 		/// <inheritdoc/>
 		public event EventHandler CanExecuteChanged;
-#pragma warning restore 0067
 
 		/// <summary>
 		/// Determines if <c>SaveCommand.Execute(object parameter)</c> can be called.
@@ -33,8 +30,8 @@ namespace PlusprofilAddin.ViewModels.Commands
 
 		/// <summary>
 		/// Expected parameter is type object[2]
-		/// Source / Type of parameter[0]: DialogViewModel
-		/// Source / Type of parameter[1]: ListBox.SelectedIndex (int)
+		/// Source / Type of parameter[0]: ViewModel / DialogViewModel
+		/// Source / Type of parameter[1]: ListBox.SelectedIndex / int
 		/// </summary>
 		/// <inheritdoc/>
 		public void Execute(object parameter)
@@ -46,6 +43,7 @@ namespace PlusprofilAddin.ViewModels.Commands
 				case ElementDialogViewModel viewModel:
 					var element = viewModel.Element;
 
+					// Set the lists of ViewModelTaggedValues to update
 					toUpdateCollectionsList = new List<ObservableCollection<ObservableCollection<ViewModelTaggedValue>>>
 					{
 						viewModel.DanishViewmodelTaggedValues,
@@ -121,8 +119,7 @@ namespace PlusprofilAddin.ViewModels.Commands
 					UpdateTaggedValues(sourceEnd.TaggedValues, toUpdateCollectionsList);
 					DeleteTaggedValues(sourceEnd.TaggedValues, viewModel.DeleteTaggedValues);
 
-					// Repeat for TargetConnectorEnd
-
+					// Repeat save process for TargetConnectorEnd
 					toUpdateCollectionsList = new List<ObservableCollection<ObservableCollection<ViewModelTaggedValue>>>
 					{
 						viewModel.TargetViewModel.DanishViewmodelTaggedValues,
@@ -155,6 +152,14 @@ namespace PlusprofilAddin.ViewModels.Commands
 			window.Close();
 		}
 
+		/// <summary>
+		/// Iterates through every <c>ViewModelTaggedValue</c> in the parameter <c>list</c>, calling <c>ViewModelTaggedValue.AddTaggedValue()</c> 
+		/// if <c>ViewModelTaggedValue.TaggedValue</c> has not been set, i.e. the <c>ViewModelTaggedValue</c> has been added by the add-in, 
+		/// or <c>ViewModelTaggedValue.UpdateTaggedValue()</c> if <c>ViewModelTaggedValue.TaggedValue</c> has been set, i.e. the <c>ViewModelTaggedValue</c> 
+		/// represents a previously existing tagged value.
+		/// </summary>
+		/// <param name="taggedValues">The <c>EA.Collection</c> to update, i.e. the tagged values of the object selected when the add-in was created.</param>
+		/// <param name="list">Every <c>ViewModelTaggedValue</c> to update.</param>
 		private static void UpdateTaggedValues(Collection taggedValues, List<ObservableCollection<ObservableCollection<ViewModelTaggedValue>>> list)
 		{
 			foreach (var toUpdateCollection in list)
@@ -166,6 +171,13 @@ namespace PlusprofilAddin.ViewModels.Commands
 			}
 		}
 
+		/// <summary>
+		/// Iterates through every <c>ViewModelTaggedValue</c> in the parameter <c>list</c>, calling <c>ViewModelTaggedValue.DeleteTaggedValue()</c> 
+		/// on each <c>ViewModelTaggedValue</c>, deleting the <c>ViewModelTaggedValue.TaggedValue</c> from the tagged values of the 
+		/// Sparx Systems Enterprise Architect object selected when the add-in was created.
+		/// </summary>
+		/// <param name="taggedValues">The <c>EA.Collection</c> to delete tagged values from, i.e. the tagged values of the object selected when the add-in was created.</param>
+		/// <param name="list">A <c>List</c> of <c>ViewModelTaggedValue</c> to delete.</param>
 		private static void DeleteTaggedValues(Collection taggedValues, List<ViewModelTaggedValue> list)
 		{
 			foreach(var dtv in list) dtv.DeleteTaggedValue(taggedValues);

@@ -10,17 +10,14 @@ using System.Windows.Input;
 namespace PlusprofilAddin.ViewModels.Commands
 {
 	/// <summary>
-	/// Command used to remove an <c>ViewmodelTaggedValue</c> from the <c>ItemsSource</c> of a View element and add it to the 
+	/// Command used to remove an <c>ViewmodelTaggedValue</c> from the <c>ItemsSource</c> of a View element and add it to a list of items to delete in the <c>DialogViewModel</c>.
 	/// </summary>
 	/// <inheritdoc/>
 	public class RemoveCommand : ICommand
 	{
 
-#pragma warning disable 0067
 		/// <inheritdoc />
 		public event EventHandler CanExecuteChanged;
-#pragma warning restore 0067
-
 
 		/// <summary>
 		/// Determines if <c>RemoveCommand.Execute(object parameter)</c> can be called.
