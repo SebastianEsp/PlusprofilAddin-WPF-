@@ -5,7 +5,8 @@ using System.Windows.Forms;
 namespace PlusprofilAddin
 {
 	/// <summary>
-	/// 
+	/// Class used for registering hotkeys with Windows.<para/>
+	/// Original implementation by Christian Liensberger, shared by AaronLS on StackOverflow - https://stackoverflow.com/a/27309185/9105071
 	/// </summary>
 	public sealed class KeyboardHook : IDisposable
 	{
@@ -25,7 +26,7 @@ namespace PlusprofilAddin
 
 			public Window()
 			{
-				// create the handle for the window.
+				// Create the handle for the window.
 				CreateHandle(new CreateParams());
 			}
 
@@ -37,13 +38,13 @@ namespace PlusprofilAddin
 			{
 				base.WndProc(ref m);
 
-				// check if we got a hot key pressed.
+				// Check if we got a hot key pressed.
 				if (m.Msg != WmHotkey) return;
-				// get the keys.
+				// Get the keys.
 				var key = (Keys)(((int)m.LParam >> 16) & 0xFFFF);
 				var modifier = (ModifierKeys)((int)m.LParam & 0xFFFF);
 
-				// invoke the event to notify the parent.
+				// Invoke the event to notify the parent.
 				KeyPressed?.Invoke(this, new KeyPressedEventArgs(modifier, key));
 			}
 
@@ -65,7 +66,7 @@ namespace PlusprofilAddin
 		/// <inheritdoc />
 		public KeyboardHook()
 		{
-			// register the event of the inner native window.
+			// Register the event of the inner native window.
 			_window.KeyPressed += delegate (object sender, KeyPressedEventArgs args)
 			{
 				KeyPressed?.Invoke(this, args);
@@ -79,10 +80,10 @@ namespace PlusprofilAddin
 		/// <param name="key">The key itself that is associated with the hot key.</param>
 		public void RegisterHotKey(ModifierKeys modifier, Keys key)
 		{
-			// increment the counter.
+			// Increment the counter.
 			_currentId = _currentId + 1;
 
-			// register the hot key.
+			// Register the hot key.
 			if (!RegisterHotKey(_window.Handle, _currentId, (uint)modifier, (uint)key))
 				throw new InvalidOperationException("Couldn’t register the hot key.");
 		}
@@ -97,13 +98,13 @@ namespace PlusprofilAddin
 		/// <inheritdoc />
 		public void Dispose()
 		{
-			// unregister all the registered hot keys.
+			// Unregister all the registered hot keys.
 			for (var i = _currentId; i > 0; i--)
 			{
 				UnregisterHotKey(_window.Handle, i);
 			}
 
-			// dispose the inner native window.
+			// Dispose the inner native window.
 			_window.Dispose();
 		}
 
