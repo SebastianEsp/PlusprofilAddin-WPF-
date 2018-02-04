@@ -9,19 +9,35 @@ using PlusprofilAddin.ViewModels.Commands;
 namespace PlusprofilAddin.ViewModels
 {
 	/// <summary>
-	/// 
+	/// ViewModel superclass containing functionality shared by every type of subclass ViewModels.
 	/// </summary>
 	public abstract class DialogViewModel
 	{
+		/// <summary><c>SaveCommand</c> used to register changes.</summary>
 		public SaveCommand SaveCommand { get; set; }
+		
+		/// <summary><c>CancelCommand</c> used to close the window without making changes.</summary>
 		public CancelCommand CancelCommand { get; set; }
+		
+		/// <summary><c>AddCommand</c> used to add new <c>ViewModelTaggedValue</c>s to the ViewModel.</summary>
 		public AddCommand AddCommand { get; set; }
+		
+		/// <summary><c>RemoveCommand</c> used to move <c>ViewModelTaggedValue</c>s to <c>DeleteTaggedValues</c>.</summary>
 		public RemoveCommand RemoveCommand { get; set; }
+		
+		/// <summary><c>EA.Repository</c> used to communicate with Sparx Systems Enterprise Architect through the Enterprise Architect Automation Interface.</summary>
 		public Repository Repository { get; set; }
+		
+		/// <summary><c>ResourceDictionary</c> used to localize strings.</summary>
 		public ResourceDictionary ResourceDictionary { get; set; }
 
+		/// <summary>Collection of collection of <c>ViewModelTaggedValues</c> that should be grouped in a single UI element.</summary>
 		public ObservableCollection<ObservableCollection<ViewModelTaggedValue>> DanishViewmodelTaggedValues { get; set; }
+		
+		/// <summary>Collection of collection of <c>ViewModelTaggedValues</c> that should be grouped in a single UI element.</summary>
 		public ObservableCollection<ObservableCollection<ViewModelTaggedValue>> EnglishViewmodelTaggedValues { get; set; }
+		
+		/// <summary><c>List</c> of <c>ViewModelTaggedValue</c>s that should be deleted from Sparx Systems Enterprise Architect if <c>SaveCommand.Execute()</c> is called.</summary>
 		public List<ViewModelTaggedValue> DeleteTaggedValues { get; set; }
 		
 		/// <summary>
@@ -30,13 +46,13 @@ namespace PlusprofilAddin.ViewModels
 		public abstract void Initialize();
 
 		/// <summary>
-		/// Given a <c>List</c> of tagged values and the name of the tagged value to retrieve, returns a sublist with tagged values that satisfy <c>TaggedValue.Name == taggedValueName</c>
+		/// Given a <c>List</c> of tagged values and the name of the tagged value to retrieve, returns a sublist with tagged values that satisfy <c>TaggedValue.Name == taggedValueName</c>.<para/>
 		/// Due to the varying field names of tagged values, <c>EA.TaggedValue</c> and <c>EA.AttributeTag</c> are handled differently than <c>EA.RoleTag</c>.
 		/// </summary>
-		/// <param name="taggedValueList"></param>
-		/// <param name="taggedValueName"></param>
-		/// <returns></returns>
-		/// <exception cref="ArgumentException"></exception>
+		/// <param name="taggedValueList"><c>List</c> containing every tagged value of the object selected when the add-in was created.</param>
+		/// <param name="taggedValueName">Name of the tagged value to retrieve as it is represented in Sparx Systems Enterprise Architect.</param>
+		/// <returns>Returns a <c>List</c> of every tagged values with name equal to <c>taggedValueName</c>.</returns>
+		/// <exception cref="ArgumentException">Thrown if the selected object has no tagged values or no tagged values with name equal to <c>taggedValueName</c>.</exception>
 		public static List<dynamic> RetrieveTaggedValues(List<dynamic> taggedValueList, string taggedValueName)
 		{
 			var result = new List<dynamic>();

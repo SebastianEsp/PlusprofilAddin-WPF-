@@ -74,9 +74,7 @@ namespace PlusprofilAddin.ViewModels
 		/// </summary>
 		public string AliasValue { get; set; }
 
-		/// <summary>
-		/// 
-		/// </summary>
+		/// <summary>Collection of collection of <c>ViewModelTaggedValues</c> that should be grouped in a single UI element.</summary>
 		public ObservableCollection<ObservableCollection<ViewModelTaggedValue>> ModelMetadataViewmodelTaggedValues { get; set; }
 
 		/// <inheritdoc />

@@ -98,14 +98,10 @@ namespace PlusprofilAddin.ViewModels
 		/// </summary>
 		public ViewModelTaggedValue URIViewmodelTaggedValue { get; set; }
 
-		/// <summary>
-		/// 
-		/// </summary>
+		/// <summary>Collection of collection of <c>ViewModelTaggedValues</c> that should be grouped in a single UI element.</summary>
 		public ObservableCollection<ObservableCollection<ViewModelTaggedValue>> ProvenanceViewmodelTaggedValues { get; set; }
 
-		/// <summary>
-		/// 
-		/// </summary>
+		/// <summary>Collection of collection of <c>ViewModelTaggedValues</c> that should be grouped in a single UI element.</summary>
 		public ObservableCollection<ObservableCollection<ViewModelTaggedValue>> StereotypeViewmodelTaggedValues { get; set; }
 
 		/// <inheritdoc />
