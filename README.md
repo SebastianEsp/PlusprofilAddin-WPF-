@@ -54,7 +54,7 @@ In the `PlusprofilTaggedValueDefinitions.Definitions` initialization, find the `
 1. Create a new file `StringResources.xx-XX.xaml`, where `xx-XX` is the .NET Language Culture Name, e.g. `nl-NL` for Dutch - The Netherlands.
 
 2. In the new file, add a new `ResourceDictionary`, i.e.:
-````
+````xml
 <ResourceDictionary
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -68,28 +68,32 @@ In the `PlusprofilTaggedValueDefinitions.Definitions` initialization, find the `
     
         Example:
     
-        ````private const string DutchMenuOption = "&Open Dutch Editing Window;````
-    
+        ```csharp
+        private const string DutchMenuOption = "&Open Dutch Editing Window;
+        ```
+        
         to add a menu option for dutch
     
     2. In `MainClass.EA_GetMenuitems(..)`, add the newly added field to `string[] subMenus`.
-    
+        
         Example:
-    
-        ````string[] subMenus = {DanishMenuOption, EnglishMenuOption, DutchMenuOption};````
-    
+        
+        ```csharp
+        string[] subMenus = {DanishMenuOption, EnglishMenuOption, DutchMenuOption};
+        ```
+        
         to add the Dutch option to the menu.
     
     3. In the `itemName` switch statement of `MainClass.EA_MenuClick(..)`, add a new case for the newly added menu option.
     
         Example:
-    
-        ````
+	
+        ```csharp
         case DutchMenuOption:
         	dict.Source = new Uri("pack://application:,,,/PlusprofilAddin;component/Resources/StringResources.nl-NL.xaml",
         	UriKind.Absolute);
         	break;
-        ````
+        ```
         to add an option for the menu option `DutchMenuOption`, using the file `StringResources.nl-NL.xaml`.
 	
 5. Consider adding a hotkey for the new language
@@ -101,18 +105,20 @@ In the `PlusprofilTaggedValueDefinitions.Definitions` initialization, find the `
 
     Example:
     
-    ````keyboardHook.RegisterHotKey(PlusprofilAddin.ModifierKeys.Control | PlusprofilAddin.ModifierKeys.Shift, Keys.Q)````
+    ```csharp
+    keyboardHook.RegisterHotKey(PlusprofilAddin.ModifierKeys.Control | PlusprofilAddin.ModifierKeys.Shift, Keys.Q)
+    ```
     
     registers the hotkey CTRL + SHIFT + Q.
 
 3. In the switch case of the event handler `KeyboardHook_KeyPressed(object sender, KeyPressedEventArgs e)`, add a case for the previously used combination of keys.
 
     Example:
-    ````
+    ```csharp
     case Keys.Q when e.Modifier == PlusprofilAdd.ModifierKeys.Control | PlusprofilAdd.ModifierKeys.Shift:
     	foo();
 	break;
-    ````
+    ```
     
     calls the function `foo()` when CTRL + SHIFT + Q is pressed.
 
