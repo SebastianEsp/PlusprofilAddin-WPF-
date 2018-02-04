@@ -54,10 +54,10 @@ namespace PlusprofilAddin
 		{
 			switch (e.Key)
 			{
-				case Keys.Q:
+				case Keys.Q when e.Modifier == PlusprofilAddin.ModifierKeys.Control:
 					_mainClass.EA_MenuClick(_repository, "", "", _englishMenuOption);
 					break;
-				case Keys.R:
+				case Keys.R when e.Modifier == PlusprofilAddin.ModifierKeys.Control:
 					_mainClass.EA_MenuClick(_repository, "", "", _danishMenuOption);
 					break;
 			}
