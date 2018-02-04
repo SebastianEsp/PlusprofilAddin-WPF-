@@ -1,0 +1,91 @@
+﻿<ResourceDictionary
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+	<!--  Textlabels  -->
+	<system:String x:Key="UMLName">UML navn</system:String>
+	<system:String x:Key="Alias">Alias</system:String>
+	<system:String x:Key="URI">URI</system:String>
+	<system:String x:Key="Multiplicity">Multiplicitet</system:String>
+	<system:String x:Key="Datatype">Datatype</system:String>
+	<system:String x:Key="DanishAnnotations">Danske annotationer</system:String>
+	<system:String x:Key="EnglishAnnotations">Engelske annotationer</system:String>
+	<system:String x:Key="ModelMetadata">Model metadata</system:String>
+	<system:String x:Key="Provenance">Proveniens</system:String>
+	<system:String x:Key="StereotypeCharacteristics">Stereotypspecifik karakteristika</system:String>
+	<system:String x:Key="DatatypePropertyCharacteristics">DatatypeProperty karakteristika</system:String>
+	<system:String x:Key="RdfsClassCharacteristics">RdfsClass karakteristika</system:String>
+	<system:String x:Key="OwlClassCharacteristics">OwlClass karakteristika</system:String>
+	<system:String x:Key="IndividualCharacteristics">Individual karakteristika</system:String>
+	<system:String x:Key="RdfsPropertyCharacteristics">RdfsProperty karakteristika</system:String>
+	<system:String x:Key="ObjectPropertyCharacteristics">ObjectProperty karakteristika</system:String>
+	<system:String x:Key="SaveChanges">Gem</system:String>
+	<system:String x:Key="Cancel">Annuller</system:String>
+	<system:String x:Key="Discard">Kasser</system:String>
+	<system:String x:Key="DiscardAllChanges">Kasser alle ændringer?</system:String>
+
+	<!--  Danish Annotations labels  -->
+	<system:String x:Key="PrefLabelDa">Foretrukken term</system:String>
+	<system:String x:Key="AltLabelDa">Accepterede termer</system:String>
+	<system:String x:Key="DeprecatedLabelDa">Frarådede termer</system:String>
+	<system:String x:Key="DefinitionDa">Definition</system:String>
+	<system:String x:Key="ExampleDa">Eksempel</system:String>
+	<system:String x:Key="CommentDa">Kommentar</system:String>
+	<system:String x:Key="ApplicationNoteDa">Anvendelsesnote</system:String>
+
+	<!--  English Annotations labels  -->
+	<system:String x:Key="PrefLabelEn">Foretrukken term</system:String>
+	<system:String x:Key="AltLabelEn">Accepterede termer</system:String>
+	<system:String x:Key="DeprecatedLabelEn">Frarådede termer</system:String>
+	<system:String x:Key="DefinitionEn">Definition</system:String>
+	<system:String x:Key="ExampleEn">Eksempel</system:String>
+	<system:String x:Key="CommentEn">Kommentar</system:String>
+	<system:String x:Key="ApplicationNoteEn">Anvendelsesnote</system:String>
+
+	<!--  Provenance labels  -->
+	<system:String x:Key="LegalSource">Juridisk kilde</system:String>
+	<system:String x:Key="Source">Kilde</system:String>
+	<system:String x:Key="IsDefinedBy">isDefinedBy</system:String>
+	<system:String x:Key="WasDerivedFrom">wasDerivedFrom</system:String>
+
+	<!--  Model metadata specific labels  -->
+	<system:String x:Key="Namespace">Namespace</system:String>
+	<system:String x:Key="NamespacePrefix">namespacePrefix</system:String>
+	<system:String x:Key="LabelDa">Modelnavn</system:String>
+	<system:String x:Key="LabelEn">Modelnavn</system:String>
+	<system:String x:Key="Publisher">Modelejer</system:String>
+	<system:String x:Key="VersionInfo">Versionnummer</system:String>
+	<system:String x:Key="Modified">Seneste opdateringsdato</system:String>
+	<system:String x:Key="ModelStatus">Modelstatus</system:String>
+	<system:String x:Key="ApprovalStatus">Godkendelsesstatus</system:String>
+	<system:String x:Key="Theme">Forretningsområde</system:String>
+	<system:String x:Key="LegalSourcePackage">Juridisk kilde</system:String>
+	<system:String x:Key="SourcePackage">Kilde</system:String>
+	<!--  Keys already defined: legalSource, source, wasDerivedFrom, comment  -->
+
+	<!--  Element specific labels  -->
+	<system:String x:Key="EquivalentClass">equivalentClass</system:String>
+	<system:String x:Key="SubClassOf">subClassOf</system:String>
+	<system:String x:Key="SameAs">sameAs</system:String>
+	<system:String x:Key="Type">type</system:String>
+
+	<!--  Attribute/ConnectorEnd specific labels  -->
+	<system:String x:Key="SubPropertyOf">subPropertyOf</system:String>
+	<system:String x:Key="EquivalentProperty">equivalentProperty</system:String>
+
+	<!--  Attribute specific labels  -->
+	<system:String x:Key="FunctionalProperty">functionalProperty</system:String>
+	<system:String x:Key="Range">range</system:String>
+	<system:String x:Key="Domain">domain</system:String>
+
+	<!--  ConnectorEnd specific labels  -->
+	<system:String x:Key="InverseOf">inverseOf</system:String>
+	<system:String x:Key="InverseFunctionalProperty">inverseFunctionalProperty</system:String>
+	<system:String x:Key="SymmetricProperty">symmetricProperty</system:String>
+	<system:String x:Key="TransitiveProperty">transitiveProperty</system:String>
+	<system:String x:Key="RangeConnectorEnd">range</system:String>
+	<system:String x:Key="DomainConnectorEnd">domain</system:String>
+	<!--  Keys already defined: functionalProperty  -->
+
+</ResourceDictionary>

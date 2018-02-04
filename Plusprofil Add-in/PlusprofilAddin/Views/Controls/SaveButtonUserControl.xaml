@@ -1,0 +1,24 @@
+﻿<UserControl
+	x:Class="PlusprofilAddin.Views.Controls.SaveButtonUserControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:commands="clr-namespace:PlusprofilAddin.ViewModels.Commands"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	d:DataContext="{d:DesignInstance}"
+	d:DesignHeight="300"
+	d:DesignWidth="300"
+	mc:Ignorable="d">
+	<Button Margin="3,6,12,6" Command="{Binding Path=SaveCommand}">
+		<Button.Resources>
+			<commands:SaveCommandConverter x:Key="SaveCommandConverter" />
+		</Button.Resources>
+		<Button.CommandParameter>
+			<MultiBinding Converter="{StaticResource SaveCommandConverter}">
+				<Binding Path="DataContext" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type Window}}" />
+				<Binding RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type Window}}" />
+			</MultiBinding>
+		</Button.CommandParameter>
+		<TextBlock Margin="6,2,6,2" Text="{DynamicResource ResourceKey=SaveChanges}" />
+	</Button>
+</UserControl>
