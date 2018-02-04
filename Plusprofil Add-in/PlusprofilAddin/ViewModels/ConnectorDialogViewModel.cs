@@ -5,45 +5,33 @@ using PlusprofilAddin.ViewModels.Commands;
 
 namespace PlusprofilAddin.ViewModels
 {
+	/// <summary>
+	/// ViewModel used to update View (Window) state and retrieve user input to update Model (Sparx Systems Enterprise Architect) state.<para/>
+	/// <c>ConnectorDialogViewModel</c> serves as a link between two <c>ConnectorUserControlViewModel</c>s and <c>MainClass</c>.
+	/// </summary>
 	/// <inheritdoc />
 	public class ConnectorDialogViewModel : DialogViewModel
 	{
-		/// <summary>
-		/// 
-		/// </summary>
+		/// <summary><c>ConnectorUserControlViewModel</c> representing the <c>EA.Connector.ClientEnd</c>, i.e. Source, <c>ConnectorEnd</c>.</summary>
 		public ConnectorUserControlViewModel SourceViewModel { get; set; }
-		/// <summary>
-		/// 
-		/// </summary>
+		
+		/// <summary><c>ConnectorUserControlViewModel</c> representing the <c>EA.Connector.SupplierEnd</c>, i.e. Target, <c>ConnectorEnd</c>.</summary>
 		public ConnectorUserControlViewModel TargetViewModel { get; set; }
 
-		/// <summary>
-		/// 
-		/// </summary>
-		public string Text { get; set; }
-
-		/// <summary>
-		/// 
-		/// </summary>
+		/// <summary><c>EA.Connector</c> retrieved from Sparx Systems Enterprise Architect automation interface to retrieve <c>SourceEnd</c> and <c>TargetEnd</c>.</summary>
 		public Connector Connector { get; set; }
 		
-		/// <summary>
-		/// 
-		/// </summary>
+		/// <summary>The <c>EA.Connector.ClientEnd</c>, i.e. Source, <c>ConnectorEnd</c>.</summary>
 		public ConnectorEnd SourceEnd { get; set; }
 		
-		/// <summary>
-		/// 
-		/// </summary>
+		/// <summary>The <c>EA.Connector.SupplierEnd</c>, i.e. Target, <c>ConnectorEnd</c>.</summary>
 		public ConnectorEnd TargetEnd { get; set; }
 
-		/// <summary>
-		/// 
-		/// </summary>
+		/// <summary>View property used to determine if the Source-half of the View should be shown or hidden.</summary>
 		public Visibility ShowSourceEnd { get; set; }
 		
 		/// <summary>
-		/// 
+		/// View property used to determine if the Target-half of the View should be shown or hidden.
 		/// </summary>
 		public Visibility ShowTargetEnd { get; set; }
 

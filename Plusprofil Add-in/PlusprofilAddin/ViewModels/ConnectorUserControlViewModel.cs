@@ -8,7 +8,7 @@ using static PlusprofilAddin.PlusprofilTaggedValueDefinitions;
 namespace PlusprofilAddin.ViewModels
 {
 	/// <summary>
-	/// 
+	/// ViewModel used to update View (Window) state and retrieve user input to update Model (Sparx Systems Enterprise Architect) state.
 	/// </summary>
 	/// <inheritdoc />
 	public class ConnectorUserControlViewModel : DialogViewModel

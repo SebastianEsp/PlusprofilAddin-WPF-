@@ -9,6 +9,7 @@ using PlusprofilAddin.ViewModels.Commands;
 namespace PlusprofilAddin.ViewModels
 {
 	/// <summary>
+	/// ViewModel used to update View (Window) state and retrieve user input to update Model (Sparx Systems Enterprise Architect) state.<para/>
 	/// ViewModel superclass containing functionality shared by every type of subclass ViewModels.
 	/// </summary>
 	public abstract class DialogViewModel
