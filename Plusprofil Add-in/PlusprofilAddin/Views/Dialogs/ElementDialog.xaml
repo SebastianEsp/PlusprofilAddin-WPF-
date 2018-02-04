@@ -112,7 +112,7 @@
 					Grid.Row="0"
 					Margin="12,6,6,0"
 					FontWeight="SemiBold"
-					Text="{DynamicResource ResourceKey=RdfsClassCharacteristics}" />
+					Text="{Binding Path=StereotypeString}" />
 				<controls:TaggedValueListGroupingControl Grid.Row="1" Tag="{Binding Path=StereotypeViewmodelTaggedValues}" />
 			</Grid>
 			<WrapPanel Grid.Row="4" HorizontalAlignment="Right">

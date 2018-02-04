@@ -91,6 +91,11 @@ namespace PlusprofilAddin.ViewModels
 		/// <summary>
 		/// 
 		/// </summary>
+		public string StereotypeString { get; set; }
+
+		/// <summary>
+		/// 
+		/// </summary>
 		public ViewModelTaggedValue URIViewmodelTaggedValue { get; set; }
 
 		/// <summary>
@@ -120,13 +125,19 @@ namespace PlusprofilAddin.ViewModels
 			switch (Element.Stereotype)
 			{
 				case "OwlClass":
+					_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "EquivalentClass"));
+					_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "SubClassOf"));
+					StereotypeString = (string) ResourceDictionary["OwlClassCharacteristics"];
+					break;
 				case "RdfsClass":
 					_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "EquivalentClass"));
 					_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "SubClassOf"));
+					StereotypeString = (string) ResourceDictionary["RdfsClassCharacteristics"];
 					break;
 				case "Individual":
 					_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "SameAs"));
 					_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "Type"));
+					StereotypeString = (string) ResourceDictionary["IndividualCharacteristics"];
 					break;
 			}
 

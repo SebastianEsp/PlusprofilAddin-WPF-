@@ -109,6 +109,11 @@ namespace PlusprofilAddin.ViewModels
 		/// <summary>
 		/// 
 		/// </summary>
+		public string StereotypeString { get; set; }
+
+		/// <summary>
+		/// 
+		/// </summary>
 		public ViewModelTaggedValue URIViewmodelTaggedValue { get; set; }
 
 		/// <summary>
@@ -131,20 +136,28 @@ namespace PlusprofilAddin.ViewModels
 			TaggedValues = ConnectorEnd.TaggedValues;
 
 			//Finalize list of stereotype tags to add
-			if (ConnectorEnd.Stereotype == "ObjectProperty")
+			switch (ConnectorEnd.Stereotype)
 			{
-				_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "InverseOf"));
-				_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "FunctionalProperty"));
-				_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "InverseFunctionalProperty"));
-				_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "SymmetricProperty"));
-				_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "TransitiveProperty"));
-			}
-			if (ConnectorEnd.Stereotype == "RdfsProperty" || ConnectorEnd.Stereotype == "ObjectProperty")
-			{
-				_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "RangeConnectorEnd"));
-				_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "DomainConnectorEnd"));
-				_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "SubPropertyOf"));
-				_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "EquivalentProperty"));
+				case "RdfsProperty":
+					_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "RangeConnectorEnd"));
+					_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "DomainConnectorEnd"));
+					_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "SubPropertyOf"));
+					_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "EquivalentProperty"));
+					StereotypeString = (string) ResourceDictionary["RdfsPropertyCharacteristics"];
+					break;
+
+				case "ObjectProperty":
+					_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "RangeConnectorEnd"));
+					_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "DomainConnectorEnd"));
+					_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "SubPropertyOf"));
+					_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "EquivalentProperty"));
+					_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "InverseOf"));
+					_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "FunctionalProperty"));
+					_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "InverseFunctionalProperty"));
+					_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "SymmetricProperty"));
+					_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "TransitiveProperty"));
+					StereotypeString = (string) ResourceDictionary["ObjectPropertyCharacteristics"];
+					break;
 			}
 
 			//Retrieve all tagged values and store them in a list

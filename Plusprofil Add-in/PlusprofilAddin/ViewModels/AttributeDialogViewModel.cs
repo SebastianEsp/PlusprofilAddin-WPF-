@@ -95,6 +95,11 @@ namespace PlusprofilAddin.ViewModels
 		/// <summary>
 		/// 
 		/// </summary>
+		public string StereotypeString { get; set; }
+
+		/// <summary>
+		/// 
+		/// </summary>
 		public ViewModelTaggedValue URIViewmodelTaggedValue { get; set; }
 
 		/// <summary>
@@ -123,14 +128,25 @@ namespace PlusprofilAddin.ViewModels
 			
 
 			//Finalize list of stereotype tags to add
-			if (Attribute.Stereotype == "DatatypeProperty") _toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "FunctionalProperty"));
-			if (Attribute.Stereotype == "RdfsProperty" || Attribute.Stereotype == "DatatypeProperty")
+			switch (Attribute.Stereotype)
 			{
-				_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "Range"));
-				_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "Domain"));
-				_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "SubPropertyOf"));
-				_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "EquivalentProperty"));
+				case "RdfsProperty":
+					_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "Range"));
+					_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "Domain"));
+					_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "SubPropertyOf"));
+					_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "EquivalentProperty"));
+					StereotypeString = (string) ResourceDictionary["RdfsPropertyCharacteristics"];
+					break;
+				case "DatatypeProperty":
+					_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "Range"));
+					_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "Domain"));
+					_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "SubPropertyOf"));
+					_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "EquivalentProperty"));
+					_toAddStereotypeTaggedValues.Add(Definitions.Find(ptv => ptv.Key == "FunctionalProperty"));
+					StereotypeString = (string) ResourceDictionary["DatatypePropertyCharacteristics"];
+					break;
 			}
+
 
 			//Retrieve all tagged values and store them in a list
 			//Tagged values are stored in a list to avoid iterating Collections multiple times, which is very costly

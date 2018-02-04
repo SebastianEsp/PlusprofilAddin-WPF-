@@ -16,6 +16,8 @@
 	<system:String x:Key="StereotypeCharacteristics">Stereotypspecifik karakteristika</system:String>
 	<system:String x:Key="DatatypePropertyCharacteristics">DatatypeProperty karakteristika</system:String>
 	<system:String x:Key="RdfsClassCharacteristics">RdfsClass karakteristika</system:String>
+	<system:String x:Key="OwlClassCharacteristics">OwlClass karakteristika</system:String>
+	<system:String x:Key="IndividualCharacteristics">Individual karakteristika</system:String>
 	<system:String x:Key="RdfsPropertyCharacteristics">RdfsProperty karakteristika</system:String>
 	<system:String x:Key="ObjectPropertyCharacteristics">ObjectProperty karakteristika</system:String>
 	<system:String x:Key="SaveChanges">Gem</system:String>

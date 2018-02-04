@@ -31,7 +31,7 @@ namespace PlusprofilAddin
 		/// <param name="repository">/// An <c>EA.Repository</c> object representing the currently open Enterprise Architect model. Poll its members to retrieve model data and user interface status information.</param>
 		/// <param name="location">A string representing the part of the user interface that brought up the menu. This can be TreeView, MainMenu or Diagram.</param>
 		/// <param name="menuName">The name of the parent menu for which sub-items are to be defined. In the case of the top-level menu this is an empty string.</param>
-		/// <returns></returns>
+		/// <returns>Returns the menu items to display in Enterprise Architect.</returns>
 		public object EA_GetMenuItems(Repository repository, string location, string menuName)
 		{
 			switch (menuName)
@@ -121,7 +121,6 @@ namespace PlusprofilAddin
 				_window.MinHeight = _window.Height = 512;
 				_window.MinWidth = _window.Width = 768;
 			}
-			
 
 			_window.ShowDialog();
 		}

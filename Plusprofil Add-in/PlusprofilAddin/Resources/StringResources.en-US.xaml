@@ -16,13 +16,14 @@
 	<system:String x:Key="StereotypeCharacteristics">Stereotype Characteristics</system:String>
 	<system:String x:Key="DatatypePropertyCharacteristics">DatatypeProperty Characteristics</system:String>
 	<system:String x:Key="RdfsClassCharacteristics">RdfsClass Characteristics</system:String>
+	<system:String x:Key="OwlClassCharacteristics">OwlClass Characteristics</system:String>
+	<system:String x:Key="IndividualCharacteristics">Individual Characteristics</system:String>
 	<system:String x:Key="RdfsPropertyCharacteristics">RdfsProperty Characteristics</system:String>
 	<system:String x:Key="ObjectPropertyCharacteristics">ObjectProperty Characteristics</system:String>
 	<system:String x:Key="SaveChanges">Save</system:String>
 	<system:String x:Key="Cancel">Cancel</system:String>
 	<system:String x:Key="Discard">Discard</system:String>
 	<system:String x:Key="DiscardAllChanges">Discard all changes?</system:String>
-
 
 	<!--  Danish Annotations labels  -->
 	<system:String x:Key="PrefLabelDa">prefLabel</system:String>
