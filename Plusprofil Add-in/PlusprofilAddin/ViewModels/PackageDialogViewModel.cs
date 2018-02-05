@@ -12,6 +12,8 @@ namespace PlusprofilAddin.ViewModels
 	/// <inheritdoc />
 	public class PackageDialogViewModel : DialogViewModel
 	{
+		private readonly List<dynamic> _taggedValuesList;
+
 		private readonly List<PlusprofilTaggedValue> _toAddDanishTaggedValues = new List<PlusprofilTaggedValue>
 		{
 			Definitions.Find(ptv => ptv.Key == "LabelDa"),
@@ -38,11 +40,7 @@ namespace PlusprofilAddin.ViewModels
 			Definitions.Find(ptv => ptv.Key == "SourcePackage")
 		};
 
-		private readonly List<dynamic> _taggedValuesList;
-
-		/// <summary>
-		/// 
-		/// </summary>
+		/// <inheritdoc/>
 		public PackageDialogViewModel()
 		{
 			DanishViewmodelTaggedValues = new ObservableCollection<ObservableCollection<ViewModelTaggedValue>>();
@@ -55,27 +53,19 @@ namespace PlusprofilAddin.ViewModels
 			AliasValue = "";
 		}
 
-		/// <summary>
-		/// 
-		/// </summary>
+		/// <summary>Sparx Systems Enterprise Architect object representing the package selected when the add-in is opened, i.e. <c>EA.Package.Element</c></summary>
 		public Element PackageElement { get; set; }
 		
-		/// <summary>
-		/// 
-		/// </summary>
+		/// <summary>Sparx Systems Enterprise Architect object holding the tagged values of the package, i.e. <c>EA.Package.Element.TaggedValues</c>.</summary>
 		public Collection TaggedValues { get; set; }
 
-		/// <summary>
-		/// 
-		/// </summary>
+		/// <summary>String representing <c>EA.Package.Element.Name</c>.</summary>
 		public string UMLNameValue { get; set; }
 		
-		/// <summary>
-		/// 
-		/// </summary>
+		/// <summary>String representing <c>EA.Package.Element.Alias</c>.</summary>
 		public string AliasValue { get; set; }
 
-		/// <summary>Collection of collection of <c>ViewModelTaggedValues</c> that should be grouped in a single UI element.</summary>
+		/// <summary>Collection of collection of <c>ViewModelTaggedValue</c>s that should be grouped in a single UI element.</summary>
 		public ObservableCollection<ObservableCollection<ViewModelTaggedValue>> ModelMetadataViewmodelTaggedValues { get; set; }
 
 		/// <inheritdoc />
