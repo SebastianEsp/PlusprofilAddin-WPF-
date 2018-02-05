@@ -6,6 +6,7 @@ namespace PlusprofilAddin.Views.Dialogs
 	/// <summary>
 	///     Interaction logic for ElementDialog.xaml
 	/// </summary>
+	/// <inheritdoc cref="Window"/>
 	public partial class AttributeDialog
 	{
 		/// <inheritdoc />

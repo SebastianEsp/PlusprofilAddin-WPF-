@@ -9,9 +9,11 @@ namespace PlusprofilAddin
 	/// <inheritdoc />
 	public class DatatypeOptions : ObservableCollection<string>
 	{
+		
 		/// <summary>
 		/// Constructor adding the datatypes supported by the Plusprofil.
 		/// </summary>
+		/// <inheritdoc />
 		/// TODO: Alternative solution would be to load the datatypes from an external file, e.g. the Plusprofil MDG, to increase flexibility.
 		public DatatypeOptions()
 		{

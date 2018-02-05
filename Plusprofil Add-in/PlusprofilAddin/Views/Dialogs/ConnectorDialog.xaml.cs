@@ -1,9 +1,12 @@
-﻿namespace PlusprofilAddin.Views.Dialogs
+﻿using System.Windows;
+
+namespace PlusprofilAddin.Views.Dialogs
 {
-	
+
 	/// <summary>
-	///     Interaction logic for ElementDialog.xaml
+	/// Interaction logic for ElementDialog.xaml
 	/// </summary>
+	/// <inheritdoc cref="Window"/>
 	public partial class ConnectorDialog
 	{
 		/// <inheritdoc />

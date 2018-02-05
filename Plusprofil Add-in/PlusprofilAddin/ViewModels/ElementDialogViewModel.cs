@@ -69,11 +69,11 @@ namespace PlusprofilAddin.ViewModels
 		/// <summary>Sparx Systems Enterprise Architect object holding the tagged values of the element, i.e. <c>EA.Element.TaggedValues</c>.</summary>
 		public Collection TaggedValues { get; set; }
 
-		/// <summary>String representing <c>EA.TaggedValue.Value</c> of the <c>EA.TaggedValue</c> with Name "URI"</summary>
-		public string URIValue { get; set; }
-
 		/// <summary>String representing <c>EA.Element.Name</c>.</summary>
 		public string UMLNameValue { get; set; }
+
+		/// <summary>String representing <c>EA.TaggedValue.Value</c> of the <c>EA.TaggedValue</c> with Name "URI"</summary>
+		public string URIValue { get; set; }
 
 		/// <summary>String representing <c>EA.Element.Alias</c>.</summary>
 		public string AliasValue { get; set; }

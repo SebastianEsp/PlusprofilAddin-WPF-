@@ -8,6 +8,7 @@ namespace PlusprofilAddin
 	/// <c>Form</c> used to register hotkeys.<para/>
 	/// Original implementation by Christian Liensberger, shared by AaronLS on StackOverflow - https://stackoverflow.com/a/27309185/9105071
 	/// </summary>
+	/// <inheritdoc/>
 	public partial class HotkeyForm : Form
 	{
 		private readonly MainClass _mainClass;

@@ -32,10 +32,10 @@ namespace PlusprofilAddin.ViewModels
 		/// <summary><c>ResourceDictionary</c> used to localize strings.</summary>
 		public ResourceDictionary ResourceDictionary { get; set; }
 
-		/// <summary>Collection of collection of <c>ViewModelTaggedValues</c> that should be grouped in a single UI element.</summary>
+		/// <summary>Collection of collection of <c>ViewModelTaggedValue</c>s that should be grouped in a single UI element.</summary>
 		public ObservableCollection<ObservableCollection<ViewModelTaggedValue>> DanishViewmodelTaggedValues { get; set; }
 		
-		/// <summary>Collection of collection of <c>ViewModelTaggedValues</c> that should be grouped in a single UI element.</summary>
+		/// <summary>Collection of collection of <c>ViewModelTaggedValue</c>s that should be grouped in a single UI element.</summary>
 		public ObservableCollection<ObservableCollection<ViewModelTaggedValue>> EnglishViewmodelTaggedValues { get; set; }
 		
 		/// <summary><c>List</c> of <c>ViewModelTaggedValue</c>s that should be deleted from Sparx Systems Enterprise Architect if <c>SaveCommand.Execute()</c> is called.</summary>

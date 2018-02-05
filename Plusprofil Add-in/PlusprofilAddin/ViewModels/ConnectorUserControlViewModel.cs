@@ -66,60 +66,40 @@ namespace PlusprofilAddin.ViewModels
 		}
 
 		
-		/// <summary>
-		/// 
-		/// </summary>
+		/// <summary>Sparx Systems Enterprise Architect object representing a ConnectorEnd of the Connector selected when the add-in is opened.</summary>
 		public ConnectorEnd ConnectorEnd { get; set; }
-		
-		/// <summary>
-		/// 
-		/// </summary>
+
+		/// <summary>Sparx Systems Enterprise Architect object holding the tagged values of the ConnectorEnd, i.e. <c>EA.ConnectorEnd.TaggedValues</c>.</summary>
 		public Collection TaggedValues { get; set; }
 
-		/// <summary>
-		/// 
-		/// </summary>
+		/// <summary>String representing the name of the element associated with the <c>ConnectorEnd</c></summary>
 		public string ElementNameValue { get; set; }
 		
-		/// <summary>
-		/// 
-		/// </summary>
+		/// <summary>String representing the type of <c>ConnectorEnd</c>.</summary>
 		public string ConnectorEndType { get; set; }
 		
-		/// <summary>
-		/// 
-		/// </summary>
+		/// <summary>String representing <c>EA.ConnectorEnd.Role</c>.</summary>
 		public string UMLNameValue { get; set; }
 		
-		/// <summary>
-		/// 
-		/// </summary>
+		/// <summary>String representing <c>EA.RoleTag.Value</c> (after <c>RoleTag</c>-specific filtering) of the <c>EA.RoleTag</c> with Name "URI"</summary>
 		public string URIValue { get; set; }
 		
-		/// <summary>
-		/// 
-		/// </summary>
+		/// <summary>String representing <c>EA.ConnectorEnd.Alias</c>.</summary>
 		public string AliasValue { get; set; }
 		
-		/// <summary>
-		/// 
-		/// </summary>
+		/// <summary>String representing <c>EA.ConnectorEnd.Cardinality</c></summary>
 		public string MultiplicityValue { get; set; }
 
-		/// <summary>
-		/// 
-		/// </summary>
+		/// <summary>String representing <c>EA.Element.Stereotype</c>.</summary>
 		public string StereotypeString { get; set; }
 
-		/// <summary>
-		/// 
-		/// </summary>
+		/// <summary><c>ViewModelTaggedValue</c> representing the <c>EA.RoleTag</c> with Name "URI"</summary>
 		public ViewModelTaggedValue URIViewmodelTaggedValue { get; set; }
 
-		/// <summary>Collection of collection of <c>ViewModelTaggedValues</c> that should be grouped in a single UI element.</summary>
+		/// <summary>Collection of collection of <c>ViewModelTaggedValue</c>s that should be grouped in a single UI element.</summary>
 		public ObservableCollection<ObservableCollection<ViewModelTaggedValue>> ProvenanceViewmodelTaggedValues { get; set; }
 
-		/// <summary>Collection of collection of <c>ViewModelTaggedValues</c> that should be grouped in a single UI element.</summary>
+		/// <summary>Collection of collection of <c>ViewModelTaggedValue</c>s that should be grouped in a single UI element.</summary>
 		public ObservableCollection<ObservableCollection<ViewModelTaggedValue>> StereotypeViewmodelTaggedValues { get; set; }
 
 		/// <inheritdoc />

@@ -11,6 +11,7 @@ namespace PlusprofilAddin
 		/// <summary>
 		/// Constructor adding the default multiplicities of the Plusprofil.
 		/// </summary>
+		/// <inheritdoc />
 		/// TODO: Alternative solution would be to load the multiplicity options from an external file, e.g. the Plusprofil MDG, to increase flexibility.
 		public MultiplicityOptions()
 		{

@@ -6,6 +6,7 @@ namespace PlusprofilAddin.Views.Controls
 	/// <summary>
 	/// Interaction logic for ConnectorUserControl.xaml
 	/// </summary>
+	/// <inheritdoc cref="UserControl"/>
 	public partial class ConnectorUserControl : UserControl
 	{
 		/// <inheritdoc />

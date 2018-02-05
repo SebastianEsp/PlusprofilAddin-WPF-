@@ -8,6 +8,7 @@ namespace PlusprofilAddin
 	/// Class used for registering hotkeys with Windows.<para/>
 	/// Original implementation by Christian Liensberger, shared by AaronLS on StackOverflow - https://stackoverflow.com/a/27309185/9105071
 	/// </summary>
+	/// <inheritdoc/>
 	public sealed class KeyboardHook : IDisposable
 	{
 		// Registers a hot key with Windows.
@@ -17,9 +18,12 @@ namespace PlusprofilAddin
 		[DllImport("user32.dll")]
 		private static extern bool UnregisterHotKey(IntPtr hWnd, int id);
 
+		
 		/// <summary>
 		/// Represents the window that is used internally to get the messages.
 		/// </summary>
+		/// <inheritdoc cref="NativeWindow"/>
+		/// <inheritdoc cref="IDisposable"/>
 		private sealed class Window : NativeWindow, IDisposable
 		{
 			private const int WmHotkey = 0x0312;
@@ -34,6 +38,7 @@ namespace PlusprofilAddin
 			/// Overridden to get the notifications.
 			/// </summary>
 			/// <param name="m"></param>
+			/// <inheritdoc />
 			protected override void WndProc(ref Message m)
 			{
 				base.WndProc(ref m);
@@ -114,6 +119,7 @@ namespace PlusprofilAddin
 	/// <summary>
 	/// Event Args for the event that is fired after the hot key has been pressed.
 	/// </summary>
+	/// /// <inheritdoc />
 	public class KeyPressedEventArgs : EventArgs
 	{
 		internal KeyPressedEventArgs(ModifierKeys modifier, Keys key)

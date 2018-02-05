@@ -6,6 +6,7 @@ namespace PlusprofilAddin.Views.Controls
 	/// <summary>
 	/// Interaction logic for TaggedValueList.xaml
 	/// </summary>
+	/// <inheritdoc cref="UserControl"/>
 	public partial class TaggedValueListControl : UserControl
 	{
 		/// <inheritdoc />

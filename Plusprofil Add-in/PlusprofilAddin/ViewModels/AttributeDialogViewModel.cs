@@ -10,6 +10,7 @@ namespace PlusprofilAddin.ViewModels
 	/// <summary>
 	/// 
 	/// </summary>
+	/// <inheritdoc/>
 	public class AttributeDialogViewModel : DialogViewModel
 	{
 
@@ -62,50 +63,34 @@ namespace PlusprofilAddin.ViewModels
 			DatatypeValue = "";
 		}
 
-		/// <summary>
-		/// 
-		/// </summary>
-		public Attribute Attribute { get; set; }		
-		/// <summary>
-		/// 
-		/// </summary>
+		/// <summary>Sparx Systems Enterprise Architect object representing the attribute selected when the add-in is opened.</summary>
+		public Attribute Attribute { get; set; }
+
+		/// <summary>Sparx Systems Enterprise Architect object holding the tagged values of the attribute, i.e. <c>EA.Attribute.TaggedValues</c>.</summary>
 		public Collection TaggedValues { get; set; }
 
+		/// <summary>String representing <c>EA.Attribute.Name</c>.</summary>
+		public string UMLNameValue { get; set; }
 
-		/// <summary>
-		/// 
-		/// </summary>
+		/// <summary>String representing <c>EA.AttributeTag.Value</c> of the <c>EA.AttributeTag</c> with Name "URI"</summary>
 		public string URIValue { get; set; }
 		
-		/// <summary>
-		/// 
-		/// </summary>
-		public string UMLNameValue { get; set; }
-		
-		/// <summary>
-		/// 
-		/// </summary>
+		/// <summary>String representing <c>EA.Attribute.Alias</c>.</summary>
 		public string AliasValue { get; set; }
-		
-		/// <summary>
-		/// 
-		/// </summary>
+
+		/// <summary>String representing <c>EA.Attribute.Type</c></summary>
 		public string DatatypeValue { get; set; }
 
-		/// <summary>
-		/// 
-		/// </summary>
+		/// <summary>String representing <c>EA.Element.Stereotype</c>.</summary>
 		public string StereotypeString { get; set; }
 
-		/// <summary>
-		/// 
-		/// </summary>
+		/// <summary><c>ViewModelTaggedValue</c> representing the <c>EA.AttributeTag</c> with Name "URI"</summary>
 		public ViewModelTaggedValue URIViewmodelTaggedValue { get; set; }
 
-		/// <summary>Collection of collection of <c>ViewModelTaggedValues</c> that should be grouped in a single UI element.</summary>
+		/// <summary>Collection of collection of <c>ViewModelTaggedValue</c>s that should be grouped in a single UI element.</summary>
 		public ObservableCollection<ObservableCollection<ViewModelTaggedValue>> ProvenanceViewmodelTaggedValues { get; set; }
 		
-		/// <summary>Collection of collection of <c>ViewModelTaggedValues</c> that should be grouped in a single UI element.</summary>
+		/// <summary>Collection of collection of <c>ViewModelTaggedValue</c>s that should be grouped in a single UI element.</summary>
 		public ObservableCollection<ObservableCollection<ViewModelTaggedValue>> StereotypeViewmodelTaggedValues { get; set; }
 
 		/// <inheritdoc />
