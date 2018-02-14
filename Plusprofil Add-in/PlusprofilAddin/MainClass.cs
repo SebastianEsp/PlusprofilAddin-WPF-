@@ -6,6 +6,7 @@ using PlusprofilAddin.Views.Dialogs;
 
 namespace PlusprofilAddin
 {
+	//This s a test comment
 	/// <summary>
 	/// The entry point for the add-in. Upon launch, Sparx Enterprise Architect creates a new instance of MainClass and calls the <c>EA_Connect</c> event function.
 	/// Event handlers defined in this class serve as communication between Enterprise Architect and the add-in, particularly <c>EA_Menuclick</c> which creates the dialog window.
