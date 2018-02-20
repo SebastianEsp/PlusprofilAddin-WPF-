@@ -26,7 +26,7 @@ For development and testing purposes, the build output of PlusprofilAddin (`Plus
 To use the above steps, ensure that no versions of `PlusprofilAddin.dll` exist other than the version used for testing.
 
 ### Debuggin
-1: Start Enterprise Architect
+1: Start Enterprise Architect.
 2: In Visual Studio navigate to --> debug --> attach to process
 3: Select the process EA.exe
 4: The Visual Studio debugger is now attached to the Enterpise Architect process.
