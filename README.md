@@ -21,6 +21,7 @@ For development and testing purposes, the build output of PlusprofilAddin (`Plus
 3. Add a new key named `PlusprofilAddin` through the context menu, i.e. right click -> New -> Key.
 4. Select the default value in the key, and change the value to `PlusprofilAddin.MainClass`.
 5. Build the project `PlusprofilAddin` to build `PlusprofilAddin.dll`.
+6. Add compiled dll to addin folder "C:\Users\<USERNAME>\AppData\Local\Enterprise Architect - Plusprofil Add-in"
 
 To use the above steps, ensure that no versions of `PlusprofilAddin.dll` exist other than the version used for testing.
 
