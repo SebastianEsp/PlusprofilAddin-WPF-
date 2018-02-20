@@ -149,7 +149,7 @@ namespace PlusprofilAddin.ViewModels.Commands
 			}
 
 			var window = (Window) values[1];
-			window.Close();
+			//window.Close();
 		}
 
 		/// <summary>

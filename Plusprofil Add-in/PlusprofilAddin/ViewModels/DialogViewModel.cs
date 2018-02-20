@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using EA;
@@ -45,7 +46,7 @@ namespace PlusprofilAddin.ViewModels
 		/// Sets properties where parameters are not available at object creation.
 		/// </summary>
 		public abstract void Initialize();
-
+        
 		/// <summary>
 		/// Given a <c>List</c> of tagged values and the name of the tagged value to retrieve, returns a sublist with tagged values that satisfy <c>TaggedValue.Name == taggedValueName</c>.<para/>
 		/// Due to the varying field names of tagged values, <c>EA.TaggedValue</c> and <c>EA.AttributeTag</c> are handled differently than <c>EA.RoleTag</c>.
@@ -115,5 +116,11 @@ namespace PlusprofilAddin.ViewModels
 			}
 			return resultCollectionCollection;
 		}
-	}
+
+        internal void OnWindowClosing(object sender, CancelEventArgs e)
+        {
+            object test = new object[] { this, sender }; //this returns the viewmodel without changes from user
+            SaveCommand.Execute(test);
+        }
+    }
 }

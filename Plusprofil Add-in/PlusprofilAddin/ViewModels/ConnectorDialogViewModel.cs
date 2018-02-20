@@ -65,5 +65,5 @@ namespace PlusprofilAddin.ViewModels
 			SourceViewModel.Initialize();
 			TargetViewModel.Initialize();
 		}
-	}
+    }
 }

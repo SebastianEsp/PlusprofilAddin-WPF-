@@ -23,5 +23,5 @@ namespace PlusprofilAddin.Views.Dialogs
 				listBox.SelectedIndex = -1;
 			}
 		}
-	}
+    }
 }

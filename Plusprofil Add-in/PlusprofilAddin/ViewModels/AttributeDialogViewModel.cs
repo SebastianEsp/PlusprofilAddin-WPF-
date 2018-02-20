@@ -15,12 +15,13 @@ namespace PlusprofilAddin.ViewModels
 	{
 
 		private readonly List<dynamic> _taggedValuesList;
-		
-		private readonly List<PlusprofilTaggedValue> _toAddDanishTaggedValues = new List<PlusprofilTaggedValue>
-		{
-			Definitions.Find(ptv => ptv.Key == "PrefLabelDa"),
-			Definitions.Find(ptv => ptv.Key == "AltLabelDa"),
-			Definitions.Find(ptv => ptv.Key == "DeprecatedLabelDa"),
+
+        private readonly List<PlusprofilTaggedValue> _toAddDanishTaggedValues = new List<PlusprofilTaggedValue>
+        {
+            Definitions.Find(ptv => ptv.Key == "PrefLabelDa"),
+            Definitions.Find(ptv => ptv.Key == "AltLabelDa"),
+            Definitions.Find(ptv => ptv.Key == "DeprecatedLabelDa"),
+            Definitions.Find(ptv => ptv.Key == "LabelDa"),
 			Definitions.Find(ptv => ptv.Key == "DefinitionDa"),
 			Definitions.Find(ptv => ptv.Key == "CommentDa"),
 			Definitions.Find(ptv => ptv.Key == "ApplicationNoteDa")
@@ -31,7 +32,8 @@ namespace PlusprofilAddin.ViewModels
 			Definitions.Find(ptv => ptv.Key == "PrefLabelEn"),
 			Definitions.Find(ptv => ptv.Key == "AltLabelEn"),
 			Definitions.Find(ptv => ptv.Key == "DeprecatedLabelEn"),
-			Definitions.Find(ptv => ptv.Key == "DefinitionEn"),
+            Definitions.Find(ptv => ptv.Key == "LabelEn"),
+            Definitions.Find(ptv => ptv.Key == "DefinitionEn"),
 			Definitions.Find(ptv => ptv.Key == "CommentEn"),
 			Definitions.Find(ptv => ptv.Key == "ApplicationNoteEn")
 		};
@@ -156,5 +158,5 @@ namespace PlusprofilAddin.ViewModels
 			ProvenanceViewmodelTaggedValues = AddTaggedValuesToViewmodelTaggedValues(_toAddProvenanceTaggedValues, _taggedValuesList);
 			StereotypeViewmodelTaggedValues = AddTaggedValuesToViewmodelTaggedValues(_toAddStereotypeTaggedValues, _taggedValuesList);
 		}
-	}
+    }
 }

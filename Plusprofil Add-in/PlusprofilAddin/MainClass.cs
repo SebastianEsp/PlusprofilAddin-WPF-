@@ -123,7 +123,9 @@ namespace PlusprofilAddin
 				_window.MinWidth = _window.Width = 768;
 			}
 
-			_window.ShowDialog();
+            _window.Closing += _viewModel.OnWindowClosing;
+
+            _window.ShowDialog();
 		}
 
 		/// <summary>
@@ -137,7 +139,7 @@ namespace PlusprofilAddin
 			GC.WaitForPendingFinalizers();
 		}
 
-		private const string MenuHeader = "-&Plusprofil Editing Window (WPF)";
+        private const string MenuHeader = "-&Plusprofil Editing Window (WPF)";
 		private const string EnglishMenuOption = "&Open English Editing Window";
 		private const string DanishMenuOption = "&Open Danish Editing Window";
 		private Window _window;
