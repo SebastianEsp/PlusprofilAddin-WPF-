@@ -26,12 +26,13 @@ For development and testing purposes, the build output of PlusprofilAddin (`Plus
 To use the above steps, ensure that no versions of `PlusprofilAddin.dll` exist other than the version used for testing.
 
 ### Debugging
-1. Start Enterprise Architect.
+1. Start `Enterprise Architect`.
 2. In Visual Studio navigate to --> debug --> attach to process
-3. Select the process EA.exe
-4. The Visual Studio debugger is now attached to the Enterpise Architect process.
+3. Select the process `EA.exe`.
+4. The Visual Studio debugger is now attached to the `Enterpise Architect process`.
 5. Add breakpoints in Visual Studio and use the `PlusprofilAddin` until breakpoint is encountered.
-6. When changes are made to plugin, make sure you restart Enterprise Architect
+6. When changes are made to plugin, make sure you build the project again and place the updated `.dll` in the add-in folder
+7. Restart `Enterprise Architect`.
 
 ## Quickstart guide to adjusting the add-in
 ### Modifying the behaviour of a `PlusprofilTaggedValue`
