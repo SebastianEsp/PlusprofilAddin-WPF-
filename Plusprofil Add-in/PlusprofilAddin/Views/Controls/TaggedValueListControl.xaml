@@ -63,7 +63,7 @@
 						Grid.Column="1"
 						Margin="0,0,12,0"
 						MaxLines="5"
-						Text="{Binding Path=Value, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
+						Text="{Binding Path=Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 						TextWrapping="Wrap" />
 					<Button
 						Name="AddButton"

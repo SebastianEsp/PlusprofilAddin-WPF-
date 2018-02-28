@@ -6,6 +6,7 @@ using System.ComponentModel;
 using EA;
 using PlusprofilAddin.ViewModels.Commands;
 using static PlusprofilAddin.PlusprofilTaggedValueDefinitions;
+using System.Diagnostics;
 
 namespace PlusprofilAddin.ViewModels
 {
@@ -105,6 +106,7 @@ namespace PlusprofilAddin.ViewModels
 			UMLNameValue = Element.Name;
 			AliasValue = Element.Alias;
 			TaggedValues = Element.TaggedValues;
+            
 
 			//Finalize list of stereotype tags to add
 			switch (Element.Stereotype)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
@@ -193,7 +194,7 @@ namespace PlusprofilAddin.ViewModels.Commands
 		/// <inheritdoc />
 		public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
 		{
-			return values.Clone();
+            return values.Clone();
 		}
 
 		/// <inheritdoc />

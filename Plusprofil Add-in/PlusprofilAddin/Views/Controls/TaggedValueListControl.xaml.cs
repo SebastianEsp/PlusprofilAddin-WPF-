@@ -18,5 +18,5 @@ namespace PlusprofilAddin.Views.Controls
 		{
 			if (sender is ListBox listBox) listBox.SelectedIndex = -1;
 		}
-	}
+    }
 }
