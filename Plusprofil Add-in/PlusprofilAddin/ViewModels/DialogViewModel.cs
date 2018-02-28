@@ -119,8 +119,8 @@ namespace PlusprofilAddin.ViewModels
 
         internal void OnWindowClosing(object sender, CancelEventArgs e)
         {
-            object test = new object[] { this, sender }; //this returns the viewmodel without changes from user
-            SaveCommand.Execute(test);
+            object updatedView = new object[] { this, sender }; //this returns the viewmodel without changes from user "FIX"
+            SaveCommand.Execute(updatedView);
         }
     }
 }
