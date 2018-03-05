@@ -134,6 +134,7 @@ In the `PlusprofilTaggedValueDefinitions.Definitions` initialization, find the `
 
 ## Authors
 * **Mathias Enggrob Boon** - [Boonoboo](https://github.com/Boonoboo)
+* **Sebastian Esp Nielsen** - (https://github.com/SebastianEsp)
 
 ## License
 This project is licensed under the GNU General License v3.0.
