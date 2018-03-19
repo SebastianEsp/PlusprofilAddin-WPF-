@@ -14,6 +14,11 @@ Sparx Systems Enterprise Architect add-in that facilitates simple displaying and
 2. Build the project `PlusprofilAddinInstaller` to build `PlusprofilAddinInstaller.msi`.
 3. Run the installer to install the add-in for the current user.
 
+#### Note on combined installers.
+The installer projetct for PlusProfilAddin also contains the installer for at separate plugin called `INSERT NAME`. As such when compiling the project, you need to be aware that both add-in projects must be located where the installer project expects them.
+
+Furthermore, should it be needed to add more add-ins to the installer, this may be done by simply adding a new fragment for the add-in, in the installer projects .wxs file.
+
 For development and testing purposes, the build output of PlusprofilAddin (`PlusprofilAddin.dll`) can be used without running the installer through the following steps:
 
 1. Open the Registry Editor (`regedit.exe`).
