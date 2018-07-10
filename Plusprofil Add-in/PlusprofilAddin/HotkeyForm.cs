@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 using EA;
 
@@ -37,10 +38,10 @@ namespace PlusprofilAddin
 			keyboardHook.KeyPressed += KeyboardHook_KeyPressed;
 			try
 			{
-				// Register CTRL + Q and CTRL + Ras hotkeys
+				// Register CTRL + Q and CTRL + R as hotkeys
 				keyboardHook.RegisterHotKey(PlusprofilAddin.ModifierKeys.Control, Keys.Q);
 				keyboardHook.RegisterHotKey(PlusprofilAddin.ModifierKeys.Control, Keys.R);
-			}
+            }
 			catch (InvalidOperationException)
 			{
 				// Error occured when attempting to register hotkeys. Do not register hotkeys, but warn the user
@@ -59,7 +60,7 @@ namespace PlusprofilAddin
 		{
 			switch (e.Key)
 			{
-				case Keys.Q when e.Modifier == PlusprofilAddin.ModifierKeys.Control:
+                case Keys.Q when e.Modifier == PlusprofilAddin.ModifierKeys.Control:
 					_mainClass.EA_MenuClick(_repository, "", "", _englishMenuOption);
 					break;
 				case Keys.R when e.Modifier == PlusprofilAddin.ModifierKeys.Control:

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using EA;
 using static PlusprofilAddin.PlusprofilTaggedValueDefinitions;
@@ -171,5 +172,10 @@ namespace PlusprofilAddin.ViewModels
 			ProvenanceViewmodelTaggedValues = AddTaggedValuesToViewmodelTaggedValues(_toAddProvenanceTaggedValues, _taggedValuesList);
 			StereotypeViewmodelTaggedValues = AddTaggedValuesToViewmodelTaggedValues(_toAddStereotypeTaggedValues, _taggedValuesList);
 		}
-	}
+
+        public override void OnWindowClosing(object sender, CancelEventArgs e)
+        {
+            SaveCommand.Execute(new object[] { this, sender });
+        }
+    }
 }

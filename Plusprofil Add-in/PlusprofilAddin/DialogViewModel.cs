@@ -9,14 +9,14 @@ using PlusprofilAddin.ViewModels.Commands;
 
 namespace PlusprofilAddin.ViewModels
 {
-	/// <summary>
-	/// ViewModel used to update View (Window) state and retrieve user input to update Model (Sparx Systems Enterprise Architect) state.<para/>
-	/// ViewModel superclass containing functionality shared by every type of subclass ViewModels.
-	/// </summary>
-	public abstract class DialogViewModel
+    /// <summary>
+    /// ViewModel used to update View (Window) state and retrieve user input to update Model (Sparx Systems Enterprise Architect) state.<para/>
+    /// ViewModel superclass containing functionality shared by every type of subclass ViewModels.
+    /// </summary>
+    public abstract class DialogViewModel
 	{
-		/// <summary><c>SaveCommand</c> used to register changes.</summary>
-		public SaveCommand SaveCommand { get; set; }
+        /// <summary><c>SaveCommand</c> used to register changes.</summary>
+        public SaveCommand SaveCommand { get; set; }
 		
 		/// <summary><c>CancelCommand</c> used to close the window without making changes.</summary>
 		public CancelCommand CancelCommand { get; set; }
@@ -76,7 +76,7 @@ namespace PlusprofilAddin.ViewModels
 						result.Add(tv);
 					}
 			}
-			
+		
 			return result.Count != 0
 				? result
 				: throw new ArgumentException($"No tagged value with name \"{taggedValueName}\" was found");
@@ -98,16 +98,33 @@ namespace PlusprofilAddin.ViewModels
 					var resultCollection = new ObservableCollection<ViewModelTaggedValue>();
 					foreach (var tv in result)
 					{
-						var vtv = new ViewModelTaggedValue(tv)
-						{
-							ResourceDictionary = ResourceDictionary,
-							Key = ptv.Key
-						};
-						vtv.Initialize();
-						resultCollection.Add(vtv);
+                        var vtv = new ViewModelTaggedValue(tv)
+                        {
+                            ResourceDictionary = ResourceDictionary,
+                            Key = ptv.Key
+                        };
+                        vtv.Initialize();
+                        resultCollection.Add(vtv);
 					}
-					resultCollectionCollection.Add(resultCollection);
-				}
+
+                    resultCollectionCollection.Add(resultCollection);
+
+                    //Add remove button to all child elements
+                    for (int i = 0; i < resultCollectionCollection.Count(); i++)
+                    {
+                        for (int j = 0; j < resultCollectionCollection[i].Count(); j++)
+                        {
+                            if (j == 0)
+                            {
+                                resultCollectionCollection[i][j].IsChild = false;
+                            }
+                            else
+                            {
+                                resultCollectionCollection[i][j].IsChild = true;
+                            }
+                        }
+                    }
+                }
 				catch (ArgumentException)
 				{
 					// No tagged values with name ptv.Name is found, thus the list is not added (do nothing)
@@ -117,10 +134,9 @@ namespace PlusprofilAddin.ViewModels
 			return resultCollectionCollection;
 		}
 
-        internal void OnWindowClosing(object sender, CancelEventArgs e)
-        {
-            object updatedView = new object[] { this, sender }; //this returns the viewmodel without changes from user "FIX"
-            SaveCommand.Execute(updatedView);
-        }
+        public abstract void OnWindowClosing(object sender, CancelEventArgs e);
+        /*{
+            SaveCommand.Execute(new object[] { this, sender });
+        }*/
     }
 }

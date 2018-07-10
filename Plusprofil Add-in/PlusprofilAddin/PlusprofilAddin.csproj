@@ -39,7 +39,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Interop.EA">
-      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Sparx Systems\EA Trial\Interop.EA.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Sparx Systems\EA\Interop.EA.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="PresentationCore" />
@@ -70,6 +70,7 @@
       <DependentUpon>HotkeyForm.cs</DependentUpon>
     </Compile>
     <Compile Include="KeyboardHook.cs" />
+    <Compile Include="ViewModels\Commands\DebugConverter.cs" />
     <Compile Include="ViewModelTaggedValue.cs" />
     <Compile Include="DatatypeOptions.cs" />
     <Compile Include="MultiplicityOptions.cs" />
@@ -78,7 +79,7 @@
     <Compile Include="PlusprofilTaggedValue.cs" />
     <Compile Include="ViewModels\ConnectorUserControlViewModel.cs" />
     <Compile Include="ViewModels\ElementDialogViewModel.cs" />
-    <Compile Include="ViewModels\DialogViewModel.cs" />
+    <Compile Include="DialogViewModel.cs" />
     <Compile Include="ViewModels\PackageDialogViewModel.cs" />
     <Compile Include="Views\Dialogs\ConnectorDialog.xaml.cs">
       <DependentUpon>ConnectorDialog.xaml</DependentUpon>

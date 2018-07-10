@@ -44,7 +44,7 @@
 					<TextBox
 						Grid.Column="1"
 						Margin="0,0,12,0"
-						Text="{Binding Path=UMLNameValue, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+						Text="{Binding Path=UMLNameValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 				</Grid>
 				<Grid Margin="0,3,0,3">
 					<Grid.ColumnDefinitions>
@@ -59,7 +59,7 @@
 					<TextBox
 						Grid.Column="1"
 						Margin="0,0,12,0"
-						Text="{Binding Path=URIValue, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+						Text="{Binding Path=URIValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 				</Grid>
 				<Grid Margin="0,3,0,3">
 					<Grid.ColumnDefinitions>
@@ -74,7 +74,7 @@
 					<TextBox
 						Grid.Column="1"
 						Margin="0,0,12,0"
-						Text="{Binding Path=AliasValue, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+						Text="{Binding Path=AliasValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 				</Grid>
 				<Grid Margin="0,3,0,3">
 					<Grid.ColumnDefinitions>
@@ -92,7 +92,7 @@
 						IsEditable="True"
 						IsReadOnly="False"
 						ItemsSource="{StaticResource DatatypeOptions}"
-						Text="{Binding Path=DatatypeValue, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+						Text="{Binding Path=DatatypeValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 				</Grid>
 			</ListBox>
 			<controls:LanguageTabUserControl Grid.Row="1" BorderThickness="0,1,0,1" />
@@ -123,7 +123,7 @@
 			</Grid>
 			<WrapPanel Grid.Row="4" HorizontalAlignment="Right">
 				<controls:CancelButtonUserControl />
-				<controls:SaveButtonUserControl />
+				<!--<controls:SaveButtonUserControl />-->
 			</WrapPanel>
 		</Grid>
 	</ScrollViewer>

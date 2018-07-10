@@ -14,12 +14,14 @@ namespace PlusprofilAddin
 		/// <param name="name"></param>
 		/// <param name="hasMemoField"></param>
 		/// <param name="manyMultiplicity"></param>
-		public PlusprofilTaggedValue(string key, string name, bool hasMemoField, bool manyMultiplicity)
+        /// <param name="isChild"></param>
+		public PlusprofilTaggedValue(string key, string name, bool hasMemoField, bool manyMultiplicity, bool isChild)
 		{
 			Key = key;
 			Name = name;
 			HasMemoField = hasMemoField;
 			ManyMultiplicity = manyMultiplicity;
+            IsChild = isChild;
 		}
 		
 		/// <summary>
@@ -45,7 +47,13 @@ namespace PlusprofilAddin
 		/// Used to enable or disable the "Add" button in View
 		/// </summary>
 		public bool ManyMultiplicity { get; }
-	}
+
+        /// <summary>
+        /// Gets a bool representing whether a tagged value is a child of another tagged value
+        /// Used to enable or disable the "Remove" button in View
+        /// </summary>
+        public bool IsChild { get; set; }
+    }
 
 		/// <summary>
 	/// Definitions of tagged values defined in Plusprofilen.
@@ -60,52 +68,52 @@ namespace PlusprofilAddin
 		/// </summary>
 		public static List<PlusprofilTaggedValue> Definitions = new List<PlusprofilTaggedValue>
 		{
-			new PlusprofilTaggedValue("AltLabelDa", "altLabel (da)", false, true),
-			new PlusprofilTaggedValue("AltLabelEn", "altLabel (en)", false, true),
-			new PlusprofilTaggedValue("PrefLabelDa", "prefLabel (da)", false, false),
-			new PlusprofilTaggedValue("PrefLabelEn", "prefLabel (en)", false, false),
-			new PlusprofilTaggedValue("DeprecatedLabelDa", "deprecatedLabel (da)", false, true),
-			new PlusprofilTaggedValue("DeprecatedLabelEn", "deprecatedLabel (en)", false, true),
-			new PlusprofilTaggedValue("DefinitionDa", "definition (da)", true, false),
-			new PlusprofilTaggedValue("DefinitionEn", "definition (en)", true, false),
-			new PlusprofilTaggedValue("ApplicationNoteDa", "applicationNote (da)", true, true),
-			new PlusprofilTaggedValue("ApplicationNoteEn", "applicationNote (en)", true, true),
-			new PlusprofilTaggedValue("ExampleDa", "example (da)", true, true),
-			new PlusprofilTaggedValue("ExampleEn", "example (en)", true, true),
-			new PlusprofilTaggedValue("CommentDa", "comment (da)", true, true),
-			new PlusprofilTaggedValue("CommentEn", "comment (en)", true, true),
-			new PlusprofilTaggedValue("LegalSource", "legalSource", false, true),
-			new PlusprofilTaggedValue("LegalSourcePackage", "legalSource", true, true),
-			new PlusprofilTaggedValue("Source", "source", false, true),
-			new PlusprofilTaggedValue("SourcePackage", "source", true, true),
-			new PlusprofilTaggedValue("IsDefinedBy", "isDefinedBy", false, true),
-			new PlusprofilTaggedValue("WasDerivedFrom", "wasDerivedFrom", false, true),
-			new PlusprofilTaggedValue("EquivalentClass", "equivalentClass", false, true),
-			new PlusprofilTaggedValue("Range", "range", false, false),
-			new PlusprofilTaggedValue("RangeConnectorEnd", "range", false, true),
-			new PlusprofilTaggedValue("Domain", "domain", false, false),
-			new PlusprofilTaggedValue("DomainConnectorEnd", "domain", false, true),
-			new PlusprofilTaggedValue("SubPropertyOf", "subPropertyOf", false, true),
-			new PlusprofilTaggedValue("EquivalentProperty", "equivalentProperty", false, true),
-			new PlusprofilTaggedValue("FunctionalProperty", "functionalProperty", false, false),
-			new PlusprofilTaggedValue("InverseOf", "inverseOf", false, false),
-			new PlusprofilTaggedValue("InverseFunctionalProperty", "inverseFunctionalProperty", false, false),
-			new PlusprofilTaggedValue("TransitiveProperty", "transitiveProperty", false, false),
-			new PlusprofilTaggedValue("SymmetricProperty", "symmetricProperty", false, false),
-			new PlusprofilTaggedValue("ApprovalStatus", "approvalStatus", false, false),
-			new PlusprofilTaggedValue("ModelStatus", "modelStatus", false, false),
-			new PlusprofilTaggedValue("Modified", "modified", false, false),
-			new PlusprofilTaggedValue("Namespace", "namespace", false, false),
-			new PlusprofilTaggedValue("NamespacePrefix", "namespacePrefix", false, false),
-			new PlusprofilTaggedValue("Publisher", "publisher", false, false),
-			new PlusprofilTaggedValue("Theme", "theme", false, false),
-			new PlusprofilTaggedValue("VersionInfo", "versionInfo", false, false),
-			new PlusprofilTaggedValue("SubClassOf", "subClassOf", false, true),
-			new PlusprofilTaggedValue("SameAs", "sameAs", false, true),
-			new PlusprofilTaggedValue("Type", "type", false, false),
-			new PlusprofilTaggedValue("LabelDa", "label (da)", false, true),
-			new PlusprofilTaggedValue("LabelEn", "label (en)", true, true),
-			new PlusprofilTaggedValue("URI", "URI", false, false)
+			new PlusprofilTaggedValue("AltLabelDa", "altLabel (da)", false, true, false),
+			new PlusprofilTaggedValue("AltLabelEn", "altLabel (en)", false, true, false),
+			new PlusprofilTaggedValue("PrefLabelDa", "prefLabel (da)", false, false, false),
+			new PlusprofilTaggedValue("PrefLabelEn", "prefLabel (en)", false, false, false),
+			new PlusprofilTaggedValue("DeprecatedLabelDa", "deprecatedLabel (da)", false, true, false),
+			new PlusprofilTaggedValue("DeprecatedLabelEn", "deprecatedLabel (en)", false, true, false),
+			new PlusprofilTaggedValue("DefinitionDa", "definition (da)", true, false, false),
+			new PlusprofilTaggedValue("DefinitionEn", "definition (en)", true, false, false),
+			new PlusprofilTaggedValue("ApplicationNoteDa", "applicationNote (da)", true, true, false),
+			new PlusprofilTaggedValue("ApplicationNoteEn", "applicationNote (en)", true, true, false),
+			new PlusprofilTaggedValue("ExampleDa", "example (da)", true, true, false),
+			new PlusprofilTaggedValue("ExampleEn", "example (en)", true, true, false),
+			new PlusprofilTaggedValue("CommentDa", "comment (da)", true, true, false),
+			new PlusprofilTaggedValue("CommentEn", "comment (en)", true, true, false),
+			new PlusprofilTaggedValue("LegalSource", "legalSource", false, true, false),
+			new PlusprofilTaggedValue("LegalSourcePackage", "legalSource", true, true, false),
+			new PlusprofilTaggedValue("Source", "source", false, true, false),
+			new PlusprofilTaggedValue("SourcePackage", "source", true, true, false),
+			new PlusprofilTaggedValue("IsDefinedBy", "isDefinedBy", false, true, false),
+			new PlusprofilTaggedValue("WasDerivedFrom", "wasDerivedFrom", false, true, false),
+			new PlusprofilTaggedValue("EquivalentClass", "equivalentClass", false, true, false),
+			new PlusprofilTaggedValue("Range", "range", false, false, false),
+			new PlusprofilTaggedValue("RangeConnectorEnd", "range", false, true, false),
+			new PlusprofilTaggedValue("Domain", "domain", false, false, false),
+			new PlusprofilTaggedValue("DomainConnectorEnd", "domain", false, true, false),
+			new PlusprofilTaggedValue("SubPropertyOf", "subPropertyOf", false, true, false),
+			new PlusprofilTaggedValue("EquivalentProperty", "equivalentProperty", false, true, false),
+			new PlusprofilTaggedValue("FunctionalProperty", "functionalProperty", false, false, false),
+			new PlusprofilTaggedValue("InverseOf", "inverseOf", false, false, false),
+			new PlusprofilTaggedValue("InverseFunctionalProperty", "inverseFunctionalProperty", false, false, false),
+			new PlusprofilTaggedValue("TransitiveProperty", "transitiveProperty", false, false, false),
+			new PlusprofilTaggedValue("SymmetricProperty", "symmetricProperty", false, false, false),
+			new PlusprofilTaggedValue("ApprovalStatus", "approvalStatus", false, false, false),
+			new PlusprofilTaggedValue("ModelStatus", "modelStatus", false, false, false),
+			new PlusprofilTaggedValue("Modified", "modified", false, false, false),
+			new PlusprofilTaggedValue("Namespace", "namespace", false, false, false),
+			new PlusprofilTaggedValue("NamespacePrefix", "namespacePrefix", false, false, false),
+			new PlusprofilTaggedValue("Publisher", "publisher", false, false, false),
+			new PlusprofilTaggedValue("Theme", "theme", false, false, false),
+			new PlusprofilTaggedValue("VersionInfo", "versionInfo", false, false, false),
+			new PlusprofilTaggedValue("SubClassOf", "subClassOf", false, true, false),
+			new PlusprofilTaggedValue("SameAs", "sameAs", false, true, false),
+			new PlusprofilTaggedValue("Type", "type", false, false, false),
+			new PlusprofilTaggedValue("LabelDa", "label (da)", false, true, false),
+			new PlusprofilTaggedValue("LabelEn", "label (en)", true, true, false),
+			new PlusprofilTaggedValue("URI", "URI", false, false, false)
 		};
 	}
 }
