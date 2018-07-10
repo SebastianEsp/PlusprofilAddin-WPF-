@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using EA;
 using PlusprofilAddin.ViewModels.Commands;
 using static PlusprofilAddin.PlusprofilTaggedValueDefinitions;
@@ -107,5 +108,10 @@ namespace PlusprofilAddin.ViewModels
 			EnglishViewmodelTaggedValues = AddTaggedValuesToViewmodelTaggedValues(_toAddEnglishTaggedValues, _taggedValuesList);
 			ModelMetadataViewmodelTaggedValues = AddTaggedValuesToViewmodelTaggedValues(_toAddModelMetadataTaggedValues, _taggedValuesList);
 		}
-	}
+
+        public override void OnWindowClosing(object sender, CancelEventArgs e)
+        {
+            SaveCommand.Execute(new object[] { this, sender });
+        }
+    }
 }

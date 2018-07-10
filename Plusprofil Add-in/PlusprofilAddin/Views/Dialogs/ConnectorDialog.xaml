@@ -38,7 +38,7 @@
 			Grid.ColumnSpan="2"
 			HorizontalAlignment="Right">
 			<controls:CancelButtonUserControl />
-			<controls:SaveButtonUserControl />
+			<!--<controls:SaveButtonUserControl />-->
 		</WrapPanel>
 	</Grid>
 </Window>

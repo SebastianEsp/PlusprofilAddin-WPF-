@@ -2,9 +2,12 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
+using System.ComponentModel;
 using EA;
 using PlusprofilAddin.ViewModels.Commands;
 using static PlusprofilAddin.PlusprofilTaggedValueDefinitions;
+using System.Diagnostics;
+using System;
 
 namespace PlusprofilAddin.ViewModels
 {
@@ -23,7 +26,8 @@ namespace PlusprofilAddin.ViewModels
 			Definitions.Find(ptv => ptv.Key == "PrefLabelDa"),
 			Definitions.Find(ptv => ptv.Key == "AltLabelDa"),
 			Definitions.Find(ptv => ptv.Key == "DeprecatedLabelDa"),
-			Definitions.Find(ptv => ptv.Key == "DefinitionDa"),
+            Definitions.Find(ptv => ptv.Key == "LabelDa"),
+            Definitions.Find(ptv => ptv.Key == "DefinitionDa"),
 			Definitions.Find(ptv => ptv.Key == "CommentDa"),
 			Definitions.Find(ptv => ptv.Key == "ApplicationNoteDa")
 		};
@@ -33,7 +37,8 @@ namespace PlusprofilAddin.ViewModels
 			Definitions.Find(ptv => ptv.Key == "PrefLabelEn"),
 			Definitions.Find(ptv => ptv.Key == "AltLabelEn"),
 			Definitions.Find(ptv => ptv.Key == "DeprecatedLabelEn"),
-			Definitions.Find(ptv => ptv.Key == "DefinitionEn"),
+            Definitions.Find(ptv => ptv.Key == "LabelEn"),
+            Definitions.Find(ptv => ptv.Key == "DefinitionEn"),
 			Definitions.Find(ptv => ptv.Key == "CommentEn"),
 			Definitions.Find(ptv => ptv.Key == "ApplicationNoteEn")
 		};
@@ -101,7 +106,7 @@ namespace PlusprofilAddin.ViewModels
 			Element = Repository.GetContextObject();
 			UMLNameValue = Element.Name;
 			AliasValue = Element.Alias;
-			TaggedValues = Element.TaggedValues;
+			TaggedValues = Element.TaggedValues;        
 
 			//Finalize list of stereotype tags to add
 			switch (Element.Stereotype)
@@ -130,7 +135,7 @@ namespace PlusprofilAddin.ViewModels
 			for (short i = 0; i < TaggedValues.Count; i++)
 			{
 				TaggedValue tv = TaggedValues.GetAt(i);
-				_taggedValuesList.Add(tv);
+                _taggedValuesList.Add(tv);
 			}
 			
 			// Retrieve URI tagged value and save it in URIViewmodelTaggedValue
@@ -148,6 +153,11 @@ namespace PlusprofilAddin.ViewModels
 			EnglishViewmodelTaggedValues = AddTaggedValuesToViewmodelTaggedValues(_toAddEnglishTaggedValues, _taggedValuesList);
 			ProvenanceViewmodelTaggedValues = AddTaggedValuesToViewmodelTaggedValues(_toAddProvenanceTaggedValues, _taggedValuesList);
 			StereotypeViewmodelTaggedValues = AddTaggedValuesToViewmodelTaggedValues(_toAddStereotypeTaggedValues, _taggedValuesList);
-		}
-	}
+        }
+
+        public override void OnWindowClosing(object sender, CancelEventArgs e)
+        {
+            SaveCommand.Execute(new object[] { this, sender });
+        }
+    }
 }

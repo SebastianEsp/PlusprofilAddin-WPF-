@@ -68,7 +68,7 @@
 						<TextBox
 							Grid.Column="1"
 							Margin="0,0,12,0"
-							Text="{Binding UMLNameValue, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+							Text="{Binding UMLNameValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 					</Grid>
 					<Grid Margin="0,3,0,3">
 						<Grid.ColumnDefinitions>
@@ -83,7 +83,7 @@
 						<TextBox
 							Grid.Column="1"
 							Margin="0,0,12,0"
-							Text="{Binding URIValue, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+							Text="{Binding URIValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 					</Grid>
 					<Grid Margin="0,3,0,3">
 						<Grid.ColumnDefinitions>
@@ -98,7 +98,7 @@
 						<TextBox
 							Grid.Column="1"
 							Margin="0,0,12,0"
-							Text="{Binding AliasValue, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+							Text="{Binding AliasValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 					</Grid>
 					<Grid Margin="0,3,0,3">
 						<Grid.ColumnDefinitions>
@@ -116,7 +116,7 @@
 							IsEditable="True"
 							IsReadOnly="False"
 							ItemsSource="{StaticResource MultiplicityOptions}"
-							Text="{Binding MultiplicityValue, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+							Text="{Binding MultiplicityValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 					</Grid>
 				</ListBox>
 				<controls:LanguageTabUserControl Grid.Row="1" BorderThickness="0,1,0,1" />

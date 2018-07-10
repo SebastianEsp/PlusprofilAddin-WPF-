@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using EA;
@@ -8,14 +9,14 @@ using PlusprofilAddin.ViewModels.Commands;
 
 namespace PlusprofilAddin.ViewModels
 {
-	/// <summary>
-	/// ViewModel used to update View (Window) state and retrieve user input to update Model (Sparx Systems Enterprise Architect) state.<para/>
-	/// ViewModel superclass containing functionality shared by every type of subclass ViewModels.
-	/// </summary>
-	public abstract class DialogViewModel
+    /// <summary>
+    /// ViewModel used to update View (Window) state and retrieve user input to update Model (Sparx Systems Enterprise Architect) state.<para/>
+    /// ViewModel superclass containing functionality shared by every type of subclass ViewModels.
+    /// </summary>
+    public abstract class DialogViewModel
 	{
-		/// <summary><c>SaveCommand</c> used to register changes.</summary>
-		public SaveCommand SaveCommand { get; set; }
+        /// <summary><c>SaveCommand</c> used to register changes.</summary>
+        public SaveCommand SaveCommand { get; set; }
 		
 		/// <summary><c>CancelCommand</c> used to close the window without making changes.</summary>
 		public CancelCommand CancelCommand { get; set; }
@@ -45,7 +46,7 @@ namespace PlusprofilAddin.ViewModels
 		/// Sets properties where parameters are not available at object creation.
 		/// </summary>
 		public abstract void Initialize();
-
+        
 		/// <summary>
 		/// Given a <c>List</c> of tagged values and the name of the tagged value to retrieve, returns a sublist with tagged values that satisfy <c>TaggedValue.Name == taggedValueName</c>.<para/>
 		/// Due to the varying field names of tagged values, <c>EA.TaggedValue</c> and <c>EA.AttributeTag</c> are handled differently than <c>EA.RoleTag</c>.
@@ -75,7 +76,7 @@ namespace PlusprofilAddin.ViewModels
 						result.Add(tv);
 					}
 			}
-			
+		
 			return result.Count != 0
 				? result
 				: throw new ArgumentException($"No tagged value with name \"{taggedValueName}\" was found");
@@ -97,16 +98,33 @@ namespace PlusprofilAddin.ViewModels
 					var resultCollection = new ObservableCollection<ViewModelTaggedValue>();
 					foreach (var tv in result)
 					{
-						var vtv = new ViewModelTaggedValue(tv)
-						{
-							ResourceDictionary = ResourceDictionary,
-							Key = ptv.Key
-						};
-						vtv.Initialize();
-						resultCollection.Add(vtv);
+                        var vtv = new ViewModelTaggedValue(tv)
+                        {
+                            ResourceDictionary = ResourceDictionary,
+                            Key = ptv.Key
+                        };
+                        vtv.Initialize();
+                        resultCollection.Add(vtv);
 					}
-					resultCollectionCollection.Add(resultCollection);
-				}
+
+                    resultCollectionCollection.Add(resultCollection);
+
+                    //Add remove button to all child elements
+                    for (int i = 0; i < resultCollectionCollection.Count(); i++)
+                    {
+                        for (int j = 0; j < resultCollectionCollection[i].Count(); j++)
+                        {
+                            if (j == 0)
+                            {
+                                resultCollectionCollection[i][j].IsChild = false;
+                            }
+                            else
+                            {
+                                resultCollectionCollection[i][j].IsChild = true;
+                            }
+                        }
+                    }
+                }
 				catch (ArgumentException)
 				{
 					// No tagged values with name ptv.Name is found, thus the list is not added (do nothing)
@@ -115,5 +133,10 @@ namespace PlusprofilAddin.ViewModels
 			}
 			return resultCollectionCollection;
 		}
-	}
+
+        public abstract void OnWindowClosing(object sender, CancelEventArgs e);
+        /*{
+            SaveCommand.Execute(new object[] { this, sender });
+        }*/
+    }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Windows;
@@ -15,9 +16,8 @@ namespace PlusprofilAddin.ViewModels.Commands
 	/// <inheritdoc/>
 	public class RemoveCommand : ICommand
 	{
-
-		/// <inheritdoc />
-		public event EventHandler CanExecuteChanged;
+        /// <inheritdoc />
+        public event EventHandler CanExecuteChanged;
 
 		/// <summary>
 		/// Determines if <c>RemoveCommand.Execute(object parameter)</c> can be called.
@@ -29,44 +29,48 @@ namespace PlusprofilAddin.ViewModels.Commands
 			return true;
 		}
 
-		/// <summary>
-		/// Removes the currently selected ViewModelTaggedValue from the 
-		/// Expected parameter is type object[3]
-		/// Source / Type of parameter[0]: ListBox.Source (ObservableCollection)
-		/// Source / Type of parameter[1]: ListBox.SelectedIndex (int)
-		/// Source / Type of parameter[2]: DialogViewModel
-		/// </summary>
-		/// <inheritdoc/>
-		public void Execute(object parameter)
-		{
-			if (!(parameter is object[] values) || values.Length != 3) return;
-			var list = (ObservableCollection<ViewModelTaggedValue>) values[0];
-			var index = (int) values[1];
-			List<ViewModelTaggedValue> deleteTaggedValues = null;
-			switch (values[2])
-			{
-				case DialogViewModel viewModel:
-					deleteTaggedValues = viewModel.DeleteTaggedValues;
-					break;
-			}
+        /// <summary>
+        /// Removes the currently selected ViewModelTaggedValue from the 
+        /// Expected parameter is type object[3]
+        /// Source / Type of parameter[0]: ListBox.Source (ObservableCollection)
+        /// Source / Type of parameter[1]: ListBox.SelectedIndex (int)
+        /// Source / Type of parameter[2]: DialogViewModel
+        /// </summary>
+        /// <inheritdoc/>
+        public void Execute(object parameter)
+        {
+            if (!(parameter is object[] values) || values.Length != 3) return;
+            var list = (ObservableCollection<ViewModelTaggedValue>)values[0];
+            var index = (int)values[1];
+            List<ViewModelTaggedValue> deleteTaggedValues = null;
+            switch (values[2])
+            {
+                case DialogViewModel viewModel:
+                    deleteTaggedValues = viewModel.DeleteTaggedValues;
+                    break;
+            }
 
-			if (index == -1 || index == 0) return;
-			var dtv = list.ElementAt(index);
-			deleteTaggedValues?.Add(dtv);
-			list.RemoveAt(index);
-		}
-	}
+            Debug.Write(index);
+            if (index == -1 || index == 0) return;
+            Debug.Write("success 2");
+            var dtv = list.ElementAt(index);
+            deleteTaggedValues?.Add(dtv);
+            list.RemoveAt(index);
+        }
+    }
 
-	/// <summary>
-	/// Converter used to return a clone of the <c>MultiBinding</c> values used in <c>RemoveCommand</c>
-	/// </summary>
-	/// <inheritdoc />
-	public class RemoveCommandConverter : IMultiValueConverter
+    /// <summary>
+    /// Converter used to return a clone of the <c>MultiBinding</c> values used in <c>RemoveCommand</c>
+    /// </summary>
+    /// <inheritdoc />
+    public class RemoveCommandConverter : IMultiValueConverter
 	{
 		/// <inheritdoc />
 		public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
 		{
-			return values.Clone();
+            int id = (int)values[1];
+            //Debugger.Break();
+            return values.Clone();
 		}
 
 		/// <inheritdoc />

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows;
 using EA;
 using PlusprofilAddin.ViewModels.Commands;
@@ -65,5 +66,10 @@ namespace PlusprofilAddin.ViewModels
 			SourceViewModel.Initialize();
 			TargetViewModel.Initialize();
 		}
-	}
+
+        public override void OnWindowClosing(object sender, CancelEventArgs e)
+        {
+            SaveCommand.Execute(new object[] { this, sender });
+        }
+    }
 }

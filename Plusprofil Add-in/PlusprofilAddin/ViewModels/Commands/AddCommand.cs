@@ -40,8 +40,9 @@ namespace PlusprofilAddin.ViewModels.Commands
 		{
 			if (parameter is ObservableCollection<ViewModelTaggedValue> list)
 			{
-				list.Add(new ViewModelTaggedValue(list.First().Key));
-			}
+                //var test = new PlusprofilTaggedValue(list.First().PlusprofilTaggedValue.Key, list.First().PlusprofilTaggedValue.Name, list.First().PlusprofilTaggedValue.HasMemoField, list.First().PlusprofilTaggedValue.ManyMultiplicity, true);
+                list.Add(new ViewModelTaggedValue(list.First().Key, true));
+            } 
 		}
 	}
 }

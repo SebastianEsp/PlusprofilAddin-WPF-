@@ -5,6 +5,7 @@
 	xmlns:commands="clr-namespace:PlusprofilAddin.ViewModels.Commands"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase"
 	d:DataContext="{d:DesignInstance}"
 	d:DesignHeight="300"
 	d:DesignWidth="300"
@@ -15,9 +16,9 @@
 		</Button.Resources>
 		<Button.CommandParameter>
 			<MultiBinding Converter="{StaticResource SaveCommandConverter}">
-				<Binding Path="DataContext" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type Window}}" />
-				<Binding RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type Window}}" />
-			</MultiBinding>
+                <Binding Path="DataContext" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type Window}}" />
+                <Binding RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type Window}}" />
+            </MultiBinding>
 		</Button.CommandParameter>
 		<TextBlock Margin="6,2,6,2" Text="{DynamicResource ResourceKey=SaveChanges}" />
 	</Button>
