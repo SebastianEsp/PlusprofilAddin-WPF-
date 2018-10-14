@@ -23,7 +23,8 @@ namespace PlusprofilAddin.ViewModels
 			Definitions.Find(ptv => ptv.Key == "DeprecatedLabelDa"),
             Definitions.Find(ptv => ptv.Key == "LabelDa"),
             Definitions.Find(ptv => ptv.Key == "DefinitionDa"),
-			Definitions.Find(ptv => ptv.Key == "CommentDa"),
+            Definitions.Find(ptv => ptv.Key == "ExampleDa"),
+            Definitions.Find(ptv => ptv.Key == "CommentDa"),
 			Definitions.Find(ptv => ptv.Key == "ApplicationNoteDa")
 		};
 
@@ -34,7 +35,8 @@ namespace PlusprofilAddin.ViewModels
 			Definitions.Find(ptv => ptv.Key == "DeprecatedLabelEn"),
             Definitions.Find(ptv => ptv.Key == "LabelEn"),
             Definitions.Find(ptv => ptv.Key == "DefinitionEn"),
-			Definitions.Find(ptv => ptv.Key == "CommentEn"),
+            Definitions.Find(ptv => ptv.Key == "ExampleEn"),
+            Definitions.Find(ptv => ptv.Key == "CommentEn"),
 			Definitions.Find(ptv => ptv.Key == "ApplicationNoteEn")
 		};
 
@@ -108,7 +110,7 @@ namespace PlusprofilAddin.ViewModels
 		/// <inheritdoc />
 		public override void Initialize()
 		{
-			ConnectorEndType = ConnectorEnd.End == "Supplier" ? "Source" : "Target";
+			ConnectorEndType = ConnectorEnd.End == "Supplier" ? "Target" : "Source";
 			UMLNameValue = ConnectorEnd.Role;
 			AliasValue = ConnectorEnd.Alias;
 			MultiplicityValue = ConnectorEnd.Cardinality;
@@ -175,7 +177,7 @@ namespace PlusprofilAddin.ViewModels
 
         public override void OnWindowClosing(object sender, CancelEventArgs e)
         {
-            SaveCommand.Execute(new object[] { this, sender });
+            //SaveCommand.Execute(new object[] { this, sender });
         }
     }
 }

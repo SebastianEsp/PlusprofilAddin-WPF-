@@ -69,6 +69,8 @@
 	<system:String x:Key="SubClassOf">subClassOf</system:String>
 	<system:String x:Key="SameAs">sameAs</system:String>
 	<system:String x:Key="Type">type</system:String>
+    <system:String x:Key="LabelElemDa">Term</system:String>
+    <system:String x:Key="LabelElemEn">Term</system:String>
 
 	<!--  Attribute/ConnectorEnd specific labels  -->
 	<system:String x:Key="SubPropertyOf">subPropertyOf</system:String>

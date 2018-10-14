@@ -54,13 +54,38 @@ namespace PlusprofilAddin.ViewModels
 			Connector = Repository.GetContextObject();
 			SourceEnd = Connector.SupplierEnd;
 			TargetEnd = Connector.ClientEnd;
-			
-			ShowSourceEnd = SourceEnd.Stereotype == "ObjectProperty" ? Visibility.Visible : Visibility.Collapsed;
-			ShowTargetEnd = TargetEnd.Stereotype == "ObjectProperty" ? Visibility.Visible : Visibility.Collapsed;
 
-			SourceViewModel = new ConnectorUserControlViewModel {ConnectorEnd = SourceEnd, ElementNameValue = Repository.GetElementByID(Connector.SupplierID).Name};
+            switch (SourceEnd.Stereotype)
+            {
+
+                case "ObjectProperty":
+                    ShowSourceEnd = SourceEnd.Stereotype == "ObjectProperty" ? Visibility.Visible : Visibility.Collapsed;
+                    
+                break;
+
+                case "RdfsProperty":
+                    ShowSourceEnd = SourceEnd.Stereotype == "RdfsProperty" ? Visibility.Visible : Visibility.Collapsed;
+                break;
+
+            }
+
+            switch (TargetEnd.Stereotype)
+            {
+
+                case "ObjectProperty":
+                    ShowTargetEnd = TargetEnd.Stereotype == "ObjectProperty" ? Visibility.Visible : Visibility.Collapsed;
+                    break;
+
+                case "RdfsProperty":
+                    ShowTargetEnd = TargetEnd.Stereotype == "RdfsProperty" ? Visibility.Visible : Visibility.Collapsed;
+                    break;
+
+            }
+
+            SourceViewModel = new ConnectorUserControlViewModel {ConnectorEnd = SourceEnd, ElementNameValue = Repository.GetElementByID(Connector.SupplierID).Name};
 			TargetViewModel = new ConnectorUserControlViewModel {ConnectorEnd = TargetEnd, ElementNameValue = Repository.GetElementByID(Connector.ClientID).Name};
-			SourceViewModel.ResourceDictionary = ResourceDictionary;
+
+            SourceViewModel.ResourceDictionary = ResourceDictionary;
 			TargetViewModel.ResourceDictionary = ResourceDictionary;
 
 			SourceViewModel.Initialize();

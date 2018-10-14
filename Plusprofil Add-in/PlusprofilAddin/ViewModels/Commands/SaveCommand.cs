@@ -139,13 +139,22 @@ namespace PlusprofilAddin.ViewModels.Commands
 					targetEnd.Alias = viewModel.TargetViewModel.AliasValue;
 					sourceEnd.Cardinality = viewModel.SourceViewModel.MultiplicityValue;
 					targetEnd.Cardinality = viewModel.TargetViewModel.MultiplicityValue;
-					viewModel.SourceViewModel.URIViewmodelTaggedValue.Value = viewModel.SourceViewModel.URIValue;
-					viewModel.SourceViewModel.URIViewmodelTaggedValue.UpdateTaggedValueValue();
-					viewModel.TargetViewModel.URIViewmodelTaggedValue.Value = viewModel.TargetViewModel.URIValue;
-					viewModel.TargetViewModel.URIViewmodelTaggedValue.UpdateTaggedValueValue();
 
-					sourceEnd.Update();
-					targetEnd.Update();
+                    //Only update the values if a source connector exists
+                    if (viewModel.SourceViewModel.URIViewmodelTaggedValue != null) {
+                        viewModel.SourceViewModel.URIViewmodelTaggedValue.Value = viewModel.SourceViewModel.URIValue;
+                        viewModel.SourceViewModel.URIViewmodelTaggedValue.UpdateTaggedValueValue();
+                    }
+
+                    //Only update the values if a Target connector exists
+                    if (viewModel.TargetViewModel.URIViewmodelTaggedValue != null) {
+                        viewModel.TargetViewModel.URIViewmodelTaggedValue.Value = viewModel.TargetViewModel.URIValue;
+                        viewModel.TargetViewModel.URIViewmodelTaggedValue.UpdateTaggedValueValue();
+                    }
+
+                    sourceEnd.Update();
+                    targetEnd.Update();
+
 					break;
 			}
 

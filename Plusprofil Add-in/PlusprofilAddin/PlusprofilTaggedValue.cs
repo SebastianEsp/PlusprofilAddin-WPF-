@@ -112,8 +112,10 @@ namespace PlusprofilAddin
 			new PlusprofilTaggedValue("SameAs", "sameAs", false, true, false),
 			new PlusprofilTaggedValue("Type", "type", false, false, false),
 			new PlusprofilTaggedValue("LabelDa", "label (da)", false, true, false),
-			new PlusprofilTaggedValue("LabelEn", "label (en)", true, true, false),
-			new PlusprofilTaggedValue("URI", "URI", false, false, false)
+			new PlusprofilTaggedValue("LabelEn", "label (en)", false, true, false),
+            new PlusprofilTaggedValue("LabelElemDa", "label (da)", false, true, false),
+            new PlusprofilTaggedValue("LabelElemEn", "label (en)", false, true, false),
+            new PlusprofilTaggedValue("URI", "URI", false, false, false)
 		};
 	}
 }

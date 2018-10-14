@@ -24,7 +24,8 @@ namespace PlusprofilAddin.ViewModels
             Definitions.Find(ptv => ptv.Key == "DeprecatedLabelDa"),
             Definitions.Find(ptv => ptv.Key == "LabelDa"),
 			Definitions.Find(ptv => ptv.Key == "DefinitionDa"),
-			Definitions.Find(ptv => ptv.Key == "CommentDa"),
+            Definitions.Find(ptv => ptv.Key == "ExampleDa"),
+            Definitions.Find(ptv => ptv.Key == "CommentDa"),
 			Definitions.Find(ptv => ptv.Key == "ApplicationNoteDa")
 		};
 
@@ -35,7 +36,8 @@ namespace PlusprofilAddin.ViewModels
 			Definitions.Find(ptv => ptv.Key == "DeprecatedLabelEn"),
             Definitions.Find(ptv => ptv.Key == "LabelEn"),
             Definitions.Find(ptv => ptv.Key == "DefinitionEn"),
-			Definitions.Find(ptv => ptv.Key == "CommentEn"),
+            Definitions.Find(ptv => ptv.Key == "ExampleEn"),
+            Definitions.Find(ptv => ptv.Key == "CommentEn"),
 			Definitions.Find(ptv => ptv.Key == "ApplicationNoteEn")
 		};
 
